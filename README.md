@@ -6,9 +6,9 @@ What's Inside
 -------------
 
 * ![logo](conda/bullet/icon.png) Bullet Physics SDK (prebuilt with headers included)
-* ![logo](conda/panda3d/icon.png) Panda3D Game Engine (prebuilt with headers included)
+* ![logo](conda/panda3d/icon.png) Modified Panda3D Game Engine (prebuilt with headers included)
 * ![logo](conda/kcc/icon.png) KITSUNETSUKI Character Controller
-* Render Pipeline (with native lighting manager enabled)
+* Modified RenderPipeline Render for Panda3D (with native lighting manager enabled)
 * Blender (as a Python module)
 * YABEE (standalone version)
 

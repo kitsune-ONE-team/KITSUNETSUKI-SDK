@@ -1,7 +1,7 @@
-Modified RenderPipeline Render for Panda3D
-==========================================
+KITSUNETSUKI game runtime
+=========================
 
-https://github.com/tobspr/RenderPipeline/
+https://www.patreon.com/kitsunetsuki
 
 
 Building conda package
@@ -9,9 +9,9 @@ Building conda package
 
 ```
 git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/render_pipeline
+cd conda/runtime
 conda build .
-conda install panda3d-rp-kitsunetsuki --use-local
+conda install kitsunetsuki-runtime --use-local
 ```
 
 
@@ -20,5 +20,5 @@ Installing prebuild conda package
 
 ```
 conda config --add channels kitsune.one
-conda install panda3d-rp-kitsunetsuki
+conda install kitsunetsuki-runtime
 ```

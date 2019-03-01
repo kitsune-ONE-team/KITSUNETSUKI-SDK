@@ -1,7 +1,7 @@
 Blender as Python module
 ========================
 
-https://docs.blender.org/api/2.77/
+https://docs.blender.org/api/2.79b/
 
 
 Building conda package
