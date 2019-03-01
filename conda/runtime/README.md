@@ -1,4 +1,4 @@
-KITSUNETSUKI game runtime
+KITSUNETSUKI Game Runtime
 =========================
 
 https://www.patreon.com/kitsunetsuki

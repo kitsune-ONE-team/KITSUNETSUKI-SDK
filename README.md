@@ -5,20 +5,20 @@ KITSUNETSUKI SDK
 What's Inside
 -------------
 
-* ![logo](conda/bullet/icon_32.png) Bullet Physics SDK (prebuilt with headers included)
-* ![logo](conda/panda3d/icon_32.png) Modified Panda3D Game Engine (prebuilt with headers included)
-* ![logo](conda/kcc/icon_32.png) KITSUNETSUKI Character Controller
-* Modified RenderPipeline Render for Panda3D (with native lighting manager enabled)
-* Blender (as a Python module)
-* YABEE (standalone version)
+* ![logo](conda/bullet/icon_32.png) [Bullet Physics SDK](conda/bullet) (prebuilt with headers included)
+* ![logo](conda/panda3d/icon_32.png) [Modified Panda3D Game Engine](conda/panda3d) (prebuilt with headers included)
+* ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
+* [Modified RenderPipeline Render for Panda3D](conda/render_pipeline) (with native lighting manager enabled)
+* [Blender](conda/blender) (as a Python module)
+* [YABEE](conda/yabee) (standalone version)
 
 
 Files and directories structure
 -------------------------------
 
-* conda - conda package recipes for anaconda/miniconda
-* README.md - this file
-* ksdk.yml - conda environment file
+* [conda](conda) - conda package recipes for anaconda/miniconda
+* [README.md](README.md) - this file
+* [ksdk.yml](ksdk.yml) - conda environment file
 
 
 SDK Requirements
@@ -52,7 +52,6 @@ Building Requirements (Windows)
 
 You have to install those software packages if you want to modify and build your own SDK.
 
-* Visual Studio 2013 Community
 * Visual Studio Build Tools 2017
 
 

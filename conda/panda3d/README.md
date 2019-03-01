@@ -1,7 +1,7 @@
 ![logo](icon.png)
 
-Panda3D Game Engine
-===================
+Modified Panda3D Game Engine
+============================
 
 http://panda3d.org/
 
