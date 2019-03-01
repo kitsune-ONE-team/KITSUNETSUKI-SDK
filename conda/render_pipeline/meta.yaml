@@ -4,6 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/tobspr/RenderPipeline
+    git_rev: 8e0212d88a138de59f08fe9d6dce148227cf8216
     patches:
       - rp.patch
       - rp-setup.patch
