@@ -1,0 +1,48 @@
+package:
+  name: python-blender
+  version: "2.79b"
+
+source:
+  - url: http://download.blender.org/source/blender-2.79b.tar.gz
+    md5: cef9a203857dc65076e05c41fc7a7d03
+    folder: blender
+    patches:
+      - rna_wm.patch
+      - cmake1.patch
+      - cmake2.patch
+      # - cmake3.patch
+
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/windows_vc14 # [win32]
+    folder: lib/windows_vc14 # [win32]
+
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14 # [win64]
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/win64_vc14 # [win64]
+    folder: lib/win64_vc14 # [win64]
+
+build:
+  number: 0
+  string: 1551096942
+
+requirements:
+  build:
+    - blender-thirdparty # [unix]
+    - bullet
+    - cmake
+    - freetype >=2.8
+    - libpng >=1.6
+    - libtiff >=4.0.2
+    - m2-patch # [win]
+    - python
+    - requests
+    - svn
+    - git
+  run:
+    - freetype >=2.8
+    - libpng >=1.6
+    - libtiff >=4.0.2
+    - python
+
+about:
+  home: https://www.blender.org/
+  license: GPL

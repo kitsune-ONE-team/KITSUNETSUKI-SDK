@@ -1,0 +1,20 @@
+package:
+  name: kitsunetsuki-runtime
+  version: "0.4"
+
+source:
+  path: .
+
+build:
+  number: 0
+  string: 1551096942
+
+requirements:
+  build:
+    - panda3d-kitsunetsuki ==1.10.1
+    - kcc ==0.1
+    - 7za # [win]
+
+about:
+  home: https://kitsune.one/
+  license: BSD

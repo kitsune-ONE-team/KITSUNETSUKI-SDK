@@ -1,0 +1,26 @@
+package:
+  name: yabee-kitsunetsuki
+  version: "13.0"
+
+source:
+  - git_url: https://github.com/09th/YABEE.git
+    git_rev: c9926e45bcc943ba2a3ee3c85292abf3a5cd2333
+    patches:
+      - anim.patch
+      # - yabee_name.patch
+
+build:
+  number: 0
+  string: 1551096942
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - python-blender ==2.79b
+
+about:
+  home: https://github.com/09th/YABEE
+  license: MIT

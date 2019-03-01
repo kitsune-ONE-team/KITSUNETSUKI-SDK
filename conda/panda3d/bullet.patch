@@ -1,0 +1,20 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index df25c49f3..1d26e553f 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -781,10 +781,11 @@ if (COMPILER == "MSVC"):
+         suffix = '.lib'
+         if GetTargetArch() == 'x64' and os.path.isfile(GetThirdpartyDir() + "bullet/lib/BulletCollision_x64.lib"):
+             suffix = '_x64.lib'
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/LinearMath" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/LinearMath" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletCollision" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletDynamics" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletSoftBody" + suffix)
++        IncDirectory("BULLET", SDK["PYTHON"] + "/Library/include/bullet")
+ 
+ if (COMPILER=="GCC"):
+     PkgDisable("AWESOMIUM")

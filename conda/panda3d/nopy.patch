@@ -1,0 +1,13 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index 75e4ecfe4..0380905a3 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -2921,7 +2921,7 @@ if tp_dir is not None:
+                         # It's a Python module, like _rocketcore.so.
+                         CopyFile(GetOutputDir() + "/" + base, tp_lib)
+ 
+-    if GetTarget() == 'windows':
++    if GetTarget() == 'windows' and False:
+         if os.path.isdir(os.path.join(tp_dir, "extras", "bin")):
+             CopyAllFiles(GetOutputDir() + "/bin/", tp_dir + "extras/bin/")
+ 

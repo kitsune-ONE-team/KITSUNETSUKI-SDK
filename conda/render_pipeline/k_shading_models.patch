@@ -1,0 +1,66 @@
+diff --git a/rpcore/shader/apply_lights.frag.glsl b/rpcore/shader/apply_lights.frag.glsl
+index a2c433c8..e9f0dd53 100644
+--- a/rpcore/shader/apply_lights.frag.glsl
++++ b/rpcore/shader/apply_lights.frag.glsl
+@@ -109,6 +109,8 @@ void main() {
+             case SHADING_MODEL_FOLIAGE: result.xyz = vec3(0, 1, 0); break;
+             case SHADING_MODEL_CLEARCOAT: result.xyz = vec3(0, 0, 1); break;
+             case SHADING_MODEL_SKIN: result.xyz = vec3(1, 0, 0); break;
++            case 9: result.xyz = vec3(1, 0, 1); break; // shadeless
++            case 11: result.xyz = vec3(1, 0, 0); break;  // cel + skin
+             case SHADING_MODEL_EMISSIVE: result.xyz = vec3(1, 0, 1); break;
+             case SHADING_MODEL_TRANSPARENT: result.xyz = vec3(0, 1, 1); break;
+         }
+diff --git a/rpcore/shader/includes/forward_shading.inc.glsl b/rpcore/shader/includes/forward_shading.inc.glsl
+index bde551f5..5a24c916 100644
+--- a/rpcore/shader/includes/forward_shading.inc.glsl
++++ b/rpcore/shader/includes/forward_shading.inc.glsl
+@@ -171,6 +171,8 @@ uniform int maxLightIndex;
+         // Emission
+         if (m.shading_model == SHADING_MODEL_EMISSIVE) {
+             shading_result = m.basecolor * (0.005 + diff_env) * 30.0;
++        } else if (m.shading_model == 9) {
++            shading_result = m.basecolor * (0.005 + diff_env) * 30.0;
+         }
+ 
+         return shading_result;
+diff --git a/rpcore/shader/includes/lighting_pipeline.inc.glsl b/rpcore/shader/includes/lighting_pipeline.inc.glsl
+index c0c2573e..1edb217a 100644
+--- a/rpcore/shader/includes/lighting_pipeline.inc.glsl
++++ b/rpcore/shader/includes/lighting_pipeline.inc.glsl
+@@ -167,6 +167,9 @@ vec3 shade_material_from_tile_buffer(Material m, ivec3 tile) {
+     if (m.shading_model == SHADING_MODEL_EMISSIVE)
+         return vec3(0);
+ 
++    if (m.shading_model == 9)  // shadeless
++        return vec3(0);
++
+     vec3 shading_result = vec3(0);
+ 
+     // Find per tile lights
+diff --git a/rpcore/shader/includes/lights.inc.glsl b/rpcore/shader/includes/lights.inc.glsl
+index a423c504..7c7aa893 100644
+--- a/rpcore/shader/includes/lights.inc.glsl
++++ b/rpcore/shader/includes/lights.inc.glsl
+@@ -91,10 +91,21 @@ vec3 apply_light(Material m, vec3 v, vec3 l, vec3 light_color, float attenuation
+ 
+     float NxL = saturate(dot(m.normal, l_diffuse));
+ 
++    // cel shading
++    const float A = 0.5;
++    const float B = 1.0;
++
+     if (m.shading_model == SHADING_MODEL_FOLIAGE) {
+         transmittance = transmittance.xxx;
+     } else if (m.shading_model == SHADING_MODEL_SKIN) {
+         NxL = saturate(0.3 + dot(m.normal, l_diffuse));
++    } else if (m.shading_model == 10) {  // cel
++        if (NxL < A) NxL = 0.0;
++        else NxL = B;
++    } else if (m.shading_model == 11) {  // cel + skin
++        NxL = saturate(0.3 + dot(m.normal, l_diffuse));
++        if (NxL < A) NxL = 0.0;
++        else NxL = B;
+     } else {
+         transmittance = vec3(1);
+     }

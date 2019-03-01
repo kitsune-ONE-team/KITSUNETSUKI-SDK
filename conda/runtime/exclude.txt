@@ -1,0 +1,10 @@
+config-3.6m-i386-linux-gnu
+config-3.6m-x86_64-linux-gnu
+lib-dynload
+os.py
+pydoc_data
+site-packages
+sqlite3
+test
+tkinter
+turtledemo

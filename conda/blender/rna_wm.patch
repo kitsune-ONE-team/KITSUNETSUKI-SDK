@@ -1,0 +1,8 @@
+--- source/blender/makesrna/intern/rna_wm.c.orig	2018-03-23 18:22:25.000000000 +0300
++++ source/blender/makesrna/intern/rna_wm.c	2019-02-22 18:20:48.225680994 +0300
+@@ -1,4 +1,4 @@
+-/*
++﻿/*
+  * ***** BEGIN GPL LICENSE BLOCK *****
+  *
+  * This program is free software; you can redistribute it and/or

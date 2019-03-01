@@ -1,0 +1,40 @@
+diff --git a/panda/src/x11display/x11GraphicsPipe.cxx b/panda/src/x11display/x11GraphicsPipe.cxx
+index e5e8da18c8..a0fb8d0086 100644
+--- a/panda/src/x11display/x11GraphicsPipe.cxx
++++ b/panda/src/x11display/x11GraphicsPipe.cxx
+@@ -242,6 +242,7 @@ x11GraphicsPipe(const std::string &display) :
+   _net_wm_state_add = XInternAtom(_display, "_NET_WM_STATE_ADD", false);
+   _net_wm_state_remove = XInternAtom(_display, "_NET_WM_STATE_REMOVE", false);
+   _net_wm_bypass_compositor = XInternAtom(_display, "_NET_WM_BYPASS_COMPOSITOR", false);
++  _net_wm_icon = XInternAtom(_display, "_NET_WM_ICON", false);
+ }
+ 
+ /**
+diff --git a/panda/src/x11display/x11GraphicsPipe.h b/panda/src/x11display/x11GraphicsPipe.h
+index 3b8802e6e2..510d2ce4c4 100644
+--- a/panda/src/x11display/x11GraphicsPipe.h
++++ b/panda/src/x11display/x11GraphicsPipe.h
+@@ -81,6 +81,7 @@ public:
+   Atom _net_wm_state_add;
+   Atom _net_wm_state_remove;
+   Atom _net_wm_bypass_compositor;
++  Atom _net_wm_icon;
+ 
+   // Extension functions.
+   typedef int (*pfn_XcursorGetDefaultSize)(X11_Display *);
+diff --git a/panda/src/x11display/x11GraphicsWindow.cxx b/panda/src/x11display/x11GraphicsWindow.cxx
+index df038a6dad..5eaa80aa46 100644
+--- a/panda/src/x11display/x11GraphicsWindow.cxx
++++ b/panda/src/x11display/x11GraphicsWindow.cxx
+@@ -1266,6 +1266,11 @@ set_wm_properties(const WindowProperties &properties, bool already_mapped) {
+   nassertv(next_state_data < max_state_data);
+   nassertv(next_set_data < max_set_data);
+ 
++  // window icon
++#include "icon.h"
++  XChangeProperty(_display, _xwindow, x11_pipe->_net_wm_icon,
++                  XA_CARDINAL, 32, PropModeReplace, (unsigned char*) icon_prop, sizeof(icon_prop) / sizeof(long));
++
+   // Add the process ID as a convenience for other applications.
+   int32_t pid = getpid();
+   XChangeProperty(_display, _xwindow, x11_pipe->_net_wm_pid,

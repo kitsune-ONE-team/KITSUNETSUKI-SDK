@@ -1,0 +1,19 @@
+package:
+  name: bullet
+  version: "2.83"
+
+source:
+  git_rev: 2.83
+  git_url: https://github.com/bulletphysics/bullet3.git
+
+build:
+  number: 0
+  string: 1551096942
+
+requirements:
+  build:
+    - cmake
+
+about:
+  home: http://bulletphysics.org
+  license: Zlib

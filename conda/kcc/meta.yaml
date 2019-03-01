@@ -1,0 +1,22 @@
+package:
+  name: kcc
+  version: "0.1"
+
+source:
+  path: .
+
+build:
+  number: 0
+  string: 1551096942
+
+requirements:
+  build:
+    - cmake
+    - bullet ==2.83
+    - panda3d-kitsunetsuki ==1.10.1
+  run:
+    - panda3d-kitsunetsuki ==1.10.1
+
+about:
+  home: https://launchpad.net/kitsunetsuki-sdk
+  license: BSD

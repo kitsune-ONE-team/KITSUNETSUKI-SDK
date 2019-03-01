@@ -1,0 +1,23 @@
+diff --git a/rpcore/shader/includes/lights.inc.glsl b/rpcore/shader/includes/lights.inc.glsl
+index a423c504..32e84963 100644
+--- a/rpcore/shader/includes/lights.inc.glsl
++++ b/rpcore/shader/includes/lights.inc.glsl
+@@ -32,6 +32,8 @@
+ 
+ // Computes the quadratic attenuation curve
+ float attenuation_curve(float dist_square, float radius) {
++    return 0.05;
++
+     #if 0
+         return step(dist_square, radius * radius);
+     #endif
+@@ -57,8 +59,7 @@ float get_spotlight_attenuation(vec3 l, vec3 light_dir, float fov, float radius,
+     // so the rescaling is performed. 
+     float linear_angle = (cos_angle - fov) / (1 - fov);
+     float angle_att = saturate(linear_angle);
+-    float ies_factor = get_ies_factor(ies_profile, linear_angle, 0);
+-    return ies_factor * angle_att * angle_att * dist_attenuation;
++    return sqrt(angle_att) * dist_attenuation;
+ }
+ 
+ 
