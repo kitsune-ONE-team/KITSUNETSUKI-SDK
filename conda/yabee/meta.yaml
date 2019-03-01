@@ -7,7 +7,7 @@ source:
     git_rev: c9926e45bcc943ba2a3ee3c85292abf3a5cd2333
     patches:
       - anim.patch
-      # - yabee_name.patch
+      - yabee_name.patch
 
 build:
   number: 0

@@ -1,5 +1,5 @@
 diff --git a/yabee_libs/egg_writer.py b/yabee_libs/egg_writer.py
-index b75597e..01e3945 100644
+index 8270b60..9414277 100644
 --- a/yabee_libs/egg_writer.py
 +++ b/yabee_libs/egg_writer.py
 @@ -198,10 +198,10 @@ class Group:
@@ -49,7 +49,7 @@ index b75597e..01e3945 100644
                  cur_str += '}\n'
                  idx += spline.point_count_u
          return cur_str
-@@ -743,7 +743,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -757,7 +757,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
                          if facedata.image:
  
                              # If the polygon is assigned, store a reference to that texture
@@ -58,7 +58,7 @@ index b75597e..01e3945 100644
                              if tex_name in USED_TEXTURES and tex_name not in textures:
                                  textures.append(tex_name)
  
-@@ -751,7 +751,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -792,7 +792,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
                  else:
  
                      # Look up original texture name before it was copied/renamed
@@ -67,7 +67,7 @@ index b75597e..01e3945 100644
  
                      # Just store all texture slots
                      for index, texture in enumerate(material.texture_slots):
-@@ -781,7 +781,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -823,7 +823,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
                          params = (params[0], params[0], params[1])
                      if params[2]:
                          attributes.append('<TRef> { %s }' \
@@ -76,7 +76,7 @@ index b75597e..01e3945 100644
                                      + '_' + btype))
  
          return attributes
-@@ -798,7 +798,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -840,7 +840,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
              mat = self.obj_ref.data.materials[face.material_index]
              if not mat:
                  return attributes
@@ -85,7 +85,7 @@ index b75597e..01e3945 100644
          return attributes
  
      def collect_poly_normal(self, face, attributes):
-@@ -852,7 +852,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -894,7 +894,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
          @return: list of polygon's attributes.
          """
          vr = ' '.join(map(str,self.poly_vtx_ref[face.index]))
@@ -94,7 +94,7 @@ index b75597e..01e3945 100644
          return attributes
  
      def collect_polygons(self):
-@@ -885,7 +885,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
+@@ -927,7 +927,7 @@ class EGGMeshObjectData(EGGBaseObjectData):
      def get_vtx_pool_str(self):
          """ Return the vertex pool string in the EGG syntax.
          """
@@ -103,7 +103,7 @@ index b75597e..01e3945 100644
          vtxs = ''.join(self.collect_vertices())
          vtxs = vtxs.replace('\n', '\n  ')
          vtx_pool += vtxs
-@@ -932,9 +932,9 @@ class EGGActorObjectData(EGGMeshObjectData):
+@@ -974,9 +974,9 @@ class EGGActorObjectData(EGGMeshObjectData):
                      if gname not in list(joint_vref.keys()):
                          joint_vref[gname] = {}
                      # Object name = vertices pool name
@@ -116,7 +116,7 @@ index b75597e..01e3945 100644
                  idx += 1
          return joint_vref
  
-@@ -992,8 +992,8 @@ class EGGAnimJoint(Group):
+@@ -1034,8 +1034,8 @@ class EGGAnimJoint(Group):
          """
          egg_str = ''
          if self.object:
@@ -127,7 +127,7 @@ index b75597e..01e3945 100644
              egg_str += '%s  <Xfm$Anim> xform {\n' % ('  ' * level)
              egg_str += '%s    <Scalar> order { sprht }\n' % ('  ' * level)
              egg_str += '%s    <Scalar> fps { %i }\n' % ('  ' * level, framerate)
-@@ -1059,17 +1059,17 @@ class AnimCollector():
+@@ -1101,17 +1101,17 @@ class AnimCollector():
                                          self.collect_arm_anims(mod.object)
                      '''
                      if ((obj.data.shape_keys) and (len(obj.data.shape_keys.key_blocks) > 1)):
@@ -153,7 +153,7 @@ index b75597e..01e3945 100644
                              self.collect_arm_anims(obj)
      def collect_morph_anims(self, obj):
          """ Collect an animation data for the morph target (shapekeys).
-@@ -1102,28 +1102,28 @@ class AnimCollector():
+@@ -1144,28 +1144,28 @@ class AnimCollector():
              bpy.context.scene.frame_current = f
              bpy.context.scene.frame_set(f)
              for bone in arm.pose.bones:
@@ -195,7 +195,7 @@ index b75597e..01e3945 100644
          bpy.context.scene.frame_current = current_f
          return anim_dict
  
-@@ -1168,7 +1168,7 @@ class AnimCollector():
+@@ -1210,7 +1210,7 @@ class AnimCollector():
          if self.obj_anim_ref:
              egg_str += '<Table> {\n'
              for obj_name, obj_data in self.obj_anim_ref.items():
@@ -204,7 +204,7 @@ index b75597e..01e3945 100644
                  if self.name:
                      anim_name = self.name
                  else:
-@@ -1198,7 +1198,7 @@ def get_used_materials(objects):
+@@ -1240,7 +1240,7 @@ def get_used_materials(objects):
                  if f.material_index < len(obj.data.materials):
                      if not obj.data.materials[f.material_index]:
                          continue
@@ -213,7 +213,7 @@ index b75597e..01e3945 100644
      return set(m_list)
  
  
-@@ -1212,7 +1212,7 @@ def get_egg_materials_str(object_names=None):
+@@ -1254,7 +1254,7 @@ def get_egg_materials_str(object_names=None):
          objects = []
          for name in object_names:
              for obj in bpy.context.scene.objects:
@@ -222,16 +222,16 @@ index b75597e..01e3945 100644
                      objects.append(obj)
      if not objects:
          return ''
-@@ -1221,7 +1221,7 @@ def get_egg_materials_str(object_names=None):
-     used_materials = get_used_materials(objects)
+@@ -1264,7 +1264,7 @@ def get_egg_materials_str(object_names=None):
+     containsPBRNodes = False
      for m_idx in used_materials:
          mat = bpy.data.materials[m_idx]
 -        mat_str += '<Material> %s {\n' % eggSafeName(mat.yabee_name)
 +        mat_str += '<Material> %s {\n' % eggSafeName(mat['yabee_name'])
- 
-         if EXPORT_PBS and hasattr(mat, "pbepbs"):
- 
-@@ -1445,7 +1445,7 @@ def reparenting_to_armature(obj_list):
+         #MARK
+         
+         matIsFancyPBRNode = False
+@@ -1538,7 +1538,7 @@ def reparenting_to_armature(obj_list):
          for mod in obj.modifiers:
              if mod and mod.type == 'ARMATURE' and mod.show_viewport:
                  if mod.object and obj.parent != mod.object:
@@ -240,7 +240,7 @@ index b75597e..01e3945 100644
                      m = Matrix(obj.matrix_world)
                      obj.parent = mod.object
                      obj.matrix_world = m
-@@ -1523,28 +1523,28 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
+@@ -1616,28 +1616,28 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
      #selected_obj = [obj.name for obj in bpy.context.selected_objects if obj.type != 'ARMATURE']
      selected_obj = objects
      if not selected_obj:
@@ -277,7 +277,7 @@ index b75597e..01e3945 100644
  
      old_data = {}
      for d in (bpy.data.materials, bpy.data.objects, bpy.data.textures,
-@@ -1561,12 +1561,12 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
+@@ -1654,12 +1654,12 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
      if USE_LOOP_NORMALS:
          #even obj.data.copy() will not contain loop normals
          precopy_obj_list = [obj for obj in bpy.context.scene.objects
@@ -292,7 +292,7 @@ index b75597e..01e3945 100644
          if USE_LOOP_NORMALS:
              for old, new in zip(precopy_obj_list, obj_list):
                  if old.type != "MESH":
-@@ -1591,7 +1591,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
+@@ -1684,7 +1684,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
                  for face in obj.data.polygons:
                      if len(face.vertices) > 4:
                          obj.modifiers.new('triangulate_for_TBS', 'TRIANGULATE')
@@ -301,7 +301,7 @@ index b75597e..01e3945 100644
                          bpy.context.scene.objects.active = obj
                          bpy.ops.object.modifier_apply(modifier = 'triangulate_for_TBS')
                          break
-@@ -1610,7 +1610,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
+@@ -1703,7 +1703,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
  
          incl_arm = []
          for obj in bpy.context.scene.objects:
@@ -310,7 +310,7 @@ index b75597e..01e3945 100644
                  for mod in obj.modifiers:
                      if mod and mod.type == 'ARMATURE' \
                         and mod.object not in incl_arm \
-@@ -1623,7 +1623,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
+@@ -1716,7 +1716,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
          #incl_arm = list(incl_arm)[:]
          #print(incl_arm)
          obj_list += incl_arm
@@ -320,10 +320,10 @@ index b75597e..01e3945 100644
          errors += gr.make_hierarchy_from_list(obj_list)
          if not errors:
 diff --git a/yabee_libs/texture_processor.py b/yabee_libs/texture_processor.py
-index 8c5da90..1d07ce2 100644
+index 778d83d..72b0fa7 100644
 --- a/yabee_libs/texture_processor.py
 +++ b/yabee_libs/texture_processor.py
-@@ -129,7 +129,7 @@ class SimpleTextures():
+@@ -277,7 +277,7 @@ class SimpleTextures():
                                  transform.append(('Scale', (0.5, 0.5, 0.5)))
  
                              #if not tex.texture.name in list(tex_list.keys()):
@@ -332,7 +332,7 @@ index 8c5da90..1d07ce2 100644
                                  #try:
                                      envtype = 'MODULATE'
                                      if tex.use_map_normal:
-@@ -148,7 +148,7 @@ class SimpleTextures():
+@@ -296,7 +296,7 @@ class SimpleTextures():
  
                                      #tex_list[tex.texture.name] = {'path': t_path,
                                      #                              'scalars': scalars, 'transform': transform }
@@ -341,7 +341,7 @@ index 8c5da90..1d07ce2 100644
                                                                          'scalars': scalars, 'transform': transform }
  
                                      if(tex.texture.use_mipmap):
-@@ -223,7 +223,7 @@ class SimpleTextures():
+@@ -371,7 +371,7 @@ class SimpleTextures():
                          for num, uv in enumerate(obj.data.uv_textures):
                              for f in uv.data:
                                  if f.image and f.image.source == 'FILE':
@@ -350,7 +350,7 @@ index 8c5da90..1d07ce2 100644
                                      if not tex_name in tex_list:
                                          name = uv.name
                                          if num == 0: name = ''
-@@ -406,7 +406,7 @@ class TextureBaker():
+@@ -554,7 +554,7 @@ class TextureBaker():
          for obj in self.obj_list:
              if obj.type == 'MESH' and self.get_active_uv(obj):
                  self._save_obj_props(obj)
@@ -359,7 +359,7 @@ index 8c5da90..1d07ce2 100644
                  self.rendered_images[obj.name] = img.name
                  active_uv = self.get_active_uv(obj)
                  active_uv_idx = obj.data.uv_textures[:].index(active_uv)
-@@ -414,7 +414,7 @@ class TextureBaker():
+@@ -562,7 +562,7 @@ class TextureBaker():
                      for uvd in active_uv.data:
                          #uvd.use_image = True
                          uvd.image = img
