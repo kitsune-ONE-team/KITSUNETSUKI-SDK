@@ -5,9 +5,9 @@ KITSUNETSUKI SDK
 What's Inside
 -------------
 
-* ![logo](conda/bullet/icon.png) Bullet Physics SDK (prebuilt with headers included)
-* ![logo](conda/panda3d/icon.png) Modified Panda3D Game Engine (prebuilt with headers included)
-* ![logo](conda/kcc/icon.png) KITSUNETSUKI Character Controller
+* ![logo](conda/bullet/icon_32.png) Bullet Physics SDK (prebuilt with headers included)
+* ![logo](conda/panda3d/icon_32.png) Modified Panda3D Game Engine (prebuilt with headers included)
+* ![logo](conda/kcc/icon_32.png) KITSUNETSUKI Character Controller
 * Modified RenderPipeline Render for Panda3D (with native lighting manager enabled)
 * Blender (as a Python module)
 * YABEE (standalone version)

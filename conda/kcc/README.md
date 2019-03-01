@@ -1,3 +1,5 @@
+![logo](icon.png)
+
 KITSUNETSUKI Character Controller
 =================================
 

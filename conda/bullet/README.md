@@ -1,3 +1,5 @@
+![logo](icon.png)
+
 Bullet Physics SDK
 ==================
 

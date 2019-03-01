@@ -1,3 +1,5 @@
+![logo](icon.png)
+
 Panda3D Game Engine
 ===================
 
