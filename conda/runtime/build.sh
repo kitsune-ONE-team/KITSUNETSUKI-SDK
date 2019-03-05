@@ -8,7 +8,7 @@ else
     LARCH=i386;
 fi
 
-# pip install -r ${RECIPE_DIR}/req.txt;
+pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
@@ -59,6 +59,7 @@ cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${INSTALL}/kgame/lib/;
     ${INSTALL}/kgame/lib/python37.zip \
     "${CONDA_PREFIX}/lib/python3.7/*" \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/direct \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/attr \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2 \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/idna \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/jsonschema \
@@ -66,4 +67,4 @@ cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${INSTALL}/kgame/lib/;
     ${CONDA_PREFIX}/lib/python3.7/site-packages/pandac \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/ubjson;
 
-pip uninstall --yes httplib2 jsonschema oauth2 py-ubjson idna;
+pip uninstall --yes attrs httplib2 jsonschema oauth2 py-ubjson idna;

@@ -4,7 +4,12 @@ if "%ARCH%" == "64" (
     set INSTALL=%PREFIX%\runtime-winx32
 )
 
-pip install -r %RECIPE_DIR%\req.txt
+pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
+pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
+pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
+pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
+pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf6835e38bc4bd0647269dc48670e12eb99a3f5ef5/py-ubjson-0.12.0.tar.gz
+pip install https://files.pythonhosted.org/packages/ad/13/eb56951b6f7950cadb579ca166e448ba77f9d24efc03edd7e55fa57d04b7/idna-2.8.tar.gz
 
 mkdir %INSTALL%\kgame
 mkdir %INSTALL%\kgame\Lib
@@ -34,6 +39,7 @@ copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %INSTALL%\kgame
     %INSTALL%\kgame\python37.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
+    %CONDA_PREFIX%\Lib\site-packages\attr ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
@@ -41,4 +47,4 @@ copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %INSTALL%\kgame
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
-pip uninstall --yes httplib2 jsonschema oauth2 py-ubjson idna
+pip uninstall --yes attrs httplib2 jsonschema oauth2 py-ubjson idna

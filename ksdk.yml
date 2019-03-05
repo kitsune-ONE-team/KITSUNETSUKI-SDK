@@ -1,7 +1,7 @@
 name: ksdk
 
 channels:
-- kitsune.ONE
+- kitsune.one
 - defaults
 
 dependencies:
@@ -16,6 +16,7 @@ dependencies:
   - Cython==0.29.5
   - Jinja2==2.10
   - PyYAML==3.12
+  - attrs==19.1.0
   - epc==0.0.5
   - flake8==3.6.0
   - httplib2==0.12.1
