@@ -68,6 +68,7 @@ cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${INSTALL}/kgame/lib/;
     ${CONDA_PREFIX}/lib/python3.7/site-packages/oauth2 \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/pandac \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/pyrsistent \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/six \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/ubjson;
 
-pip uninstall --yes attrs httplib2 jsonschema oauth2 pyrsistent py-ubjson idna;
+pip uninstall --yes attrs httplib2 jsonschema oauth2 pyrsistent py-ubjson idna six;

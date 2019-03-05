@@ -48,6 +48,7 @@ copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %INSTALL%\kgame
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
+    %CONDA_PREFIX%\Lib\site-packages\six ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
-pip uninstall --yes attrs httplib2 jsonschema oauth2 pyrsistent py-ubjson idna
+pip uninstall --yes attrs httplib2 jsonschema oauth2 pyrsistent py-ubjson idna six
