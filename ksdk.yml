@@ -27,5 +27,6 @@ dependencies:
   - py-ubjson==0.12.0
   - pylint==2.2.2
   - pyrsistent==0.14.11
+  - six==1.12.0
   - sphinx-materialdesign-theme==0.0.4
   - sphinx==1.6.6
