@@ -22,11 +22,12 @@ dependencies:
   - httplib2==0.12.1
   - idna==2.8
   - jedi==0.11.0
-  - jsonschema==3.0.0
+  - jsonschema==2.6.0
   - oauth2==1.9.0.post1
   - py-ubjson==0.12.0
   - pylint==2.2.2
   - pyrsistent==0.14.11
+  - setuptools==40.8.0
   - six==1.12.0
   - sphinx-materialdesign-theme==0.0.4
   - sphinx==1.6.6

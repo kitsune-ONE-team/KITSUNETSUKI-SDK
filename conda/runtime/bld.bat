@@ -11,7 +11,9 @@ pip install https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898
 pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
 pip install https://files.pythonhosted.org/packages/8c/46/4e93ab8a379d7efe93f20a0fb8a27bdfe88942cc954ab0210c3164e783e0/pyrsistent-0.14.11.tar.gz
 pip install https://files.pythonhosted.org/packages/ad/13/eb56951b6f7950cadb579ca166e448ba77f9d24efc03edd7e55fa57d04b7/idna-2.8.tar.gz
-pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
+pip install https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
+rem pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
+rem pip install https://files.pythonhosted.org/packages/d1/6a/4b2fcefd2ea0868810e92d519dacac1ddc64a2e53ba9e3422c3b62b378a6/setuptools-40.8.0-py2.py3-none-any.whl
 
 mkdir %INSTALL%\kgame
 mkdir %INSTALL%\kgame\Lib
@@ -47,8 +49,17 @@ copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %INSTALL%\kgame
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
+    %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
-    %CONDA_PREFIX%\Lib\site-packages\six ^
+    %CONDA_PREFIX%\Lib\site-packages\six.py ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
-pip uninstall --yes attrs httplib2 jsonschema oauth2 pyrsistent py-ubjson idna six
+pip uninstall --yes ^
+    attrs ^
+    httplib2 ^
+    idna ^
+    jsonschema ^
+    oauth2 ^
+    py-ubjson ^
+    pyrsistent ^
+    six
