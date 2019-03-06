@@ -11,6 +11,7 @@ source:
       - nopy.patch # [win]
       - bullet.patch
       - icon.patch # [unix]
+      - is_nan.patch
 
   - url: http://rdb.name/thirdparty-vc14.7z # [win32]
     folder: thirdparty # [win32]
@@ -22,7 +23,7 @@ source:
 
 build:
   number: 0
-  string: 1551096942
+  string: 1551867346
 
 requirements:
   build:
