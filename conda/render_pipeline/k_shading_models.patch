@@ -1,66 +1,122 @@
+diff --git a/rpcore/shader/ambient_stage.frag.glsl b/rpcore/shader/ambient_stage.frag.glsl
+index 51fab7e7..3c1b7ca2 100644
+--- a/rpcore/shader/ambient_stage.frag.glsl
++++ b/rpcore/shader/ambient_stage.frag.glsl
+@@ -243,6 +243,14 @@ void main() {
+         // Add diffuse and specular ambient term
+         ambient += diffuse_ambient * occlusion + specular_ambient * specular_occlusion;
+ 
++        if (m.shading_model == 9) {  // shadeless
++            ambient = m.basecolor;
++        } else if (m.shading_model == 10 || m.shading_model == 11) {  // cel, cel+skin
++            diffuse_ambient = m.basecolor * (1-m.metallic) * env_brdf.r;
++            // ambient = diffuse_ambient * occlusion + specular_ambient * specular_occlusion;
++            ambient = diffuse_ambient + specular_ambient;
++        }
++
+     #endif
+ 
+     // Emissive materials
 diff --git a/rpcore/shader/apply_lights.frag.glsl b/rpcore/shader/apply_lights.frag.glsl
-index a2c433c8..e9f0dd53 100644
+index a2c433c8..96a818f9 100644
 --- a/rpcore/shader/apply_lights.frag.glsl
 +++ b/rpcore/shader/apply_lights.frag.glsl
-@@ -109,6 +109,8 @@ void main() {
+@@ -109,6 +109,9 @@ void main() {
              case SHADING_MODEL_FOLIAGE: result.xyz = vec3(0, 1, 0); break;
              case SHADING_MODEL_CLEARCOAT: result.xyz = vec3(0, 0, 1); break;
              case SHADING_MODEL_SKIN: result.xyz = vec3(1, 0, 0); break;
-+            case 9: result.xyz = vec3(1, 0, 1); break; // shadeless
-+            case 11: result.xyz = vec3(1, 0, 0); break;  // cel + skin
++            case 9: result.xyz = vec3(0.23529411764705882, 0.7254901960784313, 0.2784313725490196); break; // shadeless (green)
++            case 10: result.xyz = vec3(0.9058823529411765, 0.09803921568627451, 0.07058823529411765); break;  // cel (red)
++            case 11: result.xyz = vec3(1.0, 0.3411764705882353, 0.06274509803921569); break;  // cel+skin (orange)
              case SHADING_MODEL_EMISSIVE: result.xyz = vec3(1, 0, 1); break;
              case SHADING_MODEL_TRANSPARENT: result.xyz = vec3(0, 1, 1); break;
          }
-diff --git a/rpcore/shader/includes/forward_shading.inc.glsl b/rpcore/shader/includes/forward_shading.inc.glsl
-index bde551f5..5a24c916 100644
---- a/rpcore/shader/includes/forward_shading.inc.glsl
-+++ b/rpcore/shader/includes/forward_shading.inc.glsl
-@@ -171,6 +171,8 @@ uniform int maxLightIndex;
-         // Emission
-         if (m.shading_model == SHADING_MODEL_EMISSIVE) {
-             shading_result = m.basecolor * (0.005 + diff_env) * 30.0;
-+        } else if (m.shading_model == 9) {
-+            shading_result = m.basecolor * (0.005 + diff_env) * 30.0;
-         }
- 
-         return shading_result;
 diff --git a/rpcore/shader/includes/lighting_pipeline.inc.glsl b/rpcore/shader/includes/lighting_pipeline.inc.glsl
-index c0c2573e..1edb217a 100644
+index c0c2573e..cca79adf 100644
 --- a/rpcore/shader/includes/lighting_pipeline.inc.glsl
 +++ b/rpcore/shader/includes/lighting_pipeline.inc.glsl
-@@ -167,6 +167,9 @@ vec3 shade_material_from_tile_buffer(Material m, ivec3 tile) {
+@@ -167,6 +167,10 @@ vec3 shade_material_from_tile_buffer(Material m, ivec3 tile) {
      if (m.shading_model == SHADING_MODEL_EMISSIVE)
          return vec3(0);
  
-+    if (m.shading_model == 9)  // shadeless
++    if (m.shading_model == 9) { // shadeless
 +        return vec3(0);
++    }
 +
      vec3 shading_result = vec3(0);
  
      // Find per tile lights
+@@ -263,5 +267,11 @@ vec3 shade_material_from_tile_buffer(Material m, ivec3 tile) {
+     float fade = saturate(curr_dist / LC_MAX_DISTANCE);
+     fade = 1 - pow(fade, 10.0);
+ 
+-    return shading_result * fade;
++    shading_result *= fade;
++
++    if (m.shading_model == 10 || m.shading_model == 11) {  // cel, cel+skin
++        shading_result *= 4;
++    }
++
++    return shading_result;
+ }
 diff --git a/rpcore/shader/includes/lights.inc.glsl b/rpcore/shader/includes/lights.inc.glsl
-index a423c504..7c7aa893 100644
+index a423c504..38762524 100644
 --- a/rpcore/shader/includes/lights.inc.glsl
 +++ b/rpcore/shader/includes/lights.inc.glsl
-@@ -91,10 +91,21 @@ vec3 apply_light(Material m, vec3 v, vec3 l, vec3 light_color, float attenuation
+@@ -47,7 +47,8 @@ float attenuation_curve(float dist_square, float radius) {
+ // Computes the attenuation for a spot light
+ float get_spotlight_attenuation(vec3 l, vec3 light_dir, float fov, float radius,
+         float dist_sq, int ies_profile) {
+-    float dist_attenuation = attenuation_curve(dist_sq, radius);
++    // float dist_attenuation = attenuation_curve(dist_sq, radius);
++    float dist_attenuation = 0.01;
+     float cos_angle = dot(l, -light_dir);
  
-     float NxL = saturate(dot(m.normal, l_diffuse));
+     // Rescale angle to fit the full range of the IES profile. We only do this
+@@ -56,8 +57,10 @@ float get_spotlight_attenuation(vec3 l, vec3 light_dir, float fov, float radius,
+     // However, IES profiles might look quite boring when not getting rescaled,
+     // so the rescaling is performed. 
+     float linear_angle = (cos_angle - fov) / (1 - fov);
+-    float angle_att = saturate(linear_angle);
+-    float ies_factor = get_ies_factor(ies_profile, linear_angle, 0);
++    // float angle_att = saturate(linear_angle);
++    float angle_att = min(saturate(linear_angle), 0.5);
++    // float ies_factor = get_ies_factor(ies_profile, linear_angle, 0);
++    float ies_factor = get_ies_factor(-l, ies_profile);
+     return ies_factor * angle_att * angle_att * dist_attenuation;
+ }
  
-+    // cel shading
-+    const float A = 0.5;
-+    const float B = 1.0;
-+
+@@ -93,12 +96,19 @@ vec3 apply_light(Material m, vec3 v, vec3 l, vec3 light_color, float attenuation
+ 
      if (m.shading_model == SHADING_MODEL_FOLIAGE) {
          transmittance = transmittance.xxx;
-     } else if (m.shading_model == SHADING_MODEL_SKIN) {
+-    } else if (m.shading_model == SHADING_MODEL_SKIN) {
++    } else if (m.shading_model == SHADING_MODEL_SKIN || m.shading_model == 11) {  // cel+skin
          NxL = saturate(0.3 + dot(m.normal, l_diffuse));
-+    } else if (m.shading_model == 10) {  // cel
-+        if (NxL < A) NxL = 0.0;
-+        else NxL = B;
-+    } else if (m.shading_model == 11) {  // cel + skin
-+        NxL = saturate(0.3 + dot(m.normal, l_diffuse));
-+        if (NxL < A) NxL = 0.0;
-+        else NxL = B;
      } else {
          transmittance = vec3(1);
+     }
+ 
++    if (m.shading_model == 10 || m.shading_model == 11) {  // cel
++        float A = 0.5;
++        float B = 1.0;
++        if (NxL < A) NxL = 0;
++        else NxL = B;
++    }
++
+     // Compute the dot products
+     vec3 h = normalize(l + v);
+     float NxV = max(1e-5, dot(m.normal, v));
+diff --git a/rpplugins/skin_shading/shader/sssss_blur.frag.glsl b/rpplugins/skin_shading/shader/sssss_blur.frag.glsl
+index 101c89bc..e425f709 100644
+--- a/rpplugins/skin_shading/shader/sssss_blur.frag.glsl
++++ b/rpplugins/skin_shading/shader/sssss_blur.frag.glsl
+@@ -46,7 +46,7 @@ void main() {
+     int shading_model = get_gbuffer_shading_model(GBuffer, texcoord);
+ 
+     // Early out
+-    if (shading_model != SHADING_MODEL_SKIN) {
++    if (shading_model != SHADING_MODEL_SKIN && shading_model != 11) {  // cel+skin
+         color = textureLod(ShadedScene, texcoord, 0).xyz;
+         return;
      }

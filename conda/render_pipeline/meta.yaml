@@ -9,6 +9,7 @@ source:
       - rp.patch
       - rp-setup.patch
       - noflag.patch
+      - dte.patch
       - k_shading_models.patch
       - lights.patch
 
