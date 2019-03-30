@@ -59,5 +59,5 @@ if "%ERRORLEVEL%" == "1" (
 )
 
 copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
-xcopy /I /E /Y %PREFIX%\Lib\site-packages\2.79 %PREFIX%\2.79
-rd /s /q %PREFIX%\Lib\site-packages\2.79
+xcopy /I /E /Y %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
+rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%

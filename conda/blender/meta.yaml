@@ -1,28 +1,42 @@
 package:
   name: python-blender
-  version: "2.79b"
+  version: "2.80"
 
 source:
-  - url: http://download.blender.org/source/blender-2.79b.tar.gz
-    md5: cef9a203857dc65076e05c41fc7a7d03
+  - git_url: git://git.blender.org/blender-addons.git
+    folder: blender_extras/release/scripts/addons
+
+  - git_url: git://git.blender.org/blender-addons-contrib.git
+    folder: blender_extras/release/scripts/addons_contrib
+
+  - git_url: git://git.blender.org/blender-translations.git
+    folder: blender_extras/release/datafiles/locale
+
+  - git_url: git://git.blender.org/blender-dev-tools.git
+    folder: blender_extras/source/tools
+
+  # - url: http://download.blender.org/source/blender-2.79b.tar.gz
+  #   md5: cef9a203857dc65076e05c41fc7a7d03
+  - git_url: git://git.blender.org/blender.git
+    git_rev: bf9904ec8018
     folder: blender
     patches:
-      - rna_wm.patch
+      # - rna_wm.patch
       - cmake1.patch
-      - cmake2.patch
+      # - cmake2.patch
       # - cmake3.patch
 
-  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/windows_vc14 # [win32]
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/windows_vc14 # [win32]
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
     folder: lib/windows_vc14 # [win32]
 
-  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14 # [win64]
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/win64_vc14 # [win64]
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/win64_vc14 # [win64]
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14 # [win64]
     folder: lib/win64_vc14 # [win64]
 
 build:
   number: 0
-  string: 1551867346
+  string: 1552459178
 
 requirements:
   build:
@@ -37,6 +51,7 @@ requirements:
     - requests
     - svn
     - git
+    - numpy
   run:
     - freetype >=2.8
     - libpng >=1.6
