@@ -1,0 +1,38 @@
+--- panda/src/egg2pg/eggLoader.cxx.orig	2019-02-22 21:30:35.890990644 +0300
++++ panda/src/egg2pg/eggLoader.cxx	2019-03-30 10:56:42.534344047 +0300
+@@ -894,6 +894,7 @@
+     break;
+ 
+   case EggTexture::F_rgb:
++  case EggTexture::F_srgb:
+   case EggTexture::F_rgb12:
+   case EggTexture::F_rgb8:
+   case EggTexture::F_rgb5:
+@@ -903,6 +904,7 @@
+     break;
+ 
+   case EggTexture::F_rgba:
++  case EggTexture::F_srgb_alpha:
+   case EggTexture::F_rgbm:
+   case EggTexture::F_rgba12:
+   case EggTexture::F_rgba8:
+@@ -1235,6 +1237,9 @@
+     case EggTexture::F_rgb:
+       tex->set_format(Texture::F_rgb);
+       break;
++    case EggTexture::F_srgb:
++      tex->set_format(Texture::F_srgb);
++      break;
+     case EggTexture::F_rgb12:
+       if (tex->get_component_width() >= 2) {
+         // Only do this if the component width supports it.
+@@ -1272,6 +1277,9 @@
+     case EggTexture::F_rgba:
+       tex->set_format(Texture::F_rgba);
+       break;
++    case EggTexture::F_srgb_alpha:
++      tex->set_format(Texture::F_srgb_alpha);
++      break;
+     case EggTexture::F_rgbm:
+       tex->set_format(Texture::F_rgbm);
+       break;
