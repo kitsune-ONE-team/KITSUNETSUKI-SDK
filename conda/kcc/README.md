@@ -13,7 +13,7 @@ Building conda package
 git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
 cd conda/kcc
 conda build .
-conda install bullet-kitsunetsuki --use-local
+conda install kcc --use-local
 ```
 
 
@@ -22,5 +22,5 @@ Installing prebuild conda package
 
 ```
 conda config --add channels kitsune.one
-conda install bullet-kitsunetsuki
+conda install kcc
 ```
