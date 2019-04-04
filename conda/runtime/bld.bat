@@ -23,6 +23,33 @@ copy /V /Y %CONDA_PREFIX%\python37.dll                      %INSTALL%\kgame
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %INSTALL%\kgame\Lib
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %INSTALL%\kgame\DLLs
 
+del %INSTALL%\kgame\DLLs\instrumented\_bz2.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_multiprocessing.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_sqlite3.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_testbuffer.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_testcapi.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_testimportmultiple.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_testmultiphase.pyd
+del %INSTALL%\kgame\DLLs\instrumented\_tkinter.pyd
+del %INSTALL%\kgame\DLLs\instrumented\winsound.pyd
+
+del %INSTALL%\kgame\DLLs\_bz2.pyd
+del %INSTALL%\kgame\DLLs\_ctypes.pyd
+del %INSTALL%\kgame\DLLs\_ctypes_test.pyd
+del %INSTALL%\kgame\DLLs\_msi.pyd
+del %INSTALL%\kgame\DLLs\_multiprocessing.pyd
+del %INSTALL%\kgame\DLLs\_sqlite3.pyd
+del %INSTALL%\kgame\DLLs\_testbuffer.pyd
+del %INSTALL%\kgame\DLLs\_testcapi.pyd
+del %INSTALL%\kgame\DLLs\_testimportmultiple.pyd
+del %INSTALL%\kgame\DLLs\_testmultiphase.pyd
+del %INSTALL%\kgame\DLLs\_tkinter.pyd
+del %INSTALL%\kgame\DLLs\winsound.pyd
+
+del %INSTALL%\kgame\DLLs\tcl86t.dll
+del %INSTALL%\kgame\DLLs\tk86t.dll
+del %INSTALL%\kgame\DLLs\tk86t.dll
+
 copy /V /Y ^
    %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py     %INSTALL%\kgame\Lib\site-packages\panda3d
 copy /V /Y ^
@@ -30,6 +57,8 @@ copy /V /Y ^
 copy /V /Y ^ %CONDA_PREFIX%\Lib\site-packages\kcc.pyd       %INSTALL%\kgame\Lib\site-packages
 copy /V /Y %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
                                                             %INSTALL%\kgame
+
+del %INSTALL%\kgame\sqlite3.dll
 
 copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %INSTALL%\kgame
 copy /V /Y %RECIPE_DIR%\oauth2-LICENSE.txt                  %INSTALL%\kgame

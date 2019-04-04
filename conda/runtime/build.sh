@@ -26,6 +26,41 @@ cp -fv ${CONDA_PREFIX}/lib/libssl.so.1.1          ${INSTALL}/kgame/lib/;
 cp -fv ${CONDA_PREFIX}/lib/python3.7/os.py        ${INSTALL}/kgame/lib/python3.7/;
 cp -Rfv ${CONDA_PREFIX}/lib/python3.7/lib-dynload ${INSTALL}/kgame/lib/python3.7/;
 
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_bisect.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_bz2.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_codecs_*.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_crypt.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_csv.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_ctypes.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_ctypes_test.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_curses.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_curses_panel.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_heapq.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_lsprof.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_multibytecodec.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_multiprocessing.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_opcode.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_pickle.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_sqlite3.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_testbuffer.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_testcapi.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_testimportmultiple.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_testmultiphase.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_tkinter.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/_xxtestfuzz.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/audioop.cpython-*-linux-gnu.so
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/fcntl.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/grp.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/mmap.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/nis.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/ossaudiodev.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/parser.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/resource.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/spwd.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/syslog.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/termios.cpython-*-linux-gnu.so;
+rm -fv ${INSTALL}/kgame/lib/python3.7/lib-dynload/xxlimited.cpython-*-linux-gnu.so;
+
 cp -fv \
    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/__init__.py \
    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/*.so \
