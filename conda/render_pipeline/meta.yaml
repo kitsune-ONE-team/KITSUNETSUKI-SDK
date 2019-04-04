@@ -11,7 +11,6 @@ source:
       - noflag.patch
       - dte.patch
       - k_shading_models.patch
-      - lights.patch
 
 build:
   number: 0

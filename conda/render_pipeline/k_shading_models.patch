@@ -1,7 +1,16 @@
 diff --git a/rpcore/shader/ambient_stage.frag.glsl b/rpcore/shader/ambient_stage.frag.glsl
-index 51fab7e7..3c1b7ca2 100644
+index 51fab7e7..8a905007 100644
 --- a/rpcore/shader/ambient_stage.frag.glsl
 +++ b/rpcore/shader/ambient_stage.frag.glsl
+@@ -150,7 +150,7 @@ void main() {
+             float scat_mipmap = m.shading_model == SHADING_MODEL_CLEARCOAT ?
+                 CLEARCOAT_ROUGHNESS : get_specular_mipmap(m);
+ 
+-            ibl_specular = textureLod(ScatteringIBLSpecular, reflected_dir, scat_mipmap).xyz * sky_ao_factor;
++            // ibl_specular = textureLod(ScatteringIBLSpecular, reflected_dir, scat_mipmap).xyz * sky_ao_factor;
+             ibl_diffuse = textureLod(ScatteringIBLDiffuse, m.normal, 0).xyz * sky_ao_factor;
+         #endif
+ 
 @@ -243,6 +243,14 @@ void main() {
          // Add diffuse and specular ambient term
          ambient += diffuse_ambient * occlusion + specular_ambient * specular_occlusion;
@@ -10,8 +19,8 @@ index 51fab7e7..3c1b7ca2 100644
 +            ambient = m.basecolor;
 +        } else if (m.shading_model == 10 || m.shading_model == 11) {  // cel, cel+skin
 +            diffuse_ambient = m.basecolor * (1-m.metallic) * env_brdf.r;
-+            // ambient = diffuse_ambient * occlusion + specular_ambient * specular_occlusion;
-+            ambient = diffuse_ambient + specular_ambient;
++            occlusion = 1.0;
++            ambient = diffuse_ambient * occlusion + specular_ambient * specular_occlusion;
 +        }
 +
      #endif
