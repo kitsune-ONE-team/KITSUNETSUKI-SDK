@@ -1,10 +1,12 @@
---- build_files/cmake/platform/platform_win32_msvc.cmake.orig	2019-02-22 15:53:50.362271425 +0300
-+++ build_files/cmake/platform/platform_win32_msvc.cmake	2019-02-22 15:54:01.162394442 +0300
-@@ -299,16 +299,6 @@
+diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
+index 827357df043..3cb2e3f2318 100644
+--- a/build_files/cmake/platform/platform_win32.cmake
++++ b/build_files/cmake/platform/platform_win32.cmake
+@@ -334,16 +334,6 @@ if(WITH_JACK)
  endif()
  
  if(WITH_PYTHON)
--	set(PYTHON_VERSION 3.5) # CACHE STRING)
+-	set(PYTHON_VERSION 3.7) # CACHE STRING)
 -
 -	string(REPLACE "." "" _PYTHON_VERSION_NO_DOTS ${PYTHON_VERSION})
 -	# Use shared libs for vc2008 and vc2010 until we actually have vc2010 libs

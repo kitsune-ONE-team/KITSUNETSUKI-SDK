@@ -23,7 +23,7 @@ source:
     patches:
       # - rna_wm.patch
       - cmake1.patch
-      # - cmake2.patch
+      - cmake2.patch
       # - cmake3.patch
 
   # - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-2.79a-release/lib/windows_vc14 # [win32]
