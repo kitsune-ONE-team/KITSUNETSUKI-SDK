@@ -7,7 +7,8 @@ color 0f
 
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
-    -DCMAKE_INSTALL_PREFIX="%PREFIX%\Lib\site-packages"
+    -DCMAKE_INSTALL_PREFIX="%PREFIX%\Lib\site-packages" ^
+    .
 
 nmake
 nmake install
