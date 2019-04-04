@@ -10,7 +10,6 @@ What's Inside
 * ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
 * [Modified RenderPipeline Render for Panda3D](conda/render_pipeline) (with native lighting manager enabled)
 * [Blender](conda/blender) (as a Python module)
-* [YABEE](conda/yabee) (standalone version)
 
 
 Files and directories structure
