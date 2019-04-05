@@ -1,6 +1,0 @@
-attrs==19.1.0
-httplib2==0.12.1
-idna==2.8
-jsonschema==3.0.0
-oauth2==1.9.0.post1
-py-ubjson==0.12.0
