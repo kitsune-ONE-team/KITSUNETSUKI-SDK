@@ -9,61 +9,61 @@ pip install https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec6
 rem pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
 rem pip install https://files.pythonhosted.org/packages/d1/6a/4b2fcefd2ea0868810e92d519dacac1ddc64a2e53ba9e3422c3b62b378a6/setuptools-40.8.0-py2.py3-none-any.whl
 
-mkdir %INSTALL%\python
-mkdir %INSTALL%\python\Lib
-mkdir %INSTALL%\python\Lib\site-packages
-mkdir %INSTALL%\python\Lib\site-packages\panda3d
-copy /V /Y %CONDA_PREFIX%\python37.dll                      %INSTALL%\python
-copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %INSTALL%\python\Lib
-xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %INSTALL%\python\DLLs
+mkdir %PREFIX%\python
+mkdir %PREFIX%\python\Lib
+mkdir %PREFIX%\python\Lib\site-packages
+mkdir %PREFIX%\python\Lib\site-packages\panda3d
+copy /V /Y %CONDA_PREFIX%\python37.dll                      %PREFIX%\python
+copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\python\Lib
+xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\python\DLLs
 
-del %INSTALL%\python\DLLs\instrumented\_bz2.pyd
-del %INSTALL%\python\DLLs\instrumented\_multiprocessing.pyd
-del %INSTALL%\python\DLLs\instrumented\_sqlite3.pyd
-del %INSTALL%\python\DLLs\instrumented\_testbuffer.pyd
-del %INSTALL%\python\DLLs\instrumented\_testcapi.pyd
-del %INSTALL%\python\DLLs\instrumented\_testimportmultiple.pyd
-del %INSTALL%\python\DLLs\instrumented\_testmultiphase.pyd
-del %INSTALL%\python\DLLs\instrumented\_tkinter.pyd
-del %INSTALL%\python\DLLs\instrumented\winsound.pyd
+del %PREFIX%\python\DLLs\instrumented\_bz2.pyd
+del %PREFIX%\python\DLLs\instrumented\_multiprocessing.pyd
+del %PREFIX%\python\DLLs\instrumented\_sqlite3.pyd
+del %PREFIX%\python\DLLs\instrumented\_testbuffer.pyd
+del %PREFIX%\python\DLLs\instrumented\_testcapi.pyd
+del %PREFIX%\python\DLLs\instrumented\_testimportmultiple.pyd
+del %PREFIX%\python\DLLs\instrumented\_testmultiphase.pyd
+del %PREFIX%\python\DLLs\instrumented\_tkinter.pyd
+del %PREFIX%\python\DLLs\instrumented\winsound.pyd
 
-del %INSTALL%\python\DLLs\_bz2.pyd
-del %INSTALL%\python\DLLs\_ctypes.pyd
-del %INSTALL%\python\DLLs\_ctypes_test.pyd
-del %INSTALL%\python\DLLs\_msi.pyd
-del %INSTALL%\python\DLLs\_multiprocessing.pyd
-del %INSTALL%\python\DLLs\_sqlite3.pyd
-del %INSTALL%\python\DLLs\_testbuffer.pyd
-del %INSTALL%\python\DLLs\_testcapi.pyd
-del %INSTALL%\python\DLLs\_testimportmultiple.pyd
-del %INSTALL%\python\DLLs\_testmultiphase.pyd
-del %INSTALL%\python\DLLs\_tkinter.pyd
-del %INSTALL%\python\DLLs\winsound.pyd
+del %PREFIX%\python\DLLs\_bz2.pyd
+del %PREFIX%\python\DLLs\_ctypes.pyd
+del %PREFIX%\python\DLLs\_ctypes_test.pyd
+del %PREFIX%\python\DLLs\_msi.pyd
+del %PREFIX%\python\DLLs\_multiprocessing.pyd
+del %PREFIX%\python\DLLs\_sqlite3.pyd
+del %PREFIX%\python\DLLs\_testbuffer.pyd
+del %PREFIX%\python\DLLs\_testcapi.pyd
+del %PREFIX%\python\DLLs\_testimportmultiple.pyd
+del %PREFIX%\python\DLLs\_testmultiphase.pyd
+del %PREFIX%\python\DLLs\_tkinter.pyd
+del %PREFIX%\python\DLLs\winsound.pyd
 
-del %INSTALL%\python\DLLs\tcl86t.dll
-del %INSTALL%\python\DLLs\tk86t.dll
-del %INSTALL%\python\DLLs\tk86t.dll
+del %PREFIX%\python\DLLs\tcl86t.dll
+del %PREFIX%\python\DLLs\tk86t.dll
+del %PREFIX%\python\DLLs\tk86t.dll
 
 copy /V /Y ^
-   %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py     %INSTALL%\python\Lib\site-packages\panda3d
+   %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py     %PREFIX%\python\Lib\site-packages\panda3d
 copy /V /Y ^
-   %CONDA_PREFIX%\lib\site-packages\panda3d\*.pyd           %INSTALL%\python\Lib\site-packages\panda3d
-copy /V /Y ^ %CONDA_PREFIX%\Lib\site-packages\kcc.pyd       %INSTALL%\python\Lib\site-packages
+   %CONDA_PREFIX%\lib\site-packages\panda3d\*.pyd           %PREFIX%\python\Lib\site-packages\panda3d
+copy /V /Y ^ %CONDA_PREFIX%\Lib\site-packages\kcc.pyd       %PREFIX%\python\Lib\site-packages
 copy /V /Y %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
-                                                            %INSTALL%\python
+                                                            %PREFIX%\python
 
-del %INSTALL%\python\sqlite3.dll
+del %PREFIX%\python\sqlite3.dll
 
-copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %INSTALL%\python
-copy /V /Y %RECIPE_DIR%\oauth2-LICENSE.txt                  %INSTALL%\python
-copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %INSTALL%\python
-copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %INSTALL%\python
-copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %INSTALL%\python
-copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %INSTALL%\python
+copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\oauth2-LICENSE.txt                  %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\python
+copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\python
 
 7za a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
-    %INSTALL%\python\python37.zip ^
+    %PREFIX%\python\python37.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\attr ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
