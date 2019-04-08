@@ -23,21 +23,14 @@ source:
 
 build:
   number: 0
-  string: 1554362835
+  string: 1554714236
 
 requirements:
   build:
     - cmake
-    - libpng >=1.6
-    - libtiff >=4.0.2
-    - freetype >=2.8
+    - python
     - m2-gcc-libs # [win]
     - m2-patch # [win]
-    - python
-  run:
-    - libpng >=1.6
-    - libtiff >=4.0.2
-    - freetype >=2.8
 
 about:
   home: https://www.blender.org/

@@ -4,16 +4,12 @@ THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
 cd blender
 
-# build_files/build_environment/install_deps.sh \
-#     --no-confirm \
-#     --with-all
-
 mkdir bld
 cd bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-std=gnu++11 -fPIC" \
+    -DCMAKE_CXX_FLAGS="-std=gnu++11" \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DOPENEXR_ROOT_DIR=${THIRDPARTY} \
     -DOPENIMAGEIO_ROOT_DIR=${THIRDPARTY} \
@@ -30,7 +26,7 @@ cmake \
     -DWITH_PYTHON_INSTALL=OFF \
     -DWITH_PYTHON_INSTALL_NUMPY=OFF \
     -DWITH_PYTHON_MODULE=ON \
-    -DWITH_STATIC_LIBS=ON \
+    -DWITH_STATIC_LIBS=OFF \
     ..
 make
 make install
