@@ -4,6 +4,8 @@ python setup.py
 
 mkdir -p ${PREFIX}/lib/python3.7/site-packages/rpcore/native
 
+rm -Rf rplibs/yaml/yaml_py2
+
 cp -R config                     ${PREFIX}/lib/python3.7/site-packages/
 cp -R data                       ${PREFIX}/lib/python3.7/site-packages/
 cp -R effects                    ${PREFIX}/lib/python3.7/site-packages/

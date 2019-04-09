@@ -6,7 +6,10 @@ else
     LARCH=i386;
 fi
 
-BUILT=${SRC_DIR}/built
+LIBX=/lib/${LARCH}-linux-gnu;
+ULIBX=/usr/lib/${LARCH}-linux-gnu;
+
+BUILT=${SRC_DIR}/built;
 
 python ${RECIPE_DIR}/icon.py \
     ${RECIPE_DIR}/icon.128.png \
@@ -48,14 +51,12 @@ cp -R ${BUILT}/bin ${PREFIX}
 cp -R ${BUILT}/etc ${PREFIX}
 cp -R ${BUILT}/lib ${PREFIX}
 
-LIBX=/lib/${LARCH}-linux-gnu
-ULIBX=/usr/lib/${LARCH}-linux-gnu
-cp -fv ${ULIBX}/libCg.so           ${PREFIX}/lib/;
-cp -fv ${ULIBX}/libCgGL.so         ${PREFIX}/lib/;
-cp -fv ${ULIBX}/libogg.so.0        ${PREFIX}/lib/;
-cp -fv ${ULIBX}/libopenal.so.1     ${PREFIX}/lib/;
-cp -fv ${ULIBX}/libvorbis.so.0     ${PREFIX}/lib/;
-cp -fv ${ULIBX}/libvorbisfile.so.3 ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libCg.so           ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libCgGL.so         ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libogg.so.0        ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libopenal.so.1     ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libvorbis.so.0     ${PREFIX}/lib/;
+# cp -fv ${ULIBX}/libvorbisfile.so.3 ${PREFIX}/lib/;
 
 mkdir -p ${PREFIX}/include
 cp -R ${BUILT}/include ${PREFIX}/include/panda3d

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [ "${ARCH}" = "64" ]; then
+    LARCH=x86_64;
+else
+    LARCH=i386;
+fi
+
+LIBX=/lib/${LARCH}-linux-gnu;
+ULIBX=/usr/lib/${LARCH}-linux-gnu;
+
 pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf6835e38bc4bd0647269dc48670e12eb99a3f5ef5/py-ubjson-0.12.0.tar.gz
@@ -69,14 +78,14 @@ cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/python/;
 cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/python/;
 cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/python/;
 
-cp -fv ${CONDA_PREFIX}/lib/libCg.so               ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libCgGL.so             ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libfreetype.so.6       ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libogg.so.0            ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libopenal.so.1         ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libpng16.so.16         ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libvorbis.so.0         ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libvorbisfile.so.3     ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/python/lib/;
+cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/python/lib/;
+cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}/python/lib/;
 cp -fv \
    ${CONDA_PREFIX}/lib/libpanda*.so.1.10 \
    ${CONDA_PREFIX}/lib/libp3*.so.1.10 \
