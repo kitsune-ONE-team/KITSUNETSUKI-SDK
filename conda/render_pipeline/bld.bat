@@ -12,6 +12,8 @@ mkdir %PREFIX%\Lib\site-packages
 mkdir %PREFIX%\Lib\site-packages\rpcore
 mkdir %PREFIX%\Lib\site-packages\rpcore\native
 
+rmdir /S /Q rplibs\yaml\yaml_py2
+
 xcopy /I /E /Y config                 %PREFIX%\Lib\site-packages\config
 xcopy /I /E /Y data                   %PREFIX%\Lib\site-packages\data
 xcopy /I /E /Y effects                %PREFIX%\Lib\site-packages\effects
