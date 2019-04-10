@@ -81,6 +81,7 @@ cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/python/;
 cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/python/lib/;
 cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/python/lib/;
 cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/python/lib/;
+cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/python/lib/;
 cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/python/lib/;
 cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/python/lib/;
 cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/python/lib/;
