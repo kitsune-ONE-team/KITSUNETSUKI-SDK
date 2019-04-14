@@ -28,8 +28,6 @@ del %PREFIX%\python\DLLs\instrumented\_tkinter.pyd
 del %PREFIX%\python\DLLs\instrumented\winsound.pyd
 
 del %PREFIX%\python\DLLs\_bz2.pyd
-del %PREFIX%\python\DLLs\_ctypes.pyd
-del %PREFIX%\python\DLLs\_ctypes_test.pyd
 del %PREFIX%\python\DLLs\_msi.pyd
 del %PREFIX%\python\DLLs\_multiprocessing.pyd
 del %PREFIX%\python\DLLs\_sqlite3.pyd
