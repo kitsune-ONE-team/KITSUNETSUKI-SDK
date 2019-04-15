@@ -10,7 +10,7 @@ if "%ARCH%" == "64" (
 color 0f
 
 :: remove included bullet
-rd /s /q %WINLIBS%\bullet
+rmdir /S /Q %WINLIBS%\bullet
 
 python makepanda/makepanda.py ^
     --nothing ^
@@ -23,6 +23,7 @@ python makepanda/makepanda.py ^
     --use-gl ^
     --use-nvidiacg ^
     --use-openal ^
+    --use-openssl ^
     --use-pandafx ^
     --use-pandaparticlesystem ^
     --use-pandaphysics ^
@@ -66,3 +67,11 @@ mkdir %PREFIX%\Lib\site-packages
 xcopy /I /E /Y %BUILT%\direct %PREFIX%\Lib\site-packages\direct
 xcopy /I /E /Y %BUILT%\panda3d %PREFIX%\Lib\site-packages\panda3d
 xcopy /I /E /Y %BUILT%\pandac %PREFIX%\Lib\site-packages\pandac
+
+if "%ARCH%" == "64" (
+   copy /V /Y x86_64-w64-mingw32/5.3-win32/libstdc++-6.dll %PREFIX%
+   copy /V /Y x86_64-w64-mingw32/5.3-win32/libgcc_s_seh-1.dll %PREFIX%
+) else (
+   copy /V /Y i686-w64-mingw32/5.3-win32/libstdc++-6.dll %PREFIX%
+   copy /V /Y i686-w64-mingw32/5.3-win32/libgcc_s_sjlj-1.dll %PREFIX%
+)

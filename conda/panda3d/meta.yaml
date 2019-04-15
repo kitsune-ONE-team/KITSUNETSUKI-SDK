@@ -10,7 +10,7 @@ source:
       - prefix-110.patch # [win]
       - nopy.patch # [win]
       - bullet.patch
-      - icon.patch # [unix]
+      # - icon.patch # [unix]
       - is_nan.patch
       - egg1.patch
       - egg2.patch
@@ -26,7 +26,7 @@ source:
 
 build:
   number: 0
-  string: 1554759302
+  string: 1555308913
 
 requirements:
   build:
