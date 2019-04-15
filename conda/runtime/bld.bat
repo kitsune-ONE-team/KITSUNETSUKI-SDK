@@ -60,11 +60,15 @@ copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\python
 copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\python
 
 if "%ARCH%" == "64" (
-   copy /V /Y x86_64-w64-mingw32\5.3-win32\libstdc++-6.dll %PREFIX%\python
-   copy /V /Y x86_64-w64-mingw32\5.3-win32\libgcc_s_seh-1.dll %PREFIX%\python
+   copy /V /Y %RECIPE_DIR%\x86_64-w64-mingw32\5.3-win32\libstdc++-6.dll ^
+                                                            %PREFIX%\python
+   copy /V /Y %RECIPE_DIR%\x86_64-w64-mingw32\5.3-win32\libgcc_s_seh-1.dll ^
+                                                            %PREFIX%\python
 ) else (
-   copy /V /Y i686-w64-mingw32\5.3-win32\libstdc++-6.dll %PREFIX%\python
-   copy /V /Y i686-w64-mingw32\5.3-win32\libgcc_s_sjlj-1.dll %PREFIX%\python
+   copy /V /Y %RECIPE_DIR%\i686-w64-mingw32\5.3-win32\libstdc++-6.dll ^
+                                                            %PREFIX%\python
+   copy /V /Y %RECIPE_DIR%\i686-w64-mingw32\5.3-win32\libgcc_s_sjlj-1.dll ^
+                                                            %PREFIX%\python
 )
 
 7za a ^
