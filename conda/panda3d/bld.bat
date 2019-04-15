@@ -41,8 +41,6 @@ python makepanda/makepanda.py ^
     --windows-sdk=10 ^
     --python-incdir %CONDA_PREFIX%\include ^
     --python-libdir %CONDA_PREFIX%\lib ^
-    --openssl-incdir %CONDA_PREFIX%\include ^
-    --openssl-libdir %CONDA_PREFIX\lib ^
     --bullet-incdir %CONDA_PREFIX%\include ^
     --bullet-libdir %CONDA_PREFIX%\lib
 
