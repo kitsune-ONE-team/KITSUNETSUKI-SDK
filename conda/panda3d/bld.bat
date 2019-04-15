@@ -12,6 +12,9 @@ color 0f
 :: remove included bullet
 rmdir /S /Q %WINLIBS%\bullet
 
+:: remove included openssl
+rmdir /S /Q %WINLIBS%\openssl
+
 python makepanda/makepanda.py ^
     --nothing ^
     --use-bullet ^
@@ -42,7 +45,9 @@ python makepanda/makepanda.py ^
     --python-incdir %CONDA_PREFIX%\include ^
     --python-libdir %CONDA_PREFIX%\lib ^
     --bullet-incdir %CONDA_PREFIX%\include ^
-    --bullet-libdir %CONDA_PREFIX%\lib
+    --bullet-libdir %CONDA_PREFIX%\lib ^
+    --openssl-incdir %CONDA_PREFIX%\include ^
+    --openssl-libdir %CONDA_PREFIX%\lib
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
