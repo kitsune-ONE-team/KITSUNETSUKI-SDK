@@ -10,7 +10,7 @@ source:
       - prefix-110.patch # [win]
       - nopy.patch # [win]
       - bullet.patch
-      # - icon.patch # [unix]
+      - icon.patch # [unix]
       - is_nan.patch
       - egg1.patch
       - egg2.patch
