@@ -1,3 +1,9 @@
+if "%ARCH%" == "64" (
+    set MINGW=x86_64-w64-mingw32
+) else (
+    set MINGW=i686-w64-mingw32
+)
+
 pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf6835e38bc4bd0647269dc48670e12eb99a3f5ef5/py-ubjson-0.12.0.tar.gz
@@ -58,18 +64,7 @@ copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%\python
 copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%\python
 copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\python
 copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\python
-
-if "%ARCH%" == "64" (
-   copy /V /Y %RECIPE_DIR%\x86_64-w64-mingw32\5.3-win32\libstdc++-6.dll ^
-                                                            %PREFIX%\python
-   copy /V /Y %RECIPE_DIR%\x86_64-w64-mingw32\5.3-win32\libgcc_s_seh-1.dll ^
-                                                            %PREFIX%\python
-) else (
-   copy /V /Y %RECIPE_DIR%\i686-w64-mingw32\5.3-win32\libstdc++-6.dll ^
-                                                            %PREFIX%\python
-   copy /V /Y %RECIPE_DIR%\i686-w64-mingw32\5.3-win32\libgcc_s_sjlj-1.dll ^
-                                                            %PREFIX%\python
-)
+copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\python
 
 7za a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
