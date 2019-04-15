@@ -1,7 +1,9 @@
 if "%ARCH%" == "64" (
     set MINGW=x86_64-w64-mingw32
+    set DISCORD=win64-dynamic
 ) else (
     set MINGW=i686-w64-mingw32
+    set DISCORD=win32-dynamic
 )
 
 pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
@@ -65,6 +67,8 @@ copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%\python
 copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\python
 copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\python
 copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\python
+copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\*.dll         %PREFIX%\python
 
 7za a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
