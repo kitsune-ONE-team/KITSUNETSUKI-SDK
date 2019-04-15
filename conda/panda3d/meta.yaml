@@ -16,13 +16,13 @@ source:
       - egg2.patch
       - egg3.patch
 
-  - url: http://rdb.name/thirdparty-vc14.7z # [win32]
+  - url: https://www.panda3d.org/download/panda3d-1.10.2/panda3d-1.10.2-tools-win32.zip # [win32]
     folder: thirdparty # [win32]
-    md5: 2a1c29cd5e081f81da0afe90a70a9695 # [win32]
+    md5: 6e46e04c9cad0e6dfa3da225790f1923 # [win32]
 
-  - url: http://rdb.name/thirdparty-vc14-x64.7z # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.2/panda3d-1.10.2-tools-win64.zip # [win64]
     folder: thirdparty # [win64]
-    md5: 34575b4345e81112e25033bbb4c9c298 # [win64]
+    md5: 46c2c10185010da9d4e9049e699b4735 # [win64]
 
 build:
   number: 0
