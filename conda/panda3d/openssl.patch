@@ -1,0 +1,15 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index 4f2abef8a9..675b0c6a9f 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -679,8 +679,8 @@ if (COMPILER == "MSVC"):
+             LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandassl.lib")
+             LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandaeay.lib")
+         else:
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libeay32.lib")
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/ssleay32.lib")
++            LibName("OPENSSL", SDK["PYTHON"] + "/Library/lib/libssl.lib")
++            LibName("OPENSSL", SDK["PYTHON"] + "/Library/lib/libcrypto.lib")
+     if (PkgSkip("PNG")==0):
+         if os.path.isfile(GetThirdpartyDir() + "png/lib/libpng16_static.lib"):
+             LibName("PNG", GetThirdpartyDir() + "png/lib/libpng16_static.lib")
