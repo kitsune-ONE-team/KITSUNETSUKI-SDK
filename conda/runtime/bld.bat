@@ -24,7 +24,6 @@ copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\python\Lib
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\python\DLLs
 
 del %PREFIX%\python\DLLs\instrumented\_bz2.pyd
-del %PREFIX%\python\DLLs\instrumented\_multiprocessing.pyd
 del %PREFIX%\python\DLLs\instrumented\_sqlite3.pyd
 del %PREFIX%\python\DLLs\instrumented\_testbuffer.pyd
 del %PREFIX%\python\DLLs\instrumented\_testcapi.pyd
@@ -35,7 +34,6 @@ del %PREFIX%\python\DLLs\instrumented\winsound.pyd
 
 del %PREFIX%\python\DLLs\_bz2.pyd
 del %PREFIX%\python\DLLs\_msi.pyd
-del %PREFIX%\python\DLLs\_multiprocessing.pyd
 del %PREFIX%\python\DLLs\_sqlite3.pyd
 del %PREFIX%\python\DLLs\_testbuffer.pyd
 del %PREFIX%\python\DLLs\_testcapi.pyd

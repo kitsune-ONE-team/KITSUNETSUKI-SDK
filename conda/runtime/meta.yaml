@@ -1,13 +1,13 @@
 package:
   name: kitsunetsuki-runtime
-  version: "0.4"
+  version: "0.5"
 
 source:
   path: .
 
 build:
   number: 0
-  string: 1556606416
+  string: 1564997077
 
 requirements:
   build:

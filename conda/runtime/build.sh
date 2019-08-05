@@ -39,7 +39,6 @@ rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_curses_panel.cpython-*-linux-
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_heapq.cpython-*-linux-gnu.so;
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_lsprof.cpython-*-linux-gnu.so;
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_multibytecodec.cpython-*-linux-gnu.so;
-rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_multiprocessing.cpython-*-linux-gnu.so;
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_opcode.cpython-*-linux-gnu.so;
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_pickle.cpython-*-linux-gnu.so;
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/_sqlite3.cpython-*-linux-gnu.so;
