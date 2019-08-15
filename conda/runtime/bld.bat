@@ -47,12 +47,37 @@ del %PREFIX%\python\DLLs\tk86t.dll
 del %PREFIX%\python\DLLs\tk86t.dll
 
 copy /V /Y ^
-   %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py     %PREFIX%\python\Lib\site-packages\panda3d
+    %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py ^
+    %PREFIX%\python\Lib\site-packages\panda3d
 copy /V /Y ^
-   %CONDA_PREFIX%\lib\site-packages\panda3d\*.pyd           %PREFIX%\python\Lib\site-packages\panda3d
-copy /V /Y ^ %CONDA_PREFIX%\Lib\site-packages\kcc.pyd       %PREFIX%\python\Lib\site-packages
-copy /V /Y %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
-                                                            %PREFIX%\python
+    %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd ^
+    %PREFIX%\python\Lib\site-packages\panda3d
+copy /V /Y ^
+    %CONDA_PREFIX%\Lib\site-packages\kcc.pyd ^
+    %PREFIX%\python\Lib\site-packages
+copy /V /Y ^
+    %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
+    %PREFIX%\python
+
+xcopy /I /E /Y ^
+    %CONDA_PREFIX%\Lib\site-packages\rpcore ^
+    %PREFIX%\python\Lib\site-packages\rpcore
+xcopy /I /E /Y ^
+    %CONDA_PREFIX%\Lib\site-packages\rplibs ^
+    %PREFIX%\python\Lib\site-packages\rplibs
+xcopy /I /E /Y ^
+    %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
+    %PREFIX%\python\Lib\site-packages\rpplugins
+
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore\gui
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore\shader
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\ao\shader
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\bloom\resources
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\clouds\resources
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\color_correction\resources
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\plugin_prefab
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\scattering\resources
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\smaa\resources
 
 del %PREFIX%\python\sqlite3.dll
 
@@ -80,7 +105,14 @@ copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%\python
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\six.py ^
-    %CONDA_PREFIX%\Lib\site-packages\ubjson
+    %CONDA_PREFIX%\Lib\site-packages\ubjson ^
+    %PREFIX%\python\Lib\site-packages\rpcore ^
+    %PREFIX%\python\Lib\site-packages\rplibs ^
+    %PREFIX%\python\Lib\site-packages\rpplugins
+
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rplibs
+rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins
 
 pip uninstall --yes ^
     attrs ^

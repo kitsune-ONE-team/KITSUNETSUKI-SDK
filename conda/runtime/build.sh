@@ -62,37 +62,59 @@ rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/python/lib/python3.7/lib-dynload/xxlimited.cpython-*-linux-gnu.so;
 
 cp -fv \
-   ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/__init__.py \
-   ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/*.so \
-                                                  ${PREFIX}/python/lib/python3.7/site-packages/panda3d/;
-cp -fv ${CONDA_PREFIX}/lib/python3.7/site-packages/kcc.so \
-                                                  ${PREFIX}/python/lib/python3.7/site-packages/;
-cp -fv ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2/cacerts.txt \
-                                                  ${PREFIX}/python/;
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/__init__.py \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/*.so \
+    ${PREFIX}/python/lib/python3.7/site-packages/panda3d/
+cp -fv \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/kcc.so \
+    ${PREFIX}/python/lib/python3.7/site-packages/
+cp -fv \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2/cacerts.txt \
+    ${PREFIX}/python/
 
-cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/python/;
-cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/python/;
-cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt          ${PREFIX}/python/;
-cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/python/;
-cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/python/;
-cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/python/;
+cp -Rfv \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/rpcore \
+    ${PREFIX}/python/lib/python3.7/site-packages/
+cp -Rfv \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/rplibs \
+    ${PREFIX}/python/lib/python3.7/site-packages/
+cp -Rfv \
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/rpplugins \
+    ${PREFIX}/python/lib/python3.7/site-packages/
 
-cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/python/lib/;
-cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/python/lib/;
-cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/python/lib/;
-cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}/python/lib/;
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpcore/gui
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpcore/shader
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/ao/shader
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/bloom/resources
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/clouds/resources
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/color_correction/resources
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/plugin_prefab
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/scattering/resources
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/smaa/resources
+
+cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/python/
+cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/python/
+cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt          ${PREFIX}/python/
+cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/python/
+cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/python/
+cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/python/
+
+cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/python/lib/
+cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/python/lib/
+cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/python/lib/
+cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}/python/lib/
 cp -fv \
    ${CONDA_PREFIX}/lib/libpanda*.so.1.10 \
    ${CONDA_PREFIX}/lib/libp3*.so.1.10 \
-                                                  ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libp3openal_audio.so   ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libp3ptloader.so       ${PREFIX}/python/lib/;
-cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}/python/lib/;
+                                                  ${PREFIX}/python/lib/
+cp -fv ${CONDA_PREFIX}/lib/libp3openal_audio.so   ${PREFIX}/python/lib/
+cp -fv ${CONDA_PREFIX}/lib/libp3ptloader.so       ${PREFIX}/python/lib/
+cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}/python/lib/
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
@@ -108,7 +130,14 @@ cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}/python/lib/;
     ${CONDA_PREFIX}/lib/python3.7/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/pyrsistent \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/six.py \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/ubjson;
+    ${CONDA_PREFIX}/lib/python3.7/site-packages/ubjson \
+    ${PREFIX}/python/lib/python3.7/site-packages/rpcore \
+    ${PREFIX}/python/lib/python3.7/site-packages/rplibs \
+    ${PREFIX}/python/lib/python3.7/site-packages/rpplugins
+
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpcore
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rplibs
+rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins
 
 pip uninstall --yes \
     attrs \
@@ -118,4 +147,4 @@ pip uninstall --yes \
     httplib2 \
     pyrsistent \
     idna \
-    jsonschema;
+    jsonschema

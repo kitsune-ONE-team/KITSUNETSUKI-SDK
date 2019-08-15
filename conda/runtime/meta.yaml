@@ -7,11 +7,12 @@ source:
 
 build:
   number: 0
-  string: 1564997077
+  string: 1565864185
 
 requirements:
   build:
     - panda3d-kitsunetsuki >=1.10.2
+    - panda3d-rp-kitsunetsuki >=1.3
     - kcc ==0.1
     - 7za # [win]
 
