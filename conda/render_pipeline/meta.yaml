@@ -10,11 +10,10 @@ source:
       - rp-setup.patch
       - noflag.patch
       - dte.patch
-      - k_shading_models.patch
 
 build:
   number: 0
-  string: 1554759302
+  string: 1565860319
 
 requirements:
   build:

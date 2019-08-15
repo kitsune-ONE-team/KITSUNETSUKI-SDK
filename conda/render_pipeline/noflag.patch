@@ -1,8 +1,8 @@
 diff --git a/rpcore/native/__init__.py b/rpcore/native/__init__.py
-index 3ba9d575..224b74db 100644
+index 3ba9d575..8a6e7b43 100644
 --- a/rpcore/native/__init__.py
 +++ b/rpcore/native/__init__.py
-@@ -37,17 +37,17 @@ from rpcore.rpobject import RPObject
+@@ -37,20 +37,20 @@ from rpcore.rpobject import RPObject
  
  # Store a global flag, indicating whether the C++ modules were loaded or the python
  # implemetation of them
@@ -28,4 +28,8 @@ index 3ba9d575..224b74db 100644
 +#         NATIVE_CXX_LOADED = handle.read().strip() == "1"
  
  # The native module should only be imported once, and that by the internal pipeline code
- assert __package__ == "rpcore.native", "You have included the pipeline in the wrong way!"
+-assert __package__ == "rpcore.native", "You have included the pipeline in the wrong way!"
++# assert __package__ == "rpcore.native", "You have included the pipeline in the wrong way!"
+ 
+ # Classes which should get imported
+ classes_to_import = [
