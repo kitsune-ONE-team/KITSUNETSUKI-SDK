@@ -12,4 +12,3 @@ Files and directories structure
 * [panda3d](panda3d) - Modified Panda3D Game Engine
 * [render_pipeline](render_pipeline) - Modified RenderPipeline Render for Panda3D
 * [runtime](runtime) - KITSUNETSUKI Game Runtime
-* [runtime-rp](runtime-rp) - KITSUNETSUKI Game Runtime (RenderPipeline)
