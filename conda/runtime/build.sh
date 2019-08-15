@@ -82,7 +82,6 @@ cp -Rfv \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/rpplugins \
     ${PREFIX}/python/lib/python3.7/site-packages/
 
-rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpcore/gui
 rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpcore/shader
 rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/ao/shader
 rm -Rfv ${PREFIX}/python/lib/python3.7/site-packages/rpplugins/bloom/resources

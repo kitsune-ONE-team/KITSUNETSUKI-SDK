@@ -69,7 +69,6 @@ xcopy /I /E /Y ^
     %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
     %PREFIX%\python\Lib\site-packages\rpplugins
 
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore\gui
 rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore\shader
 rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\ao\shader
 rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\bloom\resources
