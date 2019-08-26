@@ -4,6 +4,14 @@ lib-dynload
 os.py
 pydoc_data
 site-packages
+site-packages/rpcore/shader
+site-packages/rpplugins/ao/shader
+site-packages/rpplugins/bloom/resources
+site-packages/rpplugins/clouds/resources
+site-packages/rpplugins/color_correction/resources
+site-packages/rpplugins/plugin_prefab
+site-packages/rpplugins/scattering/resources
+site-packages/rpplugins/smaa/resources
 sqlite3
 test
 tkinter

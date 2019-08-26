@@ -15,84 +15,66 @@ pip install https://files.pythonhosted.org/packages/8c/46/4e93ab8a379d7efe93f20a
 pip install https://files.pythonhosted.org/packages/ad/13/eb56951b6f7950cadb579ca166e448ba77f9d24efc03edd7e55fa57d04b7/idna-2.8.tar.gz
 pip install https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
 
-mkdir %PREFIX%\python
-mkdir %PREFIX%\python\Lib
-mkdir %PREFIX%\python\Lib\site-packages
-mkdir %PREFIX%\python\Lib\site-packages\panda3d
-copy /V /Y %CONDA_PREFIX%\python37.dll                      %PREFIX%\python
-copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\python\Lib
-xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\python\DLLs
+mkdir %PREFIX%\panda3d
+copy /V /Y %CONDA_PREFIX%\python37.dll                      %PREFIX%
+copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%
 
-del %PREFIX%\python\DLLs\instrumented\_bz2.pyd
-del %PREFIX%\python\DLLs\instrumented\_sqlite3.pyd
-del %PREFIX%\python\DLLs\instrumented\_testbuffer.pyd
-del %PREFIX%\python\DLLs\instrumented\_testcapi.pyd
-del %PREFIX%\python\DLLs\instrumented\_testimportmultiple.pyd
-del %PREFIX%\python\DLLs\instrumented\_testmultiphase.pyd
-del %PREFIX%\python\DLLs\instrumented\_tkinter.pyd
-del %PREFIX%\python\DLLs\instrumented\winsound.pyd
+xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\DLLs
 
-del %PREFIX%\python\DLLs\_bz2.pyd
-del %PREFIX%\python\DLLs\_msi.pyd
-del %PREFIX%\python\DLLs\_sqlite3.pyd
-del %PREFIX%\python\DLLs\_testbuffer.pyd
-del %PREFIX%\python\DLLs\_testcapi.pyd
-del %PREFIX%\python\DLLs\_testimportmultiple.pyd
-del %PREFIX%\python\DLLs\_testmultiphase.pyd
-del %PREFIX%\python\DLLs\_tkinter.pyd
-del %PREFIX%\python\DLLs\winsound.pyd
+del %PREFIX%\DLLs\instrumented\_bz2.pyd
+del %PREFIX%\DLLs\instrumented\_sqlite3.pyd
+del %PREFIX%\DLLs\instrumented\_testbuffer.pyd
+del %PREFIX%\DLLs\instrumented\_testcapi.pyd
+del %PREFIX%\DLLs\instrumented\_testimportmultiple.pyd
+del %PREFIX%\DLLs\instrumented\_testmultiphase.pyd
+del %PREFIX%\DLLs\instrumented\_tkinter.pyd
+del %PREFIX%\DLLs\instrumented\winsound.pyd
 
-del %PREFIX%\python\DLLs\tcl86t.dll
-del %PREFIX%\python\DLLs\tk86t.dll
-del %PREFIX%\python\DLLs\tk86t.dll
+del %PREFIX%\DLLs\_bz2.pyd
+del %PREFIX%\DLLs\_msi.pyd
+del %PREFIX%\DLLs\_sqlite3.pyd
+del %PREFIX%\DLLs\_testbuffer.pyd
+del %PREFIX%\DLLs\_testcapi.pyd
+del %PREFIX%\DLLs\_testimportmultiple.pyd
+del %PREFIX%\DLLs\_testmultiphase.pyd
+del %PREFIX%\DLLs\_tkinter.pyd
+del %PREFIX%\DLLs\winsound.pyd
+
+del %PREFIX%\DLLs\tcl86t.dll
+del %PREFIX%\DLLs\tk86t.dll
+del %PREFIX%\DLLs\tk86t.dll
 
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py ^
-    %PREFIX%\python\Lib\site-packages\panda3d
+                                                            %PREFIX%\panda3d
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd ^
-    %PREFIX%\python\Lib\site-packages\panda3d
+                                                            %PREFIX%\panda3d
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\kcc.pyd ^
-    %PREFIX%\python\Lib\site-packages
+                                                            %PREFIX%
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
-    %PREFIX%\python
+                                                            %PREFIX%
 
-xcopy /I /E /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\rpcore ^
-    %PREFIX%\python\Lib\site-packages\rpcore
-xcopy /I /E /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\rplibs ^
-    %PREFIX%\python\Lib\site-packages\rplibs
-xcopy /I /E /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
-    %PREFIX%\python\Lib\site-packages\rpplugins
+copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %PREFIX%
+copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%
+copy /V /Y %RECIPE_DIR%\jsonschema-LICENSE.txt              %PREFIX%
+copy /V /Y %RECIPE_DIR%\oauth2-LICENSE.txt                  %PREFIX%
+copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%
+copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%
 
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore\shader
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\ao\shader
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\bloom\resources
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\clouds\resources
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\color_correction\resources
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\plugin_prefab
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\scattering\resources
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins\smaa\resources
+copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%
+copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%
+copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%
+copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%
 
-del %PREFIX%\python\sqlite3.dll
-
-copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\oauth2-LICENSE.txt                  %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\python
-copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\python
-copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%\python
+del %PREFIX%\sqlite3.dll
+del %PREFIX%\Qt5*.dll
 
 7za a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
-    %PREFIX%\python\python37.zip ^
+    %PREFIX%\python37.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\attr ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
@@ -105,20 +87,16 @@ copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%\python
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\six.py ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson ^
-    %PREFIX%\python\Lib\site-packages\rpcore ^
-    %PREFIX%\python\Lib\site-packages\rplibs ^
-    %PREFIX%\python\Lib\site-packages\rpplugins
-
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpcore
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rplibs
-rmdir /S /Q %PREFIX%\python\Lib\site-packages\rpplugins
+    %CONDA_PREFIX%\Lib\site-packages\rpcore ^
+    %CONDA_PREFIX%\Lib\site-packages\rplibs ^
+    %CONDA_PREFIX%\Lib\site-packages\rpplugins
 
 pip uninstall --yes ^
     attrs ^
+    httplib2 ^
+    idna ^
+    jsonschema ^
     oauth2 ^
     py-ubjson ^
-    six ^
-    httplib2 ^
     pyrsistent ^
-    idna ^
-    jsonschema
+    six
