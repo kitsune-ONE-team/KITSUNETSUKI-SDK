@@ -20,87 +20,87 @@ pip install https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec6
 # pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
 # pip install https://files.pythonhosted.org/packages/d1/6a/4b2fcefd2ea0868810e92d519dacac1ddc64a2e53ba9e3422c3b62b378a6/setuptools-40.8.0-py2.py3-none-any.whl
 
-mkdir -pv ${PREFIX}/panda3d;
-cp -fv ${CONDA_PREFIX}/lib/libpython3.7m.so.1.0   ${PREFIX}
-cp -fv ${CONDA_PREFIX}/lib/libcrypto.so.1.1       ${PREFIX}
-cp -fv ${CONDA_PREFIX}/lib/libssl.so.1.1          ${PREFIX}
-cp -fv ${CONDA_PREFIX}/lib/python3.7/os.py        ${PREFIX}
-cp -Rfv ${CONDA_PREFIX}/lib/python3.7/lib-dynload ${PREFIX}
+mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d;
+cp -fv ${CONDA_PREFIX}/lib/libpython3.7m.so.1.0   ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/libcrypto.so.1.1       ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/libssl.so.1.1          ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/python3.7/os.py        ${PREFIX}/kitsunetsuki-runtime
+cp -Rfv ${CONDA_PREFIX}/lib/python3.7/lib-dynload ${PREFIX}/kitsunetsuki-runtime
 
-rm -fv ${PREFIX}/lib-dynload/_bisect.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_bz2.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_crypt.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_csv.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_ctypes.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_ctypes_test.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_curses.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_curses_panel.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_heapq.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_lsprof.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_multibytecodec.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_opcode.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_pickle.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_sqlite3.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_testbuffer.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_testcapi.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_testimportmultiple.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_testmultiphase.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_tkinter.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/_xxtestfuzz.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/audioop.cpython-*-linux-gnu.s
-rm -fv ${PREFIX}/lib-dynload/fcntl.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/grp.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/mmap.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/nis.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/ossaudiodev.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/parser.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/resource.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/spwd.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/syslog.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/termios.cpython-*-linux-gnu.so
-rm -fv ${PREFIX}/lib-dynload/xxlimited.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bz2.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_crypt.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_csv.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_ctypes.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_ctypes_test.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_curses.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_curses_panel.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_heapq.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_lsprof.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_multibytecodec.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_opcode.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_pickle.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_sqlite3.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_testbuffer.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_testcapi.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_testimportmultiple.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_testmultiphase.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_tkinter.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_xxtestfuzz.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/audioop.cpython-*-linux-gnu.s
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/fcntl.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/grp.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/mmap.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/nis.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/ossaudiodev.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/parser.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/resource.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/spwd.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/syslog.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
 
 cp -fv \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/__init__.py \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/*.so \
-                                                  ${PREFIX}/panda3d/
+                                                  ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/kcc.so \
-                                                  ${PREFIX}
+                                                  ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2/cacerts.txt \
-                                                  ${PREFIX}
+                                                  ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}
-cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt          ${PREFIX}
-cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}
-cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}
-cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}
-cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}
+cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt          ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${ULIBX}/libCg.so                          ${PREFIX}
-cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}
-cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}
-cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}
-cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}
-cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}
-cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}
-cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}
-cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}
+cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libpanda*.so.1.10 \
    ${CONDA_PREFIX}/lib/libp3*.so.1.10 \
-                                                  ${PREFIX}
+                                                  ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${CONDA_PREFIX}/lib/libp3openal_audio.so   ${PREFIX}
-cp -fv ${CONDA_PREFIX}/lib/libp3ptloader.so       ${PREFIX}
-cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}
+cp -fv ${CONDA_PREFIX}/lib/libp3openal_audio.so   ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/libp3ptloader.so       ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}/kitsunetsuki-runtime
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
-    ${PREFIX}/python37.zip \
+    ${PREFIX}/kitsunetsuki-runtime/python37.zip \
     "${CONDA_PREFIX}/lib/python3.7/*" \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/attr \
     ${CONDA_PREFIX}/lib/python3.7/site-packages/direct \
