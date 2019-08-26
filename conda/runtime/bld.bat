@@ -70,7 +70,70 @@ copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%
 copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%
 
 del %PREFIX%\sqlite3.dll
-del %PREFIX%\Qt5*.dll
+rem del %PREFIX%\Qt5*.dll
+
+del %PREFIX%\Qt53DAnimation.dll
+del %PREFIX%\Qt53DCore.dll
+del %PREFIX%\Qt53DExtras.dll
+del %PREFIX%\Qt53DInput.dll
+del %PREFIX%\Qt53DLogic.dll
+del %PREFIX%\Qt53DQuick.dll
+del %PREFIX%\Qt53DQuickAnimation.dll
+del %PREFIX%\Qt53DQuickExtras.dll
+del %PREFIX%\Qt53DQuickInput.dll
+del %PREFIX%\Qt53DQuickRender.dll
+del %PREFIX%\Qt53DQuickScene2D.dll
+del %PREFIX%\Qt53DRender.dll
+del %PREFIX%\Qt5Bluetooth.dll
+del %PREFIX%\Qt5Charts.dll
+del %PREFIX%\Qt5Concurrent.dll
+del %PREFIX%\Qt5Core.dll
+del %PREFIX%\Qt5DataVisualization.dll
+del %PREFIX%\Qt5DBus.dll
+del %PREFIX%\Qt5Designer.dll
+del %PREFIX%\Qt5DesignerComponents.dll
+del %PREFIX%\Qt5Gamepad.dll
+del %PREFIX%\Qt5Gui.dll
+del %PREFIX%\Qt5Help.dll
+del %PREFIX%\Qt5Location.dll
+del %PREFIX%\Qt5Multimedia.dll
+del %PREFIX%\Qt5MultimediaQuick_p.dll
+del %PREFIX%\Qt5MultimediaWidgets.dll
+del %PREFIX%\Qt5Network.dll
+del %PREFIX%\Qt5NetworkAuth.dll
+del %PREFIX%\Qt5Nfc.dll
+del %PREFIX%\Qt5OpenGL.dll
+del %PREFIX%\Qt5Positioning.dll
+del %PREFIX%\Qt5PrintSupport.dll
+del %PREFIX%\Qt5Purchasing.dll
+del %PREFIX%\Qt5Qml.dll
+del %PREFIX%\Qt5Quick.dll
+del %PREFIX%\Qt5QuickControls2.dll
+del %PREFIX%\Qt5QuickParticles.dll
+del %PREFIX%\Qt5QuickTemplates2.dll
+del %PREFIX%\Qt5QuickTest.dll
+del %PREFIX%\Qt5QuickWidgets.dll
+del %PREFIX%\Qt5RemoteObjects.dll
+del %PREFIX%\Qt5Script.dll
+del %PREFIX%\Qt5ScriptTools.dll
+del %PREFIX%\Qt5Scxml.dll
+del %PREFIX%\Qt5Sensors.dll
+del %PREFIX%\Qt5SerialBus.dll
+del %PREFIX%\Qt5SerialPort.dll
+del %PREFIX%\Qt5Sql.dll
+del %PREFIX%\Qt5Svg.dll
+del %PREFIX%\Qt5Test.dll
+del %PREFIX%\Qt5TextToSpeech.dll
+del %PREFIX%\Qt5WebChannel.dll
+del %PREFIX%\Qt5WebEngine.dll
+del %PREFIX%\Qt5WebEngineCore.dll
+del %PREFIX%\Qt5WebEngineWidgets.dll
+del %PREFIX%\Qt5WebSockets.dll
+del %PREFIX%\Qt5WebView.dll
+del %PREFIX%\Qt5Widgets.dll
+del %PREFIX%\Qt5WinExtras.dll
+del %PREFIX%\Qt5Xml.dll
+del %PREFIX%\Qt5XmlPatterns.dll
 
 7za a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
