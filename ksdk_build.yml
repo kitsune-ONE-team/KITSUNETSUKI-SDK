@@ -1,0 +1,11 @@
+name: ksdk_build
+
+channels:
+- kitsune.one
+- defaults
+
+dependencies:
+- conda
+- conda-build
+- python
+- cmake
