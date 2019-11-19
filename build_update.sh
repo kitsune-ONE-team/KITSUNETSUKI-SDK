@@ -15,5 +15,5 @@ fi
 
 for i in ${TARGETS}; do
     echo ${i};
-    find ${i} -name meta.yaml -exec sed -i "s/^  string\: [0-9]\+\$/  string\: ${VERSION}/g" {} \;;
+    find conda/${i} -name meta.yaml -exec sed -i "s/^  string\: [0-9]\+\$/  string\: ${VERSION}/g" {} \;;
 done
