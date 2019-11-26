@@ -14,6 +14,7 @@ source:
       - egg1.patch
       - egg2.patch
       - egg3.patch
+      - rp_light.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.4.1/panda3d-1.10.4.1-tools-win32.zip # [win32]
     md5: 03dc7f4d16f03b221b4a3752f348c1fa # [win32]
@@ -23,7 +24,7 @@ source:
 
 build:
   number: 0
-  string: 1568382107
+  string: 0
 
 requirements:
   build:

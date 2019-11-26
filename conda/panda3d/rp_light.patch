@@ -1,0 +1,39 @@
+diff --git a/contrib/src/rplight/rpLight.I b/contrib/src/rplight/rpLight.I
+index c0e2422651..d7da6aa60a 100644
+--- a/contrib/src/rplight/rpLight.I
++++ b/contrib/src/rplight/rpLight.I
+@@ -156,6 +156,10 @@ inline void RPLight::invalidate_shadows() {
+   }
+ }
+ 
++inline void RPLight::invalidate_shadow_sources(int i) {
++  _shadow_sources[i]->set_needs_update(true);
++}
++
+ /**
+  * @brief Sets the position of the light
+  * @details This sets the position of the light in world space. It will cause
+diff --git a/contrib/src/rplight/rpLight.h b/contrib/src/rplight/rpLight.h
+index 51bca24a76..9c4f48ef87 100644
+--- a/contrib/src/rplight/rpLight.h
++++ b/contrib/src/rplight/rpLight.h
+@@ -71,6 +71,7 @@ public:
+ 
+ PUBLISHED:
+   inline void invalidate_shadows();
++  inline void invalidate_shadow_sources(int i);
+ 
+   inline void set_pos(const LVecBase3 &pos);
+   inline void set_pos(float x, float y, float z);
+diff --git a/contrib/src/rplight/shadowManager.cxx b/contrib/src/rplight/shadowManager.cxx
+index be216c0075..70d97d38e6 100644
+--- a/contrib/src/rplight/shadowManager.cxx
++++ b/contrib/src/rplight/shadowManager.cxx
+@@ -83,6 +83,7 @@ void ShadowManager::init() {
+     camera->set_lens(new MatrixLens());
+     camera->set_active(false);
+     camera->set_scene(_scene_parent);
++    camera->set_camera_mask(DrawMask::bit(8));
+     _tag_state_mgr->register_camera("shadow", camera);
+     _camera_nps.push_back(_scene_parent.attach_new_node(camera));
+     _cameras[i] = camera;
