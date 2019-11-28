@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Bullet') {
+            steps {
+                build 'Bullet'
+            }
+        }
+        stage('Panda3D') {
+            steps {
+                build 'Panda3D'
+            }
+        }
+        stage('KCC') {
+            steps {
+                build 'KCC'
+            }
+        }
+        stage('Runtime') {
+            steps {
+                build 'Runtime'
+            }
+        }
+    }
+}
