@@ -1,11 +1,11 @@
 if "%ARCH%" == "64" (
-    call "D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
 ) else (
-    call "D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
+    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
 )
 color 0f
 
