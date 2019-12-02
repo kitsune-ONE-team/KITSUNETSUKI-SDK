@@ -1,10 +1,13 @@
 if "%ARCH%" == "64" (
+    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set MINGW=x86_64-w64-mingw32
     set DISCORD=win64-dynamic
 ) else (
+    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set MINGW=i686-w64-mingw32
     set DISCORD=win32-dynamic
 )
+color 0f
 
 pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
@@ -68,6 +71,12 @@ copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\kitsunetsuk
 copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%\kitsunetsuki-runtime
+
+if "%ARCH%" == "64" (
+   copy /V /Y "D:\Apps\Visual Studio\IDE\VC\Redist\MSVC\14.23.27820\x64\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+) else (
+   copy /V /Y "D:\Apps\Visual Studio\IDE\VC\Redist\MSVC\14.23.27820\x86\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+)
 
 del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
 rem del %PREFIX%\Qt5*.dll
