@@ -4,19 +4,23 @@ package:
 
 source:
   - git_url: git://git.blender.org/blender-addons.git
+    git_rev: v2.81a
     folder: blender_extras/release/scripts/addons
 
   - git_url: git://git.blender.org/blender-addons-contrib.git
+    git_rev: v2.81a
     folder: blender_extras/release/scripts/addons_contrib
 
   - git_url: git://git.blender.org/blender-translations.git
+    git_rev: v2.81a
     folder: blender_extras/release/datafiles/locale
 
   - git_url: git://git.blender.org/blender-dev-tools.git
+    git_rev: v2.81a
     folder: blender_extras/source/tools
 
   - git_url: git://git.blender.org/blender.git
-    git_rev: bf9904ec8018
+    git_rev: v2.81a
     folder: blender
     patches:
       # - rna_wm.patch
@@ -32,7 +36,7 @@ source:
 
 build:
   number: 0
-  string: 1576254953
+  string: 1576258163
 
 requirements:
   build:
