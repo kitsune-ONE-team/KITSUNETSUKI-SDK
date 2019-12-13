@@ -73,9 +73,9 @@ copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\kitsunetsuk
 copy /V /Y %RECIPE_DIR%\discord-rpc\%DISCORD%\bin\*.dll     %PREFIX%\kitsunetsuki-runtime
 
 if "%ARCH%" == "64" (
-   copy /V /Y "D:\Apps\Visual Studio\IDE\VC\Redist\MSVC\14.23.27820\x64\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+   copy /V /Y "%VCToolsRedistDir%\x64\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
 ) else (
-   copy /V /Y "D:\Apps\Visual Studio\IDE\VC\Redist\MSVC\14.23.27820\x86\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+   copy /V /Y "%VCToolsRedistDir%\x86\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
 )
 
 del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
