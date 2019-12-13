@@ -1,6 +1,6 @@
 package:
   name: python-blender
-  version: "2.81a"
+  version: "2.81"
 
 source:
   - git_url: git://git.blender.org/blender-addons.git
