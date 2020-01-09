@@ -6,5 +6,6 @@ call "D:\Apps\Miniconda3_x64\Scripts\activate" base
 python appx.py
 
 call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
-makepri new /v /pr kitsunetsuki /cf kitsunetsuki\priconfig.xml
-makeappx pack /v /o /d kitsunetsuki /p kitsunetsuki.msix
+makepri createconfig /v /o /cf kitsunetsuki\priconfig.xml /dq en-US
+makepri new /v /o /cf kitsunetsuki\priconfig.xml /pr kitsunetsuki /mn kitsunetsuki/appxmanifest.xml
+makeappx pack /v /o /d kitsunetsuki /m kitsunetsuki/appxmanifest.xml /p kitsunetsuki.msix
