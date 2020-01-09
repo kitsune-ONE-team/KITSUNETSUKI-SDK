@@ -13,9 +13,9 @@ makepri createconfig /v /o /cf kitsunetsuki\priconfig.xml /dq en-US
 makepri new /v /o /cf kitsunetsuki\priconfig.xml ^
     /pr kitsunetsuki ^
     /mn kitsunetsuki/appxmanifest.xml ^
-    /mf mapping.txt
+    /mf appx
 
 makeappx pack /v /o /p kitsunetsuki.msix ^
     /d kitsunetsuki ^
     /m kitsunetsuki/appxmanifest.xml ^
-    /f mapping.txt
+    /f appx
