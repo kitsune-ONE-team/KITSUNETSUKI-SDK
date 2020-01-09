@@ -16,6 +16,5 @@ makepri new /v /o /cf kitsunetsuki\priconfig.xml ^
     /mf appx
 
 makeappx pack /v /o /p kitsunetsuki.msix ^
-    /d kitsunetsuki ^
     /m kitsunetsuki/appxmanifest.xml ^
     /f appx
