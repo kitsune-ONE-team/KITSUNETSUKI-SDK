@@ -1,7 +1,7 @@
 import json
 import os
-import zipfile
 import ssl
+import zipfile
 
 from urllib.request import urlopen, urlretrieve
 
@@ -15,10 +15,14 @@ def main():
     for i in data:
         if i['key'] == 'release.kitsune_one.url' and i['platform'] == 'winx64':
             filename = os.path.basename(i['value'])
-            urlretrieve(i['value'], filename=filename)
-            os.makedirs('kitsunetsuki')
-            with zipfile.ZipFile(filename, mode='r') as z:
-                z.extractall('kitsunetsuki')
+            if not os.path.exists(filename):
+                urlretrieve(i['value'], filename=filename)
+
+                dirname = 'kitsunetsuki'
+                if not os.path.exists(dirname):
+                    os.makedirs(dirname)
+                    with zipfile.ZipFile(filename, mode='r') as z:
+                        z.extractall(dirname)
 
 
 if __name__ == '__main__':
