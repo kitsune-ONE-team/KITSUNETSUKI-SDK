@@ -13,7 +13,8 @@ makepri createconfig /v /o /cf kitsunetsuki\priconfig.xml /dq en-US
 makepri new /v /o /cf kitsunetsuki\priconfig.xml ^
     /pr kitsunetsuki ^
     /mn kitsunetsuki/appxmanifest.xml ^
-    /mf appx
+    /mf AppX ^
+    /of kitsunetsuki/resources.pri
 
 makeappx pack /v /o /p kitsunetsuki.msix ^
     /m kitsunetsuki/appxmanifest.xml ^
