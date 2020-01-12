@@ -1,28 +1,33 @@
 import json
 import os
-import ssl
+import shutil
 import zipfile
 
 from urllib.request import urlopen, urlretrieve
 
 
 def main():
-    # ssl._create_default_https_context = ssl._create_unverified_context
-
     url = 'https://kitsune.one/k/api/release/'
     data = json.loads(urlopen(url).read().decode('utf-8'))
 
     for i in data:
         if i['key'] == 'release.kitsune_one.url' and i['platform'] == 'winx64':
             filename = os.path.basename(i['value'])
+            dirname = 'kitsunetsuki'
+
+            need_wipe = False
             if not os.path.exists(filename):
+                need_wipe = True
                 urlretrieve(i['value'], filename=filename)
 
-                dirname = 'kitsunetsuki'
-                if not os.path.exists(dirname):
-                    os.makedirs(dirname)
-                    with zipfile.ZipFile(filename, mode='r') as z:
-                        z.extractall(dirname)
+            if need_wipe:
+                shutil.rmtree(dirname)
+
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+
+            with zipfile.ZipFile(filename, mode='r') as z:
+                z.extractall(dirname)
 
 
 if __name__ == '__main__':
