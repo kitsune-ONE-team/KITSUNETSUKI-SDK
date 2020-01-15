@@ -15,14 +15,14 @@ def main():
         if i['key'] == 'release.kitsune_one.url' and i['platform'] == 'winx64':
             filename = os.path.basename(i['value'])
             dirname = 'kitsunetsuki'
-
             need_wipe = False
+
             if not os.path.exists(filename):
                 need_wipe = True
                 print('Downloading {}'.format(i['value']))
                 urlretrieve(i['value'], filename=filename)
 
-            if need_wipe:
+            if need_wipe and os.path.exists(dirname):
                 shutil.rmtree(dirname)
 
             if not os.path.exists(dirname):
