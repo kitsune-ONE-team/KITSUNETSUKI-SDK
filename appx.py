@@ -7,7 +7,8 @@ from urllib.request import urlopen, urlretrieve
 
 
 def main():
-    url = 'https://kitsune.one/k/api/release/'
+    url = 'https://kitsune.one/api/k/release/'
+    print('Opening {}'.format(url))
     data = json.loads(urlopen(url).read().decode('utf-8'))
 
     for i in data:
@@ -18,6 +19,7 @@ def main():
             need_wipe = False
             if not os.path.exists(filename):
                 need_wipe = True
+                print('Downloading {}'.format(i['value']))
                 urlretrieve(i['value'], filename=filename)
 
             if need_wipe:
