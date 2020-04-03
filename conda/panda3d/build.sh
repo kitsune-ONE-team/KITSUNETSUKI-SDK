@@ -12,7 +12,7 @@ ULIBX=/usr/lib/${LARCH}-linux-gnu;
 BUILT=${SRC_DIR}/built;
 
 python ${RECIPE_DIR}/icon.py \
-    ${RECIPE_DIR}/icon.128.png \
+    ${RECIPE_DIR}/icon_256.png \
     panda/src/x11display/icon.h
 
 python makepanda/makepanda.py \

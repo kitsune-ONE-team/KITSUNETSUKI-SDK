@@ -26,14 +26,26 @@ index 51bca24a76..9c4f48ef87 100644
    inline void set_pos(const LVecBase3 &pos);
    inline void set_pos(float x, float y, float z);
 diff --git a/contrib/src/rplight/shadowManager.cxx b/contrib/src/rplight/shadowManager.cxx
-index be216c0075..70d97d38e6 100644
+index be216c0075..ebfc7bfcde 100644
 --- a/contrib/src/rplight/shadowManager.cxx
 +++ b/contrib/src/rplight/shadowManager.cxx
-@@ -83,6 +83,7 @@ void ShadowManager::init() {
+@@ -68,7 +68,6 @@ ShadowManager::~ShadowManager() {
+  */
+ void ShadowManager::init() {
+   nassertv(!_scene_parent.is_empty());    // Scene parent not set, call set_scene_parent before init!
+-  nassertv(_tag_state_mgr != nullptr);     // TagStateManager not set, call set_tag_state_mgr before init!
+   nassertv(_atlas_graphics_output != nullptr); // AtlasGraphicsOutput not set, call set_atlas_graphics_output before init!
+ 
+   _cameras.resize(_max_updates);
+@@ -83,7 +82,10 @@ void ShadowManager::init() {
      camera->set_lens(new MatrixLens());
      camera->set_active(false);
      camera->set_scene(_scene_parent);
+-    _tag_state_mgr->register_camera("shadow", camera);
 +    camera->set_camera_mask(DrawMask::bit(8));
-     _tag_state_mgr->register_camera("shadow", camera);
++    if (_tag_state_mgr != nullptr) {
++        _tag_state_mgr->register_camera("shadow", camera);
++    }
      _camera_nps.push_back(_scene_parent.attach_new_node(camera));
      _cameras[i] = camera;
+ 
