@@ -1,14 +1,15 @@
 package:
   name: panda3d-kitsunetsuki
-  version: "1.10.4.1"
+  version: "1.10.6"
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: v1.10.4.1
+    git_rev: v1.10.6
     folder: .
     patches:
       - prefix-110.patch # [win]
       - nopy.patch # [win]
+      - icon.patch # [unix]
       - bullet.patch
       - openssl.patch
       - egg1.patch
@@ -16,11 +17,11 @@ source:
       - egg3.patch
       - rp_light.patch
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.4.1/panda3d-1.10.4.1-tools-win32.zip # [win32]
-    md5: 03dc7f4d16f03b221b4a3752f348c1fa # [win32]
+  - url: https://www.panda3d.org/download/panda3d-1.10.6/panda3d-1.10.6-tools-win32.zip # [win32]
+    md5: 04d6b4406b3ab9c2452c76eb4f36be7a # [win32]
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.4.1/panda3d-1.10.4.1-tools-win64.zip # [win64]
-    md5: ba4c7f881caecd7493d0c591090e1bf8 # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.6/panda3d-1.10.6-tools-win64.zip # [win64]
+    md5: 3bcd5c75bd875333aed01b98a8ec2f8f # [win64]
 
 build:
   number: 0
