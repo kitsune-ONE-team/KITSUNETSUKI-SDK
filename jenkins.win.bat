@@ -16,9 +16,11 @@ rem from "Library/bin" to "DDLs"
 
 %KONDA% install --prefix env conda-build anaconda-client
 
-FOR /F "tokens=*" %%g IN ('env\Scripts\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+rem FOR /F "tokens=*" %%g IN ('env\Scripts\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
-env\Scripts\conda build %KONDA_ARGS%
+rem env\Scripts\conda build %KONDA_ARGS%
+env\condabin\conda build %KONDA_ARGS%
 env\Scripts\anaconda ^
 --verbose ^
 --token %KONDA_TOKEN% ^
