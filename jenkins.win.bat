@@ -13,11 +13,11 @@ set KONDA_TOKEN=C:\Users\WIN8\.continuum\anaconda-client\tokens\https%%3A%%2F%%2
 
 FOR /F "tokens=*" %g IN ('env/Scripts/conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
-env/Scripts/conda build %KONDA_ARGS%
-env/Scripts/anaconda \
---verbose \
---token ${KONDA_TOKEN} \
-upload \
---user kitsune.one \
---force \
+env\Scripts\conda build %KONDA_ARGS%
+env\Scripts\anaconda ^
+--verbose ^
+--token %KONDA_TOKEN% ^
+upload ^
+--user kitsune.one ^
+--force ^
 %KONDA_PAK%
