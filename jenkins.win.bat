@@ -1,4 +1,5 @@
-set KONDA="D:\Apps\Miniconda3_x64\Scripts\conda"
+set PATH=%PATH%;D:\Apps\Git\bin
+set KONDA=D:\Apps\Miniconda3_x64\Scripts\conda
 set KONDA_ARGS=^
 --cache-dir D:\Cache ^
 --croot croot ^
