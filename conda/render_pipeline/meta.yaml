@@ -18,13 +18,13 @@ build:
 requirements:
   build:
     - python
-    - panda3d-kitsunetsuki >=1.10.2
+    - panda3d-kitsunetsuki >=1.10.6
     - m2-gcc-libs # [win]
     - m2-patch # [win]
     - msinttypes # [win]
   run:
     - python
-    - panda3d-kitsunetsuki >=1.10.2
+    - panda3d-kitsunetsuki >=1.10.6
     - pyqt
 
 about:
