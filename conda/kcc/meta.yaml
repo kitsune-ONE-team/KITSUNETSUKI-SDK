@@ -18,5 +18,5 @@ requirements:
     - panda3d-kitsunetsuki >=1.10.6
 
 about:
-  home: https://launchpad.net/kitsunetsuki-sdk
+  home: https://github.com/Yonnji/KITSUNETSUKI-SDK
   license: BSD
