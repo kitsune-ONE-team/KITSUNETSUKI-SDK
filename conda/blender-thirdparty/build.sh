@@ -2,19 +2,8 @@
 
 THIRDPARTY=${PREFIX}/blender-thirdparty
 
-cd ilmbase
-cmake \
-    -DBUILD_SHARED_LIBS=OFF \
-    -DCMAKE_CXX_FLAGS=-fPIC \
-    -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
-    .
-make
-make install
-cd ..
-
 cd openexr
 cmake \
-    -DILMBASE_PACKAGE_PREFIX=${THIRDPARTY} \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_CXX_FLAGS=-fPIC \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \

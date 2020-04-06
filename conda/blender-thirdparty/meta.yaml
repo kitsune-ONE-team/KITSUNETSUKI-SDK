@@ -3,12 +3,8 @@ package:
   version: "0.1"
 
 source:
-  - url: https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.3.0/ilmbase-2.3.0.tar.gz
-    md5: 354bf86de3b930ab87ac63619d60c860
-    folder: ilmbase
-
-  - url: https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz
-    md5: a157e8a46596bc185f2472a5a4682174
+  - git_url: https://github.com/AcademySoftwareFoundation/openexr.git
+    git_rev: v2.3.0
     folder: openexr
 
   - url: https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2 # [unix]
