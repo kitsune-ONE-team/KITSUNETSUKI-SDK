@@ -43,6 +43,7 @@ requirements:
     - m2-patch # [win]
     - blender-thirdparty # [unix]
     - bullet
+    - llvmdev
   run:
     - python
 
