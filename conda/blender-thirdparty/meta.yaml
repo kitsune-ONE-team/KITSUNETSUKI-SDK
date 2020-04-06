@@ -10,8 +10,6 @@ source:
   - url: https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz
     md5: a157e8a46596bc185f2472a5a4682174
     folder: openexr
-    patches:
-      - 185.diff
 
   - url: https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2 # [unix]
     md5: 41d7542ce40e171f3f7982aff008ff0d # [unix]
