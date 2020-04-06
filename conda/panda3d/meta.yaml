@@ -25,11 +25,12 @@ source:
 
 build:
   number: 0
-  string: 1586162737
+  string: 1586172956
 
 requirements:
   build:
-    - python
+    - python <3.8
+    - openssl >=1.1.1f
     - cmake
     - bullet ==2.83
     - pillow # [unix]
@@ -38,7 +39,7 @@ requirements:
     - msinttypes # [win]
     - 7za # [win]
   run:
-    - python
+    - python <3.8
 
 about:
   home: http://www.panda3d.org/
