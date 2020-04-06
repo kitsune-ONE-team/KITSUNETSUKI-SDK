@@ -23,10 +23,7 @@ source:
     git_rev: v2.82
     folder: blender
     patches:
-      # - rna_wm.patch
-      - cmake1.patch
       - cmake2.patch
-      # - cmake3.patch
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
     folder: lib/windows_vc14 # [win32]
