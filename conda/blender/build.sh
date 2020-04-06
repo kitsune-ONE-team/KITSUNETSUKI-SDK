@@ -32,6 +32,7 @@ cmake \
     -DWITH_PYTHON_MODULE=ON \
     -DWITH_STATIC_LIBS=OFF \
     -DWITH_TBB=OFF \
+    -DWITH_SDL=OFF \
     ..
 make
 make install
