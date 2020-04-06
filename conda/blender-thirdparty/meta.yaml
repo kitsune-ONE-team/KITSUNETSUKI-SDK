@@ -3,12 +3,12 @@ package:
   version: "0.1"
 
 source:
-  - url: http://download.savannah.nongnu.org/releases/openexr/ilmbase-2.2.0.tar.gz
-    md5: b540db502c5fa42078249f43d18a4652
+  - url: https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.3.0/ilmbase-2.3.0.tar.gz
+    md5: 354bf86de3b930ab87ac63619d60c860
     folder: ilmbase
 
-  - url: http://download.savannah.nongnu.org/releases/openexr/openexr-2.2.0.tar.gz
-    md5: b64e931c82aa3790329c21418373db4e
+  - url: https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz
+    md5: a157e8a46596bc185f2472a5a4682174
     folder: openexr
     patches:
       - 185.diff
