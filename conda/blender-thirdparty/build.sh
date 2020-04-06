@@ -4,6 +4,7 @@ THIRDPARTY=${PREFIX}/blender-thirdparty
 
 cd openexr
 cmake \
+    -DOPENEXR_BUILD_PYTHON_LIBS=NO \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_CXX_FLAGS=-fPIC \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
