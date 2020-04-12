@@ -25,7 +25,7 @@ source:
 
 build:
   number: 0
-  string: 1586172956
+  string: 1586715300
 
 requirements:
   build:
@@ -38,8 +38,14 @@ requirements:
     - m2-patch # [win]
     - msinttypes # [win]
     - 7za # [win]
+    - fontconfig
+    - freetype
+    - libpng
   run:
     - python <3.8
+    - fontconfig
+    - freetype
+    - libpng
 
 about:
   home: http://www.panda3d.org/

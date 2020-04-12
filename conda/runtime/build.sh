@@ -79,11 +79,9 @@ cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
 
+cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libfreetype.so.6                  ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${LIBX}/libpng16.so.16                     ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/kitsunetsuki-runtime
