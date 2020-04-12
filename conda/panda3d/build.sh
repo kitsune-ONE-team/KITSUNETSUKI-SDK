@@ -38,14 +38,18 @@ python makepanda/makepanda.py \
     --use-vorbis \
     --use-x11 \
     --use-zlib \
-    --threads=2 \
-    --verbose \
-    --python-incdir ${CONDA_PREFIX}/include \
-    --python-libdir ${CONDA_PREFIX}/lib \
+    --bullet-incdir ${CONDA_PREFIX}/include \
+    --bullet-libdir ${CONDA_PREFIX}/lib \
+    --freetype-incdir ${CONDA_PREFIX}/include \
+    --freetype-libdir ${CONDA_PREFIX}/lib \
     --openssl-incdir ${CONDA_PREFIX}/include \
     --openssl-libdir ${CONDA_PREFIX}/lib \
-    --bullet-incdir ${CONDA_PREFIX}/include \
-    --bullet-libdir ${CONDA_PREFIX}/lib
+    --png-incdir ${CONDA_PREFIX}/include \
+    --png-libdir ${CONDA_PREFIX}/lib \
+    --python-incdir ${CONDA_PREFIX}/include \
+    --python-libdir ${CONDA_PREFIX}/lib \
+    --threads=2 \
+    --verbose
 
 cp -R ${BUILT}/bin ${PREFIX}
 cp -R ${BUILT}/etc ${PREFIX}
