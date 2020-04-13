@@ -1,9 +1,7 @@
 if "%ARCH%" == "64" (
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
-    set MINGW=x86_64-w64-mingw32
 ) else (
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
-    set MINGW=i686-w64-mingw32
 )
 color 0f
 
@@ -66,8 +64,6 @@ copy /V /Y %RECIPE_DIR%\py-ubjson-LICENSE.txt               %PREFIX%\kitsunetsuk
 copy /V /Y %RECIPE_DIR%\py-ubjson-NOTICE.txt                %PREFIX%\kitsunetsuki-runtime
 
 copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\kitsunetsuki-runtime
-copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\kitsunetsuki-runtime
-copy /V /Y %RECIPE_DIR%\%MINGW%\5.3-win32\*.dll             %PREFIX%\kitsunetsuki-runtime
 
 if "%ARCH%" == "64" (
    copy /V /Y "%VCToolsRedistDir%\x64\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
