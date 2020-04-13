@@ -38,13 +38,13 @@ requirements:
     - m2-patch # [win]
     - msinttypes # [win]
     - 7za # [win]
-    - fontconfig
-    - freetype
+    - fontconfig # [unix]
+    - freetype # [unix]
     - libpng
   run:
     - python <3.8
-    - fontconfig
-    - freetype
+    - fontconfig # [unix]
+    - freetype # [unix]
     - libpng
 
 about:
