@@ -4,6 +4,13 @@ lib-dynload
 os.py
 pydoc_data
 site-packages
+site-packages/direct/actor
+site-packages/direct/cluster
+site-packages/direct/controls
+site-packages/direct/leveleditor
+site-packages/direct/tkpanels
+site-packages/direct/tkwidgets
+site-packages/direct/wxwidgets
 site-packages/rpcore/shader
 site-packages/rpplugins/ao/shader
 site-packages/rpplugins/bloom/resources
