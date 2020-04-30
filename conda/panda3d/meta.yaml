@@ -28,13 +28,15 @@ build:
   string: 1588230447
 
   missing_dso_whitelist:
-    - $RPATH/libCg.so
-    - $RPATH/libCgGL.so
-    - $RPATH/libX11.so.6
-    - $RPATH/libc.so.6
-    - $RPATH/libdl.so.2
-    - $RPATH/libm.so.6
-    - $RPATH/libpthread.so.0
+    - $RPATH/libCg.so # [unix]
+    - $RPATH/libCgGL.so # [unix]
+    - $RPATH/libGL.so.1 # [unix]
+    - $RPATH/libX11.so.6 # [unix]
+    - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libdl.so.2 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - $RPATH/libopenal.so.1 # [unix]
+    - $RPATH/libpthread.so.0 # [unix]
 
 requirements:
   build:
