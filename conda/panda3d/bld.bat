@@ -20,7 +20,19 @@ rmdir /S /Q %WINLIBS%\bullet
 rmdir /S /Q %WINLIBS%\openssl
 
 python makepanda/makepanda.py ^
+    --bullet-incdir %CONDA_PREFIX%\include ^
+    --bullet-libdir %CONDA_PREFIX%\lib ^
+    --openssl-incdir %CONDA_PREFIX%\include ^
+    --openssl-libdir %CONDA_PREFIX%\lib ^
+    --png-incdir %CONDA_PREFIX%\include ^
+    --png-libdir %CONDA_PREFIX%\lib ^
+    --python-incdir %CONDA_PREFIX%\include ^
+    --python-libdir %CONDA_PREFIX%\lib ^
+    --zlib-incdir %CONDA_PREFIX%\include ^
+    --zlib-libdir %CONDA_PREFIX%\lib ^
+    --msvc-version=14.1 ^
     --nothing ^
+    --threads=2 ^
     --use-bullet ^
     --use-contrib ^
     --use-deploytools ^
@@ -42,16 +54,8 @@ python makepanda/makepanda.py ^
     --use-vorbis ^
     --use-x11 ^
     --use-zlib ^
-    --threads=2 ^
     --verbose ^
-    --msvc-version=14.1 ^
-    --windows-sdk=10 ^
-    --python-incdir %CONDA_PREFIX%\include ^
-    --python-libdir %CONDA_PREFIX%\lib ^
-    --bullet-incdir %CONDA_PREFIX%\include ^
-    --bullet-libdir %CONDA_PREFIX%\lib ^
-    --openssl-incdir %CONDA_PREFIX%\include ^
-    --openssl-libdir %CONDA_PREFIX%\lib
+    --windows-sdk=10
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1

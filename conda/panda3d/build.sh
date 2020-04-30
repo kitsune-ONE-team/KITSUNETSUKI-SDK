@@ -18,7 +18,20 @@ python ${RECIPE_DIR}/icon.py \
     panda/src/x11display/icon.h
 
 python makepanda/makepanda.py \
+    --bullet-incdir ${CONDA_PREFIX}/include \
+    --bullet-libdir ${CONDA_PREFIX}/lib \
+    --freetype-incdir ${CONDA_PREFIX}/include \
+    --freetype-libdir ${CONDA_PREFIX}/lib \
+    --openssl-incdir ${CONDA_PREFIX}/include \
+    --openssl-libdir ${CONDA_PREFIX}/lib \
+    --png-incdir ${CONDA_PREFIX}/include \
+    --png-libdir ${CONDA_PREFIX}/lib \
+    --python-incdir ${CONDA_PREFIX}/include \
+    --python-libdir ${CONDA_PREFIX}/lib \
+    --zlib-incdir ${CONDA_PREFIX}/include \
+    --zlib-libdir ${CONDA_PREFIX}/lib \
     --nothing \
+    --threads=2 \
     --use-bullet \
     --use-contrib \
     --use-deploytools \
@@ -40,17 +53,6 @@ python makepanda/makepanda.py \
     --use-vorbis \
     --use-x11 \
     --use-zlib \
-    --bullet-incdir ${CONDA_PREFIX}/include \
-    --bullet-libdir ${CONDA_PREFIX}/lib \
-    --freetype-incdir ${CONDA_PREFIX}/include \
-    --freetype-libdir ${CONDA_PREFIX}/lib \
-    --openssl-incdir ${CONDA_PREFIX}/include \
-    --openssl-libdir ${CONDA_PREFIX}/lib \
-    --png-incdir ${CONDA_PREFIX}/include \
-    --png-libdir ${CONDA_PREFIX}/lib \
-    --python-incdir ${CONDA_PREFIX}/include \
-    --python-libdir ${CONDA_PREFIX}/lib \
-    --threads=2 \
     --verbose
 
 # cmake \
