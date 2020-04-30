@@ -5,22 +5,22 @@ channels:
 - defaults
 
 dependencies:
-- conda
 - cmake
-- python >=3.8
+- conda
 - cython ==0.29.17
+- flake8 ==3.7.9
+- jedi ==0.16.0
 - jinja2 ==2.11.2
-- flake8==3.7.9
+- kcc
 - panda3d-kitsunetsuki
 - panda3d-rp-kitsunetsuki
-- kcc
+- python >=3.8
 - pip:
   - PyYAML==3.12
   - attrs==19.1.0
   - epc==0.0.5
   - httplib2==0.12.1
   - idna==2.8
-  - jedi==0.11.0
   - jsonschema==2.6.0
   - oauth2==1.9.0.post1
   - py-ubjson==0.12.0
