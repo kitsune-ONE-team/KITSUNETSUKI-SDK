@@ -1,5 +1,5 @@
 package:
-  name: panda3d-kitsunetsuki
+  name: panda3d
   version: "1.10.6"
 
 source:
