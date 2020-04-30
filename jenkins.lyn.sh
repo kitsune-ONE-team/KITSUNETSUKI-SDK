@@ -18,7 +18,7 @@ fi
 
 KONDA_PAK=$(env/bin/conda build --output ${KONDA_ARGS})
 
-echo "CONDA BUILD"
+echo "CONDA BUILD: ${KONDA_PAK}"
 env/bin/conda build ${KONDA_ARGS}
 
 echo "ANACONDA UPLOAD: ${KONDA_PAK}"
