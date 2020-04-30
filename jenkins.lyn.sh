@@ -1,12 +1,13 @@
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
+--cache-dir /var/lib/jenkins/cache \
+--channel kitsune.one \
+--croot croot \
 --error-overlinking \
+--keep-old-work \
 --no-build-id \
 --no-remove-work-dir \
---cache-dir /var/lib/jenkins/cache \
---croot croot \
 --output-folder output \
---channel kitsune.one \
 conda/${JOB_BASE_NAME,,}"
 KONDA_TOKEN=/home/ubuntu16/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
 
