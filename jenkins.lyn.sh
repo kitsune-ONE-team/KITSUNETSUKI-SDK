@@ -17,7 +17,11 @@ if [ ! -d env ]; then
 fi
 
 KONDA_PAK=$(env/bin/conda build --output ${KONDA_ARGS})
+
+echo "CONDA BUILD"
 env/bin/conda build ${KONDA_ARGS}
+
+echo "ANACONDA UPLOAD: ${KONDA_PAK}"
 env/bin/anaconda \
 --verbose \
 --token ${KONDA_TOKEN} \
