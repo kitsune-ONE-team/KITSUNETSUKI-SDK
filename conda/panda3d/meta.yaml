@@ -28,9 +28,9 @@ build:
   string: 1588230447
 
   missing_dso_whitelist:
-    - libc.so.6
-    - libm.so.6
-    - libpthread.so.0
+    - $RPATH/libc.so.6
+    - $RPATH/libm.so.6
+    - $RPATH/libpthread.so.0
 
 requirements:
   build:
