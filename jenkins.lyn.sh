@@ -1,5 +1,6 @@
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
+--keep-old-work \
 --cache-dir /var/lib/jenkins/cache \
 --croot croot \
 --output-folder output \
