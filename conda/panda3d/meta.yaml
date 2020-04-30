@@ -28,6 +28,8 @@ build:
   string: 1588230447
 
   missing_dso_whitelist:
+    - $RPATH/libCgGL.so
+    - $RPATH/libGL.so.1
     - $RPATH/libc.so.6
     - $RPATH/libdl.so.2
     - $RPATH/libm.so.6
