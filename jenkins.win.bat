@@ -1,9 +1,10 @@
 set PATH=%PATH%;D:\Apps\Git\bin
 set KONDA=D:\Apps\Miniconda3_x64\Scripts\conda
 set KONDA_ARGS=^
+--error-overlinking ^
 --no-build-id ^
 --no-remove-work-dir ^
---error-overlinking ^
+--prefix-length 40 ^
 --cache-dir D:\Cache ^
 --croot croot ^
 --output-folder output ^
