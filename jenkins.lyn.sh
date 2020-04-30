@@ -3,7 +3,6 @@ KONDA_ARGS="\
 --error-overlinking \
 --no-build-id \
 --no-remove-work-dir \
---prefix-length 40 \
 --cache-dir /var/lib/jenkins/cache \
 --croot croot \
 --output-folder output \

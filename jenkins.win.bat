@@ -4,7 +4,6 @@ set KONDA_ARGS=^
 --error-overlinking ^
 --no-build-id ^
 --no-remove-work-dir ^
---prefix-length 40 ^
 --cache-dir D:\Cache ^
 --croot croot ^
 --output-folder output ^
