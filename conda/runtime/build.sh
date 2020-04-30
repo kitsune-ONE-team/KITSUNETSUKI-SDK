@@ -1,5 +1,9 @@
 #!/bin/bash
 
+PANDA_VERSION=1.10
+PYTHON_VERSION=python3.8
+PYTHONVERSION=python38
+
 if [ "${ARCH}" = "64" ]; then
     LARCH=x86_64;
 else
@@ -12,21 +16,14 @@ ULIBX=/usr/lib/${LARCH}-linux-gnu
 pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2/attrs-19.1.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf6835e38bc4bd0647269dc48670e12eb99a3f5ef5/py-ubjson-0.12.0.tar.gz
-pip install https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
-pip install https://files.pythonhosted.org/packages/8c/46/4e93ab8a379d7efe93f20a0fb8a27bdfe88942cc954ab0210c3164e783e0/pyrsistent-0.14.11.tar.gz
-pip install https://files.pythonhosted.org/packages/ad/13/eb56951b6f7950cadb579ca166e448ba77f9d24efc03edd7e55fa57d04b7/idna-2.8.tar.gz
-pip install https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
-# pip install https://files.pythonhosted.org/packages/cd/e6/be1b2a6ebebdaf1f790f1e750bb720fbda0335c2a19601ea9d8bb5059f38/jsonschema-3.0.0-py2.py3-none-any.whl
-# pip install https://files.pythonhosted.org/packages/d1/6a/4b2fcefd2ea0868810e92d519dacac1ddc64a2e53ba9e3422c3b62b378a6/setuptools-40.8.0-py2.py3-none-any.whl
+pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v1.3.1/render_pipeline-1.3.1-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d;
-cp -fv ${CONDA_PREFIX}/lib/libpython3.7m.so.1.0   ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/libcrypto.so.1.1       ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/libssl.so.1.1          ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/python3.7/os.py        ${PREFIX}/kitsunetsuki-runtime
-cp -Rfv ${CONDA_PREFIX}/lib/python3.7/lib-dynload ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}m.so.1.0   ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime
 
+cp -Rfv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bz2.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
@@ -62,14 +59,14 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
 
 cp -fv \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/__init__.py \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/panda3d/*.so \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/*.so \
                                                   ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/kcc.so \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/kcc.so \
                                                   ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2/cacerts.txt \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
@@ -79,48 +76,51 @@ cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${LIBX}/libpng12.so.0                      ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libCg.so                          ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libCgGL.so                        ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libogg.so.0                       ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libopenal.so.1                    ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libvorbis.so.0                    ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libvorbisfile.so.3                ${PREFIX}/kitsunetsuki-runtime
-
 cp -fv \
-   ${CONDA_PREFIX}/lib/libpanda*.so.1.10 \
-   ${CONDA_PREFIX}/lib/libp3*.so.1.10 \
+   ${ULIBX}/libCg.so \
+   ${ULIBX}/libCgGL.so \
+   ${ULIBX}/libogg.so.0 \
+   ${ULIBX}/libopenal.so.1 \
+   ${ULIBX}/libvorbis.so.0 \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${CONDA_PREFIX}/lib/libp3openal_audio.so   ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/libp3ptloader.so       ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/libpandagl.so          ${PREFIX}/kitsunetsuki-runtime
+cp -fv \
+   ${CONDA_PREFIX}/lib/libcrypto.so.1.1 \
+   ${CONDA_PREFIX}/lib/libgcc_s.so.1 \
+   ${CONDA_PREFIX}/lib/libp3*.so.* \
+   ${CONDA_PREFIX}/lib/libpanda*.so.* \
+   ${CONDA_PREFIX}/lib/libpng16.so.16 \
+   ${CONDA_PREFIX}/lib/libssl.so.1.1 \
+   ${CONDA_PREFIX}/lib/libstdc++.so.6 \
+   ${CONDA_PREFIX}/lib/libvorbisfile.so.3 \
+   ${CONDA_PREFIX}/lib/libz.so.1 \
+   ${CONDA_PREFIX}/lib/libp3openal_audio.so \
+   ${CONDA_PREFIX}/lib/libp3ptloader.so \
+   ${CONDA_PREFIX}/lib/libpandagl.so \
+                                                  ${PREFIX}/kitsunetsuki-runtime
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
-    ${PREFIX}/kitsunetsuki-runtime/python37.zip \
-    "${CONDA_PREFIX}/lib/python3.7/*" \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/attr \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/direct \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/httplib2 \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/idna \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/jsonschema \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/oauth2 \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/pandac \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/pkg_resources \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/pyrsistent \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/six.py \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/ubjson \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/rpcore \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/rplibs \
-    ${CONDA_PREFIX}/lib/python3.7/site-packages/rpplugins
+    ${PREFIX}/kitsunetsuki-runtime/${PYTHONVERSION}.zip \
+    "${CONDA_PREFIX}/lib/${PYTHON_VERSION}/*" \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/attr \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/direct \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2 \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/idna \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/six.py \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpcore \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rplibs \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins
 
 pip uninstall --yes \
+    render-pipeline \
     attrs \
     httplib2 \
-    idna \
-    jsonschema \
     oauth2 \
-    py-ubjson \
-    pyrsistent \
-    six
+    py-ubjson
