@@ -11,8 +11,7 @@ set KONDA_ARGS=^
 conda\%JOB_BASE_NAME%
 set KONDA_TOKEN=C:\Users\WIN8\anaconda-token.txt
 
-if exist env (
-) else (
+if not exist env (
     %KONDA% env remove --yes --prefix env
     rem# if you have ssl connection problems with it
     rem# copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
@@ -21,10 +20,8 @@ if exist env (
     %KONDA% install --prefix env conda-build anaconda-client
 )
 
-rem FOR /F "tokens=*" %%g IN ('env\Scripts\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 FOR /F "tokens=*" %%g IN ('env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
-rem env\Scripts\conda build %KONDA_ARGS%
 env\condabin\conda build %KONDA_ARGS%
 env\Scripts\anaconda ^
 --verbose ^

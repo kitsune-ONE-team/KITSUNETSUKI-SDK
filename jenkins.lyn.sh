@@ -10,8 +10,7 @@ KONDA_ARGS="\
 conda/${JOB_BASE_NAME,,}"
 KONDA_TOKEN=/home/ubuntu16/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
 
-if [ -d env ]; then
-else
+if [ ! -d env ]; then
     ${KONDA} env remove --yes --prefix env;
     ${KONDA} create --yes --prefix env;
     ${KONDA} install --prefix env conda-build anaconda-client;
