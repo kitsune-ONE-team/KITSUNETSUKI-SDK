@@ -34,6 +34,7 @@ requirements:
     - cmake
     - fontconfig # [unix]
     - freetype # [unix]
+    - libgcc-ng # [unix]
     - libpng
     - libstdcxx-ng # [unix]
     - m2-gcc-libs # [win]
@@ -43,12 +44,15 @@ requirements:
     - patchelf # [unix]
     - pillow # [unix]
     - python >=3.8
+    - zlib
   run:
     - fontconfig # [unix]
     - freetype # [unix]
+    - libgcc-ng # [unix]
     - libpng
     - libstdcxx-ng # [unix]
     - python >=3.8
+    - zlib
 
 about:
   home: http://www.panda3d.org/
