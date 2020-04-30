@@ -29,23 +29,25 @@ build:
 
 requirements:
   build:
-    - python >=3.8
-    - openssl >=1.1.1g
-    - cmake
+    - 7za # [win]
     - bullet ==2.83
-    - pillow # [unix]
+    - cmake
+    - fontconfig # [unix]
+    - freetype # [unix]
+    - libpng
+    - libstdcxx-ng # [unix]
     - m2-gcc-libs # [win]
     - m2-patch # [win]
     - msinttypes # [win]
-    - 7za # [win]
-    - fontconfig # [unix]
-    - freetype # [unix]
-    - libpng
-  run:
+    - openssl >=1.1.1g
+    - patchelf # [unix]
+    - pillow # [unix]
     - python >=3.8
+  run:
     - fontconfig # [unix]
     - freetype # [unix]
     - libpng
+    - python >=3.8
 
 about:
   home: http://www.panda3d.org/
