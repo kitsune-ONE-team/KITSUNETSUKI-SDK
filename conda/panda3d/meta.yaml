@@ -31,6 +31,8 @@ build:
     - $RPATH/libc.so.6
     - $RPATH/libm.so.6
     - $RPATH/libpthread.so.0
+    - $RPATH/libdl.so.2
+    - $RPATH/libvorbisfile.so.3
 
 requirements:
   build:
@@ -42,6 +44,7 @@ requirements:
     - libgcc-ng # [unix]
     - libpng
     - libstdcxx-ng # [unix]
+    - libvorbis # [unix]
     - m2-gcc-libs # [win]
     - m2-patch # [win]
     - msinttypes # [win]
@@ -56,6 +59,7 @@ requirements:
     - libgcc-ng # [unix]
     - libpng
     - libstdcxx-ng # [unix]
+    - libvorbis # [unix]
     - python >=3.8
     - zlib
 
