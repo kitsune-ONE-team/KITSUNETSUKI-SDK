@@ -1,4 +1,8 @@
-set PATH=%PATH%;D:\Apps\Git\bin
+set PATH=%PATH%;^
+D:\Apps\Git\bin;^
+env\Scripts;^
+env\Library\bin
+
 set KONDA=D:\Apps\Miniconda3_x64\Scripts\conda
 set KONDA_ARGS=^
 --error-overlinking ^
@@ -9,7 +13,7 @@ set KONDA_ARGS=^
 --output-folder output ^
 --channel kitsune.one ^
 conda\%JOB_BASE_NAME%
-set KONDA_TOKEN=C:\Users\WIN8\anaconda-token.txt
+set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%3A%2F%2Fapi.anaconda.org.token
 
 if not exist env (
     %KONDA% env remove --yes --prefix env
