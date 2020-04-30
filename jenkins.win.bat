@@ -13,7 +13,7 @@ set KONDA_ARGS=^
 --output-folder output ^
 --channel kitsune.one ^
 conda\%JOB_BASE_NAME%
-set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%3A%2F%2Fapi.anaconda.org.token
+set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%%3A%%2F%%2Fapi.anaconda.org.token
 
 if not exist env (
     %KONDA% env remove --yes --prefix env
