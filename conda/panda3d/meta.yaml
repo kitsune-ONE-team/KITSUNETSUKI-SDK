@@ -29,10 +29,9 @@ build:
 
   missing_dso_whitelist:
     - $RPATH/libc.so.6
+    - $RPATH/libdl.so.2
     - $RPATH/libm.so.6
     - $RPATH/libpthread.so.0
-    - $RPATH/libdl.so.2
-    - $RPATH/libvorbisfile.so.3
 
 requirements:
   build:
