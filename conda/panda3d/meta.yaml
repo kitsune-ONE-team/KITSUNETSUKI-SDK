@@ -27,6 +27,11 @@ build:
   number: 0
   string: 1588230447
 
+  missing_dso_whitelist:
+    - libc.so.6
+    - libm.so.6
+    - libpthread.so.0
+
 requirements:
   build:
     - 7za # [win]
