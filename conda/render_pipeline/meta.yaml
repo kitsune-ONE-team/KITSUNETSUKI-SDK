@@ -13,18 +13,18 @@ source:
 
 build:
   number: 0
-  string: 1586172956
+  string: 1588230447
 
 requirements:
   build:
-    - python <3.8
-    - openssl >=1.1.1f
+    - python >=3.8
+    - openssl >=1.1.1g
     - panda3d-kitsunetsuki >=1.10.6
     - m2-gcc-libs # [win]
     - m2-patch # [win]
     - msinttypes # [win]
   run:
-    - python <3.8
+    - python >=3.8
     - panda3d-kitsunetsuki >=1.10.6
     - pyqt
 

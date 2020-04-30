@@ -25,12 +25,12 @@ source:
 
 build:
   number: 0
-  string: 1586715300
+  string: 1588230447
 
 requirements:
   build:
-    - python <3.8
-    - openssl >=1.1.1f
+    - python >=3.8
+    - openssl >=1.1.1g
     - cmake
     - bullet ==2.83
     - pillow # [unix]
@@ -42,7 +42,7 @@ requirements:
     - freetype # [unix]
     - libpng
   run:
-    - python <3.8
+    - python >=3.8
     - fontconfig # [unix]
     - freetype # [unix]
     - libpng

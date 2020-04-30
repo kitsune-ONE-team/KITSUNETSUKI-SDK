@@ -31,12 +31,12 @@ source:
 
 build:
   number: 0
-  string: 1586172956
+  string: 1588230447
 
 requirements:
   build:
     - cmake
-    - python <3.8
+    - python >=3.8
     - requests
     - svn
     - git
@@ -45,7 +45,7 @@ requirements:
     - bullet
     - llvmdev
   run:
-    - python
+    - python >=3.8
 
 about:
   home: https://www.blender.org/
