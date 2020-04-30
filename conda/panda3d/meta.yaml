@@ -38,7 +38,11 @@ build:
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - C:\Windows\System32\MSVCP140.dll # [win]
+    - C:\Windows\System32\OPENGL32.dll # [win]
     - C:\Windows\System32\VCRUNTIME140.dll # [win]
+    - C:\Windows\System32\WSOCK32.dll # [win]
+    - Library\bin\MSVCP140.dll # [win]
+    - Library\bin\VCRUNTIME140.dll # [win]
 
 requirements:
   build:
