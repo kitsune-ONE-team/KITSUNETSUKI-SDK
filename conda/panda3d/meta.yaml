@@ -47,6 +47,7 @@ requirements:
     - fontconfig # [unix]
     - freetype # [unix]
     - libpng
+    - libstdcxx-ng # [unix]
     - python >=3.8
 
 about:
