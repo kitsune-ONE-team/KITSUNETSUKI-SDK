@@ -1,6 +1,8 @@
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
---keep-old-work \
+--no-build-id \
+--no-remove-work-dir \
+--error-overlinking \
 --cache-dir /var/lib/jenkins/cache \
 --croot croot \
 --output-folder output \
