@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PYTHON_VERSION="python3.8"
+
 if [ "${ARCH}" = "64" ]; then
     LARCH=x86_64;
 else
@@ -55,20 +57,13 @@ cp -R ${BUILT}/bin ${PREFIX}
 cp -R ${BUILT}/etc ${PREFIX}
 cp -R ${BUILT}/lib ${PREFIX}
 
-# cp -fv ${ULIBX}/libCg.so           ${PREFIX}/lib/;
-# cp -fv ${ULIBX}/libCgGL.so         ${PREFIX}/lib/;
-# cp -fv ${ULIBX}/libogg.so.0        ${PREFIX}/lib/;
-# cp -fv ${ULIBX}/libopenal.so.1     ${PREFIX}/lib/;
-# cp -fv ${ULIBX}/libvorbis.so.0     ${PREFIX}/lib/;
-# cp -fv ${ULIBX}/libvorbisfile.so.3 ${PREFIX}/lib/;
-
 mkdir -p ${PREFIX}/include
 cp -R ${BUILT}/include ${PREFIX}/include/panda3d
 
 mkdir -p ${PREFIX}/share/panda3d
 cp -R ${BUILT}/models ${PREFIX}/share/panda3d
 
-mkdir -p ${PREFIX}/lib/python3.7/site-packages
-cp -R ${BUILT}/direct ${PREFIX}/lib/python3.7/site-packages
-cp -R ${BUILT}/panda3d ${PREFIX}/lib/python3.7/site-packages
-cp -R ${BUILT}/pandac ${PREFIX}/lib/python3.7/site-packages
+mkdir -p ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/direct ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/panda3d ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/pandac ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
