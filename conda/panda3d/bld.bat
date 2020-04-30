@@ -28,6 +28,8 @@ python makepanda/makepanda.py ^
     --png-libdir %CONDA_PREFIX%\lib ^
     --python-incdir %CONDA_PREFIX%\include ^
     --python-libdir %CONDA_PREFIX%\lib ^
+    --vorbis-incdir %CONDA_PREFIX%\include ^
+    --vorbis-libdir %CONDA_PREFIX%\lib ^
     --zlib-incdir %CONDA_PREFIX%\include ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
     --msvc-version=14.1 ^

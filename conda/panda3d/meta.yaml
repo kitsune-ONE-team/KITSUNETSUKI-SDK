@@ -7,11 +7,10 @@ source:
     git_rev: v1.10.6
     folder: .
     patches:
-      - prefix-110.patch # [win]
+      - prefix.patch # [win]
       - nopy.patch # [win]
       - icon.patch # [unix]
-      - bullet.patch
-      - openssl.patch
+      - libs.patch
       - egg1.patch
       - egg2.patch
       - egg3.patch

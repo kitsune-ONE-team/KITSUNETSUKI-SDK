@@ -1,0 +1,54 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index b34cecd01..84506aa43 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -601,17 +601,10 @@ if (COMPILER == "MSVC"):
+     if (PkgSkip("DIRECTCAM")==0): LibName("DIRECTCAM", "odbc32.lib")
+     if (PkgSkip("DIRECTCAM")==0): LibName("DIRECTCAM", "odbccp32.lib")
+     if (PkgSkip("OPENSSL")==0):
+-        if os.path.isfile(GetThirdpartyDir() + "openssl/lib/libpandassl.lib"):
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandassl.lib")
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandaeay.lib")
+-        else:
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libeay32.lib")
+-            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/ssleay32.lib")
++        LibName("OPENSSL", SDK["PYTHON"] + "/Library/lib/libssl.lib")
++        LibName("OPENSSL", SDK["PYTHON"] + "/Library/lib/libcrypto.lib")
+     if (PkgSkip("PNG")==0):
+-        if os.path.isfile(GetThirdpartyDir() + "png/lib/libpng16_static.lib"):
+-            LibName("PNG", GetThirdpartyDir() + "png/lib/libpng16_static.lib")
+-        else:
+-            LibName("PNG", GetThirdpartyDir() + "png/lib/libpng_static.lib")
++        LibName("PNG", SDK["PYTHON"] + "/Library/lib/libpng16_static.lib")
+     if (PkgSkip("TIFF")==0):
+         if os.path.isfile(GetThirdpartyDir() + "tiff/lib/libtiff.lib"):
+             LibName("TIFF", GetThirdpartyDir() + "tiff/lib/libtiff.lib")
+@@ -637,7 +630,8 @@ if (COMPILER == "MSVC"):
+             LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/Half" + suffix + ".lib")
+         IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/OpenEXR")
+     if (PkgSkip("JPEG")==0):     LibName("JPEG",     GetThirdpartyDir() + "jpeg/lib/jpeg-static.lib")
+-    if (PkgSkip("ZLIB")==0):     LibName("ZLIB",     GetThirdpartyDir() + "zlib/lib/zlibstatic.lib")
++    if (PkgSkip("ZLIB")==0):
++        LibName("ZLIB", SDK["PYTHON"] + "/Library/lib/zlibstatic.lib")
+     if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/vrpn.lib")
+     if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/quat.lib")
+     if (PkgSkip("NVIDIACG")==0): LibName("CGGL",     GetThirdpartyDir() + "nvidiacg/lib/cgGL.lib")
+@@ -735,13 +729,11 @@ if (COMPILER == "MSVC"):
+             LibName("SPEEDTREE",  "glu32.lib")
+         IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
+     if (PkgSkip("BULLET")==0):
+-        suffix = '.lib'
+-        if GetTargetArch() == 'x64' and os.path.isfile(GetThirdpartyDir() + "bullet/lib/BulletCollision_x64.lib"):
+-            suffix = '_x64.lib'
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/LinearMath" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
+-        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/LinearMath.lib")
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletCollision.lib")
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletDynamics.lib")
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletSoftBody.lib")
++        IncDirectory("BULLET", SDK["PYTHON"] + "/Library/include/bullet")
+ 
+ if (COMPILER=="GCC"):
+     if GetTarget() != "darwin":

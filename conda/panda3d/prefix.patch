@@ -1,14 +1,14 @@
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index fea93fd43..6b9d45331 100644
+index b1666aee3..5c03005e1 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
-@@ -1873,7 +1873,8 @@ def SdkLocatePython(prefer_thirdparty_python=False):
-         return
+@@ -1970,7 +1970,8 @@ def SdkLocatePython(prefer_thirdparty_python=False):
+         if GetTargetArch() == 'x64':
+             sdkdir += "-x64"
  
-     if GetTarget() == 'windows':
--        SDK["PYTHON"] = GetThirdpartyBase() + "/win-python"
+-        SDK["PYTHON"] = sdkdir
 +        SDK["PYTHON"] = os.environ['CONDA_PREFIX'].replace('\\', '/')
 +        IncDirectory("ALWAYS", SDK["PYTHON"] + "/Library/include")
+         SDK["PYTHONEXEC"] = SDK["PYTHON"].replace('\\', '/') + "/python"
          if (GetOptimize() <= 2):
-             SDK["PYTHON"] += "-dbg"
-         if (GetTargetArch() == 'x64' and os.path.isdir(SDK["PYTHON"] + "-x64")):
+             SDK["PYTHONEXEC"] += "_d.exe"
