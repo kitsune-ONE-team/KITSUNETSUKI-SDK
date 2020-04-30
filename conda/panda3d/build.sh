@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_VERSION="python3.8"
+PYTHON_VERSION=python3.8
 
 if [ "${ARCH}" = "64" ]; then
     LARCH=x86_64;
