@@ -9,12 +9,23 @@ build:
   number: 0
   string: 1588230447
 
+  missing_dso_whitelist:
+    - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - C:\Windows\System32\MSVCP140.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
+
 requirements:
   build:
-    - cmake
     - bullet
+    - cmake
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
     - panda3d
   run:
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
     - panda3d
 
 about:
