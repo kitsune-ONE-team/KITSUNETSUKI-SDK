@@ -64,6 +64,7 @@ requirements:
     - m2-patch # [win]
     - msinttypes # [win]
     - openssl >=1.1.1g
+    - patchelf # [unix]
     - pillow # [unix]
     - python >=3.8
     - zlib
