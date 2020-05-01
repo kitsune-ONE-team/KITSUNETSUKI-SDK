@@ -22,6 +22,7 @@ dependencies:
 - six ==1.14.0
 - sphinx ==3.0.3
 - twine ==2.0.0
+- pip
 - pip:
   - PyYAML==3.12
   - epc==0.0.5
