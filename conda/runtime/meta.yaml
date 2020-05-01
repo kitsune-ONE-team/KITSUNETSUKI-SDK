@@ -54,9 +54,12 @@ requirements:
     - six ==1.14.0
   run:
     - libgcc-ng # [unix]
+    - libogg # [unix]
     - libstdcxx-ng # [unix]
+    - libvorbis # [unix]
     - panda3d
     - python >=3.8
+    - zlib
 
 about:
   home: https://kitsune.one/
