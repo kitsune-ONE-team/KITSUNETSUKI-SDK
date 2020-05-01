@@ -1,11 +1,7 @@
 if "%ARCH%" == "64" (
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set WINLIBS=thirdparty\win-libs-vc14-x64
 ) else (
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set WINLIBS=thirdparty\win-libs-vc14
 )
@@ -64,8 +60,8 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
-python makepanda/makewheel.py \
-    --verbose \
+python makepanda/makewheel.py ^
+    --verbose ^
     --outputdir %BUILT%
 
 if "%ERRORLEVEL%" == "1" (
@@ -88,4 +84,5 @@ mkdir %PREFIX%\Lib
 mkdir %PREFIX%\Lib\site-packages
 xcopy /I /E /Y %BUILT%\direct %PREFIX%\Lib\site-packages\direct
 xcopy /I /E /Y %BUILT%\panda3d %PREFIX%\Lib\site-packages\panda3d
+xcopy /I /E /Y %BUILT%\panda3d.dist-info %PREFIX%\Lib\site-packages\panda3d.dist-info
 xcopy /I /E /Y %BUILT%\pandac %PREFIX%\Lib\site-packages\pandac

@@ -80,4 +80,5 @@ cp -R ${BUILT}/models ${PREFIX}/share/panda3d
 mkdir -p ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
 cp -R ${BUILT}/direct ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
 cp -R ${BUILT}/panda3d ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/panda3d.dist-info ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
 cp -R ${BUILT}/pandac ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
