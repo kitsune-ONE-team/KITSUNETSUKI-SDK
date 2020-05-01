@@ -86,3 +86,7 @@ xcopy /I /E /Y %BUILT%\direct %PREFIX%\Lib\site-packages\direct
 xcopy /I /E /Y %BUILT%\panda3d %PREFIX%\Lib\site-packages\panda3d
 xcopy /I /E /Y %BUILT%\panda3d.dist-info %PREFIX%\Lib\site-packages\panda3d.dist-info
 xcopy /I /E /Y %BUILT%\pandac %PREFIX%\Lib\site-packages\pandac
+
+del %PREFIX%\Library\bin\*.pdb
+del %PREFIX%\Library\lib\*.pdb
+del %PREFIX%\Lib\site-packages\panda3d\*.pdb
