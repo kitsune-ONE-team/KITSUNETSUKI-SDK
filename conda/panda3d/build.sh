@@ -55,6 +55,8 @@ python makepanda/makepanda.py \
     --use-zlib \
     --verbose
 
+python makepanda/makewheel.py --verbose
+
 # cmake \
 #     -DCMAKE_BUILD_TYPE=Release \
 #     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
