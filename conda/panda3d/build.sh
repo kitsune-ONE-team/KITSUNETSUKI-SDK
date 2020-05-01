@@ -69,18 +69,18 @@ python makepanda/makewheel.py \
 # make
 # make install
 
-cp -R ${BUILT}/bin ${PREFIX}
-cp -R ${BUILT}/etc ${PREFIX}
-cp -R ${BUILT}/lib ${PREFIX}
+cp -Rfv ${BUILT}/bin ${PREFIX}
+cp -Rfv ${BUILT}/etc ${PREFIX}
+cp -Rfv ${BUILT}/lib ${PREFIX}
 
-mkdir -p ${PREFIX}/include
-cp -R ${BUILT}/include                  ${PREFIX}/include/panda3d
+mkdir -pv ${PREFIX}/include
+cp -Rfv ${BUILT}/include                  ${PREFIX}/include/panda3d
 
-mkdir -p ${PREFIX}/share/panda3d
-cp -R ${BUILT}/models                   ${PREFIX}/share/panda3d
+mkdir -pv ${PREFIX}/share/panda3d
+cp -Rfv ${BUILT}/models                   ${PREFIX}/share/panda3d
 
-mkdir -p ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/direct                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/panda3d                  ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/pandac                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+mkdir -pv ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/direct                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/panda3d                  ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/pandac                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
