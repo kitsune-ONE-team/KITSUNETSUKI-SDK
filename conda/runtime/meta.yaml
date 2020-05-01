@@ -37,9 +37,17 @@ build:
 
 requirements:
   build:
-    - panda3d
-    - kcc
     - 7za # [win]
+    - idna ==2.9
+    - jsonschema ==3.2.0
+    - kcc
+    - panda3d
+    - pyrsistent ==0.16.0
+    - python >=3.8
+    - six ==1.14.0
+  run:
+    - panda3d
+    - python >=3.8
 
 about:
   home: https://kitsune.one/
