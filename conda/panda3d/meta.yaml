@@ -71,12 +71,11 @@ requirements:
   run:
     - freetype # [unix]
     - libgcc-ng # [unix]
-    - libogg # [unix]
-    - libpng
+    - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
     - python >=3.8
-    - zlib
+    - zlib # [unix]
 
 about:
   home: http://www.panda3d.org/
