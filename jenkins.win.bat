@@ -5,17 +5,15 @@ env\Library\bin
 
 set KONDA=D:\Apps\Miniconda3_x64\Scripts\conda
 set KONDA_ARGS=^
---build-only ^
 --cache-dir D:\Cache ^
 --channel kitsune.one ^
 --croot croot ^
---debug ^
+--dirty ^
 --error-overlinking ^
 --keep-old-work ^
 --no-anaconda-upload ^
 --no-build-id ^
 --no-remove-work-dir ^
---no-test ^
 --output-folder output ^
 conda\%JOB_BASE_NAME%
 set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%%3A%%2F%%2Fapi.anaconda.org.token
