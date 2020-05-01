@@ -57,6 +57,7 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/spwd.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/syslog.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
+rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/readline.cpython-*-linux-gnu.so
 
 cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
@@ -79,24 +80,24 @@ cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
    ${ULIBX}/libCg.so \
    ${ULIBX}/libCgGL.so \
-   ${ULIBX}/libogg.so.0 \
    ${ULIBX}/libopenal.so.1 \
-   ${ULIBX}/libvorbis.so.0 \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.1.1 \
    ${CONDA_PREFIX}/lib/libgcc_s.so.1 \
+   ${CONDA_PREFIX}/lib/libogg.so.0.8.2 \
    ${CONDA_PREFIX}/lib/libp3*.so.* \
+   ${CONDA_PREFIX}/lib/libp3openal_audio.so \
+   ${CONDA_PREFIX}/lib/libp3ptloader.so \
    ${CONDA_PREFIX}/lib/libpanda*.so.* \
+   ${CONDA_PREFIX}/lib/libpandagl.so \
    ${CONDA_PREFIX}/lib/libpng16.so.16 \
    ${CONDA_PREFIX}/lib/libssl.so.1.1 \
    ${CONDA_PREFIX}/lib/libstdc++.so.6 \
-   ${CONDA_PREFIX}/lib/libvorbisfile.so.3 \
+   ${CONDA_PREFIX}/lib/libvorbis.so.0.4.8 \
+   ${CONDA_PREFIX}/lib/libvorbisfile.so.3.3.7 \
    ${CONDA_PREFIX}/lib/libz.so.1 \
-   ${CONDA_PREFIX}/lib/libp3openal_audio.so \
-   ${CONDA_PREFIX}/lib/libp3ptloader.so \
-   ${CONDA_PREFIX}/lib/libpandagl.so \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
 7za a \

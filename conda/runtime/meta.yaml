@@ -49,10 +49,12 @@ requirements:
     - python >=3.8
     - six ==1.14.0
   run:
+    - freetype # [unix]
     - libgcc-ng # [unix]
     - libogg # [unix]
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
+    - openssl >=1.1.1g
     - panda3d
     - python >=3.8
     - zlib
