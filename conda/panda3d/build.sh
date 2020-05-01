@@ -11,7 +11,7 @@ fi
 LIBX=/lib/${LARCH}-linux-gnu;
 ULIBX=/usr/lib/${LARCH}-linux-gnu;
 
-BUILT=${SRC_DIR}/built;
+BUILT=${RECIPE_DIR}/built;
 
 python ${RECIPE_DIR}/icon.py \
     ${RECIPE_DIR}/icon_256.png \
@@ -53,9 +53,12 @@ python makepanda/makepanda.py \
     --use-vorbis \
     --use-x11 \
     --use-zlib \
-    --verbose
+    --verbose \
+    --outputdir ${BUILT}
 
-python makepanda/makewheel.py --verbose
+python makepanda/makewheel.py \
+    --verbose \
+    --outputdir ${BUILT}
 
 # cmake \
 #     -DCMAKE_BUILD_TYPE=Release \
