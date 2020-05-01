@@ -19,16 +19,21 @@ build:
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
+    - $RPATH/librt.so.1 # [unix]
     - $RPATH\D3DCOMPILER_43.dll # [win]
     - $RPATH\d3dx10_43.dll # [win]
     - $RPATH\d3dx11_43.dll # [win]
+    - $RPATH\libffi-7.dll # [win]
+    - $RPATH\pgort140.DLL # [win]
     - C:\Windows\System32\GLU32.dll # [win]
     - C:\Windows\System32\IPHLPAPI.DLL # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
     - C:\Windows\System32\OPENGL32.dll # [win]
     - C:\Windows\System32\SETUPAPI.dll # [win]
+    - C:\Windows\System32\SHLWAPI.dll # [win]
     - C:\Windows\System32\VCRUNTIME140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
+    - C:\Windows\System32\VERSION.dll # [win]
     - C:\Windows\System32\WINMM.dll # [win]
     - C:\Windows\System32\WSOCK32.dll # [win]
     - C:\Windows\System32\d3d10.dll # [win]
@@ -46,6 +51,8 @@ requirements:
     - python >=3.8
     - six ==1.14.0
   run:
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
     - panda3d
     - python >=3.8
 
