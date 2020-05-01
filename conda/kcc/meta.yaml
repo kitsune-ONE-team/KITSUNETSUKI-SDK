@@ -12,10 +12,10 @@ build:
 requirements:
   build:
     - cmake
-    - bullet ==2.83
-    - panda3d-kitsunetsuki >=1.10.6
+    - bullet
+    - panda3d
   run:
-    - panda3d-kitsunetsuki >=1.10.6
+    - panda3d
 
 about:
   home: https://github.com/Yonnji/KITSUNETSUKI-SDK
