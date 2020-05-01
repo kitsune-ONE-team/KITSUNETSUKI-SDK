@@ -13,7 +13,7 @@ rmdir /S /Q %WINLIBS%\bullet
 :: remove included openssl
 rmdir /S /Q %WINLIBS%\openssl
 
-set BUILT=%RECIPE_DIR%\built
+set BUILT=built
 
 python makepanda/makepanda.py ^
     --bullet-incdir %CONDA_PREFIX%\include ^
