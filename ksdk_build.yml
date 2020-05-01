@@ -5,7 +5,8 @@ channels:
 - defaults
 
 dependencies:
+- anaconda-client
+- cmake
 - conda
 - conda-build
 - python
-- cmake
