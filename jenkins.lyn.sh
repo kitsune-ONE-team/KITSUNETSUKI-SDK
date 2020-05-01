@@ -1,5 +1,6 @@
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
+--build-only \
 --cache-dir /var/lib/jenkins/cache \
 --channel kitsune.one \
 --croot croot \
@@ -9,6 +10,7 @@ KONDA_ARGS="\
 --no-anaconda-upload \
 --no-build-id \
 --no-remove-work-dir \
+--no-test \
 --output-folder output \
 conda/${JOB_BASE_NAME,,}"
 KONDA_TOKEN=/home/ubuntu16/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
