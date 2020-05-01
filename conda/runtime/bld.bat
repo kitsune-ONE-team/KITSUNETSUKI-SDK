@@ -19,11 +19,18 @@ copy /V /Y %CONDA_PREFIX%\%PYTHON_VERSION%.dll              %PREFIX%\kitsunetsuk
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
 
+del %PREFIX%\kitsunetsuki-runtime\cgD3D9.dll
+del %PREFIX%\kitsunetsuki-runtime\cgD3D10.dll
+del %PREFIX%\kitsunetsuki-runtime\cgD3D11.dll
+
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_bz2.pyd
+del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_msi.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_sqlite3.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testbuffer.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testcapi.pyd
+del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testconsole.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testimportmultiple.pyd
+del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testinternalcapi.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testmultiphase.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_tkinter.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\winsound.pyd
@@ -33,11 +40,15 @@ del %PREFIX%\kitsunetsuki-runtime\DLLs\_msi.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_sqlite3.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_testbuffer.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_testcapi.pyd
+del %PREFIX%\kitsunetsuki-runtime\DLLs\_testcapi.pyd
+del %PREFIX%\kitsunetsuki-runtime\DLLs\_testconsole.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_testimportmultiple.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_testmultiphase.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_tkinter.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\winsound.pyd
 
+del %PREFIX%\kitsunetsuki-runtime\DLLs\py.ico
+del %PREFIX%\kitsunetsuki-runtime\DLLs\pyc.ico
 del %PREFIX%\kitsunetsuki-runtime\DLLs\tcl86t.dll
 del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll
 del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll

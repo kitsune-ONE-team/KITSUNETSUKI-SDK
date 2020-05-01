@@ -10,6 +10,7 @@ build:
   string: 1588230447
 
   missing_dso_whitelist:
+    - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
     - $RPATH/libGL.so.1 # [unix]
@@ -20,6 +21,7 @@ build:
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/librt.so.1 # [unix]
+    - $RPATH/libutil.so.1 # [unix]
     - $RPATH\D3DCOMPILER_43.dll # [win]
     - $RPATH\d3dx10_43.dll # [win]
     - $RPATH\d3dx11_43.dll # [win]
