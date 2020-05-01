@@ -3,6 +3,7 @@ KONDA_ARGS="\
 --cache-dir /var/lib/jenkins/cache \
 --channel kitsune.one \
 --croot croot \
+--debug \
 --error-overlinking \
 --keep-old-work \
 --no-anaconda-upload \

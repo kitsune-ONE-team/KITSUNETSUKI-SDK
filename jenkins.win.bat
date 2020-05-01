@@ -8,6 +8,7 @@ set KONDA_ARGS=^
 --cache-dir D:\Cache ^
 --channel kitsune.one ^
 --croot croot ^
+--debug ^
 --error-overlinking ^
 --keep-old-work ^
 --no-anaconda-upload ^
