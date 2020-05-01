@@ -2,13 +2,11 @@ if "%ARCH%" == "64" (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
-    set BUILT=%SRC_DIR%\built_x64
     set WINLIBS=thirdparty\win-libs-vc14-x64
 ) else (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
-    set BUILT=%SRC_DIR%\built
     set WINLIBS=thirdparty\win-libs-vc14
 )
 color 0f
@@ -18,6 +16,8 @@ rmdir /S /Q %WINLIBS%\bullet
 
 :: remove included openssl
 rmdir /S /Q %WINLIBS%\openssl
+
+set BUILT=%RECIPE_DIR%\built
 
 python makepanda/makepanda.py ^
     --bullet-incdir %CONDA_PREFIX%\include ^
@@ -57,7 +57,16 @@ python makepanda/makepanda.py ^
     --use-x11 ^
     --use-zlib ^
     --verbose ^
-    --windows-sdk=10
+    --windows-sdk=10 ^
+    --outputdir %BUILT%
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+python makepanda/makewheel.py \
+    --verbose \
+    --outputdir %BUILT%
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1

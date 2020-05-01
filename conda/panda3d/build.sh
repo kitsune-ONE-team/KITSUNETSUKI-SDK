@@ -8,10 +8,10 @@ else
     LARCH=i386;
 fi
 
-LIBX=/lib/${LARCH}-linux-gnu;
-ULIBX=/usr/lib/${LARCH}-linux-gnu;
+LIBX=/lib/${LARCH}-linux-gnu
+ULIBX=/usr/lib/${LARCH}-linux-gnu
 
-BUILT=${RECIPE_DIR}/built;
+BUILT=${RECIPE_DIR}/built
 
 python ${RECIPE_DIR}/icon.py \
     ${RECIPE_DIR}/icon_256.png \
