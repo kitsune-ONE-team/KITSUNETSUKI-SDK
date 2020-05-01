@@ -16,7 +16,7 @@ KONDA_TOKEN=/home/ubuntu16/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.a
 if [ ! -d env ]; then
     ${KONDA} env remove --yes --prefix env;
     ${KONDA} create --yes --prefix env;
-    ${KONDA} install --prefix env conda-build anaconda-client;
+    ${KONDA} install --prefix env conda-build anaconda-client ripgrep;
 fi
 
 KONDA_PAK=$(env/bin/conda build --output ${KONDA_ARGS})
@@ -29,6 +29,7 @@ env/bin/anaconda \
 --verbose \
 --token ${KONDA_TOKEN} \
 upload \
+--no-progress \
 --user kitsune.one \
 --force \
 ${KONDA_PAK}

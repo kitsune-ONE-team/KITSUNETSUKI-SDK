@@ -24,7 +24,7 @@ if not exist env (
     rem# copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
     rem# from "Library/bin" to "DDLs"
     %KONDA% create --yes --prefix env
-    %KONDA% install --prefix env conda-build anaconda-client
+    %KONDA% install --prefix env conda-build anaconda-client ripgrep
 )
 
 FOR /F "tokens=*" %%g IN ('env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
@@ -37,6 +37,7 @@ env\Scripts\anaconda ^
 --verbose ^
 --token %KONDA_TOKEN% ^
 upload ^
+--no-progress ^
 --user kitsune.one ^
 --force ^
 %KONDA_PAK%
