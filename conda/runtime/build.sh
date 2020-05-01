@@ -19,8 +19,8 @@ pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf68
 pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v1.3.1/render_pipeline-1.3.1-py3-none-any.whl
 
-mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d;
-cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}m.so.1.0   ${PREFIX}/kitsunetsuki-runtime
+mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
+cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}.so.1.0   ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime
 
 cp -Rfv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime

@@ -9,6 +9,32 @@ build:
   number: 0
   string: 1588230447
 
+  missing_dso_whitelist:
+    - $RPATH/libCg.so # [unix]
+    - $RPATH/libCgGL.so # [unix]
+    - $RPATH/libGL.so.1 # [unix]
+    - $RPATH/libX11.so.6 # [unix]
+    - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libdl.so.2 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - $RPATH/libopenal.so.1 # [unix]
+    - $RPATH/libpthread.so.0 # [unix]
+    - $RPATH\D3DCOMPILER_43.dll # [win]
+    - $RPATH\d3dx10_43.dll # [win]
+    - $RPATH\d3dx11_43.dll # [win]
+    - C:\Windows\System32\GLU32.dll # [win]
+    - C:\Windows\System32\IPHLPAPI.DLL # [win]
+    - C:\Windows\System32\MSVCP140.dll # [win]
+    - C:\Windows\System32\OPENGL32.dll # [win]
+    - C:\Windows\System32\SETUPAPI.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
+    - C:\Windows\System32\WINMM.dll # [win]
+    - C:\Windows\System32\WSOCK32.dll # [win]
+    - C:\Windows\System32\d3d10.dll # [win]
+    - Library\bin\MSVCP140.dll # [win]
+    - Library\bin\VCRUNTIME140.dll # [win]
+
 requirements:
   build:
     - panda3d
