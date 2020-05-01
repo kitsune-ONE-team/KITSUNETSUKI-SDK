@@ -24,12 +24,11 @@ python makepanda/makepanda.py ^
     --png-libdir %CONDA_PREFIX%\lib ^
     --python-incdir %CONDA_PREFIX%\include ^
     --python-libdir %CONDA_PREFIX%\lib ^
-    --vorbis-incdir %CONDA_PREFIX%\include ^
-    --vorbis-libdir %CONDA_PREFIX%\lib ^
     --zlib-incdir %CONDA_PREFIX%\include ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
     --msvc-version=14.1 ^
     --nothing ^
+    --outputdir %BUILT% ^
     --threads=2 ^
     --use-bullet ^
     --use-contrib ^
@@ -53,40 +52,42 @@ python makepanda/makepanda.py ^
     --use-x11 ^
     --use-zlib ^
     --verbose ^
-    --windows-sdk=10 ^
-    --outputdir %BUILT%
+    --windows-sdk=10
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
 python makepanda/makewheel.py ^
-    --verbose ^
-    --outputdir %BUILT%
+    --outputdir %BUILT% ^
+    --verbose
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
 mkdir %PREFIX%\Library
-xcopy /I /E /Y %BUILT%\bin %PREFIX%\Library\bin
-xcopy /I /E /Y %BUILT%\etc %PREFIX%\Library\etc
-xcopy /I /E /Y %BUILT%\lib %PREFIX%\Library\lib
+xcopy /I /E /Y %BUILT%\bin                        %PREFIX%\Library\bin
+xcopy /I /E /Y %BUILT%\etc                        %PREFIX%\Library\etc
+xcopy /I /E /Y %BUILT%\lib                        %PREFIX%\Library\lib
 
 mkdir %PREFIX%\Library\include
-xcopy /I /E /Y %BUILT%\include %PREFIX%\Library\include\panda3d
+xcopy /I /E /Y %BUILT%\include                    %PREFIX%\Library\include\panda3d
 
 mkdir %PREFIX%\Library\share
 mkdir %PREFIX%\Library\share\panda3d
-xcopy /I /E /Y %BUILT%\models %PREFIX%\Library\share\panda3d\models
+xcopy /I /E /Y %BUILT%\models                     %PREFIX%\Library\share\panda3d\models
 
 mkdir %PREFIX%\Lib
 mkdir %PREFIX%\Lib\site-packages
-xcopy /I /E /Y %BUILT%\direct %PREFIX%\Lib\site-packages\direct
-xcopy /I /E /Y %BUILT%\panda3d %PREFIX%\Lib\site-packages\panda3d
-xcopy /I /E /Y %BUILT%\panda3d.dist-info %PREFIX%\Lib\site-packages\panda3d.dist-info
-xcopy /I /E /Y %BUILT%\pandac %PREFIX%\Lib\site-packages\pandac
+xcopy /I /E /Y %BUILT%\direct                     %PREFIX%\Lib\site-packages\direct
+xcopy /I /E /Y %BUILT%\panda3d                    %PREFIX%\Lib\site-packages\panda3d
+xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
+xcopy /I /E /Y %BUILT%\pandac                     %PREFIX%\Lib\site-packages\pandac
 
+del %PREFIX%\Library\bin\cgD3D9.dll
+del %PREFIX%\Library\bin\cgD3D10.dll
+del %PREFIX%\Library\bin\cgD3D11.dll
 del %PREFIX%\Library\bin\*.pdb
 del %PREFIX%\Library\lib\*.pdb
 del %PREFIX%\Lib\site-packages\panda3d\*.pdb

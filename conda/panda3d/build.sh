@@ -28,9 +28,12 @@ python makepanda/makepanda.py \
     --png-libdir ${CONDA_PREFIX}/lib \
     --python-incdir ${CONDA_PREFIX}/include \
     --python-libdir ${CONDA_PREFIX}/lib \
+    --vorbis-incdir ${CONDA_PREFIX}/include \
+    --vorbis-libdir ${CONDA_PREFIX}/lib \
     --zlib-incdir ${CONDA_PREFIX}/include \
     --zlib-libdir ${CONDA_PREFIX}/lib \
     --nothing \
+    --outputdir ${BUILT} \
     --threads=2 \
     --use-bullet \
     --use-contrib \
@@ -53,12 +56,11 @@ python makepanda/makepanda.py \
     --use-vorbis \
     --use-x11 \
     --use-zlib \
-    --verbose \
-    --outputdir ${BUILT}
+    --verbose
 
 python makepanda/makewheel.py \
-    --verbose \
-    --outputdir ${BUILT}
+    --outputdir ${BUILT} \
+    --verbose
 
 # cmake \
 #     -DCMAKE_BUILD_TYPE=Release \
@@ -72,13 +74,13 @@ cp -R ${BUILT}/etc ${PREFIX}
 cp -R ${BUILT}/lib ${PREFIX}
 
 mkdir -p ${PREFIX}/include
-cp -R ${BUILT}/include ${PREFIX}/include/panda3d
+cp -R ${BUILT}/include                  ${PREFIX}/include/panda3d
 
 mkdir -p ${PREFIX}/share/panda3d
-cp -R ${BUILT}/models ${PREFIX}/share/panda3d
+cp -R ${BUILT}/models                   ${PREFIX}/share/panda3d
 
 mkdir -p ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/direct ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/panda3d ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/panda3d.dist-info ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -R ${BUILT}/pandac ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/direct                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/panda3d                  ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+cp -R ${BUILT}/pandac                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
