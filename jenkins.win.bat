@@ -9,6 +9,7 @@ set KONDA_ARGS=^
 --channel kitsune.one ^
 --croot croot ^
 --error-overlinking ^
+--keep-old-work ^
 --no-anaconda-upload ^
 --no-build-id ^
 --no-remove-work-dir ^
