@@ -1,4 +1,5 @@
 set PYTHON_VERSION=python38
+set RP_VERSION=1.3.3
 
 if "%ARCH%" == "64" (
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -11,7 +12,7 @@ pip install https://files.pythonhosted.org/packages/23/96/d828354fa2dbdf216eaa7b
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/68/9c/a6c34e565351f0b04bcf6835e38bc4bd0647269dc48670e12eb99a3f5ef5/py-ubjson-0.12.0.tar.gz
 pip install https://files.pythonhosted.org/packages/75/d0/f213003c9deec99fb4f46e54580b93a3b121c487d9d6d888fc12267eb2a2/httplib2-0.12.1.tar.gz
-pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v1.3.2/render_pipeline-1.3.2-py3-none-any.whl
+pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v%RP_VERSION%/render_pipeline-%RP_VERSION%-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
