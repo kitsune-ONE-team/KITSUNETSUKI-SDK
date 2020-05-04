@@ -94,17 +94,22 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
     %CONDA_PREFIX%\Lib\site-packages\attr ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
+    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.17.3.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
+    %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
+    %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.post1.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
+    %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.12.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
-    %CONDA_PREFIX%\Lib\site-packages\six.py ^
-    %CONDA_PREFIX%\Lib\site-packages\ubjson ^
+    %CONDA_PREFIX%\Lib\site-packages\render_pipeline-1.3.3.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\rpcore ^
     %CONDA_PREFIX%\Lib\site-packages\rplibs ^
-    %CONDA_PREFIX%\Lib\site-packages\rpplugins
+    %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
+    %CONDA_PREFIX%\Lib\site-packages\six.py ^
+    %CONDA_PREFIX%\Lib\site-packages\ubjson
 
 pip uninstall --yes ^
     render-pipeline ^

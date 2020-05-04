@@ -111,17 +111,22 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/attr \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/direct \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2 \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2-0.17.3.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/idna \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.post1.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.12.0.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/six.py \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-1.3.3.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpcore \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rplibs \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/six.py \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson
 
 pip uninstall --yes \
     render-pipeline \
