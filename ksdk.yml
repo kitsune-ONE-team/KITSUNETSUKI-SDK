@@ -5,6 +5,7 @@ channels:
 - defaults
 
 dependencies:
+- attrs ==19.3.0
 - cmake
 - conda
 - cython ==0.29.17
@@ -15,6 +16,7 @@ dependencies:
 - jsonschema ==3.2.0
 - kcc
 - panda3d
+- pip ==20.0.2
 - pyqt ==5.9.2
 - pyrsistent ==0.16.0
 - python >=3.8
@@ -22,11 +24,9 @@ dependencies:
 - six ==1.14.0
 - sphinx ==3.0.3
 - twine ==2.0.0
-- pip ==20.0.2
 - pip:
   - PyYAML==3.12
   - epc==0.0.5
-  - attrs==19.3.0
   - httplib2==0.17.3
   - oauth2==1.9.0.post1
   - py-ubjson==0.16.1

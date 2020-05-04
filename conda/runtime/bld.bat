@@ -8,7 +8,6 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-pip install https://files.pythonhosted.org/packages/a2/db/4313ab3be961f7a763066401fb77f7748373b6094076ae2bda2806988af6/attrs-19.3.0-py2.py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
 pip install https://files.pythonhosted.org/packages/1d/c7/28220d37e041fe1df03e857fe48f768dcd30cd151480bf6f00da8713214a/py-ubjson-0.16.1.tar.gz
 pip install https://files.pythonhosted.org/packages/18/9b/b95a08c373819376bf3f109bdbcff6bd4f69f2340bf708a252380319037a/httplib2-0.17.3-py3-none-any.whl
@@ -113,7 +112,6 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
 
 pip uninstall --yes ^
     render-pipeline ^
-    attrs ^
     httplib2 ^
     oauth2 ^
     py-ubjson
