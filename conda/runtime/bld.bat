@@ -101,7 +101,7 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
     %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.post1.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
-    %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.12.0.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\render_pipeline-1.3.3.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\rpcore ^
