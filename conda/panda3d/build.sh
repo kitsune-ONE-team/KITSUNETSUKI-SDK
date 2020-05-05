@@ -42,7 +42,6 @@ python makepanda/makepanda.py \
     --use-egg \
     --use-freetype \
     --use-gl \
-    --use-nvidiacg \
     --use-openal \
     --use-openssl \
     --use-pandafx \

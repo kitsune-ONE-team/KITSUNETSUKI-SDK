@@ -37,7 +37,6 @@ python makepanda/makepanda.py ^
     --use-egg ^
     --use-freetype ^
     --use-gl ^
-    --use-nvidiacg ^
     --use-openal ^
     --use-openssl ^
     --use-pandafx ^
@@ -85,6 +84,8 @@ xcopy /I /E /Y %BUILT%\panda3d                    %PREFIX%\Lib\site-packages\pan
 xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
 xcopy /I /E /Y %BUILT%\pandac                     %PREFIX%\Lib\site-packages\pandac
 
+del %PREFIX%\Library\bin\cg.dll
+del %PREFIX%\Library\bin\cgGL.dll
 del %PREFIX%\Library\bin\cgD3D9.dll
 del %PREFIX%\Library\bin\cgD3D10.dll
 del %PREFIX%\Library\bin\cgD3D11.dll

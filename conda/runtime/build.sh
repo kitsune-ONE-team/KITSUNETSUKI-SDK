@@ -11,7 +11,6 @@ else
     LARCH=i386;
 fi
 
-LIBX=/lib/${LARCH}-linux-gnu
 ULIBX=/usr/lib/${LARCH}-linux-gnu
 
 pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
@@ -80,11 +79,7 @@ cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/vorbis-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/zlib-LICENSE.txt             ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv \
-   ${ULIBX}/libCg.so \
-   ${ULIBX}/libCgGL.so \
-   ${ULIBX}/libopenal.so.* \
-                                                  ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libopenal.so.*                    ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \

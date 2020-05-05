@@ -19,6 +19,8 @@ copy /V /Y %CONDA_PREFIX%\%PYTHON_VERSION%.dll              %PREFIX%\kitsunetsuk
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
 
+del %PREFIX%\kitsunetsuki-runtime\cg.dll
+del %PREFIX%\kitsunetsuki-runtime\cgGL.dll
 del %PREFIX%\kitsunetsuki-runtime\cgD3D9.dll
 del %PREFIX%\kitsunetsuki-runtime\cgD3D10.dll
 del %PREFIX%\kitsunetsuki-runtime\cgD3D11.dll
