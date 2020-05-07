@@ -4,7 +4,7 @@ THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
 cd blender
 
-mkdir bld
+mkdir -p bld
 cd bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
