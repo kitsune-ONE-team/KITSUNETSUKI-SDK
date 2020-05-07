@@ -23,15 +23,16 @@ cd ..
 mkdir -p oiio/bld
 cd oiio/bld
 cmake \
-    -DBUILDSTATIC=1 \
     -DBOOST_ROOT=${THIRDPARTY} \
-    -DILMBASE_HOME=${THIRDPARTY} \
-    -DOPENEXR_HOME=${THIRDPARTY} \
+    -DBUILDSTATIC=1 \
     -DCMAKE_CXX_FLAGS=-fPIC \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
+    -DENABLE_jpeg=OFF \
+    -DILMBASE_HOME=${THIRDPARTY} \
+    -DOIIO_BUILD_TESTS=OFF \
+    -DOPENEXR_HOME=${THIRDPARTY} \
     -DUSE_FFMPEG=OFF \
     -DUSE_PYTHON=OFF \
-    -DOIIO_BUILD_TESTS=OFF \
     ..
 make
 make install
