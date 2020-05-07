@@ -35,17 +35,32 @@ build:
 
 requirements:
   build:
+    - blender-thirdparty # [unix]
+    - bullet
     - cmake
+    - fontconfig # [unix]
+    - freetype # [unix]
+    - git
+    - jpeg
+    - libgcc-ng # [unix]
+    - libpng # [unix]
+    - libstdcxx-ng # [unix]
+    - libtiff
+    - llvmdev
+    - m2-patch # [win]
     - python >=3.8
     - requests
     - svn
-    - git
-    - m2-patch # [win]
-    - blender-thirdparty # [unix]
-    - bullet
-    - llvmdev
+    - zlib
   run:
+    - freetype # [unix]
+    - jpeg # [unix]
+    - libgcc-ng # [unix]
+    - libpng # [unix]
+    - libstdcxx-ng # [unix]
+    - libtiff # [unix]
     - python >=3.8
+    - zlib # [unix]
 
 about:
   home: https://www.blender.org/
