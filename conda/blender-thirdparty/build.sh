@@ -20,7 +20,7 @@ cd boost
 ./b2 install cxxflags='-fPIC' link=static
 cd ..
 
-mkdir oiio/bld
+mkdir -p oiio/bld
 cd oiio/bld
 cmake \
     -DBUILDSTATIC=1 \
