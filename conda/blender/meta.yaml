@@ -54,10 +54,10 @@ requirements:
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff
-    - llvmdev
+    - llvmdev # [unix]
     - m2-patch # [win]
     - python >=3.8
-    - requests
+    - requests # [unix]
     - svn
     - zlib
   run:
