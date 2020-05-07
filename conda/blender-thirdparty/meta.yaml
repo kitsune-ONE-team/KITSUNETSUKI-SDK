@@ -1,6 +1,6 @@
 package:
   name: blender-thirdparty
-  version: "0.1"
+  version: "0.2"
 
 source:
   - git_url: https://github.com/AcademySoftwareFoundation/openexr.git
@@ -17,12 +17,12 @@ source:
 
 build:
   number: 0
-  string: 1588359114
+  string: 1588839925
 
 requirements:
   build:
     - cmake
-    - python
+    - python >=3.8
     - m2-gcc-libs # [win]
     - m2-patch # [win]
 
