@@ -20,21 +20,27 @@ build:
   string: 1588839925
 
   missing_dso_whitelist:
+    - $RPATH/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/libdl.so.2 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/librt.so.1 # [unix]
 
 requirements:
   build:
     - cmake
-    - python >=3.8
+    - libgcc-ng # [unix]
+    - libpng # [unix]
+    - libstdcxx-ng # [unix]
     - m2-gcc-libs # [win]
     - m2-patch # [win]
-    - libgcc-ng # [unix]
-    - libstdcxx-ng # [unix]
-    - libpng # [unix]
+    - python >=3.8
+    - zlib
   run:
     - libgcc-ng # [unix]
-    - libstdcxx-ng # [unix]
     - libpng # [unix]
+    - libstdcxx-ng # [unix]
+    - zlib # [unix]
 
 about:
   home: https://www.blender.org/
