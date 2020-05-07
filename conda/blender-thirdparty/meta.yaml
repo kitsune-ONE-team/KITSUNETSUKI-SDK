@@ -26,6 +26,8 @@ build:
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/librt.so.1 # [unix]
+    - $RPATH/libIlmImf-2_3.so.24 # [unix]
+    - $RPATH/libIex-2_3.so.24 # [unix]
 
 requirements:
   build:
