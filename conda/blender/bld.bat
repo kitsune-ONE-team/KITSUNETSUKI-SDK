@@ -21,8 +21,8 @@ cmake -G %CMAKETARGET% ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX:\=^/%/Lib/site-packages ^
     -DMSVC_VERSION=1910 ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX:\=^/%/include ^
-    -DPYTHON_LIBRARY=%CONDA_PREFIX:\=^/%/libs/python37.lib ^
-    -DPYTHON_VERSION=3.7 ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX:\=^/%/libs/python38.lib ^
+    -DPYTHON_VERSION=3.8 ^
     -DWITH_AUDASPACE=OFF ^
     -DWITH_CYCLES=ON ^
     -DWITH_GLEW_ES=OFF ^
