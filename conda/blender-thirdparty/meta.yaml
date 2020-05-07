@@ -19,12 +19,22 @@ build:
   number: 0
   string: 1588839925
 
+  missing_dso_whitelist:
+    - $RPATH/librt.so.1 # [unix]
+
 requirements:
   build:
     - cmake
     - python >=3.8
     - m2-gcc-libs # [win]
     - m2-patch # [win]
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
+    - libpng # [unix]
+  run:
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
+    - libpng # [unix]
 
 about:
   home: https://www.blender.org/
