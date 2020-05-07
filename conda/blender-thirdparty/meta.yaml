@@ -21,6 +21,7 @@ build:
 
   missing_dso_whitelist:
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
