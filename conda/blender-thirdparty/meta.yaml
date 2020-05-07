@@ -24,6 +24,7 @@ build:
     - $RPATH/libHalf-2_3.so.24 # [unix]
     - $RPATH/libIex-2_3.so.24 # [unix]
     - $RPATH/libIlmImf-2_3.so.24 # [unix]
+    - $RPATH/libIlmThread-2_3.so.24 # [unix]
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
