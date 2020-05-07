@@ -30,6 +30,7 @@ build:
 requirements:
   build:
     - cmake
+    - jpeg
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
@@ -39,6 +40,7 @@ requirements:
     - python >=3.8
     - zlib
   run:
+    - jpeg # [unix]
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
