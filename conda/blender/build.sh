@@ -18,6 +18,7 @@ cmake \
     -DPYTHON_VERSION=3.8 \
     -DWITH_AUDASPACE=OFF \
     -DWITH_CYCLES=ON \
+    -DWITH_DRACO=OFF \
     -DWITH_GLEW_ES=OFF \
     -DWITH_GLEW_MX=OFF \
     -DWITH_GLU=OFF \
@@ -38,6 +39,7 @@ cmake \
     -DWITH_STATIC_LIBS=OFF \
     -DWITH_TBB=OFF \
     ..
+
 make
 make install
 
