@@ -8,9 +8,9 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-pip install https://files.pythonhosted.org/packages/64/19/8b9066e94088e8d06d649e10319349bfca961e87768a525aba4a2627c986/oauth2-1.9.0.post1.tar.gz
-pip install https://files.pythonhosted.org/packages/1d/c7/28220d37e041fe1df03e857fe48f768dcd30cd151480bf6f00da8713214a/py-ubjson-0.16.1.tar.gz
-pip install https://files.pythonhosted.org/packages/18/9b/b95a08c373819376bf3f109bdbcff6bd4f69f2340bf708a252380319037a/httplib2-0.17.3-py3-none-any.whl
+pip install git+https://github.com/joestump/python-oauth2.git@v1.9
+pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
+pip install git+https://github.com/httplib2/httplib2@v0.17.3
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v%RP_VERSION%/render_pipeline-%RP_VERSION%-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d

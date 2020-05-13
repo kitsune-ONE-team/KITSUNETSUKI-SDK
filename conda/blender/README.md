@@ -1,3 +1,5 @@
+![logo](blender_icon_128x128.png)
+
 Blender as Python module
 ========================
 

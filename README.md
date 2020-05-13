@@ -9,7 +9,7 @@ What's Inside
 * ![logo](conda/panda3d/icon_32.png) [Modified Panda3D Game Engine](conda/panda3d) (prebuilt with headers included)
 * ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
 * [Modified RenderPipeline Render for Panda3D](conda/render_pipeline) (with native lighting manager enabled)
-* [Blender](conda/blender) (as a Python module)
+* ![logo](conda/blender/blender_icon_32x32.png.png) [Blender](conda/blender) (as a Python module)
 
 
 Files and directories structure
