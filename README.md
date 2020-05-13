@@ -8,7 +8,6 @@ What's Inside
 * ![logo](conda/bullet/icon_32.png) [Bullet Physics SDK](conda/bullet) (prebuilt with headers included)
 * ![logo](conda/panda3d/icon_32.png) [Modified Panda3D Game Engine](conda/panda3d) (prebuilt with headers included)
 * ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
-* [Modified RenderPipeline Render for Panda3D](conda/render_pipeline) (with native lighting manager enabled)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender-thirdparty) 3rd party libraries for building blender-python
 
@@ -27,7 +26,7 @@ SDK Requirements
 
 You have to install those software packages to use the prebuild SDK.
 
-* Anaconda3 or Miniconda3 (version 4.5.11, Python 3.7) - https://conda.io/en/latest/miniconda.html
+* Anaconda3 or Miniconda3 (version 4.8+, Python 3.8) - https://conda.io/en/latest/miniconda.html
 
 
 Installation
