@@ -1,3 +1,5 @@
+![logo](blender_icon_128x128.png)
+
 3rd party libraries for building blender-python
 ===============================================
 
@@ -5,6 +7,8 @@
 * OpenEXR - http://www.openexr.com/
 * Boost - https://www.boost.org/
 * OpenImageIO - https://github.com/OpenImageIO/oiio
+
+Conda package: https://anaconda.org/kitsune.ONE/blender-thirdparty
 
 
 Building conda package

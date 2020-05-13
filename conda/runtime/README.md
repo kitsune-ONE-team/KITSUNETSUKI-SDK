@@ -2,15 +2,17 @@ KITSUNETSUKI Game Runtime
 =========================
 
 KITSUNETSUKI project is a multiplayer-focused arena
-third-person shooter (TPS) game in anime style - https://www.patreon.com/kitsunetsuki
+third-person shooter (TPS) game in anime style.
+
+KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
+Conda package: https://anaconda.org/kitsune.ONE/kitsunetsuki-runtime
 
 
 Building conda package
 ----------------------
 
 ```
-git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/runtime
-conda build .
+git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+conda build conda/runtime
 conda install kitsunetsuki-runtime --use-local
 ```

@@ -10,7 +10,7 @@ What's Inside
 * ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
 * [Modified RenderPipeline Render for Panda3D](conda/render_pipeline) (with native lighting manager enabled)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
-
+* ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender-thirdparty) 3rd party libraries for building blender-python
 
 Files and directories structure
 -------------------------------
@@ -18,6 +18,8 @@ Files and directories structure
 * [conda](conda) - conda package recipes for anaconda/miniconda
 * [README.md](README.md) - this file
 * [ksdk.yml](ksdk.yml) - conda environment file
+* [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
+* [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
 
 
 SDK Requirements

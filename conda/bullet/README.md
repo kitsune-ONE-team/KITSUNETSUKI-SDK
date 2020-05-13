@@ -3,16 +3,16 @@
 Bullet Physics SDK
 ==================
 
-http://bulletphysics.org
+Bullet Physics SDK: http://bulletphysics.org
+Conda package: https://anaconda.org/kitsune.ONE/bullet
 
 
 Building conda package
 ----------------------
 
 ```
-git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/bullet
-conda build .
+git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+conda build conda/bullet
 conda install bullet --use-local
 ```
 

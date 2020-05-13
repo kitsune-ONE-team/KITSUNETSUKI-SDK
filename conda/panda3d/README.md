@@ -3,17 +3,17 @@
 Modified Panda3D Game Engine
 ============================
 
-http://panda3d.org/
+Panda3D: http://panda3d.org/
+Conda package: https://anaconda.org/kitsune.ONE/panda3d
 
 
 Building conda package
 ----------------------
 
 ```
-git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/panda3d
-conda build .
-conda install panda3d-kitsunetsuki --use-local
+git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+conda build conda/panda3d
+conda install panda3d --use-local
 ```
 
 

@@ -3,16 +3,16 @@
 Blender as Python module
 ========================
 
-https://docs.blender.org/api/2.79b/
+Blender: https://docs.blender.org/api/
+Conda package: https://anaconda.org/kitsune.ONE/blender
 
 
 Building conda package
 ----------------------
 
 ```
-git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/blender
-conda build .
+git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+conda build conda/blender
 conda install python-blender --use-local
 ```
 
