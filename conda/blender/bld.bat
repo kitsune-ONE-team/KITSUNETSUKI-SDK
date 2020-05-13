@@ -18,10 +18,10 @@ mkdir blender\bld
 cd blender\bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
-    -DCMAKE_INSTALL_PREFIX=%PREFIX:\=^/%/Lib/site-packages ^
+    -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DMSVC_VERSION=1910 ^
-    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX:\=^/%/include ^
-    -DPYTHON_LIBRARY=%CONDA_PREFIX:\=^/%/libs/python38.lib ^
+    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python38.lib ^
     -DPYTHON_VERSION=3.8 ^
     -DWITH_AUDASPACE=OFF ^
     -DWITH_CYCLES=ON ^
