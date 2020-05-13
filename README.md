@@ -64,7 +64,6 @@ You have to install those software packages if you want to modify and build your
 * Ubuntu 16.04
 * Glu
 * Mesa
-* NVIDIA Cg
 * Ogg
 * OpenAL
 * Vorbis
