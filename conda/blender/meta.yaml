@@ -23,11 +23,11 @@ source:
     git_rev: v2.81
     folder: blender
 
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
-    folder: lib/windows_vc14 # [win32]
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
+  #   folder: lib/windows_vc14 # [win32]
 
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14 # [win64]
-    folder: lib/win64_vc14 # [win64]
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14 # [win64]
+  #   folder: lib/win64_vc14 # [win64]
 
 build:
   number: 0
@@ -58,7 +58,7 @@ requirements:
     - m2-patch # [win]
     - python >=3.8
     - requests # [unix]
-    - svn # [unix]
+    # - svn # [win]
     - zlib
   run:
     - freetype # [unix]
