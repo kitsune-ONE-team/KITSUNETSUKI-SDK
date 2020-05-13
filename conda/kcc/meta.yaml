@@ -31,5 +31,5 @@ requirements:
     - python >=3.8
 
 about:
-  home: https://github.com/Yonnji/KITSUNETSUKI-SDK
+  home: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK
   license: BSD

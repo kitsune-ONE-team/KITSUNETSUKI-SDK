@@ -15,9 +15,8 @@ Building conda package
 ----------------------
 
 ```
-git clone https://github.com/Yonnji/KITSUNETSUKI-SDK.git
-cd conda/blender-thirdparty
-conda build .
+git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+conda build conda/blender-thirdparty
 conda install blender-thirdparty --use-local
 ```
 
