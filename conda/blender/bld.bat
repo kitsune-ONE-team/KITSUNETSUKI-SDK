@@ -11,10 +11,14 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
+if not exist lib\win64_vc14 (
 mkdir lib
 cd lib
-D:\Apps\Subversion\bin\svn co https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15/
+D:\Apps\Subversion\bin\svn co ^
+    https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 ^
+    win64_vc14
 cd ..
+)
 
 :: remove included python
 rd /s /q %WINLIBS%\python

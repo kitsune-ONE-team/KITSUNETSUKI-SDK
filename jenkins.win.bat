@@ -20,9 +20,9 @@ set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%%3A%%2F%%2
 
 if not exist env (
     %KONDA% env remove --yes --prefix env
-    rem# if you have ssl connection problems with it
-    rem# copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
-    rem# from "Library/bin" to "DDLs"
+    :: if you have ssl connection problems with it
+    :: copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
+    :: from "Library/bin" to "DDLs"
     %KONDA% create --yes --prefix env
     %KONDA% install --prefix env conda-build anaconda-client ripgrep
 )
