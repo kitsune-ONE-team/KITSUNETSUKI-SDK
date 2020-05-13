@@ -4,6 +4,7 @@ Bullet Physics SDK
 ==================
 
 Bullet Physics SDK: http://bulletphysics.org
+
 Conda package: https://anaconda.org/kitsune.ONE/bullet
 
 

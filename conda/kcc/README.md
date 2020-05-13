@@ -4,8 +4,9 @@ KITSUNETSUKI Character Controller
 =================================
 
 Character Controller for to use with Panda3D and Bullet.
-\
+
 KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
+
 Conda package: https://anaconda.org/kitsune.ONE/kcc
 
 

@@ -4,6 +4,7 @@ Blender as Python module
 ========================
 
 Blender: https://docs.blender.org/api/
+
 Conda package: https://anaconda.org/kitsune.ONE/blender
 
 

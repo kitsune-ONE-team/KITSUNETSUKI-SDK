@@ -19,6 +19,7 @@ Files and directories structure
 * [ksdk.yml](ksdk.yml) - conda environment file
 * [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
 * [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
+* [jenkins.pipeline](jenkins.pipeline) - Jenkins Pipeline file for building multiple jobs
 
 
 SDK Requirements
@@ -68,3 +69,12 @@ You have to install those software packages if you want to modify and build your
 * OpenAL
 * Vorbis
 * Xv
+
+
+Automated building environment
+------------------------------
+
+You can use [Jenkins](https://www.jenkins.io/)
+to automatically build conda packages and upload them to the anaconda cloud.
+
+You can use included jenkins scripts as templates for your jenkins jobs.

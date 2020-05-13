@@ -4,6 +4,7 @@ Modified Panda3D Game Engine
 ============================
 
 Panda3D: http://panda3d.org/
+
 Conda package: https://anaconda.org/kitsune.ONE/panda3d
 
 
