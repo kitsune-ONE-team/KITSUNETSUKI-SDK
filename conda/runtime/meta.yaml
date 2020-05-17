@@ -60,6 +60,7 @@ requirements:
     - python >=3.8
     - xz # [unix]
     - zlib
+    - libpng
 
 about:
   home: https://kitsune.one/
