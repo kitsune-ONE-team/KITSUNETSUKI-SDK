@@ -29,6 +29,7 @@ dependencies:
   - epc==0.0.5
   - httplib2==0.17.3
   - oauth2==1.9.0.post1
+  - panda3d-gltf==0.6
   - py-ubjson==0.16.1
   - pylint==2.2.2
   - sphinx-materialdesign-theme==0.1.11
