@@ -13,9 +13,10 @@ fi
 
 ULIBX=/usr/lib/${LARCH}-linux-gnu
 
-pip install git+https://github.com/joestump/python-oauth2.git@v1.9
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
-pip install git+https://github.com/httplib2/httplib2@v0.17.3
+pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.6
+pip install git+https://github.com/httplib2/httplib2.git@v0.17.3
+pip install git+https://github.com/joestump/python-oauth2.git@v1.9
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v${RP_VERSION}/render_pipeline-${RP_VERSION}-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
@@ -83,19 +84,15 @@ cp -fv ${ULIBX}/libopenal.so.*                    ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \
-   ${CONDA_PREFIX}/lib/libgcc_s.so.* \
    ${CONDA_PREFIX}/lib/libogg.so.* \
    ${CONDA_PREFIX}/lib/libp3*.so.* \
    ${CONDA_PREFIX}/lib/libp3openal_audio.so \
    ${CONDA_PREFIX}/lib/libp3ptloader.so \
    ${CONDA_PREFIX}/lib/libpanda*.so.* \
    ${CONDA_PREFIX}/lib/libpandagl.so \
-   ${CONDA_PREFIX}/lib/libpng16.so.* \
    ${CONDA_PREFIX}/lib/libssl.so.* \
-   ${CONDA_PREFIX}/lib/libstdc++.so.* \
    ${CONDA_PREFIX}/lib/libvorbis.so.* \
    ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
-   ${CONDA_PREFIX}/lib/libz.so.* \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
 7za a \
@@ -104,6 +101,7 @@ cp -fv \
     "${CONDA_PREFIX}/lib/${PYTHON_VERSION}/*" \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/attr \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/direct \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/gltf \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2 \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2-0.17.3.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/idna \
@@ -123,7 +121,8 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson
 
 pip uninstall --yes \
-    render-pipeline \
     httplib2 \
     oauth2 \
-    py-ubjson
+    panda3d-gltf \
+    py-ubjson \
+    render-pipeline
