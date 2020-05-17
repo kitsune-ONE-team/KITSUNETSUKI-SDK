@@ -102,7 +102,9 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
-    %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.post1.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.6.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^

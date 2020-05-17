@@ -108,7 +108,9 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.post1.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.6.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
