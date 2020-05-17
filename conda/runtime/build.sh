@@ -17,6 +17,7 @@ pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.6
 pip install git+https://github.com/httplib2/httplib2.git@v0.17.3
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
+pip install git+https://github.com/pytest-dev/pytest-runner.git@5.2
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v${RP_VERSION}/render_pipeline-${RP_VERSION}-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
@@ -125,4 +126,5 @@ pip uninstall --yes \
     oauth2 \
     panda3d-gltf \
     py-ubjson \
+    pytest-runner \
     render-pipeline

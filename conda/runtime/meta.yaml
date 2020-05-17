@@ -48,7 +48,6 @@ requirements:
     - pyrsistent ==0.16.0
     - python >=3.8
     - six ==1.14.0
-    - pytest
   run:
     - freetype # [unix]
     - libgcc-ng # [unix]
