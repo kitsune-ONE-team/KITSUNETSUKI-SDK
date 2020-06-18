@@ -24,7 +24,7 @@ cd ..
 rd /s /q lib\%WINLIBS%\python
 
 :: remove included zlib
-rd /s /q lib\%WINLIBS%\zlib
+rem rd /s /q lib\%WINLIBS%\zlib
 
 mkdir blender\bld
 cd blender\bld
