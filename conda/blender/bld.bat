@@ -26,8 +26,7 @@ rd /s /q %WINLIBS%\python
 mkdir blender\bld
 cd blender\bld
 cmake -G %CMAKETARGET% ^
-    -DPLATFORM_LINKFLAGS=/NODEFAULTLIB:MSVCRT ^
-    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_BUILD_TYPE=Debug ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python38.lib ^
