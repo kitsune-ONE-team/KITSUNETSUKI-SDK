@@ -1,26 +1,26 @@
 package:
   name: python-blender
-  version: "2.81"
+  version: "2.83"
 
 source:
   - git_url: git://git.blender.org/blender-addons.git
-    git_rev: v2.81
+    git_rev: v2.83
     folder: blender_extras/release/scripts/addons
 
   - git_url: git://git.blender.org/blender-addons-contrib.git
-    git_rev: v2.81
+    git_rev: v2.83
     folder: blender_extras/release/scripts/addons_contrib
 
   - git_url: git://git.blender.org/blender-translations.git
-    git_rev: v2.81
+    git_rev: v2.83
     folder: blender_extras/release/datafiles/locale
 
   - git_url: git://git.blender.org/blender-dev-tools.git
-    git_rev: v2.81
+    git_rev: v2.83
     folder: blender_extras/source/tools
 
   - git_url: git://git.blender.org/blender.git
-    git_rev: v2.81
+    git_rev: v2.83
     folder: blender
 
   # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
