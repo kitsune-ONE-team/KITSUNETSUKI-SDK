@@ -20,6 +20,8 @@ D:\Apps\Subversion\bin\svn co ^
 cd ..
 )
 
+copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
+
 :: remove included python
 rd /s /q lib\%WINLIBS%\python
 
