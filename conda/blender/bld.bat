@@ -2,12 +2,12 @@ if "%ARCH%" == "64" (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set CMAKETARGET="NMake Makefiles"
-    set WINLIBS=win64_vc15
+    set WINLIBS=win64_vc14
 ) else (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set CMAKETARGET="NMake Makefiles"
-    set WINLIBS=win64_vc15
+    set WINLIBS=win64_vc14
 )
 color 0f
 
@@ -16,7 +16,7 @@ mkdir lib
 cd lib
 D:\Apps\Subversion\bin\svn co ^
     https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 ^
-    win64_vc14
+    %WINLIBS%
 cd ..
 )
 
