@@ -22,6 +22,8 @@ source:
   - git_url: git://git.blender.org/blender.git
     git_rev: v2.83
     folder: blender
+    patches:
+      - platform.patch # [win]
 
   # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
   #   folder: lib/windows_vc14 # [win32]
