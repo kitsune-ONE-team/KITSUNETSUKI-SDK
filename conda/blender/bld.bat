@@ -23,6 +23,9 @@ cd ..
 :: remove included python
 rd /s /q %WINLIBS%\python
 
+:: remove included zlib
+rd /s /q %WINLIBS%\zlib
+
 mkdir blender\bld
 cd blender\bld
 cmake -G %CMAKETARGET% ^
