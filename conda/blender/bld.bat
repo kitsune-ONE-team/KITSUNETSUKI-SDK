@@ -26,7 +26,7 @@ rd /s /q %WINLIBS%\python
 mkdir blender\bld
 cd blender\bld
 cmake -G %CMAKETARGET% ^
-    -DPLATFORM_LINKFLAGS=/NODEFAULTLIB:libucrt.lib ^
+    -DPLATFORM_LINKFLAGS=/NODEFAULTLIB:MSVCRT ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
