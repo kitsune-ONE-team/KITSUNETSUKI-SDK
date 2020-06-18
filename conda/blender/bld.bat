@@ -11,7 +11,7 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-if not exist lib\win64_vc15 (
+if not exist lib\%WINLIBS% (
 mkdir lib
 cd lib
 D:\Apps\Subversion\bin\svn co ^
