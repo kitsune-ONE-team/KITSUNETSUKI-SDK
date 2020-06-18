@@ -2,16 +2,16 @@ if "%ARCH%" == "64" (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set CMAKETARGET="NMake Makefiles"
-    set WINLIBS=win64_vc14
+    set WINLIBS=win64_vc15
 ) else (
     rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set CMAKETARGET="NMake Makefiles"
-    set WINLIBS=win64_vc14
+    set WINLIBS=win64_vc15
 )
 color 0f
 
-if not exist lib\win64_vc14 (
+if not exist lib\win64_vc15 (
 mkdir lib
 cd lib
 D:\Apps\Subversion\bin\svn co ^
