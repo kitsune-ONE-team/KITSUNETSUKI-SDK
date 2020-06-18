@@ -21,10 +21,10 @@ cd ..
 )
 
 :: remove included python
-rd /s /q %WINLIBS%\python
+rd /s /q lib\%WINLIBS%\python
 
 :: remove included zlib
-rd /s /q %WINLIBS%\zlib
+rd /s /q lib\%WINLIBS%\zlib
 
 mkdir blender\bld
 cd blender\bld
