@@ -2,10 +2,8 @@
 
 THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
-cd blender
-
-mkdir -p bld
-cd bld
+mkdir -p blender/bld
+cd blender/bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \
@@ -17,6 +15,7 @@ cmake \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.8.so \
     -DPYTHON_VERSION=3.8 \
     -DWITH_AUDASPACE=OFF \
+    -DWITH_CODEC_FFMPEG=OFF \
     -DWITH_CYCLES=ON \
     -DWITH_DRACO=OFF \
     -DWITH_GLEW_ES=OFF \
