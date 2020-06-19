@@ -45,6 +45,7 @@ build:
     - C:\Windows\System32\AVIFIL32.dll # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
     - C:\Windows\System32\OPENGL32.dll # [win]
+    - C:\Windows\System32\SHFOLDER.dll # [win]
     - C:\Windows\System32\SHLWAPI.dll # [win]
     - C:\Windows\System32\VCRUNTIME140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
