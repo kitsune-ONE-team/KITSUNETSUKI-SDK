@@ -10,5 +10,4 @@ Files and directories structure
 * [bullet](bullet) - Bullet Physics SDK
 * [kcc](kcc) - KITSUNETSUKI Character Controller
 * [panda3d](panda3d) - Modified Panda3D Game Engine
-* [render_pipeline](render_pipeline) - Modified RenderPipeline Render for Panda3D
 * [runtime](runtime) - KITSUNETSUKI Game Runtime

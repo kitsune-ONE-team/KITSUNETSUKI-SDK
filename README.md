@@ -14,7 +14,9 @@ What's Inside
 
 * ![logo](conda/bullet/icon_32.png) [Bullet Physics SDK](conda/bullet) (prebuilt with headers included)
 * ![logo](conda/panda3d/icon_32.png) [Modified Panda3D Game Engine](conda/panda3d) (prebuilt with headers included)
+* ![logo](conda/panda3d/icon_32.png) [RenderPipeline](https://github.com/kitsune-ONE-team/RenderPipeline)
 * ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Character Controller](conda/kcc)
+* ![logo](conda/kcc/icon_32.png) [KITSUNETSUKI Asset Tools](https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender 3rd party libraries](conda/blender-thirdparty) for building blender-python
 
@@ -37,20 +39,34 @@ You have to install those software packages to use the prebuild SDK.
 * Anaconda3 or Miniconda3 (version 4.8+, Python 3.8) - https://conda.io/en/latest/miniconda.html
 
 
-Installation
-------------
+Installing
+----------
 
 ```
 conda env create kitsune.one/ksdk
+```
+
+
+Updating
+--------
+
+```
+conda env update -n ksdk kitsune.one/ksdk
+```
+
+
+Using
+-----
+
+```
 conda activate ksdk
 ```
 
 
-Uninstallation
+Uninstalling
 ------------
 
 ```
-conda deactivate
 conda env remove -n ksdk
 ```
 
