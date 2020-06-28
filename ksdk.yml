@@ -5,6 +5,7 @@ channels:
 - defaults
 
 dependencies:
+- anaconda-client
 - attrs ==19.3.0
 - cmake
 - conda
@@ -20,6 +21,7 @@ dependencies:
 - pyqt ==5.9.2
 - pyrsistent ==0.16.0
 - python >=3.8
+- python-blender
 - setuptools==46.1.3
 - six ==1.14.0
 - sphinx ==3.0.3
