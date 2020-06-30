@@ -110,12 +110,12 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.6.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.8.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-1.3.3.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpcore \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rplibs \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins \
