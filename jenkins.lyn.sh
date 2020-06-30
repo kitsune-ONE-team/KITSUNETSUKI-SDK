@@ -12,7 +12,7 @@ KONDA_ARGS="\
 --no-remove-work-dir \
 --output-folder output \
 conda/${JOB_BASE_NAME,,}"
-KONDA_TOKEN=/home/ubuntu16/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
+KONDA_TOKEN=/root/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
 
 if [ ! -d env ]; then
     ${KONDA} env remove --yes --prefix env;
