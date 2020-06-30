@@ -1,4 +1,6 @@
 #!/bin/bash
+set +x
+
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
 --cache-dir /var/lib/jenkins/cache \
@@ -12,7 +14,6 @@ KONDA_ARGS="\
 --no-remove-work-dir \
 --output-folder output \
 conda/${JOB_BASE_NAME,,}"
-KONDA_TOKEN=/root/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
 
 if [ ! -d env ]; then
     ${KONDA} env remove --yes --prefix env;
@@ -28,7 +29,7 @@ env/bin/conda build ${KONDA_ARGS}
 echo "ANACONDA UPLOAD: ${KONDA_PAK}"
 env/bin/anaconda \
 --verbose \
---token ${KONDA_TOKEN} \
+--token ${ANACONDA_TOKEN} \
 upload \
 --no-progress \
 --user kitsune.one \

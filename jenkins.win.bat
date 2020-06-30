@@ -1,3 +1,5 @@
+@echo off
+
 set PATH=%PATH%;^
 D:\Apps\Git\bin;^
 env\Scripts;^
@@ -16,7 +18,6 @@ set KONDA_ARGS=^
 --no-remove-work-dir ^
 --output-folder output ^
 conda\%JOB_BASE_NAME%
-set KONDA_TOKEN=C:\Users\WIN8\AppData\Local\ContinuumIO\binstar\https%%3A%%2F%%2Fapi.anaconda.org.token
 
 if not exist env (
     %KONDA% env remove --yes --prefix env
@@ -35,7 +36,7 @@ call env\condabin\conda build %KONDA_ARGS%
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 env\Scripts\anaconda ^
 --verbose ^
---token %KONDA_TOKEN% ^
+--token %ANACONDA_TOKEN% ^
 upload ^
 --no-progress ^
 --user kitsune.one ^
