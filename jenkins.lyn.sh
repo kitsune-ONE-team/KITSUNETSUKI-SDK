@@ -1,3 +1,4 @@
+#!/bin/bash
 KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
 --cache-dir /var/lib/jenkins/cache \
