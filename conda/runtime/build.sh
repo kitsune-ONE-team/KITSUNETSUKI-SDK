@@ -95,6 +95,10 @@ cp -fv \
    ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
+cp -fv \
+   ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
+                                                  ${PREFIX}/kitsunetsuki-runtime/libpandaegg.so
+
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
     ${PREFIX}/kitsunetsuki-runtime/${PYTHONVERSION}.zip \
