@@ -38,6 +38,7 @@ cmake \
     -DWITH_SDL=OFF \
     -DWITH_STATIC_LIBS=OFF \
     -DWITH_TBB=OFF \
+    -DWITH_X11_XINPUT=OFF \
     ..
 
 make
