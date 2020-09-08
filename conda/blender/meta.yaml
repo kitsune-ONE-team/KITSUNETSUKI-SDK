@@ -57,27 +57,24 @@ requirements:
     - cmake
     - fontconfig # [unix]
     - freetype # [unix]
+    - gcc_linux-64 ==7.2.0 # [unix]
     - git
+    - gxx_linux-64 ==7.2.0 # [unix]
     - jpeg
-    - openjpeg
     - libgcc ==7.20 # [unix]
     - libpng # [unix]
-    - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - llvmdev # [unix]
     - m2-patch # [win]
+    - openjpeg
     - python >=3.8
     - requests # [unix]
-    # - svn # [win]
     - zlib
-    - gcc_linux-64 ==7.2.0 # [unix]
-    - gxx_linux-64 ==7.2.0 # [unix]
   run:
     - freetype # [unix]
     - jpeg # [unix]
-    - libgcc-ng # [unix]
+    - libgcc ==7.20 # [unix]
     - libpng # [unix]
-    - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - python >=3.8
     - zlib # [unix]
