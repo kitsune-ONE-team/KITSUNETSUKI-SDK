@@ -59,6 +59,7 @@ requirements:
     - freetype # [unix]
     - git
     - jpeg
+    - openjpeg
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
