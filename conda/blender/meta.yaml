@@ -71,6 +71,7 @@ requirements:
     # - svn # [win]
     - zlib
     - gcc_linux-64 ==7.2.0 # [unix]
+    - gxx_linux-64 ==7.2.0 # [unix]
   run:
     - freetype # [unix]
     - jpeg # [unix]
