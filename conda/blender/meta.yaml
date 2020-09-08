@@ -24,7 +24,7 @@ source:
     folder: blender
     patches:
       - platform.patch # [win]
-      # - optional.patch # [unix]
+      - optional.patch # [unix]
 
   # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14 # [win32]
   #   folder: lib/windows_vc14 # [win32]
@@ -34,7 +34,7 @@ source:
 
 build:
   number: 0
-  string: 1592498919
+  string: 1599603091
 
   missing_dso_whitelist:
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
