@@ -71,6 +71,7 @@ requirements:
     - requests # [unix]
     - zlib
     - gcc_impl_linux-64 # [unix]
+    - glib # [unix]
   run:
     - freetype # [unix]
     - jpeg # [unix]
