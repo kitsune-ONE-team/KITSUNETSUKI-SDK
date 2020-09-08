@@ -6,6 +6,8 @@ mkdir -p blender/bld
 cd blender/bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
+    -DCMAKE_C_COMPILER=${CC} \
+    -DCMAKE_CXX_COMPILER=${CPP} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-std=gnu++11" \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
