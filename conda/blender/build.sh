@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if [ ! -d lib/linux_centos7_x86_64 ]; then
+    mkdir lib
+    cd lib
+    svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64
+    cd ..
+fi
+
 THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
 mkdir -p blender/bld
