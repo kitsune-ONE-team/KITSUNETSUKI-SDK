@@ -60,7 +60,7 @@ requirements:
     - git
     - jpeg
     - openjpeg
-    - libgcc-ng # [unix]
+    - libgcc ==7.20 # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
