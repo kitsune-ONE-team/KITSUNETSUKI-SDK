@@ -70,6 +70,7 @@ requirements:
     - python >=3.8
     - requests # [unix]
     - zlib
+    - gcc_impl_linux-64 # [unix]
   run:
     - freetype # [unix]
     - jpeg # [unix]
