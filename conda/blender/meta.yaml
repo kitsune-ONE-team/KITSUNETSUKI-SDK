@@ -61,7 +61,7 @@ requirements:
     - git
     - gxx_linux-64 ==7.2.0 # [unix]
     - jpeg
-    - libgcc ==7.20 # [unix]
+    - libgcc ==7.2.0 # [unix]
     - libpng # [unix]
     - libtiff # [unix]
     - llvmdev # [unix]
