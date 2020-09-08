@@ -73,7 +73,7 @@ requirements:
   run:
     - freetype # [unix]
     - jpeg # [unix]
-    - libgcc ==7.20 # [unix]
+    - libgcc ==7.2.0 # [unix]
     - libpng # [unix]
     - libtiff # [unix]
     - python >=3.8
