@@ -4,23 +4,23 @@ package:
 
 source:
   - git_url: git://git.blender.org/blender-addons.git
-    git_rev: v2.90
+    git_rev: v2.90.0
     folder: blender_extras/release/scripts/addons
 
   - git_url: git://git.blender.org/blender-addons-contrib.git
-    git_rev: v2.90
+    git_rev: v2.90.0
     folder: blender_extras/release/scripts/addons_contrib
 
   - git_url: git://git.blender.org/blender-translations.git
-    git_rev: v2.90
+    git_rev: v2.90.0
     folder: blender_extras/release/datafiles/locale
 
   - git_url: git://git.blender.org/blender-dev-tools.git
-    git_rev: v2.90
+    git_rev: v2.90.0
     folder: blender_extras/source/tools
 
   - git_url: git://git.blender.org/blender.git
-    git_rev: v2.90
+    git_rev: v2.90.0
     folder: blender
     patches:
       - platform.patch # [win]
