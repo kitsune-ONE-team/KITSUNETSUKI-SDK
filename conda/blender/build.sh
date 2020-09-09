@@ -30,6 +30,7 @@ cmake \
     -DWITH_GLEW_ES=OFF \
     -DWITH_GLEW_MX=OFF \
     -DWITH_GLU=OFF \
+    -DWITH_HEADLESS=ON \
     -DWITH_INSTALL_PORTABLE=OFF \
     -DWITH_JACK=OFF \
     -DWITH_LLVM=OFF \
@@ -47,7 +48,6 @@ cmake \
     -DWITH_STATIC_LIBS=OFF \
     -DWITH_TBB=OFF \
     -DWITH_X11_XINPUT=OFF \
-    -DWITH_HEADLESS=ON \
     ..
 
 make
