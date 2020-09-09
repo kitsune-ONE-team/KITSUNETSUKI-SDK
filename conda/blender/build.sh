@@ -15,7 +15,7 @@ cd blender/bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-std=gnu++11" \
+    -DCMAKE_CXX_FLAGS="-std=c++17" \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DOPENEXR_ROOT_DIR=${THIRDPARTY} \
     -DOPENIMAGEIO_ROOT_DIR=${THIRDPARTY} \
