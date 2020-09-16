@@ -59,8 +59,9 @@ requirements:
     - freetype # [unix]
     - git
     - jpeg
-    - libgcc # [unix]
+    - libgcc-ng
     - libpng # [unix]
+    - libstdcxx-ng
     - libtiff # [unix]
     - llvmdev # [unix]
     - m2-patch # [win]
@@ -71,8 +72,9 @@ requirements:
   run:
     - freetype # [unix]
     - jpeg # [unix]
-    - libgcc # [unix]
+    - libgcc-ng
     - libpng # [unix]
+    - libstdcxx-ng
     - libtiff # [unix]
     - python >=3.8
     - zlib # [unix]
