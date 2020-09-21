@@ -28,7 +28,12 @@ rd /s /q lib\%WINLIBS%\python
 :: remove included zlib
 rem rd /s /q lib\%WINLIBS%\zlib
 
-mkdir blender\bld
+if not exist blender\bld (
+   mkdir blender\bld
+   cd blender
+   patch -p1 -i %RECIPE_DIR%\platform.patch
+   cd ..
+)
 cd blender\bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
