@@ -1,8 +1,8 @@
 diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
-index 77652511416..0ad4b40ccdf 100644
+index 01d48364435..435396a81c9 100644
 --- a/build_files/cmake/platform/platform_win32.cmake
 +++ b/build_files/cmake/platform/platform_win32.cmake
-@@ -369,16 +369,6 @@ if(WITH_JACK)
+@@ -394,16 +394,6 @@ if(WITH_JACK)
  endif()
  
  if(WITH_PYTHON)
