@@ -11,14 +11,14 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-if not exist lib\%WINLIBS% (
-mkdir lib
-cd lib
-D:\Apps\Subversion\bin\svn co ^
-    https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 ^
-    %WINLIBS%
-cd ..
-)
+rem if not exist lib\%WINLIBS% (
+rem mkdir lib
+rem cd lib
+rem D:\Apps\Subversion\bin\svn co ^
+rem     https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 ^
+rem     %WINLIBS%
+rem cd ..
+rem )
 
 copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
 
