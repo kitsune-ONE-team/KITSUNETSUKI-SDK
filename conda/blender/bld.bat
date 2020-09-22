@@ -38,8 +38,8 @@ cd blender\bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
-    -DPYTHON_INCLUDE_DIR=%SYS_PREFIX%\include ^
-    -DPYTHON_LIBRARY=%SYS_PREFIX%\libs\python38.lib ^
+    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python38.lib ^
     -DPYTHON_VERSION=3.8 ^
     -DWITH_AUDASPACE=OFF ^
     -DWITH_CODEC_FFMPEG=OFF ^
