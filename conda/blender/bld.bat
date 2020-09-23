@@ -24,7 +24,11 @@ if not exist blender\bld (
    cd ..
 )
 
-cd blender\bld
+cd blender
+xcopy /I /E /Y ..\blender_extras\release release
+xcopy /I /E /Y ..\blender_extras\source source
+
+cd bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^

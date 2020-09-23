@@ -11,7 +11,12 @@
 THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
 mkdir -p blender/bld
-cd blender/bld
+
+cd blender
+cp -Rf ../blender_extras/release ./
+cp -Rf ../blender_extras/source ./
+
+cd bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \

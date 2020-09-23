@@ -9,19 +9,19 @@ source:
 
   - git_url: git://git.blender.org/blender-addons.git
     git_rev: v2.90.0
-    folder: blender/release/scripts/addons
+    folder: blender_extras/release/scripts/addons
 
   - git_url: git://git.blender.org/blender-addons-contrib.git
     git_rev: v2.90.0
-    folder: blender/release/scripts/addons_contrib
+    folder: blender_extras/release/scripts/addons_contrib
 
   - git_url: git://git.blender.org/blender-translations.git
     git_rev: v2.90.0
-    folder: blender/release/datafiles/locale
+    folder: blender_extras/release/datafiles/locale
 
   - git_url: git://git.blender.org/blender-dev-tools.git
     git_rev: v2.90.0
-    folder: blender/source/tools
+    folder: blender_extras/source/tools
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 # [win64]
     folder: lib/win64_vc15 # [win64]
