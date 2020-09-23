@@ -1,10 +1,8 @@
 if "%ARCH%" == "64" (
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set CMAKETARGET="NMake Makefiles"
     set WINLIBS=win64_vc15
 ) else (
-    rem call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set CMAKETARGET="NMake Makefiles"
     set WINLIBS=win64_vc15
@@ -34,6 +32,7 @@ if not exist blender\bld (
    patch -p1 -i %RECIPE_DIR%\platform.patch
    cd ..
 )
+
 cd blender\bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
@@ -72,6 +71,7 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
+nmake update
 nmake
 nmake install
 
