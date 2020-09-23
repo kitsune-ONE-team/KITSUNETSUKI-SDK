@@ -34,4 +34,5 @@ echo "CONDA BUILD: %KONDA_PAK%"
 call env\condabin\conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
-env\Scripts\anaconda -v -token %ANACONDA_TOKEN% upload -u kitsune.one --no-progress --force %KONDA_PAK%
+echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
+env\Scripts\anaconda -v -t %ANACONDA_TOKEN% upload -u kitsune.one --no-progress --force %KONDA_PAK%
