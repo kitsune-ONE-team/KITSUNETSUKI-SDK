@@ -21,7 +21,7 @@ source:
 
 build:
   number: 0
-  string: 1600504580
+  string: 1600882904
 
   missing_dso_whitelist:
     - $RPATH/libCg.so # [unix]
