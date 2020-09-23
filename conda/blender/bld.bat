@@ -9,15 +9,6 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-rem if not exist lib\%WINLIBS% (
-rem mkdir lib
-rem cd lib
-rem D:\Apps\Subversion\bin\svn co ^
-rem     https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 ^
-rem     %WINLIBS%
-rem cd ..
-rem )
-
 copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
 
 :: remove included python
@@ -33,10 +24,7 @@ if not exist blender\bld (
    cd ..
 )
 
-cd blender
-git submodule update --init --recursive
-
-cd bld
+cd blender\bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
