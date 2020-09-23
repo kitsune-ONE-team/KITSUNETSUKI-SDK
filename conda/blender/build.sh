@@ -54,7 +54,6 @@ cmake \
     -DWITH_X11_XINPUT=OFF \
     ..
 
-make update
 make
 make install
 
