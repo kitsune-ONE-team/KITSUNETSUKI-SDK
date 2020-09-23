@@ -38,7 +38,7 @@ env\Scripts\anaconda ^
 --verbose ^
 --token %ANACONDA_TOKEN% ^
 upload ^
+-u kitsune.one ^
 --no-progress ^
---user kitsune.one ^
 --force ^
 %KONDA_PAK%
