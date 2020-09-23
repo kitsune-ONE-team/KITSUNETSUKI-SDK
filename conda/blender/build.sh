@@ -11,7 +11,11 @@
 THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 
 mkdir -p blender/bld
-cd blender/bld
+
+cd blender
+git submodule update --init --recursive
+
+cd bld
 cmake \
     -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \

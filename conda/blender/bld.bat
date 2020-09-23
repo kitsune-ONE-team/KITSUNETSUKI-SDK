@@ -33,7 +33,10 @@ if not exist blender\bld (
    cd ..
 )
 
-cd blender\bld
+cd blender
+git submodule update --init --recursive
+
+cd bld
 cmake -G %CMAKETARGET% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
@@ -71,7 +74,6 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
-nmake update
 nmake
 nmake install
 
