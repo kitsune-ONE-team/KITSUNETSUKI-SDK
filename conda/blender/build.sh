@@ -13,10 +13,14 @@ THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 mkdir -p blender/bld
 
 cd blender
-rm -Rf release
-cp -Rf ../blender_extras/release ./
-rm -Rf source
-cp -Rf ../blender_extras/source ./
+rm -Rf release/scripts/addons
+cp -Rf ../blender_extras/release/scripts/addons release/scripts/
+rm -Rf release/scripts/addons_contrib
+cp -Rf ../blender_extras/release/scripts/addons_contrib release/scripts/
+rm -Rf release/datafiles/locale
+cp -Rf ../blender_extras/release/datafiles/locale release/datafiles/
+rm -Rf source/tools
+cp -Rf ../blender_extras/source/tools source/
 
 cd bld
 cmake \
