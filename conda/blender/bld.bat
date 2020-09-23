@@ -25,7 +25,9 @@ if not exist blender\bld (
 )
 
 cd blender
+rd /s /q release
 xcopy /I /E /Y ..\blender_extras\release release
+rd /s /q source
 xcopy /I /E /Y ..\blender_extras\source source
 
 cd bld

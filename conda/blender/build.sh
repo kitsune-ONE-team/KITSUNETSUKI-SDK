@@ -13,7 +13,9 @@ THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
 mkdir -p blender/bld
 
 cd blender
+rm -Rf release
 cp -Rf ../blender_extras/release ./
+rm -Rf source
 cp -Rf ../blender_extras/source ./
 
 cd bld
