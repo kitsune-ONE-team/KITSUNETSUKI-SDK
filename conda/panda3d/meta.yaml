@@ -72,6 +72,7 @@ requirements:
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
     - python >=3.8
+    - vs2015_runtime # [win]
     - zlib # [unix]
 
 about:
