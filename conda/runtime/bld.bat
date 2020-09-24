@@ -15,7 +15,6 @@ pip install git+https://github.com/joestump/python-oauth2.git@v1.9
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v%RP_VERSION%/render_pipeline-%RP_VERSION%-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
-mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y %CONDA_PREFIX%\%PYTHON_VERSION%.dll              %PREFIX%\kitsunetsuki-runtime\
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
