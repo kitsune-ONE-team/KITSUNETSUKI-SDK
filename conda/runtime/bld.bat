@@ -25,7 +25,6 @@ del %PREFIX%\kitsunetsuki-runtime\cgD3D9.dll
 del %PREFIX%\kitsunetsuki-runtime\cgD3D10.dll
 del %PREFIX%\kitsunetsuki-runtime\cgD3D11.dll
 
-del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_bz2.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_msi.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_sqlite3.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testbuffer.pyd
@@ -37,7 +36,6 @@ del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_testmultiphase.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\_tkinter.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\instrumented\winsound.pyd
 
-del %PREFIX%\kitsunetsuki-runtime\DLLs\_bz2.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_msi.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_sqlite3.pyd
 del %PREFIX%\kitsunetsuki-runtime\DLLs\_testbuffer.pyd
