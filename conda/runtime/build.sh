@@ -119,9 +119,12 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/config \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/effects \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpcore \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rplibs \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/shader \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/six.py \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson
 

@@ -107,9 +107,12 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\render_pipeline-%RP_VERSION%.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\config ^
+    %CONDA_PREFIX%\Lib\site-packages\effects ^
     %CONDA_PREFIX%\Lib\site-packages\rpcore ^
     %CONDA_PREFIX%\Lib\site-packages\rplibs ^
     %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
+    %CONDA_PREFIX%\Lib\site-packages\shader ^
     %CONDA_PREFIX%\Lib\site-packages\six.py ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
