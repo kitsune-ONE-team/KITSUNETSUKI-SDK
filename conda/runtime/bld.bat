@@ -1,5 +1,5 @@
 set PYTHON_VERSION=python38
-set RP_VERSION=2.0.0
+set RP_VERSION=2.0.1
 
 if "%ARCH%" == "64" (
     call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
