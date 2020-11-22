@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: c788912070dff220e3ed829d77bc86bdb1811c1c
+    git_rev: f4d372fdcdfe48c281b256aaa9b4c0e296570746
     folder: .
     patches:
       - prefix.patch # [win]
@@ -21,7 +21,7 @@ source:
 
 build:
   number: 0
-  string: 1603562576
+  string: 1606036976
 
   missing_dso_whitelist:
     - $RPATH/libCg.so # [unix]
