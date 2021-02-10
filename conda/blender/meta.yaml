@@ -1,34 +1,37 @@
 package:
   name: python-blender
-  version: "2.90"
+  version: "2.91.2"
 
 source:
-  - git_url: git://git.blender.org/blender.git
-    git_rev: v2.90.0
+  - git_url: https://git.blender.org/blender.git
+    git_rev: v2.91.2
     folder: blender
 
-  - git_url: git://git.blender.org/blender-addons.git
-    git_rev: v2.90.0
+  - git_url: https://git.blender.org/blender-addons.git
+    git_rev: v2.91.2
     folder: blender_extras/release/scripts/addons
 
-  - git_url: git://git.blender.org/blender-addons-contrib.git
-    git_rev: v2.90.0
+  - git_url: https://git.blender.org/blender-addons-contrib.git
+    git_rev: v2.91.2
     folder: blender_extras/release/scripts/addons_contrib
 
-  - git_url: git://git.blender.org/blender-translations.git
-    git_rev: v2.90.0
+  - git_url: https://git.blender.org/blender-translations.git
+    git_rev: v2.91.2
     folder: blender_extras/release/datafiles/locale
 
-  - git_url: git://git.blender.org/blender-dev-tools.git
-    git_rev: v2.90.0
+  - git_url: https://git.blender.org/blender-dev-tools.git
+    git_rev: v2.91.2
     folder: blender_extras/source/tools
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 # [win64]
     folder: lib/win64_vc15 # [win64]
 
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 # [unix]
+    folder: lib/linux_centos7_x86_64 # [unix]
+
 build:
   number: 0
-  string: 1600853714
+  string: 1612955710
 
   missing_dso_whitelist:
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
@@ -47,7 +50,7 @@ build:
 
 requirements:
   build:
-    - blender-thirdparty # [unix]
+    # - blender-thirdparty # [unix]
     - bullet
     - cmake
     - fontconfig # [unix]
