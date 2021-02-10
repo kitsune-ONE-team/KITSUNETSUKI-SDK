@@ -14,9 +14,6 @@ copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
 :: remove included python
 rd /s /q lib\%WINLIBS%\python
 
-:: remove included zlib
-rem rd /s /q lib\%WINLIBS%\zlib
-
 if not exist blender\bld (
    cd blender
    mkdir bld
@@ -55,6 +52,7 @@ cmake -G %CMAKETARGET% ^
     -DWITH_INSTALL_PORTABLE=OFF ^
     -DWITH_JACK=OFF ^
     -DWITH_LLVM=OFF ^
+    -DWITH_MEM_JEMALLOC=OFF ^
     -DWITH_MOD_OCEANSIM=OFF ^
     -DWITH_OPENAL=OFF ^
     -DWITH_OPENCOLLADA=OFF ^

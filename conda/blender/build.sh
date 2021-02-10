@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
-
 mkdir -p blender/bld
 
 cd blender
@@ -19,7 +17,6 @@ cp -Rf ../blender_extras/source/tools source/
 cd bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-std=gnu++17" \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.8 \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.8.so \
@@ -36,6 +33,7 @@ cmake \
     -DWITH_INSTALL_PORTABLE=OFF \
     -DWITH_JACK=OFF \
     -DWITH_LLVM=OFF \
+    -DWITH_MEM_JEMALLOC=OFF \
     -DWITH_MOD_OCEANSIM=OFF \
     -DWITH_OPENAL=OFF \
     -DWITH_OPENCOLLADA=OFF \
@@ -53,8 +51,3 @@ cmake \
 
 make
 make install
-
-# cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIex-2_3.so.24 ${PREFIX}/lib/
-# cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libHalf-2_3.so.24 ${PREFIX}/lib/
-# cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmImf-2_3.so.24 ${PREFIX}/lib/
-# cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmThread-2_3.so.24 ${PREFIX}/lib/
