@@ -25,13 +25,15 @@ if not exist blender\bld (
 )
 
 cd blender
+
 rd /s /q release\scripts\addons
-xcopy /I /E /Y ..\blender_extras\release\scripts\addons release\scripts\addons
 rd /s /q release\scripts\addons_contrib
-xcopy /I /E /Y ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
 rd /s /q release\datafiles\locale
-xcopy /I /E /Y ..\blender_extras\release\datafiles\locale release\datafiles\locale
 rd /s /q source\tools
+
+xcopy /I /E /Y ..\blender_extras\release\scripts\addons release\scripts\addons
+xcopy /I /E /Y ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
+xcopy /I /E /Y ..\blender_extras\release\datafiles\locale release\datafiles\locale
 xcopy /I /E /Y ..\blender_extras\source\tools source\tools
 
 cd bld

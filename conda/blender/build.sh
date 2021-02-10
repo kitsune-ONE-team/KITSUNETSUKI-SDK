@@ -18,12 +18,9 @@ cp -Rf ../blender_extras/source/tools source/
 
 cd bld
 cmake \
-    # -DBOOST_ROOT=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-std=gnu++17" \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    # -DOPENEXR_ROOT_DIR=${THIRDPARTY} \
-    # -DOPENIMAGEIO_ROOT_DIR=${THIRDPARTY} \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.8 \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.8.so \
     -DPYTHON_VERSION=3.8 \
