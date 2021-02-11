@@ -65,7 +65,6 @@ cmake -G %CMAKETARGET% ^
     -DWITH_PYTHON_MODULE=ON ^
     -DWITH_SDL=OFF ^
     -DWITH_STATIC_LIBS=OFF ^
-    -DWITH_TBB=OFF ^
     ..
 
 if "%ERRORLEVEL%" == "1" (
