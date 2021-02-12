@@ -6,6 +6,8 @@ source:
   - git_url: https://git.blender.org/blender.git
     git_rev: v2.91.2
     folder: blender
+    patches:
+      - pugixml.patch # [unix]
 
   - git_url: https://git.blender.org/blender-addons.git
     git_rev: v2.91.2

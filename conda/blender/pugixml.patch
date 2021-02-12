@@ -1,0 +1,13 @@
+diff --git a/build_files/cmake/platform/platform_unix.cmake b/build_files/cmake/platform/platform_unix.cmake
+index 1aa96c8b842..8d4366b3e05 100644
+--- a/build_files/cmake/platform/platform_unix.cmake
++++ b/build_files/cmake/platform/platform_unix.cmake
+@@ -382,6 +382,8 @@ if(WITH_OPENIMAGEIO)
+   endif()
+ endif()
+ 
++set(PUGIXML_LIBRARIES "pugixml")
++
+ if(WITH_OPENCOLORIO)
+   find_package_wrapper(OpenColorIO)
+ 
