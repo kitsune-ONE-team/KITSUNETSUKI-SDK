@@ -4,7 +4,7 @@ set PATH=%PATH%;^
 env\Scripts;^
 env\Library\bin
 
-set KONDA=_conda
+set KONDA=conda
 set KONDA_ARGS=^
 --cache-dir D:\Cache ^
 --channel kitsune.one ^
