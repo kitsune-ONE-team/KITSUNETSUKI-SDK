@@ -1,9 +1,6 @@
 @echo off
 
 set PATH=%PATH%;^
-D:\Apps\Git\bin;^
-D:\Apps\Svn\bin;^
-D:\Apps\Miniconda3\bin;^
 env\Scripts;^
 env\Library\bin
 
