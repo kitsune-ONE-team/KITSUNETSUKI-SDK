@@ -47,7 +47,7 @@ build:
 
 requirements:
   build:
-    - 7za # [win]
+    - m2-p7zip # [win]
     - bullet ==2.83
     - cmake
     - fontconfig # [unix]
