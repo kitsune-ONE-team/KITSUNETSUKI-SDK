@@ -1,5 +1,7 @@
 #!/bin/sh
 
+THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
+
 mkdir -p blender/bld
 
 cd blender
@@ -16,6 +18,9 @@ cp -Rf ../blender_extras/source/tools source/
 
 cd bld
 cmake \
+    -DBOOST_ROOT=${THIRDPARTY} \
+    -DOPENEXR_ROOT_DIR=${THIRDPARTY} \
+    -DOPENIMAGEIO_ROOT_DIR=${THIRDPARTY} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.8 \
@@ -51,3 +56,8 @@ cmake \
 
 make
 make install
+
+cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIex-2_4.so.24 ${PREFIX}/lib/
+cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libHalf-2_4.so.24 ${PREFIX}/lib/
+cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmImf-2_4.so.24 ${PREFIX}/lib/
+cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmThread-2_4.so.24 ${PREFIX}/lib/
