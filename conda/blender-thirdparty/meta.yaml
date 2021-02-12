@@ -1,30 +1,30 @@
 package:
   name: blender-thirdparty
-  version: "0.2"
+  version: "0.3"
 
 source:
   - git_url: https://github.com/AcademySoftwareFoundation/openexr.git
-    git_rev: v2.3.0
+    git_rev: v2.4.0
     folder: openexr
 
-  - url: https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2 # [unix]
-    md5: 41d7542ce40e171f3f7982aff008ff0d # [unix]
+  - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2 # [unix]
+    md5: 242ecc63507711d6706b9b0c0d0c7d4f # [unix]
     folder: boost # [unix]
 
   - git_url: https://github.com/OpenImageIO/oiio.git
-    git_rev: Release-1.8.6
+    git_rev: Release-2.1.15
     folder: oiio
 
 build:
   number: 0
-  string: 1588839925
+  string: 1613153531
 
   missing_dso_whitelist:
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
-    - $RPATH/libHalf-2_3.so.24 # [unix]
-    - $RPATH/libIex-2_3.so.24 # [unix]
-    - $RPATH/libIlmImf-2_3.so.24 # [unix]
-    - $RPATH/libIlmThread-2_3.so.24 # [unix]
+    - $RPATH/libHalf-2_4.so.24 # [unix]
+    - $RPATH/libIex-2_4.so.24 # [unix]
+    - $RPATH/libIlmImf-2_4.so.24 # [unix]
+    - $RPATH/libIlmThread-2_4.so.24 # [unix]
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
@@ -41,7 +41,7 @@ requirements:
     - libtiff
     - m2-gcc-libs # [win]
     - m2-patch # [win]
-    - python >=3.8
+    - python ==3.8
     - zlib
   run:
     - jpeg # [unix]
