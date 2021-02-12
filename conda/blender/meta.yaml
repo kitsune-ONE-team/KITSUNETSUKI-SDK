@@ -6,8 +6,6 @@ source:
   - git_url: https://git.blender.org/blender.git
     git_rev: v2.91.2
     folder: blender
-    patches:
-      - pugixml.patch # [unix]
 
   - git_url: https://git.blender.org/blender-addons.git
     git_rev: v2.91.2
@@ -33,7 +31,7 @@ source:
 
 build:
   number: 0
-  string: 1612955710
+  string: 1613129244
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
