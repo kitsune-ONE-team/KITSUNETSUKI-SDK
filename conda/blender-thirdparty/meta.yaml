@@ -12,7 +12,7 @@ source:
     folder: boost # [unix]
 
   - git_url: https://github.com/OpenImageIO/oiio.git
-    git_rev: Release-2.1.15
+    git_rev: Release-2.1.15.0
     folder: oiio
 
 build:

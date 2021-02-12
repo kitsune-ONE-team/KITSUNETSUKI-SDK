@@ -56,6 +56,8 @@
     name: 'LYNX64-jobs'
     jobs:
         - 'LYNX64/{name}':
+            name: blender-thirdparty
+        - 'LYNX64/{name}':
             name: blender
         - 'LYNX64/{name}':
             name: bullet
