@@ -1,0 +1,129 @@
+- job:
+    project-type: folder
+    name: LYNX64
+
+- job:
+    project-type: folder
+    name: WINX64
+
+- job-template:
+    name: 'LYNX64/{name}'
+    display-name: 'LYNX64/{name}'
+    project-type: freestyle
+    description: 'LYNX64 job'
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+    parameters:
+        - string:
+            name: ANACONDA_TOKEN
+            default:
+                !include-raw: /home/yonnji/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
+    builders:
+        - shell: |
+            ./jenkins.lyn.sh
+
+- job-template:
+    name: 'WINX64/{name}'
+    display-name: 'WINX64/{name}'
+    project-type: freestyle
+    description: 'WINX64 job'
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+    parameters:
+        - string:
+            name: ANACONDA_TOKEN
+            default:
+                !include-raw: /home/yonnji/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
+    builders:
+        - batch: |
+            jenkins.win.bat
+
+- project:
+    name: 'LYNX64-jobs'
+    jobs:
+        - 'LYNX64/{name}':
+            name: blender
+        - 'LYNX64/{name}':
+            name: bullet
+        - 'LYNX64/{name}':
+            name: panda3d
+        - 'LYNX64/{name}':
+            name: kcc
+        - 'LYNX64/{name}':
+            name: runtime
+
+- project:
+    name: 'WINX64-jobs'
+    jobs:
+        - 'WINX64/{name}':
+            name: blender
+        - 'WINX64/{name}':
+            name: bullet
+        - 'WINX64/{name}':
+            name: panda3d
+        - 'WINX64/{name}':
+            name: kcc
+        - 'WINX64/{name}':
+            name: runtime
+
+- job-template:
+    name: 'LYNX64/{name}-sdk'
+    display-name: 'LYNX64/{name}-sdk'
+    project-type: pipeline
+    description: 'LYNX64 pipeline'
+    node: linux
+    dsl: |
+        stage('bullet') {{
+            build(job: 'bullet')
+        }}
+        stage('panda3d') {{
+            build(job: 'panda3d')
+        }}
+        stage('kcc') {{
+            build(job: 'kcc')
+        }}
+        stage('runtime') {{
+            build(job: 'runtime')
+        }}
+
+- job-template:
+    name: 'WINX64/{name}-sdk'
+    display-name: 'WINX64/{name}-sdk'
+    project-type: pipeline
+    description: 'WINX64 pipeline'
+    node: windows
+    dsl: |
+        stage('bullet') {{
+            build(job: 'bullet')
+        }}
+        stage('panda3d') {{
+            build(job: 'panda3d')
+        }}
+        stage('kcc') {{
+            build(job: 'kcc')
+        }}
+        stage('runtime') {{
+            build(job: 'runtime')
+        }}
+
+- project:
+    name: kitsunetsuki-sdk
+    jobs:
+        - 'LYNX64/{name}-sdk':
+            name: kitsunetsuki
+        - 'WINX64/{name}-sdk':
+            name: kitsunetsuki

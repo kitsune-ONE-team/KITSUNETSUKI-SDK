@@ -1,11 +1,10 @@
 @echo off
 
 set PATH=%PATH%;^
-D:\Apps\Git\bin;^
 env\Scripts;^
 env\Library\bin
 
-set KONDA=D:\Apps\Miniconda3_x64\Scripts\conda
+set KONDA=conda
 set KONDA_ARGS=^
 --cache-dir D:\Cache ^
 --channel kitsune.one ^

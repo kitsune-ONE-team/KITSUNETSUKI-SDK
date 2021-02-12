@@ -29,7 +29,7 @@ Files and directories structure
 * [ksdk.yml](ksdk.yml) - conda environment file
 * [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
 * [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
-* [jenkins.pipeline](jenkins.pipeline) - Jenkins Pipeline file for building multiple jobs
+* [jenkins.jobs.yaml](jenkins.jobs.yaml) - Jenkins Jobs Builder file for jobs generation
 
 
 SDK Requirements
