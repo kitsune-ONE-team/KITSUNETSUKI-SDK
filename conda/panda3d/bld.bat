@@ -1,11 +1,10 @@
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat"
+color 0f
 if "%ARCH%" == "64" (
-    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x64
     set WINLIBS=thirdparty\win-libs-vc14-x64
 ) else (
-    call "D:\Apps\Visual Studio\IDE\VC\Auxiliary\Build\vcvarsall.bat" x86
     set WINLIBS=thirdparty\win-libs-vc14
 )
-color 0f
 
 :: remove included bullet
 rmdir /S /Q %WINLIBS%\bullet
@@ -26,7 +25,7 @@ python makepanda/makepanda.py ^
     --python-libdir %CONDA_PREFIX%\lib ^
     --zlib-incdir %CONDA_PREFIX%\include ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
-    --msvc-version=14.1 ^
+    --msvc-version=14.2 ^
     --nothing ^
     --outputdir %BUILT% ^
     --threads=2 ^
