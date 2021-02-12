@@ -9,7 +9,7 @@ source:
     patches:
       - prefix.patch # [win]
       - nopy.patch # [win]
-      # - icon.patch # [unix]
+      - icon.patch # [unix]
       - libs.patch
       - rp_light.patch
 
@@ -63,7 +63,7 @@ requirements:
     - openssl >=1.1.1g
     - patchelf # [unix]
     - pillow # [unix]
-    - python >=3.8
+    - python ==3.8
     - zlib
   run:
     - freetype # [unix]
@@ -71,7 +71,7 @@ requirements:
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
-    - python >=3.8
+    - python ==3.8
     - vs2015_runtime # [win]
     - zlib # [unix]
 

@@ -49,7 +49,7 @@ requirements:
     - kcc
     - panda3d
     - pyrsistent ==0.16.0
-    - python >=3.8
+    - python ==3.8
     - six ==1.14.0
     - pytest-runner
   run:
@@ -60,7 +60,7 @@ requirements:
     - libvorbis # [unix]
     - openssl >=1.1.1g
     - panda3d
-    - python >=3.8
+    - python ==3.8
     - xz # [unix]
     - zlib
     - libpng

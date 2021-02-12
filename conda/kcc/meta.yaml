@@ -23,12 +23,12 @@ requirements:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d
-    - python >=3.8
+    - python ==3.8
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d
-    - python >=3.8
+    - python ==3.8
 
 about:
   home: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK
