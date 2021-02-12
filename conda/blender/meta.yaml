@@ -6,8 +6,8 @@ source:
   - git_url: https://git.blender.org/blender.git
     git_rev: v2.91.2
     folder: blender
-    patches:
-      - pugixml.patch # [unix]
+    # patches:
+    #   - pugixml.patch # [unix]
 
   - git_url: https://git.blender.org/blender-addons.git
     git_rev: v2.91.2
@@ -28,15 +28,14 @@ source:
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 # [win64]
     folder: lib/win64_vc15 # [win64]
 
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 # [unix]
-    folder: lib/linux_centos7_x86_64 # [unix]
+  # - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 # [unix]
+  #   folder: lib/linux_centos7_x86_64 # [unix]
 
 build:
   number: 0
   string: 1613129244
 
   missing_dso_whitelist:
-    - /lib64/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libGL.so.1 # [unix]
     - $RPATH/libc.so.6 # [unix]
@@ -53,18 +52,32 @@ build:
 
 requirements:
   build:
+    - blender-thirdparty # [unix]
     - bullet
     - cmake
+    - fontconfig # [unix]
+    - freetype # [unix]
     - git
+    - jpeg
     - libgcc-ng # [unix]
+    - libpng # [unix]
     - libstdcxx-ng # [unix]
+    - libtiff # [unix]
+    - llvmdev # [unix]
     - m2-patch # [win]
+    - openjpeg
     - python ==3.8
     - requests # [unix]
+    - zlib
   run:
+    - freetype # [unix]
+    - jpeg # [unix]
     - libgcc-ng # [unix]
+    - libpng # [unix]
     - libstdcxx-ng # [unix]
+    - libtiff # [unix]
     - python ==3.8
+    - zlib # [unix]
 
 about:
   home: https://www.blender.org/

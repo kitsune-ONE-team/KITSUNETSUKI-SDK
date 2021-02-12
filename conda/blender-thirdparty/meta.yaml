@@ -34,6 +34,8 @@ build:
 requirements:
   build:
     - cmake
+    - fontconfig # [unix]
+    - freetype # [unix]
     - jpeg
     - libgcc-ng # [unix]
     - libpng # [unix]
@@ -44,6 +46,8 @@ requirements:
     - python ==3.8
     - zlib
   run:
+    - fontconfig # [unix]
+    - freetype # [unix]
     - jpeg # [unix]
     - libgcc-ng # [unix]
     - libpng # [unix]
