@@ -7,13 +7,17 @@ source:
     git_rev: v2.4.0
     folder: openexr
 
-  - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2 # [unix]
-    md5: 242ecc63507711d6706b9b0c0d0c7d4f # [unix]
-    folder: boost # [unix]
+  - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2
+    md5: 242ecc63507711d6706b9b0c0d0c7d4f
+    folder: boost
 
   - git_url: https://github.com/OpenImageIO/oiio.git
     git_rev: Release-2.1.15.0
     folder: oiio
+
+  - git_url: https://github.com/PixarAnimationStudios/OpenSubdiv.git
+    git_rev: v3_4_3
+    folder: OpenSubdiv
 
 build:
   number: 0

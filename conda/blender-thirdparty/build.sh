@@ -36,3 +36,23 @@ cmake \
 make
 make install
 cd ../..
+
+mkdir -p OpenSubDiv/bld
+cd OpenSubDiv/bld
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
+    -DNO_EXAMPLES=1 \
+    -DNO_TUTORIALS=1 \
+    -DNO_PTEX=1 \
+    -DNO_DOC=1 \
+    -DNO_OMP=1 \
+    -DNO_TBB=1 \
+    -DNO_CUDA=1 \
+    -DNO_OPENCL=1 \
+    -DNO_OPENGL=1 \
+    -DNO_CLEW=1 \
+    ..
+make
+make install
+cd ../..
