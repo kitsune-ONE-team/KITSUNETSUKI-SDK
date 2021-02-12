@@ -1,0 +1,25 @@
+diff --git a/intern/cycles/CMakeLists.txt b/intern/cycles/CMakeLists.txt
+index 9d5b5a2d1a6..6a8608c53d8 100644
+--- a/intern/cycles/CMakeLists.txt
++++ b/intern/cycles/CMakeLists.txt
+@@ -326,6 +326,8 @@ include_directories(
+   ${PUGIXML_INCLUDE_DIR}
+   ${TBB_INCLUDE_DIRS}
+ )
++include_directories(${CMAKE_SOURCE_DIR}/../lib/linux_centos7_x86_64/pugixml/include/)
++link_directories(${CMAKE_SOURCE_DIR}/../lib/linux_centos7_x86_64/pugixml/lib/)
+ 
+ if(CYCLES_STANDALONE_REPOSITORY)
+   include_directories(../third_party/atomic)
+diff --git a/intern/cycles/cmake/macros.cmake b/intern/cycles/cmake/macros.cmake
+index ff62b816e6c..3dfc4e81eae 100644
+--- a/intern/cycles/cmake/macros.cmake
++++ b/intern/cycles/cmake/macros.cmake
+@@ -149,6 +149,7 @@ macro(cycles_target_link_libraries target)
+     ${OPENEXR_LIBRARIES}
+     ${OPENEXR_LIBRARIES} # For circular dependencies between libs.
+     ${PUGIXML_LIBRARIES}
++    pugixml
+     ${BOOST_LIBRARIES}
+     ${ZLIB_LIBRARIES}
+     ${CMAKE_DL_LIBS}
