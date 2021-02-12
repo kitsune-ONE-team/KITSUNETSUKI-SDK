@@ -37,8 +37,8 @@ make
 make install
 cd ../..
 
-mkdir -p OpenSubDiv/bld
-cd OpenSubDiv/bld
+mkdir -p OpenSubdiv/bld
+cd OpenSubdiv/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
