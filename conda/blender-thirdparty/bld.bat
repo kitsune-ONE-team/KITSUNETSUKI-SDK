@@ -1,45 +1,32 @@
 if "%ARCH%" == "64" (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
 ) else (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
 )
 color 0f
 
 set THIRDPARTY=%PREFIX%\blender-thirdparty
 
-python %RECIPE_DIR%\boost.py
-if "%ARCH%" == "64" (
-   %HOME%\boost_1_65_1-msvc-14.1-64.exe /DIR=%THIRDPARTY%\boost /SILENT
-) else (
-   %HOME%\boost_1_65_1-msvc-14.1-32.exe /DIR=%THIRDPARTY%\boost /SILENT
-)
-
-if "%ERRORLEVEL%" == "1" (
-    exit /B 1
-)
-
-cd ilmbase
-cmake -G "NMake Makefiles" ^
-    -DBUILD_SHARED_LIBS=OFF ^
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
-    .
-nmake
-nmake install
-cd ..
-
-if "%ERRORLEVEL%" == "1" (
-    exit /B 1
-)
-
 cd openexr
 cmake -G "NMake Makefiles" ^
-    -DILMBASE_PACKAGE_PREFIX=%THIRDPARTY% ^
+    -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
     -DBUILD_SHARED_LIBS=OFF ^
     -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     .
 nmake
 nmake install
 cd ..
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+python %RECIPE_DIR%\boost.py
+if "%ARCH%" == "64" (
+   %HOME%\boost_1_70_0-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT
+) else (
+   %HOME%\boost_1_70_0-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT
+)
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
@@ -48,17 +35,41 @@ if "%ERRORLEVEL%" == "1" (
 mkdir oiio\bld
 cd oiio\bld
 cmake -G "NMake Makefiles" ^
-    -DBUILDSTATIC=1 ^
     -DBOOST_CUSTOM=1 ^
-    -DBoost_VERSION=1.65.1 ^
+    -DBUILDSTATIC=1 ^
     -DBoost_INCLUDE_DIRS=%THIRDPARTY%\boost ^
-    -DBoost_LIBRARY_DIRS=%THIRDPARTY%\boost\lib%ARCH%-msvc-14.1 ^
-    -DILMBASE_HOME=%THIRDPARTY% ^
-    -DOPENEXR_HOME=%THIRDPARTY% ^
+    -DBoost_LIBRARY_DIRS=%THIRDPARTY%\boost\lib%ARCH%-msvc-14.2 ^
+    -DBoost_VERSION=1.70.0 ^
     -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
+    -DILMBASE_HOME=%THIRDPARTY% ^
+    -DOIIO_BUILD_TESTS=OFF ^
+    -DOPENEXR_HOME=%THIRDPARTY% ^
     -DUSE_FFMPEG=OFF ^
     -DUSE_PYTHON=OFF ^
-    -DOIIO_BUILD_TESTS=OFF ^
+    ..
+nmake
+nmake install
+cd ..\..
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+mkdir OpenSubdiv\bld
+cd OpenSubdiv\bld
+cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% \
+    -DNO_CLEW=1 \
+    -DNO_CUDA=1 \
+    -DNO_DOC=1 \
+    -DNO_EXAMPLES=1 \
+    -DNO_OMP=1 \
+    -DNO_OPENCL=1 \
+    -DNO_OPENGL=1 \
+    -DNO_PTEX=1 \
+    -DNO_TBB=1 \
+    -DNO_TUTORIALS=1 \
     ..
 nmake
 nmake install
