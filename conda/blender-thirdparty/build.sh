@@ -32,6 +32,7 @@ cmake \
     -DOPENEXR_HOME=${THIRDPARTY} \
     -DUSE_FFMPEG=OFF \
     -DUSE_PYTHON=OFF \
+    -DBUILDSTATIC=1 \
     ..
 make
 make install
@@ -43,6 +44,7 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
     -DBUILD_TESTS=OFF \
+    -DBUILD_SHARED_LIBRARY=OFF \
     ..
 make
 make install
@@ -63,6 +65,9 @@ cmake \
     -DNO_TBB=1 \
     -DNO_TUTORIALS=1 \
     ..
-make
+make osd_static_CPU
+make osd_static_GPU
 make install
 cd ../..
+# rm -f ${THIRDPARTY}/lib/libosdCPU.so*
+# rm -f ${THIRDPARTY}/lib/libosdGPU.so*

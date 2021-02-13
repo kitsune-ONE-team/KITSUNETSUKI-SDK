@@ -59,8 +59,3 @@ cmake \
 
 make
 make install
-
-cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIex-2_4.so.24 ${PREFIX}/lib/
-cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libHalf-2_4.so.24 ${PREFIX}/lib/
-cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmImf-2_4.so.24 ${PREFIX}/lib/
-cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libIlmThread-2_4.so.24 ${PREFIX}/lib/
