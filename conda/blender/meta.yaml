@@ -1,28 +1,26 @@
 package:
   name: python-blender
-  version: "2.91.2"
+  version: "2.91.0"
 
 source:
   - git_url: https://git.blender.org/blender.git
-    git_rev: v2.91.2
+    git_rev: v2.91.0
     folder: blender
-    # patches:
-    #   - pugixml.patch # [unix]
 
   - git_url: https://git.blender.org/blender-addons.git
-    git_rev: v2.91.2
+    git_rev: v2.91.0
     folder: blender_extras/release/scripts/addons
 
   - git_url: https://git.blender.org/blender-addons-contrib.git
-    git_rev: v2.91.2
+    git_rev: v2.91.0
     folder: blender_extras/release/scripts/addons_contrib
 
   - git_url: https://git.blender.org/blender-translations.git
-    git_rev: v2.91.2
+    git_rev: v2.91.0
     folder: blender_extras/release/datafiles/locale
 
   - git_url: https://git.blender.org/blender-dev-tools.git
-    git_rev: v2.91.2
+    git_rev: v2.91.0
     folder: blender_extras/source/tools
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 # [win64]
