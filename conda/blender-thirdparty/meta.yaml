@@ -15,6 +15,10 @@ source:
     git_rev: Release-2.1.15.0
     folder: oiio
 
+  - git_url: https://github.com/martijnberger/clew.git
+    git_rev: 0.10
+    folder: clew
+
   - git_url: https://github.com/PixarAnimationStudios/OpenSubdiv.git
     git_rev: v3_4_3
     folder: OpenSubdiv

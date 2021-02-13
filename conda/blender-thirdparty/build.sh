@@ -37,17 +37,26 @@ make
 make install
 cd ../..
 
+mkdir -p clew/bld
+cd clew/bld
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
+    ..
+make
+make install
+cd ../..
+
 mkdir -p OpenSubdiv/bld
 cd OpenSubdiv/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
-    -DNO_CLEW=1 \
+    -DCLEW_LOCATION=${THIRDPARTY} \
     -DNO_CUDA=1 \
     -DNO_DOC=1 \
     -DNO_EXAMPLES=1 \
     -DNO_OMP=1 \
-    -DNO_OPENCL=1 \
     -DNO_OPENGL=1 \
     -DNO_PTEX=1 \
     -DNO_TBB=1 \
