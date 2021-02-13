@@ -42,6 +42,7 @@ cd clew/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${THIRDPARTY} \
+    -DBUILD_TESTS=OFF \
     ..
 make
 make install
