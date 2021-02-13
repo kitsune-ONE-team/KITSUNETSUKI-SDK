@@ -65,9 +65,8 @@ cmake \
     -DNO_TBB=1 \
     -DNO_TUTORIALS=1 \
     ..
-make osd_static_CPU
-make osd_static_GPU
+make
 make install
 cd ../..
-# rm -f ${THIRDPARTY}/lib/libosdCPU.so*
-# rm -f ${THIRDPARTY}/lib/libosdGPU.so*
+rm -f ${THIRDPARTY}/lib/libosdCPU.so*
+rm -f ${THIRDPARTY}/lib/libosdGPU.so*
