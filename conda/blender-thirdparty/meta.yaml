@@ -34,6 +34,7 @@ build:
     - $RPATH/libIlmImf-2_4.so.24 # [unix]
     - $RPATH/libIlmThread-2_4.so.24 # [unix]
     - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libclew.so.1.0.0 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
