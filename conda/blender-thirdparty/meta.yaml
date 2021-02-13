@@ -54,7 +54,6 @@ requirements:
     - python ==3.8
     - zlib
   run:
-    - fontconfig # [unix]
     - freetype # [unix]
     - jpeg # [unix]
     - libgcc-ng # [unix]
