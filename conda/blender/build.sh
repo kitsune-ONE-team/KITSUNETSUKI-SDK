@@ -59,3 +59,5 @@ cmake \
 
 make
 make install
+
+cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libOpenImageIO* ${PREFIX}/lib/
