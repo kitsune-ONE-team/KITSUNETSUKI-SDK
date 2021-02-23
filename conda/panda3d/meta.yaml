@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: f4d372fdcdfe48c281b256aaa9b4c0e296570746
+    git_rev: 18873ffbf1729f6d941d7e6f16f81770cf710409
     folder: .
     patches:
       - prefix.patch # [win]
@@ -12,16 +12,17 @@ source:
       - icon.patch # [unix]
       - libs.patch
       - rp_light.patch
+      - fabrik.patch
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win32.zip # [win32]
-    md5: 037e5109878ff943e0342c61ee39fdca # [win32]
+  - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
+    md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win64.zip # [win64]
-    md5: ed1438c59471abd1ee11e3414c97e0fe # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win64.zip # [win64]
+    md5: d17e997dfb2a84e4b935a930650df053 # [win64]
 
 build:
   number: 0
-  string: 1613128700
+  string: 1614097650
 
   missing_dso_whitelist:
     - $RPATH/libCg.so # [unix]
