@@ -450,6 +450,226 @@ index 25ab775316..f994640420 100644
    JointVertexTransform::init_type();
  
    // Registration of writeable object's creation functions with BamReader's
+diff --git a/panda/src/char/ikEffector.I b/panda/src/char/ikEffector.I
+new file mode 100644
+index 0000000000..ed48afd0a1
+--- /dev/null
++++ b/panda/src/char/ikEffector.I
+@@ -0,0 +1,20 @@
++/**
++ * PANDA 3D SOFTWARE
++ * Copyright (c) Carnegie Mellon University.  All rights reserved.
++ *
++ * All use of this software is subject to the terms of the revised BSD
++ * license.  You should have received a copy of this license along
++ * with this source code in a file named "LICENSE."
++ *
++ * @file ikEffector.I
++ * @author rdb
++ * @date 2020-11-16
++ */
++
++/**
++ *
++ */
++INLINE IKEffector::
++IKEffector(const IKEffector &copy) : _node(copy._node) {
++
++}
+diff --git a/panda/src/char/ikEffector.cxx b/panda/src/char/ikEffector.cxx
+new file mode 100644
+index 0000000000..730286f6a6
+--- /dev/null
++++ b/panda/src/char/ikEffector.cxx
+@@ -0,0 +1,112 @@
++/**
++ * PANDA 3D SOFTWARE
++ * Copyright (c) Carnegie Mellon University.  All rights reserved.
++ *
++ * All use of this software is subject to the terms of the revised BSD
++ * license.  You should have received a copy of this license along
++ * with this source code in a file named "LICENSE."
++ *
++ * @file ikEffector.cxx
++ * @author rdb
++ * @date 2020-11-16
++ */
++
++#include "ikEffector.h"
++#include "pandaNode.h"
++
++TypeHandle IKEffector::_type_handle;
++
++/**
++ * Creates a new IKEffector tracking the given node.
++ */
++IKEffector::
++IKEffector(PartGroup *parent, PandaNode *node) :
++  PartGroup(parent, ""),
++  _node(node) {
++}
++
++/**
++ * Recursively initializes the joint for IK, calculating the current net
++ * position and lengths.  Returns true if there were any effectors under this
++ * node, false otherwise.
++ */
++bool IKEffector::
++r_init_ik(const LPoint3 &parent_pos) {
++  _ik_pos = _node->get_transform()->get_pos();
++  _length = (_ik_pos - parent_pos).length();
++  return true;
++}
++
++/**
++ * Executes a forward IK pass on the given points (which are set up by
++ * r_setup_ik_points).
++ */
++void IKEffector::
++r_forward_ik(const LPoint3 &parent_pos) {
++  // Nothing to do here.  End effectors only take effect in the reverse pass.
++}
++
++/**
++ * Executes a reverse IK pass on the given points (which are set up by
++ * r_setup_ik_points).  Returns true if there were any effectors under this
++ * joint, in which case the new position of this joint is stored in out_pos.
++ */
++bool IKEffector::
++r_reverse_ik(LPoint3 &out_pos) {
++  out_pos = _ik_pos;
++  return true;
++}
++
++/**
++ * Function to write the important information in the particular object to a
++ * Datagram
++ */
++void IKEffector::
++write_datagram(BamWriter *manager, Datagram &me) {
++  PartGroup::write_datagram(manager, me);
++}
++
++/**
++ * Takes in a vector of pointers to TypedWritable objects that correspond to
++ * all the requests for pointers that this object made to BamReader.
++ */
++int IKEffector::
++complete_pointers(TypedWritable **p_list, BamReader* manager) {
++  int pi = PartGroup::complete_pointers(p_list, manager);
++
++  _node = DCAST(PandaNode, p_list[pi++]);
++
++  return pi;
++}
++
++/**
++ * Function that reads out of the datagram (or asks manager to read) all of
++ * the data that is needed to re-create this object and stores it in the
++ * appropiate place
++ */
++void IKEffector::
++fillin(DatagramIterator &scan, BamReader *manager) {
++  PartGroup::fillin(scan, manager);
++}
++
++/**
++ * Factory method to generate a IKEffector object
++ */
++/*TypedWritable* IKEffector::
++make_IKEffector(const FactoryParams &params) {
++  IKEffector *me = new IKEffector;
++  DatagramIterator scan;
++  BamReader *manager;
++
++  parse_params(params, scan, manager);
++  me->fillin(scan, manager);
++  return me;
++}*/
++
++/**
++ * Factory method to generate a IKEffector object
++ */
++/*void IKEffector::
++register_with_read_factory() {
++  BamReader::get_factory()->register_factory(get_class_type(), make_IKEffector);
++}*/
+diff --git a/panda/src/char/ikEffector.h b/panda/src/char/ikEffector.h
+new file mode 100644
+index 0000000000..bfb135c38b
+--- /dev/null
++++ b/panda/src/char/ikEffector.h
+@@ -0,0 +1,70 @@
++/**
++ * PANDA 3D SOFTWARE
++ * Copyright (c) Carnegie Mellon University.  All rights reserved.
++ *
++ * All use of this software is subject to the terms of the revised BSD
++ * license.  You should have received a copy of this license along
++ * with this source code in a file named "LICENSE."
++ *
++ * @file ikEffector.h
++ * @author rdb
++ * @date 2020-11-16
++ */
++
++#ifndef IKEFFECTOR_H
++#define IKEFFECTOR_H
++
++#include "pandabase.h"
++
++#include "partGroup.h"
++
++/**
++ * This object is placed at the end of a chain of joints in order to pull it
++ * towards a particular position using Inverse Kinematics.
++ */
++class EXPCL_PANDA_CHAR IKEffector : public PartGroup {
++protected:
++  INLINE IKEffector(const IKEffector &copy);
++
++PUBLISHED:
++  explicit IKEffector(PartGroup *parent, PandaNode *node);
++
++  bool r_init_ik(const LPoint3 &parent_pos);
++  void r_forward_ik(const LPoint3 &parent_pos);
++  bool r_reverse_ik(LPoint3 &out_pos);
++
++protected:
++  IKEffector();
++
++  PT(PandaNode) _node;
++  LPoint3 _ik_pos;
++  PN_stdfloat _length;
++
++public:
++  virtual void write_datagram(BamWriter *manager, Datagram &dg);
++  virtual int complete_pointers(TypedWritable **plist, BamReader *manager);
++
++protected:
++  void fillin(DatagramIterator &scan, BamReader *manager);
++
++public:
++  virtual TypeHandle get_type() const {
++    return get_class_type();
++  }
++  virtual TypeHandle force_init_type() {init_type(); return get_class_type();}
++  static TypeHandle get_class_type() {
++    return _type_handle;
++  }
++  static void init_type() {
++    PartGroup::init_type();
++    register_type(_type_handle, "IKEffector",
++                  PartGroup::get_class_type());
++  }
++
++private:
++  static TypeHandle _type_handle;
++};
++
++#include "ikEffector.I"
++
++#endif
 diff --git a/panda/src/char/p3char_composite2.cxx b/panda/src/char/p3char_composite2.cxx
 index 887acf1d59..a86395a797 100644
 --- a/panda/src/char/p3char_composite2.cxx
