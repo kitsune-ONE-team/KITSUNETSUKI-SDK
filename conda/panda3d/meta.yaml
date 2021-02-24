@@ -7,16 +7,12 @@ source:
     git_rev: v1.10.8
     folder: .
     patches:
-      - prefix.patch # [win]
+      - prefix108.patch # [win]
       - nopy.patch # [win]
-      # - icon.patch # [unix]
+      - icon108.patch # [unix]
       - libs.patch
       - rp_light.patch
-      - fabrik.patch
-
-  - url: https://raw.githubusercontent.com/panda3d/panda3d/12e86bd8420242cf89c66911bce29c02ed07c148/panda/src/char/CMakeLists.txt
-    md5: 522982740941b6d1118dd490221880c3
-    folder: panda3d/panda/src/char
+      - fabrik108.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
     md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
