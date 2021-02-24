@@ -9,7 +9,7 @@ source:
     patches:
       - prefix.patch # [win]
       - nopy.patch # [win]
-      - icon.patch # [unix]
+      # - icon.patch # [unix]
       - libs.patch
       - rp_light.patch
       - fabrik.patch
