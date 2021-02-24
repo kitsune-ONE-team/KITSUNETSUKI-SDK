@@ -23,9 +23,9 @@ if "%ERRORLEVEL%" == "1" (
 
 python %RECIPE_DIR%\boost.py
 if "%ARCH%" == "64" (
-   %HOME%\boost_1_70_0-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT
+   %HOME%\boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT
 ) else (
-   %HOME%\boost_1_70_0-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT
+   %HOME%\boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT
 )
 
 if "%ERRORLEVEL%" == "1" (
