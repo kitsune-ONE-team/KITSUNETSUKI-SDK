@@ -7,9 +7,17 @@ source:
     git_rev: v2.4.0
     folder: openexr
 
-  - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2
-    md5: 242ecc63507711d6706b9b0c0d0c7d4f
-    folder: boost
+  - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2 # [unix]
+    md5: 242ecc63507711d6706b9b0c0d0c7d4f # [unix]
+    folder: boost # [unix]
+
+  - url: https://boost.teeks99.com/bin/1.70.0/boost_1_70_0-unsupported-msvc-14.2-32.exe # [win32]
+    md5: a2685101ff1eb9e2d70935e98d86a4d3 # [win32]
+    folder: . # [win32]
+
+  - url: https://boost.teeks99.com/bin/1.70.0/boost_1_70_0-unsupported-msvc-14.2-64.exe # [win64]
+    md5: b6a95d84821ed1b55eeed7c9a7a314c9 # [win64]
+    folder: . # [win64]
 
   - git_url: https://github.com/OpenImageIO/oiio.git
     git_rev: Release-2.1.15.0
