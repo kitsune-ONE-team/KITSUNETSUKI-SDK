@@ -7,10 +7,9 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-:: remove included bullet
+:: remove included libs
 rmdir /S /Q %WINLIBS%\bullet
-
-:: remove included openssl
+rmdir /S /Q %WINLIBS%\freetype
 rmdir /S /Q %WINLIBS%\openssl
 
 set BUILT=built
