@@ -8,7 +8,7 @@ color 0f
 set PYTHON_VERSION=python38
 set RP_VERSION=2.0.1
 
-pip install git+https://github.com/kitsune-ONE-team/panda3d-gltf.git@ksdk
+pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.12
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.17.3
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
@@ -101,7 +101,7 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.8.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.12.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
