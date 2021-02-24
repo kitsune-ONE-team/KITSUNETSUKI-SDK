@@ -6,14 +6,14 @@ from urllib.request import urlretrieve
 
 arch, _ = platform.architecture()
 barch = '32' if arch == '32bit' else '64'
-boost = '1.65.1'
+boost = '1.70.0'
 boost_ = boost.replace('.', '_')
-vc = '14.1'
+vc = 'unsupported-msvc-14.2'
 print('architecture: {}'.format(arch))
 print('boost version: {}'.format(boost))
 print('vc version: {}'.format(vc))
 
-fname = 'boost_{boostu}-msvc-{vc}-{arch}.exe'.format(**{
+fname = 'boost_{boostu}-{vc}-{arch}.exe'.format(**{
     'boostu': boost_,
     'vc': vc,
     'arch': barch,
