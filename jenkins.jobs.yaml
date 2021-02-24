@@ -72,6 +72,8 @@
     name: 'WINX64-jobs'
     jobs:
         - 'WINX64/{name}':
+            name: blender-thirdparty
+        - 'WINX64/{name}':
             name: blender
         - 'WINX64/{name}':
             name: bullet

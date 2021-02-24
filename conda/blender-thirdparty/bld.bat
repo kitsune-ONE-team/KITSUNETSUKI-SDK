@@ -55,21 +55,37 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
+mkdir clew\bld
+cd clew\bld
+cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% %
+    -DBUILD_TESTS=OFF ^
+    -DBUILD_SHARED_LIBRARY=OFF ^
+    ..
+make
+make install
+cd ..\..
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
 mkdir OpenSubdiv\bld
 cd OpenSubdiv\bld
 cmake -G "NMake Makefiles" ^
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% \
-    -DNO_CLEW=1 \
-    -DNO_CUDA=1 \
-    -DNO_DOC=1 \
-    -DNO_EXAMPLES=1 \
-    -DNO_OMP=1 \
-    -DNO_OPENCL=1 \
-    -DNO_OPENGL=1 \
-    -DNO_PTEX=1 \
-    -DNO_TBB=1 \
-    -DNO_TUTORIALS=1 \
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
+    -DNO_CLEW=1 ^
+    -DNO_CUDA=1 ^
+    -DNO_DOC=1 ^
+    -DNO_EXAMPLES=1 ^
+    -DNO_OMP=1 ^
+    -DNO_OPENCL=1 ^
+    -DNO_OPENGL=1 ^
+    -DNO_PTEX=1 ^
+    -DNO_TBB=1 ^
+    -DNO_TUTORIALS=1 ^
     ..
 nmake
 nmake install
