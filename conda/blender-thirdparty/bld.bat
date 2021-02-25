@@ -8,9 +8,9 @@ color 0f
 set THIRDPARTY=%PREFIX%\blender-thirdparty
 
 if "%ARCH%" == "64" (
-   boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT
+   call boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT /LOG="boost.log"
 ) else (
-   boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT
+   call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT /LOG="boost.log"
 )
 
 if "%ERRORLEVEL%" == "1" (
