@@ -47,8 +47,9 @@ requirements:
   build:
     - cmake
     - fontconfig # [unix]
-    - freetype # [unix]
+    - freetype
     - jpeg
+    - giflib
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]

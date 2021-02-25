@@ -9,10 +9,12 @@ set THIRDPARTY=%PREFIX%\blender-thirdparty
 rem set BOOST=%THIRDPARTY%\boost
 set BOOST=D:\boost
 
-if "%ARCH%" == "64" (
-   call boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
-) else (
-   call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
+if not exist %BOOST% (
+    if "%ARCH%" == "64" (
+       call boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
+    ) else (
+       call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
+    )
 )
 
 mkdir %THIRDPARTY%
@@ -29,6 +31,7 @@ cmake -G "NMake Makefiles" ^
     -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
     -DBUILD_SHARED_LIBS=OFF ^
     -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
+    -DBoost_INCLUDE_DIR=%BOOST% ^
     -DBoost_INCLUDE_DIRS=%BOOST% ^
     -DBoost_LIBRARY_DIRS=%BOOST%\lib%ARCH%-msvc-14.2 ^
     -DBoost_VERSION=1.70.0 ^
@@ -44,15 +47,20 @@ if "%ERRORLEVEL%" == "1" (
 mkdir oiio\bld
 cd oiio\bld
 cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     -DBOOST_CUSTOM=1 ^
     -DBUILDSTATIC=1 ^
+    -DBoost_INCLUDE_DIR=%BOOST% ^
     -DBoost_INCLUDE_DIRS=%BOOST% ^
     -DBoost_LIBRARY_DIRS=%BOOST%\lib%ARCH%-msvc-14.2 ^
     -DBoost_VERSION=1.70.0 ^
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     -DILMBASE_HOME=%THIRDPARTY% ^
+    -DJPEG_ROOT=%CONDA_PREFIX%\Library ^
     -DOIIO_BUILD_TESTS=OFF ^
     -DOPENEXR_HOME=%THIRDPARTY% ^
+    -DOpenEXR_ROOT=%THIRDPARTY% ^
+    -DPNG_ROOT=%CONDA_PREFIX%\Library ^
     -DUSE_FFMPEG=OFF ^
     -DUSE_PYTHON=OFF ^
     ..
