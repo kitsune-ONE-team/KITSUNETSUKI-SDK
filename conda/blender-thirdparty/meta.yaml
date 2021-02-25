@@ -57,6 +57,7 @@ requirements:
     - m2-patch # [win]
     - python ==3.8
     - zlib
+    - pthread-stubs # [win]
   run:
     - freetype # [unix]
     - jpeg # [unix]

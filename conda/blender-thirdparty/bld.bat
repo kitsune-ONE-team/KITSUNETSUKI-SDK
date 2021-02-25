@@ -15,6 +15,11 @@ if "%ARCH%" == "64" (
    call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
 )
 
+mkdir %THIRDPARTY%
+mkdir %THIRDPARTY%\boost
+xcopy /I /E /Y %BOOST%\boost %THIRDPARTY%\boost\boost
+xcopy /I /E /Y %BOOST%\lib%ARCH%-msvc-14.2 %THIRDPARTY%\boost\lib%ARCH%-msvc-14.2
+
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
@@ -63,7 +68,7 @@ mkdir clew\bld
 cd clew\bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% %
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     -DBUILD_TESTS=OFF ^
     -DBUILD_SHARED_LIBRARY=OFF ^
     ..
