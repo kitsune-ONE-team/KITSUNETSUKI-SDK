@@ -7,25 +7,28 @@ color 0f
 
 set THIRDPARTY=%PREFIX%\blender-thirdparty
 
-cd openexr
-cmake -G "NMake Makefiles" ^
-    -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
-    -DBUILD_SHARED_LIBS=OFF ^
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
-    .
-nmake
-nmake install
-cd ..
-
-if "%ERRORLEVEL%" == "1" (
-    exit /B 1
-)
-
 if "%ARCH%" == "64" (
    boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT
 ) else (
    boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT
 )
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+cd openexr
+cmake -G "NMake Makefiles" ^
+    -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
+    -DBUILD_SHARED_LIBS=OFF ^
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
+    -DBoost_INCLUDE_DIRS=%THIRDPARTY%\boost ^
+    -DBoost_LIBRARY_DIRS=%THIRDPARTY%\boost\lib%ARCH%-msvc-14.2 ^
+    -DBoost_VERSION=1.70.0 ^
+    .
+nmake
+nmake install
+cd ..
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1

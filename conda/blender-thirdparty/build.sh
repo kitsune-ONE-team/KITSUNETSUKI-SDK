@@ -2,6 +2,13 @@
 
 THIRDPARTY=${PREFIX}/blender-thirdparty
 
+cd boost
+./bootstrap.sh \
+    --prefix=${THIRDPARTY} \
+    --without-libraries=python
+./b2 install cxxflags='-fPIC' link=static
+cd ..
+
 cd openexr
 cmake \
     -DOPENEXR_BUILD_PYTHON_LIBS=NO \
@@ -11,13 +18,6 @@ cmake \
     .
 make
 make install
-cd ..
-
-cd boost
-./bootstrap.sh \
-    --prefix=${THIRDPARTY} \
-    --without-libraries=python
-./b2 install cxxflags='-fPIC' link=static
 cd ..
 
 mkdir -p oiio/bld
