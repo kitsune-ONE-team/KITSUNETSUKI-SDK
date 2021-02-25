@@ -6,11 +6,13 @@ if "%ARCH%" == "64" (
 color 0f
 
 set THIRDPARTY=%PREFIX%\blender-thirdparty
+rem set BOOST=%THIRDPARTY%\boost
+set BOOST=D:\boost
 
 if "%ARCH%" == "64" (
-   call boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%THIRDPARTY%\boost /SILENT /LOG="boost.log"
+   call boost_1_70_0-unsupported-msvc-14.2-64.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
 ) else (
-   call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%THIRDPARTY%\boost /SILENT /LOG="boost.log"
+   call boost_1_70_0-unsupported-msvc-14.2-32.exe /DIR=%BOOST% /SILENT /LOG="boost.log"
 )
 
 if "%ERRORLEVEL%" == "1" (
@@ -22,8 +24,8 @@ cmake -G "NMake Makefiles" ^
     -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
     -DBUILD_SHARED_LIBS=OFF ^
     -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
-    -DBoost_INCLUDE_DIRS=%THIRDPARTY%\boost ^
-    -DBoost_LIBRARY_DIRS=%THIRDPARTY%\boost\lib%ARCH%-msvc-14.2 ^
+    -DBoost_INCLUDE_DIRS=%BOOST% ^
+    -DBoost_LIBRARY_DIRS=%BOOST%\lib%ARCH%-msvc-14.2 ^
     -DBoost_VERSION=1.70.0 ^
     .
 nmake
@@ -39,8 +41,8 @@ cd oiio\bld
 cmake -G "NMake Makefiles" ^
     -DBOOST_CUSTOM=1 ^
     -DBUILDSTATIC=1 ^
-    -DBoost_INCLUDE_DIRS=%THIRDPARTY%\boost ^
-    -DBoost_LIBRARY_DIRS=%THIRDPARTY%\boost\lib%ARCH%-msvc-14.2 ^
+    -DBoost_INCLUDE_DIRS=%BOOST% ^
+    -DBoost_LIBRARY_DIRS=%BOOST%\lib%ARCH%-msvc-14.2 ^
     -DBoost_VERSION=1.70.0 ^
     -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     -DILMBASE_HOME=%THIRDPARTY% ^
