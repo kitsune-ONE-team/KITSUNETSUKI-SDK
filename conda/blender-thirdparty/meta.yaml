@@ -20,7 +20,7 @@ source:
     folder: . # [win64]
 
   - git_url: https://github.com/OpenImageIO/oiio.git
-    git_rev: Release-2.1.15.0
+    git_rev: v2.2.6.1
     folder: oiio
 
   - git_url: https://github.com/martijnberger/clew.git
