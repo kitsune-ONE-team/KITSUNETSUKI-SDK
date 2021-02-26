@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: 38d304f2fe187e4a748cc811b9b4569e15d5b606
+    git_rev: f4d372fdcdfe48c281b256aaa9b4c0e296570746
     folder: .
     patches:
       - prefix108.patch # [win]
