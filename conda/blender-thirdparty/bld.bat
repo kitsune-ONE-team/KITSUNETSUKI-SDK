@@ -28,9 +28,11 @@ if "%ERRORLEVEL%" == "1" (
 
 cd openexr
 cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
     -DOPENEXR_BUILD_PYTHON_LIBS=NO ^
     -DBUILD_SHARED_LIBS=OFF ^
-    -DCMAKE_INSTALL_PREFIX=%THIRDPARTY% ^
+    -DBUILD_TESTING=OFF ^
     -DBoost_INCLUDE_DIR=%BOOST% ^
     -DBoost_INCLUDE_DIRS=%BOOST% ^
     -DBoost_LIBRARY_DIRS=%BOOST%\lib%ARCH%-msvc-14.2 ^
