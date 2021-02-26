@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://git.blender.org/blender.git
-    git_rev: v2.92.0
+    git_rev: b2eb674731065b7f36c2219af94c8d0308dd87b9
     folder: blender
 
   - git_url: https://git.blender.org/blender-addons.git

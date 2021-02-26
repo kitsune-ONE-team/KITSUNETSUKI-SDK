@@ -7,7 +7,7 @@ channels:
 dependencies:
 - anaconda-client
 - attrs ==19.3.0
-- cmake
+- cmake >=3.16.0
 - conda
 - cython ==0.29.17
 - flake8 ==3.7.9
