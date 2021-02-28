@@ -1,6 +1,6 @@
 package:
   name: python-blender
-  version: "2.92.0"
+  version: "2.92"
 
 source:
   - git_url: https://git.blender.org/blender.git

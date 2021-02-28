@@ -1,10 +1,8 @@
 if "%ARCH%" == "64" (
     call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-    set CMAKETARGET="NMake Makefiles"
     set WINLIBS=win64_vc15
 ) else (
     call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
-    set CMAKETARGET="NMake Makefiles"
     set WINLIBS=win64_vc15
 )
 color 0f
@@ -34,7 +32,7 @@ xcopy /I /E /Y ..\blender_extras\release\datafiles\locale release\datafiles\loca
 xcopy /I /E /Y ..\blender_extras\source\tools source\tools
 
 cd bld
-cmake -G %CMAKETARGET% ^
+cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
