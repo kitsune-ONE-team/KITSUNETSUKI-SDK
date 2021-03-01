@@ -15,8 +15,8 @@ rd /s /q lib\%WINLIBS%\python
 mkdir lib\%WINLIBS%\python
 mkdir lib\%WINLIBS%\python\38
 mkdir lib\%WINLIBS%\python\38\bin
-copy %CONDA_PREFIX%\python38.dll lib\%WINLIBS%\python\38\bin
-copy %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\38\bin
+copy /V /Y %CONDA_PREFIX%\python38.dll lib\%WINLIBS%\python\38\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\38\bin
 
 if not exist blender\bld (
    cd blender
