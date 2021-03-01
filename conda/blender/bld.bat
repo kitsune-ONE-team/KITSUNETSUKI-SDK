@@ -12,8 +12,6 @@ copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
 :: remove included python
 rd /s /q lib\%WINLIBS%\python
 
-mkdir lib
-mkdir lib\%WINLIBS%
 mkdir lib\%WINLIBS%\python
 mkdir lib\%WINLIBS%\python\38
 mkdir lib\%WINLIBS%\python\38\bin
