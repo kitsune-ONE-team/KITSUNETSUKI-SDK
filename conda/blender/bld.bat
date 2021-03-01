@@ -82,3 +82,7 @@ if "%ERRORLEVEL%" == "1" (
 copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
 xcopy /I /E /Y %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
 rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
+
+cd ..
+
+copy /V /Y lib\%WINLIBS%\gmp\lib\*.dll %PREFIX%\DLLs
