@@ -7,7 +7,7 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
+rem copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
 
 :: remove included python
 rd /s /q lib\%WINLIBS%\python
@@ -32,10 +32,10 @@ rd /s /q release\scripts\addons_contrib
 rd /s /q release\datafiles\locale
 rd /s /q source\tools
 
-xcopy /I /E /Y ..\blender_extras\release\scripts\addons release\scripts\addons
-xcopy /I /E /Y ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
-xcopy /I /E /Y ..\blender_extras\release\datafiles\locale release\datafiles\locale
-xcopy /I /E /Y ..\blender_extras\source\tools source\tools
+robocopy /E ..\blender_extras\release\scripts\addons release\scripts\addons
+robocopy /E ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
+robocopy /E ..\blender_extras\release\datafiles\locale release\datafiles\locale
+robocopy /E ..\blender_extras\source\tools source\tools
 
 cd bld
 cmake -G "NMake Makefiles" ^
