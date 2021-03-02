@@ -5,11 +5,15 @@ if not exist %WORKSPACES% (
     mkdir %WORKSPACES%
 )
 
-set WORKSPACE=%WORKSPACES%\%JOB_BASE_NAME%
+set WORKSPACE=D:\Workspaces\%JOB_BASE_NAME%
 if not exist %WORKSPACE% (
     mkdir %WORKSPACE%
 )
-cd %WORKSPACE%
+
+set CACHE=D:\Cache
+if not exist %CACHE% (
+    mkdir %CACHE%
+)
 
 set PATH=%PATH%;^
 env\Scripts;^
@@ -17,16 +21,16 @@ env\Library\bin
 
 set KONDA=_conda
 set KONDA_ARGS=^
---cache-dir D:\Cache ^
+--cache-dir %CACHE% ^
 --channel kitsune.one ^
---croot croot ^
+--croot %WORKSPACE%\croot ^
 --dirty ^
 --error-overlinking ^
 --keep-old-work ^
 --no-anaconda-upload ^
 --no-build-id ^
 --no-remove-work-dir ^
---output-folder output ^
+--output-folder %WORKSPACE%\output ^
 conda\%JOB_BASE_NAME%
 
 if not exist env (
