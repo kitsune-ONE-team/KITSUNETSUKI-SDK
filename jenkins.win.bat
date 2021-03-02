@@ -1,5 +1,16 @@
 @echo off
 
+set WORKSPACES=D:\Workspaces
+if not exist %WORKSPACES% (
+    mkdir %WORKSPACES%
+)
+
+set WORKSPACE=%WORKSPACES%\%JOB_BASE_NAME%
+if not exist %WORKSPACE% (
+    mkdir %WORKSPACE%
+)
+cd %WORKSPACE%
+
 set PATH=%PATH%;^
 env\Scripts;^
 env\Library\bin
