@@ -27,10 +27,10 @@ if not exist blender\bld (
 
 cd blender
 
-rd /s /q release\scripts\addons
-rd /s /q release\scripts\addons_contrib
-rd /s /q release\datafiles\locale
-rd /s /q source\tools
+rem rd /s /q release\scripts\addons
+rem rd /s /q release\scripts\addons_contrib
+rem rd /s /q release\datafiles\locale
+rem rd /s /q source\tools
 
 robocopy /E ..\blender_extras\release\scripts\addons release\scripts\addons
 robocopy /E ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
