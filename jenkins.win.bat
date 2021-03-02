@@ -33,20 +33,22 @@ set KONDA_ARGS=^
 --output-folder %WORKSPACE%\output ^
 conda\%JOB_BASE_NAME%
 
-if not exist env (
-    %KONDA% env remove --yes --prefix env
+if not exist %WORKSPACE%\env (
+    rem %KONDA% env remove --yes --prefix env
     :: if you have ssl connection problems with it
     :: copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
     :: from "Library/bin" to "DDLs"
-    %KONDA% create --yes --prefix env
-    %KONDA% install --prefix env conda-build anaconda-client ripgrep
+    %KONDA% create --yes --prefix %WORKSPACE%\env
+    %KONDA% install --prefix %WORKSPACE%\env conda-build anaconda-client ripgrep
 )
 
-FOR /F "tokens=*" %%g IN ('env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('%WORKSPACE%\env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
 echo "CONDA BUILD: %KONDA_PAK%"
 call env\condabin\conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
-env\Scripts\anaconda -v -t %ANACONDA_TOKEN% upload -u kitsune.one --no-progress --force %KONDA_PAK%
+%WORKSPACE%\env\Scripts\anaconda ^
+    -v -t %ANACONDA_TOKEN% ^
+    upload -u kitsune.one --no-progress --force %KONDA_PAK%
