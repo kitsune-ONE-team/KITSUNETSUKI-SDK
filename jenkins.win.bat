@@ -45,7 +45,7 @@ if not exist %WORKSPACE%\env (
 FOR /F "tokens=*" %%g IN ('%WORKSPACE%\env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
 echo "CONDA BUILD: %KONDA_PAK%"
-call env\condabin\conda build %KONDA_ARGS%
+call %WORKSPACE%\env\condabin\conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
