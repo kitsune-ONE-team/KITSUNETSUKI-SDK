@@ -34,7 +34,6 @@ set KONDA_ARGS=^
 conda\%JOB_BASE_NAME%
 
 if not exist %WORKSPACE%\build_env (
-    rem %KONDA% env remove --yes --prefix env
     %KONDA% create --yes --prefix %WORKSPACE%\build_env
     %KONDA% install --prefix %WORKSPACE%\build_env conda-build anaconda-client ripgrep
 
@@ -49,9 +48,13 @@ echo "CONDA BUILD: %KONDA_PAK%"
 call %WORKSPACE%\build_env\condabin\conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
-echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
 %WORKSPACE%\build_env\Scripts\anaconda ^
     --disable-ssl-warnings ^
     --show-traceback ^
-    -v -t %ANACONDA_TOKEN% ^
-    upload -u kitsune.one --no-progress --force %KONDA_PAK%
+    --verbose ^
+    --token %ANACONDA_TOKEN% ^
+    upload ^
+    -u kitsune.one ^
+    --no-progress ^
+    --force ^
+    %KONDA_PAK%

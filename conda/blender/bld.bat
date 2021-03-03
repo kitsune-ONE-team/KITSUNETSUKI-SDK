@@ -49,6 +49,7 @@ cmake -G "NMake Makefiles" ^
     -DWITH_CYCLES=OFF ^
     -DWITH_CYCLES_EMBREE=OFF ^
     -DWITH_DRACO=OFF ^
+    -DWITH_FREESTYLE=OFF ^
     -DWITH_GLEW_ES=OFF ^
     -DWITH_GLEW_MX=OFF ^
     -DWITH_GLU=OFF ^
@@ -71,7 +72,6 @@ cmake -G "NMake Makefiles" ^
     -DWITH_SDL=OFF ^
     -DWITH_STATIC_LIBS=OFF ^
     -DWITH_TBB=OFF ^
-    -DWITH_STATIC_LIBS=OFF ^
     ..
 
 if "%ERRORLEVEL%" == "1" (
@@ -86,7 +86,7 @@ if "%ERRORLEVEL%" == "1" (
 )
 
 copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
-xcopy /I /E /Y %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
+robocopy /E %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
 rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
 
 cd ..
