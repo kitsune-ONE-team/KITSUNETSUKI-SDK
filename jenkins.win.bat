@@ -23,7 +23,7 @@ set KONDA=_conda
 set KONDA_ARGS=^
 --cache-dir %CACHE% ^
 --channel kitsune.one ^
---croot %WORKSPACE%\croot ^
+--croot %WORKSPACE%\build_root ^
 --dirty ^
 --error-overlinking ^
 --keep-old-work ^
@@ -33,23 +33,24 @@ set KONDA_ARGS=^
 --output-folder %WORKSPACE%\output ^
 conda\%JOB_BASE_NAME%
 
-if not exist %WORKSPACE%\env (
+if not exist %WORKSPACE%\build_env (
     rem %KONDA% env remove --yes --prefix env
-    :: if you have ssl connection problems with it
-    :: copy files "libcrypto-1_1-x64.dll" and "libssl-1_1-x64.dll"
-    :: from "Library/bin" to "DDLs"
-    %KONDA% create --yes --prefix %WORKSPACE%\env
-    %KONDA% install --prefix %WORKSPACE%\env conda-build anaconda-client ripgrep
+    %KONDA% create --yes --prefix %WORKSPACE%\build_env
+    %KONDA% install --prefix %WORKSPACE%\build_env conda-build anaconda-client ripgrep
+
+    :: fix ssl connection problems
+    copy /V /Y %WORKSPACE%\build_env\Library\bin\libcrypto*.dll %WORKSPACE%\build_env\DLLs
+    copy /V /Y %WORKSPACE%\build_env\Library\bin\libssl*.dll %WORKSPACE%\build_env\DLLs
 )
 
-FOR /F "tokens=*" %%g IN ('%WORKSPACE%\env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('%WORKSPACE%\build_env\condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
 echo "CONDA BUILD: %KONDA_PAK%"
-call %WORKSPACE%\env\condabin\conda build %KONDA_ARGS%
+call %WORKSPACE%\build_env\condabin\conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
-%WORKSPACE%\env\Scripts\anaconda ^
+%WORKSPACE%\build_env\Scripts\anaconda ^
     --disable-ssl-warnings ^
     --show-traceback ^
     -v -t %ANACONDA_TOKEN% ^
