@@ -50,5 +50,7 @@ call %WORKSPACE%\env\condabin\conda build %KONDA_ARGS%
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 echo "ANACONDA TOKEN: %ANACONDA_TOKEN%"
 %WORKSPACE%\env\Scripts\anaconda ^
+    --disable-ssl-warnings ^
+    --show-traceback ^
     -v -t %ANACONDA_TOKEN% ^
     upload -u kitsune.one --no-progress --force %KONDA_PAK%
