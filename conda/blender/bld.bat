@@ -18,6 +18,8 @@ mkdir lib\%WINLIBS%\python\38\bin
 copy /V /Y %CONDA_PREFIX%\python38.dll lib\%WINLIBS%\python\38\bin
 copy /V /Y %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\38\bin
 
+robocopy /E %RECIPE_DIR%\boost lib\%WINLIBS%\boost
+
 if not exist blender\bld (
    cd blender
    mkdir bld
