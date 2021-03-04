@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/AcademySoftwareFoundation/openexr.git
-    git_rev: v2.4.0
+    git_rev: v2.5.0
     folder: openexr
 
   - url: https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2 # [unix]
