@@ -19,8 +19,8 @@ if not exist %BOOST% (
 
 mkdir %THIRDPARTY%
 mkdir %THIRDPARTY%\boost
-xcopy /I /E /Y %BOOST%\boost %THIRDPARTY%\boost\boost
-xcopy /I /E /Y %BOOST%\lib%ARCH%-msvc-14.2 %THIRDPARTY%\boost\lib%ARCH%-msvc-14.2
+robocopy /E %BOOST%\boost %THIRDPARTY%\boost\boost
+robocopy /E %BOOST%\lib%ARCH%-msvc-14.2 %THIRDPARTY%\boost\lib%ARCH%-msvc-14.2
 
 if "%ERRORLEVEL%" == "1" (
     exit /B 1
