@@ -86,7 +86,7 @@ if "%ARCH%" == "64" (
 
 del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
 
-%CONDA_PREFIX%\Library\usr\bin\7za a ^
+D:\Apps\7-Zip\7z a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
     %PREFIX%\kitsunetsuki-runtime\%PYTHON_VERSION%.zip ^
     "%CONDA_PREFIX%\Lib\*" ^

@@ -44,7 +44,6 @@ build:
 
 requirements:
   build:
-    - m2-p7zip # [win]
     - idna ==2.9
     - jsonschema ==3.2.0
     - kcc
