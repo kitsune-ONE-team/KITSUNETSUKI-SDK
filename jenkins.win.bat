@@ -33,6 +33,10 @@ set KONDA_ARGS=^
 --output-folder %WORKSPACE%\output ^
 conda\%JOB_BASE_NAME%
 
+if exist %WORKSPACE%\build_env (
+    rmdir /S /Q %WORKSPACE%\build_env
+)
+
 if not exist %WORKSPACE%\build_env (
     %KONDA% create --yes --prefix %WORKSPACE%\build_env
     %KONDA% install --prefix %WORKSPACE%\build_env conda-build anaconda-client ripgrep

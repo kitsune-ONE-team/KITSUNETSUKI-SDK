@@ -30,6 +30,10 @@ KONDA_ARGS="\
 --output-folder ${WORKSPACE}/output \
 conda/${JOB_BASE_NAME,,}"
 
+if [ -d ${WORKSPACE}/build_env ]; then
+    rm -Rf ${WORKSPACE}/build_env;
+fi
+
 if [ ! -d ${WORKSPACE}/build_env ]; then
     ${KONDA} create --yes --prefix ${WORKSPACE}/build_env;
     ${KONDA} install --prefix ${WORKSPACE}/build_env conda-build anaconda-client ripgrep;
