@@ -9,7 +9,7 @@ import panda3d.fx
 import panda3d.physics
 import panda3d.skel
 
-from panda3d.core import load_prc_file_data, VirtualFileSystem
+from panda3d.core import load_prc_file_data, VirtualFileSystem, Filename
 
 
 if os.path.exists('test.txt'):
@@ -38,4 +38,6 @@ model-path .
 from direct.showbase.ShowBase import ShowBase
 
 base = ShowBase()
-base.loader.load_font(os.path.join(os.getenv('RECIPE_DIR'), 'Ubuntu-R.ttf'))
+wfont = os.path.join(os.getenv('RECIPE_DIR'), 'Ubuntu-R.ttf')
+ufont = Filename.from_os_specific(wfont).get_fullpath(wfont)
+base.loader.load_font(ufont)
