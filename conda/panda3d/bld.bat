@@ -10,6 +10,7 @@ color 0f
 :: remove included libs
 rmdir /S /Q %WINLIBS%\bullet
 rmdir /S /Q %WINLIBS%\openssl
+rmdir /S /Q %WINLIBS%\freetype
 
 set BUILT=built
 
