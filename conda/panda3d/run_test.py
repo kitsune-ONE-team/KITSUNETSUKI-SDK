@@ -38,4 +38,4 @@ model-path .
 from direct.showbase.ShowBase import ShowBase
 
 base = ShowBase()
-base.loader.load_font('Ubuntu-R.ttf')
+base.loader.load_font(os.path.join(os.getenv('RECIPE_DIR'), 'Ubuntu-R.ttf'))
