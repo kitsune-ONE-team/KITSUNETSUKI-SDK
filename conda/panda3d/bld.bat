@@ -16,6 +16,8 @@ set BUILT=built
 python makepanda/makepanda.py ^
     --bullet-incdir %CONDA_PREFIX%\include ^
     --bullet-libdir %CONDA_PREFIX%\lib ^
+    --freetype-incdir %CONDA_PREFIX%\include ^
+    --freetype-libdir %CONDA_PREFIX%\lib ^
     --openssl-incdir %CONDA_PREFIX%\include ^
     --openssl-libdir %CONDA_PREFIX%\lib ^
     --png-incdir %CONDA_PREFIX%\include ^
