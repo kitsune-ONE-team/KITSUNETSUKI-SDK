@@ -39,5 +39,5 @@ from direct.showbase.ShowBase import ShowBase
 
 base = ShowBase()
 wfont = os.path.join(os.getenv('RECIPE_DIR'), 'Ubuntu-R.ttf')
-ufont = Filename.from_os_specific(wfont).get_fullpath(wfont)
+ufont = Filename.from_os_specific(wfont).get_fullpath()
 base.loader.load_font(ufont)
