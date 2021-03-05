@@ -10,7 +10,6 @@ color 0f
 :: remove included libs
 rmdir /S /Q %WINLIBS%\bullet
 rmdir /S /Q %WINLIBS%\openssl
-rmdir /S /Q %WINLIBS%\freetype
 
 set BUILT=built
 
@@ -23,8 +22,6 @@ python makepanda/makepanda.py ^
     --python-libdir %CONDA_PREFIX%\lib ^
     --zlib-incdir %CONDA_PREFIX%\include ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
-    --freetype-incdir %CONDA_PREFIX%\Library\include ^
-    --freetype-libdir %CONDA_PREFIX%\Library\lib ^
     --png-incdir %CONDA_PREFIX%\Library\include ^
     --png-libdir %CONDA_PREFIX%\Library\lib ^
     --msvc-version=14.2 ^

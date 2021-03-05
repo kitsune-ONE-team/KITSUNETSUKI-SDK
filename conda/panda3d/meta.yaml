@@ -14,11 +14,17 @@ source:
       - rp_light.patch
       - fabrik108.patch
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
-    md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
+  # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
+  #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win64.zip # [win64]
-    md5: d17e997dfb2a84e4b935a930650df053 # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win32.zip # [win32]
+    md5: 037e5109878ff943e0342c61ee39fdca # [win32]
+
+  # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win64.zip # [win64]
+  #   md5: d17e997dfb2a84e4b935a930650df053 # [win64]
+
+  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win64.zip # [win64]
+    md5: ed1438c59471abd1ee11e3414c97e0fe # [win64]
 
 build:
   number: 0
@@ -52,7 +58,7 @@ requirements:
     - bullet ==2.83
     - cmake
     - fontconfig # [unix]
-    - freetype
+    - freetype # [unix]
     - libgcc-ng # [unix]
     - libogg # [unix]
     - libpng
@@ -67,7 +73,7 @@ requirements:
     - python ==3.8
     - zlib
   run:
-    - freetype
+    - freetype # [unix]
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
