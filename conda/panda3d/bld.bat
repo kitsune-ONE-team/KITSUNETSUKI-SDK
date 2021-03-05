@@ -15,18 +15,18 @@ rmdir /S /Q %WINLIBS%\freetype
 set BUILT=built
 
 python makepanda/makepanda.py ^
-    --bullet-incdir %CONDA_PREFIX%\include ^
-    --bullet-libdir %CONDA_PREFIX%\lib ^
-    --freetype-incdir %CONDA_PREFIX%\include ^
-    --freetype-libdir %CONDA_PREFIX%\lib ^
     --openssl-incdir %CONDA_PREFIX%\include ^
     --openssl-libdir %CONDA_PREFIX%\lib ^
-    --png-incdir %CONDA_PREFIX%\include ^
-    --png-libdir %CONDA_PREFIX%\lib ^
+    --bullet-incdir %CONDA_PREFIX%\include ^
+    --bullet-libdir %CONDA_PREFIX%\lib ^
     --python-incdir %CONDA_PREFIX%\include ^
     --python-libdir %CONDA_PREFIX%\lib ^
     --zlib-incdir %CONDA_PREFIX%\include ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
+    --freetype-incdir %CONDA_PREFIX%\Library\include ^
+    --freetype-libdir %CONDA_PREFIX%\Library\lib ^
+    --png-incdir %CONDA_PREFIX%\Library\include ^
+    --png-libdir %CONDA_PREFIX%\Library\lib ^
     --msvc-version=14.2 ^
     --nothing ^
     --outputdir %BUILT% ^

@@ -52,7 +52,7 @@ requirements:
     - bullet ==2.83
     - cmake
     - fontconfig # [unix]
-    - freetype
+    - freetype # [unix]
     - libgcc-ng # [unix]
     - libogg # [unix]
     - libpng
@@ -67,7 +67,7 @@ requirements:
     - python ==3.8
     - zlib
   run:
-    - freetype
+    - freetype # [unix]
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
