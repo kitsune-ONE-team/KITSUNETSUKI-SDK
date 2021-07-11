@@ -9,10 +9,11 @@ source:
     patches:
       - prefix108.patch # [win]
       - nopy.patch # [win]
-      # - icon108.patch # [unix]
+      - icon108.patch # [unix]
       - libs.patch
       - rp_light.patch
       - fabrik108.patch
+      - udp.patch
 
   # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
   #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
@@ -28,7 +29,7 @@ source:
 
 build:
   number: 0
-  string: 1614933616
+  string: 1626033176
 
   missing_dso_whitelist:
     - $RPATH/libCg.so # [unix]
