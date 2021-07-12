@@ -16,6 +16,7 @@ build:
     - $RPATH/libGL.so.1 # [unix]
     - $RPATH/libX11.so.6 # [unix]
     - $RPATH/libasound.so.2 # [unix]
+    - $RPATH/libbsd.so.0 # [unix]
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
