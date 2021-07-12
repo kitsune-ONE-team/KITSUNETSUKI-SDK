@@ -80,6 +80,7 @@ cp -fv ${RECIPE_DIR}/vorbis-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/zlib-LICENSE.txt             ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv ${ULIBX}/libopenal.so.*                    ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libsndio.so.*                     ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \
