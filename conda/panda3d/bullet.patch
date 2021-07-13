@@ -1,0 +1,80 @@
+diff --git a/panda/src/bullet/bulletBodyNode.cxx b/panda/src/bullet/bulletBodyNode.cxx
+index 6e258c47d0..9411580009 100644
+--- a/panda/src/bullet/bulletBodyNode.cxx
++++ b/panda/src/bullet/bulletBodyNode.cxx
+@@ -43,6 +43,8 @@ BulletBodyNode(const char *name) : PandaNode(name) {
+ 
+   // Default collide mask
+   set_into_collide_mask(CollideMask::all_on());
++
++  _is_synced = true;
+ }
+ 
+ /**
+@@ -230,6 +232,24 @@ is_kinematic() const {
+   return get_object()->isKinematicObject();
+ }
+ 
++/**
++ *
++ */
++bool BulletBodyNode::
++is_synced() const {
++  LightMutexHolder holder(BulletWorld::get_global_lock());
++  return _is_synced;
++}
++
++/**
++ *
++ */
++void BulletBodyNode::
++set_synced(bool value) {
++  LightMutexHolder holder(BulletWorld::get_global_lock());
++  _is_synced = value;
++}
++
+ /**
+  *
+  */
+diff --git a/panda/src/bullet/bulletBodyNode.h b/panda/src/bullet/bulletBodyNode.h
+index d3f9439db9..c0031d589a 100644
+--- a/panda/src/bullet/bulletBodyNode.h
++++ b/panda/src/bullet/bulletBodyNode.h
+@@ -60,6 +60,9 @@ PUBLISHED:
+   INLINE void set_static(bool value);
+   INLINE void set_kinematic(bool value);
+ 
++  bool is_synced() const;
++  void set_synced(bool value);
++
+   // Contacts
+   INLINE void set_into_collide_mask(CollideMask mask);
+ 
+@@ -158,6 +161,7 @@ protected:
+   bool get_collision_flag(int flag) const;
+ 
+   btCollisionShape *_shape;
++  bool _is_synced;
+ 
+   typedef PTA(PT(BulletShape)) BulletShapes;
+   BulletShapes _shapes;
+diff --git a/panda/src/bullet/bulletRigidBodyNode.cxx b/panda/src/bullet/bulletRigidBodyNode.cxx
+index acd7e96e79..2077f45b47 100644
+--- a/panda/src/bullet/bulletRigidBodyNode.cxx
++++ b/panda/src/bullet/bulletRigidBodyNode.cxx
+@@ -391,6 +391,7 @@ transform_changed() {
+  */
+ void BulletRigidBodyNode::
+ do_sync_p2b() {
++  if (!is_synced()) return;
+ 
+   if (get_object()->isKinematicObject()) {
+     do_transform_changed();
+@@ -402,6 +403,7 @@ do_sync_p2b() {
+  */
+ void BulletRigidBodyNode::
+ do_sync_b2p() {
++  if (!is_synced()) return;
+ 
+   _motion.sync_b2p((PandaNode *)this);
+ }
