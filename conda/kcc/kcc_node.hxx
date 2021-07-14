@@ -10,17 +10,17 @@
 */
 class btKCC : public btKinematicCharacterController {
 public:
-	BT_DECLARE_ALIGNED_ALLOCATOR();
+    BT_DECLARE_ALIGNED_ALLOCATOR();
 
-	btKCC(btPairCachingGhostObject* ghostObject, btConvexShape* convexShape,
-          btScalar stepHeight, int upAxis = 1);
-	~btKCC();
+    btKCC(btPairCachingGhostObject* ghostObject, btConvexShape* convexShape,
+          btScalar stepHeight, const btVector3 & upAxis = btVector3(1.0,0.0,0.0));
+    ~btKCC();
 
     btScalar get_vertical_velocity();
     void set_vertical_velocity(btScalar v);
     bool get_jumping();
     void set_jumping(bool jumping);
-	void jump();
+    void jump();
 };
 
 
@@ -75,48 +75,48 @@ public:
         return _character;
     }
 
-  virtual void do_sync_p2b(PN_stdfloat dt, int num_substeps);
-  virtual void do_sync_b2p();
+    virtual void do_sync_p2b(PN_stdfloat dt, int num_substeps);
+    virtual void do_sync_b2p();
 
 protected:
-  virtual void transform_changed();
+    virtual void transform_changed();
 
 private:
-  CPT(TransformState) _sync;
-  bool _sync_disable;
+    CPT(TransformState) _sync;
+    bool _sync_disable;
 
-  BulletUpAxis _up;
+    BulletUpAxis _up;
 
-  btKCC *_character;
-  btPairCachingGhostObject *_ghost;
+    btKCC *_character;
+    btPairCachingGhostObject *_ghost;
 
-  PT(BulletShape) _shape;
+    PT(BulletShape) _shape;
 
-  LVector3 _linear_movement;
-  bool _linear_movement_is_local;
-  PN_stdfloat _angular_movement;
+    LVector3 _linear_movement;
+    bool _linear_movement_is_local;
+    PN_stdfloat _angular_movement;
 
-  void do_transform_changed();
+    void do_transform_changed();
 
 public:
-  static TypeHandle get_class_type() {
-    return _type_handle;
-  }
-  static void init_type() {
-    BulletBaseCharacterControllerNode::init_type();
-    register_type(_type_handle, "KCCNode",
-                  BulletBaseCharacterControllerNode::get_class_type());
-  }
-  virtual TypeHandle get_type() const {
-    return get_class_type();
-  }
-  virtual TypeHandle force_init_type() {
-    init_type();
-    return get_class_type();
-  }
+    static TypeHandle get_class_type() {
+        return _type_handle;
+    }
+    static void init_type() {
+        BulletBaseCharacterControllerNode::init_type();
+        register_type(_type_handle, "KCCNode",
+                      BulletBaseCharacterControllerNode::get_class_type());
+    }
+    virtual TypeHandle get_type() const {
+        return get_class_type();
+    }
+    virtual TypeHandle force_init_type() {
+        init_type();
+        return get_class_type();
+    }
 
 private:
-  static TypeHandle _type_handle;
+    static TypeHandle _type_handle;
 };
 
 #endif
