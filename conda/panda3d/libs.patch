@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index b34cecd01..84506aa43 100755
+index 9b710019a7..b6419a522d 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
 @@ -601,17 +601,10 @@ if (COMPILER == "MSVC"):
@@ -33,22 +33,36 @@ index b34cecd01..84506aa43 100755
      if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/vrpn.lib")
      if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/quat.lib")
      if (PkgSkip("NVIDIACG")==0): LibName("CGGL",     GetThirdpartyDir() + "nvidiacg/lib/cgGL.lib")
-@@ -735,13 +729,11 @@ if (COMPILER == "MSVC"):
-             LibName("SPEEDTREE",  "glu32.lib")
+@@ -736,12 +730,17 @@ if (COMPILER == "MSVC"):
          IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
      if (PkgSkip("BULLET")==0):
--        suffix = '.lib'
+         suffix = '.lib'
 -        if GetTargetArch() == 'x64' and os.path.isfile(GetThirdpartyDir() + "bullet/lib/BulletCollision_x64.lib"):
 -            suffix = '_x64.lib'
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/LinearMath" + suffix)
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
-+        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/LinearMath.lib")
-+        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletCollision.lib")
-+        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletDynamics.lib")
-+        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletSoftBody.lib")
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/LinearMath" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletCollision" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletDynamics" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/BulletSoftBody" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/Bullet3Common" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/Bullet3Collision" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/Bullet3Dynamics" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/Bullet3Geometry" + suffix)
++        LibName("BULLET", SDK["PYTHON"] + "/Library/lib/Bullet3OpenCL_clew" + suffix)
 +        IncDirectory("BULLET", SDK["PYTHON"] + "/Library/include/bullet")
++
  
  if (COMPILER=="GCC"):
      if GetTarget() != "darwin":
+@@ -793,7 +792,7 @@ if (COMPILER=="GCC"):
+     SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
+     SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "OpenEXR/ImfOutputFile.h"))
+     SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
+-    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
++    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision" "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew", ""), ("bullet", "bullet/btBulletDynamicsCommon.h"))
+     SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
+     SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
+     SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")

@@ -7,15 +7,15 @@ source:
     git_rev: 51a3a2b4a1c10f3161c9dbfb2a975bd396913049
     folder: .
     patches:
-      - prefix108.patch # [win]
-      - nopy.patch # [win]
-      - icon108.patch # [unix]
-      - libs.patch
-      - rp_light.patch
-      - fabrik108.patch
-      - udp.patch
       - bullet.patch
       - bullet3.patch
+      - fabrik108.patch
+      - icon108.patch # [unix]
+      - libs.patch
+      - nopy.patch # [win]
+      - prefix108.patch # [win]
+      - rp_light.patch
+      - udp.patch
 
   # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
   #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
