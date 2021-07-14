@@ -19,7 +19,7 @@ index 9b710019a7..bd3d5d97e9 100755
      SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "OpenEXR/ImfOutputFile.h"))
      SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
 -    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
-+    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision" "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew", ""), ("bullet", "bullet/btBulletDynamicsCommon.h"))
++    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision" "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
      SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
      SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
      SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
