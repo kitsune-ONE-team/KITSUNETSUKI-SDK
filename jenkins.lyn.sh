@@ -1,7 +1,7 @@
 #!/bin/bash
 set +x
 
-WORKSPACES=/var/lib/jenkins/workspaces
+WORKSPACES=/var/lib/jenkins/build
 if [ ! -d ${WORKSPACES} ]; then
     mkdir -p ${WORKSPACES};
 fi
