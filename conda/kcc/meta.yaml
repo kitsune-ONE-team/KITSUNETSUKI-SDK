@@ -18,7 +18,7 @@ build:
 
 requirements:
   build:
-    - bullet
+    - bullet ==3.17
     - cmake
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]

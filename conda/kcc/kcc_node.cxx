@@ -1,14 +1,12 @@
 #include "kcc_node.hxx"
 
-#if BT_BULLET_VERSION >= 285
 static const btVector3 up_vectors[3] = {btVector3(1.0f, 0.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 0.0f, 1.0f)};
-#endif
 
 TypeHandle KCCNode::_type_handle;
 
 
 btKCC::btKCC(btPairCachingGhostObject* ghostObject, btConvexShape* convexShape,
-             btScalar stepHeight, int upAxis) :
+             btScalar stepHeight, const btVector3 & upAxis) :
     btKinematicCharacterController(ghostObject, convexShape, stepHeight, upAxis) {
 }
 
@@ -71,13 +69,8 @@ KCCNode::KCCNode(BulletShape *shape, PN_stdfloat step_height, const char *name) 
   _angular_movement = 0.0f;
 
   // Character controller
-#if BT_BULLET_VERSION >= 285
   _character = new btKCC(_ghost, convex, step_height, up_vectors[_up]);
   _character->setGravity(up_vectors[_up] * -(btScalar)9.81f);
-#else
-  _character = new btKCC(_ghost, convex, step_height, _up);
-  _character->setGravity((btScalar)9.81f);
-#endif
 
   // Retain a pointer to the shape
   _shape = shape;
@@ -238,21 +231,12 @@ PN_stdfloat KCCNode::get_max_slope() const {
 
 PN_stdfloat KCCNode::get_gravity() const {
   LightMutexHolder holder(BulletWorld::get_global_lock());
-#if BT_BULLET_VERSION >= 285
   return -(PN_stdfloat)_character->getGravity()[_up];
-#else
-  return (PN_stdfloat)_character->getGravity();
-#endif
 }
 
 void KCCNode::set_gravity(PN_stdfloat gravity) {
   LightMutexHolder holder(BulletWorld::get_global_lock());
-
-#if BT_BULLET_VERSION >= 285
   _character->setGravity(up_vectors[_up] * -(btScalar)gravity);
-#else
-  _character->setGravity((btScalar)gravity);
-#endif
 }
 
 void KCCNode::set_use_ghost_sweep_test(bool value) {
