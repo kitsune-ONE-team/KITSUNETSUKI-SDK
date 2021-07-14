@@ -15,6 +15,7 @@ source:
       - fabrik108.patch
       - udp.patch
       - bullet.patch
+      - bullet3.patch
 
   # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
   #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
@@ -30,7 +31,7 @@ source:
 
 build:
   number: 0
-  string: 1626214647
+  string: 1626263745
 
   missing_dso_whitelist:
     - $RPATH/libCg.so # [unix]
@@ -57,7 +58,7 @@ build:
 requirements:
   build:
     - m2-p7zip # [win]
-    - bullet ==2.83
+    - bullet ==3.17
     - cmake
     - fontconfig # [unix]
     - freetype # [unix]

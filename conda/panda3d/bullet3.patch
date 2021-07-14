@@ -1,0 +1,73 @@
+diff --git a/panda/src/bullet/bulletHeightfieldShape.cxx b/panda/src/bullet/bulletHeightfieldShape.cxx
+index 55ed86d16e..a5599c8a49 100644
+--- a/panda/src/bullet/bulletHeightfieldShape.cxx
++++ b/panda/src/bullet/bulletHeightfieldShape.cxx
+@@ -45,9 +45,8 @@ BulletHeightfieldShape(const PNMImage &image, PN_stdfloat max_height, BulletUpAx
+   _shape = new btHeightfieldTerrainShape(_num_rows,
+                                          _num_cols,
+                                          _data,
+-                                         max_height,
+-                                         up,
+-                                         true, false);
++                                         max_height / 65535, 0, max_height,
++                                         up, PHY_FLOAT, false);
+   _shape->setUserPointer(this);
+ }
+ 
+@@ -103,9 +102,8 @@ BulletHeightfieldShape(Texture *tex, PN_stdfloat max_height, BulletUpAxis up) :
+   _shape = new btHeightfieldTerrainShape(_num_rows,
+                                          _num_cols,
+                                          _data,
+-                                         max_height,
+-                                         up,
+-                                         true, false);
++                                         max_height / 65535, 0, max_height,
++                                         up, PHY_FLOAT, false);
+   _shape->setUserPointer(this);
+ }
+ 
+@@ -128,9 +126,8 @@ BulletHeightfieldShape(const BulletHeightfieldShape &copy) {
+   _shape = new btHeightfieldTerrainShape(_num_rows,
+                                          _num_cols,
+                                          _data,
+-                                         _max_height,
+-                                         _up,
+-                                         true, false);
++                                         _max_height / 65535, 0, _max_height,
++                                         _up, PHY_FLOAT, false);
+   _shape->setUserPointer(this);
+ }
+ 
+@@ -209,9 +206,8 @@ fillin(DatagramIterator &scan, BamReader *manager) {
+   _shape = new btHeightfieldTerrainShape(_num_rows,
+                                          _num_cols,
+                                          _data,
+-                                         _max_height,
+-                                         _up,
+-                                         true, false);
++                                         _max_height / 65535, 0, _max_height,
++                                         _up, PHY_FLOAT, false);
+   _shape->setUserPointer(this);
+   _shape->setMargin(margin);
+ }
+diff --git a/panda/src/bullet/bulletSoftBodyNode.cxx b/panda/src/bullet/bulletSoftBodyNode.cxx
+index f4ae8d2120..f6da7a6fd8 100644
+--- a/panda/src/bullet/bulletSoftBodyNode.cxx
++++ b/panda/src/bullet/bulletSoftBodyNode.cxx
+@@ -187,14 +187,14 @@ transform_changed() {
+ 
+     // Offset between current approx center and current initial transform
+     btVector3 pos = LVecBase3_to_btVector3(this->do_get_aabb().get_approx_center());
+-    btVector3 origin = _soft->m_initialWorldTransform.getOrigin();
++    btVector3 origin = _soft->getWorldTransform().getOrigin();
+     btVector3 offset = pos - origin;
+ 
+     // Subtract offset to get new transform for the body
+     trans.setOrigin(trans.getOrigin() - offset);
+ 
+     // Now apply the new transform
+-    _soft->transform(_soft->m_initialWorldTransform.inverse());
++    _soft->transform(_soft->getWorldTransform().inverse());
+     _soft->transform(trans);
+ 
+     if (ts->has_scale()) {
