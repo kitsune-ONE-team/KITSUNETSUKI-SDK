@@ -5,6 +5,14 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
+rem TODO: nuget setup
+rem docs - https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file#package-source-sections
+rem repo - https://api.nuget.org/v3/index.json
+
+rem TODO: xbox live setup
+rem docs - https://social.technet.microsoft.com/wiki/contents/articles/51027.xbox-live-authentication-for-uwp-projects-using-c.aspx
+rem reqs - https://www.nuget.org/packages/Microsoft.Xbox.Live.SDK.Cpp.UWP/
+
 set PYTHON_VERSION=python38
 set RP_VERSION=2.0.1
 
@@ -65,7 +73,6 @@ copy /V /Y ^
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
                                                             %PREFIX%\kitsunetsuki-runtime
-
 copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\OpenAL-soft-LICENSE.txt             %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%\kitsunetsuki-runtime
