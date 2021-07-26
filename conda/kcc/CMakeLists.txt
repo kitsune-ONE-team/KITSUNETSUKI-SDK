@@ -32,8 +32,8 @@ add_custom_command(
   -od kcc.in
   -fnames -string -refcount -assert -python-native -nomangle
   -module kcc -library kcc
-  kcc_config.hxx kcc_node.hxx
-  DEPENDS kcc_config.cxx kcc_config.hxx kcc_node.cxx kcc_node.hxx)
+  kcc_config.h kcc_panda.h
+  DEPENDS kcc_config.cxx kcc_config.h kcc_bullet.cxx kcc_bullet.h kcc_panda.cxx kcc_panda.h)
 
 add_custom_command(
   OUTPUT kcc_module.cpp

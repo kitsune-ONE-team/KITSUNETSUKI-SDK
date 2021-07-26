@@ -1,5 +1,5 @@
-#ifndef CONFIG_KCC_HXX
-#define CONFIG_KCC_HXX
+#ifndef CONFIG_KCC_H
+#define CONFIG_KCC_H
 #pragma once
 
 class btKinematicCharacterController;

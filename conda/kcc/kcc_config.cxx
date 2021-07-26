@@ -1,5 +1,5 @@
-#include "kcc_config.hxx"
-#include "kcc_node.hxx"
+#include "kcc_config.h"
+#include "kcc_panda.h"
 
 #include "dconfig.h"
 
