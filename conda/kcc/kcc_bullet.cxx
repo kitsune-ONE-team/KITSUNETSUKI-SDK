@@ -39,7 +39,7 @@ void btKCC::jump () {
     m_wasJumping = true;
 }
 
-virtual void btKCC::updateAction(btCollisionWorld* collisionWorld, btScalar deltaTime) {
+void btKCC::updateAction(btCollisionWorld* collisionWorld, btScalar deltaTime) {
     if (_is_synced) {
         preStep(collisionWorld);
         playerStep(collisionWorld, deltaTime);
