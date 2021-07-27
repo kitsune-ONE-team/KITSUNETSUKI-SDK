@@ -35,6 +35,7 @@ build:
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
     - $RPATH/libGL.so.1 # [unix]
