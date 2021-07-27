@@ -4,6 +4,8 @@
 #include "bulletCharacterControllerNode.h"
 #include "bulletWorld.h"
 
+#include "kcc_bullet.h"
+
 
 class EXPORT_CLASS KCCNode : public BulletBaseCharacterControllerNode {
 PUBLISHED:

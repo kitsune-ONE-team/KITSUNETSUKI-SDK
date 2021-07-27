@@ -1,8 +1,8 @@
 #ifndef KCC_BULLET_H
 #define KCC_BULLET_H
 
-#include "bulletCharacterControllerNode.h"
-#include "bulletWorld.h"
+#include <BulletDynamics/Character/btKinematicCharacterController.h>
+#include <BulletSoftBody/btSoftRigidDynamicsWorld.h>
 
 
 class btKCC : public btKinematicCharacterController {

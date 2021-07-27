@@ -1,4 +1,5 @@
 #include "kcc_config.h"
+#include "kcc_bullet.h"
 #include "kcc_panda.h"
 
 #include "dconfig.h"
