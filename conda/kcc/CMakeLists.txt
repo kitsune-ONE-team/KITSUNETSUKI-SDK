@@ -48,7 +48,8 @@ add_custom_command(
 
 add_library(kcc SHARED
   kcc_config.cxx
-  kcc_node.cxx
+  kcc_bullet.cxx
+  kcc_panda.cxx
   kcc_igate.cpp
   kcc_module.cpp)
 
