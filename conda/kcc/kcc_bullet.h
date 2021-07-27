@@ -24,3 +24,5 @@ public:
 private:
     bool _is_synced;
 };
+
+#endif
