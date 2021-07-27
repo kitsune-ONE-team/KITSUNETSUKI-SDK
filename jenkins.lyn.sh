@@ -7,6 +7,12 @@ if [ ! -d ${WORKSPACES} ]; then
 fi
 
 WORKSPACE=${WORKSPACES}/${JOB_BASE_NAME,,}
+
+echo "CLEAN: ${CLEAN}"
+if [ "${CLEAN}" = "true" ]; then
+    rm -Rf ${WORKSPACE};
+fi
+
 if [ ! -d ${WORKSPACE} ]; then
     mkdir -p ${WORKSPACE};
 fi

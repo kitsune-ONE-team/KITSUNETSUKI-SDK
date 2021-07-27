@@ -21,6 +21,9 @@
         - git:
             url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
     parameters:
+        - bool:
+            name: CLEAN
+            default: false
         - string:
             name: ANACONDA_TOKEN
             default:
@@ -44,6 +47,9 @@
         - git:
             url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
     parameters:
+        - bool:
+            name: CLEAN
+            default: false
         - string:
             name: ANACONDA_TOKEN
             default:
