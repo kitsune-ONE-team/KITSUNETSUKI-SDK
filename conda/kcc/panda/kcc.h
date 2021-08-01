@@ -1,8 +1,8 @@
 #ifndef PANDA_KCC_H
 #define PANDA_KCC_H
 
+#include "bulletShape.h"
 #include "bulletCharacterControllerNode.h"
-#include "bulletWorld.h"
 
 #include "bullet/kcc.h"
 

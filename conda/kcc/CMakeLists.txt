@@ -37,6 +37,8 @@ set(KCC_HEADERS
   panda/hitbox.h
 )
 
+include_directories(${CMAKE_SOURCE_DIR})
+
 add_custom_command(
   OUTPUT kcc_igate.cpp kcc.in
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L

@@ -1,11 +1,16 @@
 #ifndef PANDA_HITBOX_H
 #define PANDA_HITBOX_H
 
-#include "bullet/bulletBodyNode.h"
+#include "bulletBodyNode.h"
 
 
 class EXPORT_CLASS HitboxNode : public BulletBodyNode {
 PUBLISHED:
+    explicit HitboxNode(const char *name="ghost");
+    ~HitboxNode() {
+        delete _ghost;
+    }
+
     bool get_synced_b2p();
     void set_synced_b2p(bool synced);
 
