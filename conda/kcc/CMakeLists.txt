@@ -24,45 +24,48 @@ get_filename_component(PANDA_LIBRARY_DIR ${PANDAFRAMEWORK_LIBRARY_PATH} DIRECTOR
 link_directories(${PANDA_LIBRARY_DIR})
 
 set(KCC_SOURCES
-  bullet/kcc.cxx
-  panda/config.cxx
-  panda/kcc.cxx
-  panda/hitbox.cxx
+  ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.cxx
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.cxx
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.cxx
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/hitbox.cxx
 )
 
 set(KCC_HEADERS
-  bullet/kcc.h
-  panda/config.h
-  panda/kcc.h
-  panda/hitbox.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/panda/hitbox.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
 
 add_custom_command(
-  OUTPUT kcc_igate.cpp kcc.in
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
   -I${PANDA_INCLUDE_DIR}/panda3d
   -S${PANDA_INCLUDE_DIR}/panda3d/parser-inc
-  -oc kcc_igate.cpp
-  -od kcc.in
+  -oc ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp
+  -od ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
   -fnames -string -refcount -assert -python-native -nomangle
   -module kcc -library kcc
   ${KCC_HEADERS}
   DEPENDS ${KCC_SOURCES} ${KCC_HEADERS})
 
 add_custom_command(
-  OUTPUT kcc_module.cpp
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp
   COMMAND interrogate_module
-  -oc kcc_module.cpp
+  -oc ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp
   -module kcc -library kcc
   -python-native
   -import panda3d.core
   -import panda3d.bullet
-  kcc.in
-  DEPENDS kcc.in kcc_igate.cpp)
+  ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/kcc.in ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp)
 
-add_library(kcc SHARED ${KCC_SOURCES} kcc_igate.cpp kcc_module.cpp)
+add_library(kcc SHARED
+  ${KCC_SOURCES}
+  ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp
+  ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp)
 
 set_target_properties(kcc PROPERTIES PREFIX "")
 if(WIN32)

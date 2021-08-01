@@ -7,7 +7,8 @@ static const btVector3 up_vectors[3] = {btVector3(1.0f, 0.0f, 0.0f), btVector3(0
 TypeHandle KCCNode::_type_handle;
 
 
-KCCNode::KCCNode(BulletShape *shape, PN_stdfloat step_height, const char *name) : BulletBaseCharacterControllerNode(name) {
+KCCNode::KCCNode(BulletShape *shape, PN_stdfloat step_height, const char *name):
+    BulletBaseCharacterControllerNode(name) {
     // Synchronised transform
     _sync = TransformState::make_identity();
     _sync_disable = false;
