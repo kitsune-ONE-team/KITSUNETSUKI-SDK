@@ -3,7 +3,6 @@
 
 TypeHandle HitboxNode::_type_handle;
 
-
 bool HitboxNode::
 get_synced_b2p() {
     return _is_synced_b2p;

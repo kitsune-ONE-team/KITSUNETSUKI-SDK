@@ -1,9 +1,7 @@
 #ifndef PANDA_KCC_H
 #define PANDA_KCC_H
 
-#include "bulletShape.h"
 #include "bulletCharacterControllerNode.h"
-
 #include "bullet/kcc.h"
 
 
@@ -86,8 +84,9 @@ public:
     }
     static void init_type() {
         BulletBaseCharacterControllerNode::init_type();
-        register_type(_type_handle, "KCCNode",
-                      BulletBaseCharacterControllerNode::get_class_type());
+        register_type(
+            _type_handle, "KCCNode",
+            BulletBaseCharacterControllerNode::get_class_type());
     }
     virtual TypeHandle get_type() const {
         return get_class_type();

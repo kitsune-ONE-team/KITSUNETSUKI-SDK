@@ -18,5 +18,6 @@ void init_libkcc() {
   }
   initialized = true;
   KCCNode::init_type();
+  HitboxNode::init_type();
   return;
 }
