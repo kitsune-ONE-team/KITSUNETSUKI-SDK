@@ -1,10 +1,10 @@
-#ifndef KCC_PANDA_H
-#define KCC_PANDA_H
+#ifndef PANDA_KCC_H
+#define PANDA_KCC_H
 
 #include "bulletCharacterControllerNode.h"
 #include "bulletWorld.h"
 
-#include "kcc_bullet.h"
+#include "bullet/kcc.h"
 
 
 class EXPORT_CLASS KCCNode : public BulletBaseCharacterControllerNode {

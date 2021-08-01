@@ -1,6 +1,6 @@
-#include "kcc_config.h"
-#include "kcc_bullet.h"
-#include "kcc_panda.h"
+#include "panda/config.h"
+#include "panda/kcc.h"
+#include "panda/hitbox.h"
 
 #include "dconfig.h"
 

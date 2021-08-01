@@ -1,5 +1,5 @@
-#ifndef CONFIG_KCC_H
-#define CONFIG_KCC_H
+#ifndef PANDA_CONFIG_H
+#define PANDA_CONFIG_H
 #pragma once
 
 class btKinematicCharacterController;

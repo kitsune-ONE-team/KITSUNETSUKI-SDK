@@ -23,6 +23,20 @@ find_library(PANDAFRAMEWORK_LIBRARY_PATH NAMES libp3framework.so libp3framework.
 get_filename_component(PANDA_LIBRARY_DIR ${PANDAFRAMEWORK_LIBRARY_PATH} DIRECTORY)
 link_directories(${PANDA_LIBRARY_DIR})
 
+set(KCC_SOURCES
+  bullet/kcc.cxx
+  panda/config.cxx
+  panda/kcc.cxx
+  panda/hitbox.cxx
+)
+
+set(KCC_HEADERS
+  bullet/kcc.h
+  panda/config.h
+  panda/kcc.h
+  panda/hitbox.h
+)
+
 add_custom_command(
   OUTPUT kcc_igate.cpp kcc.in
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
@@ -32,8 +46,8 @@ add_custom_command(
   -od kcc.in
   -fnames -string -refcount -assert -python-native -nomangle
   -module kcc -library kcc
-  kcc_config.h kcc_panda.h
-  DEPENDS kcc_config.cxx kcc_config.h kcc_bullet.cxx kcc_bullet.h kcc_panda.cxx kcc_panda.h)
+  ${KCC_HEADERS}
+  DEPENDS ${KCC_SOURCES} ${KCC_HEADERS})
 
 add_custom_command(
   OUTPUT kcc_module.cpp
@@ -46,12 +60,7 @@ add_custom_command(
   kcc.in
   DEPENDS kcc.in kcc_igate.cpp)
 
-add_library(kcc SHARED
-  kcc_config.cxx
-  kcc_bullet.cxx
-  kcc_panda.cxx
-  kcc_igate.cpp
-  kcc_module.cpp)
+add_library(kcc SHARED ${KCC_SOURCES} kcc_igate.cpp kcc_module.cpp)
 
 set_target_properties(kcc PROPERTIES PREFIX "")
 if(WIN32)
