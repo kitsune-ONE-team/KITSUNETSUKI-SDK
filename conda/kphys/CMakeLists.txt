@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(bullet-kitsunetsuki)
+project(kitsunetsuki-phys)
 
 if(WIN32)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
@@ -23,14 +23,14 @@ find_library(PANDAFRAMEWORK_LIBRARY_PATH NAMES libp3framework.so libp3framework.
 get_filename_component(PANDA_LIBRARY_DIR ${PANDAFRAMEWORK_LIBRARY_PATH} DIRECTORY)
 link_directories(${PANDA_LIBRARY_DIR})
 
-set(KCC_SOURCES
+set(KPHYS_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.cxx
   ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.cxx
   ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.cxx
   ${CMAKE_CURRENT_SOURCE_DIR}/panda/hitbox.cxx
 )
 
-set(KCC_HEADERS
+set(KPHYS_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.h
   ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.h
   ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.h
@@ -40,36 +40,36 @@ set(KCC_HEADERS
 include_directories(${CMAKE_SOURCE_DIR})
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
   -I${PANDA_INCLUDE_DIR}/panda3d
   -S${PANDA_INCLUDE_DIR}/panda3d/parser-inc
-  -oc ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp
-  -od ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
+  -oc ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
+  -od ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
   -fnames -string -refcount -assert -python-native -nomangle
-  -module kcc -library kcc
-  ${KCC_HEADERS}
-  DEPENDS ${KCC_SOURCES} ${KCC_HEADERS})
+  -module kphys -library kphys
+  ${KPHYS_HEADERS}
+  DEPENDS ${KPHYS_SOURCES} ${KPHYS_HEADERS})
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp
   COMMAND interrogate_module
-  -oc ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp
-  -module kcc -library kcc
+  -oc ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp
+  -module kphys -library kphys
   -python-native
   -import panda3d.core
   -import panda3d.bullet
-  ${CMAKE_CURRENT_BINARY_DIR}/kcc.in
-  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/kcc.in ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp)
+  ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/kphys.in ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp)
 
-add_library(kcc SHARED
-  ${KCC_SOURCES}
-  ${CMAKE_CURRENT_BINARY_DIR}/kcc_igate.cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/kcc_module.cpp)
+add_library(kphys SHARED
+  ${KPHYS_SOURCES}
+  ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
+  ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp)
 
-set_target_properties(kcc PROPERTIES PREFIX "")
+set_target_properties(kphys PROPERTIES PREFIX "")
 if(WIN32)
-  set_target_properties(kcc PROPERTIES SUFFIX ".pyd")
+  set_target_properties(kphys PROPERTIES SUFFIX ".pyd")
 endif()
 
 if(WIN32)
@@ -106,7 +106,7 @@ else()
     )
 endif()
 
-target_link_libraries(kcc
+target_link_libraries(kphys
   ${PANDA_LIBS}
   # PYTHON
   ${PYTHON_LIBRARY}
@@ -117,4 +117,4 @@ target_link_libraries(kcc
   ${BULLET_SOFTBODY_LIBRARY}
   )
 
-install(TARGETS kcc DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(TARGETS kphys DESTINATION ${CMAKE_INSTALL_PREFIX})

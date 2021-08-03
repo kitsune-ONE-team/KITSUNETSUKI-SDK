@@ -4,13 +4,13 @@ VERSION=$(date +%s)
 
 TARGETS=${1};
 if [ "${1}" = "all" ]; then
-    TARGETS="blender blender-thirdparty bullet panda3d kcc runtime";
+    TARGETS="blender blender-thirdparty bullet panda3d kphys runtime";
 fi
 if [ "${1}" = "panda" ]; then
-    TARGETS="panda3d kcc runtime";
+    TARGETS="panda3d kphys runtime";
 fi
 if [ "${1}" = "sdk" ]; then
-    TARGETS="bullet panda3d kcc runtime";
+    TARGETS="bullet panda3d kphys runtime";
 fi
 
 for i in ${TARGETS}; do

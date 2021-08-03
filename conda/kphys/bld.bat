@@ -13,4 +13,4 @@ cmake -G "NMake Makefiles" ^
 nmake
 nmake install
 
-del /F /S %PREFIX%\Lib\site-packages\kcc.lib
+del /F /S %PREFIX%\Lib\site-packages\kphys.lib

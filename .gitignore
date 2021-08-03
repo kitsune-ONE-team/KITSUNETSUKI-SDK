@@ -1,4 +1,5 @@
 *.pyc
+/conda/kphys/build/
 /conda/panda3d/test.txt
 /conda/panda3d/test.zip
 __pycache__

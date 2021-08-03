@@ -1,6 +1,6 @@
 package:
-  name: kcc
-  version: "0.1"
+  name: kitsunetsuki-phys
+  version: "0.2"
 
 source:
   path: .
