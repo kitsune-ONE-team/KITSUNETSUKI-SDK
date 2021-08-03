@@ -3,10 +3,24 @@
 
 TypeHandle HitboxNode::_type_handle;
 
+
 HitboxNode::HitboxNode(const char *name):
     BulletGhostNode(name) {
     _is_synced_b2p = true;
     _is_synced_p2b = true;
+
+    _ghost->forceActivationState(DISABLE_SIMULATION);
+    // _ghost->setForceUpdateAllAabbs(false);
+}
+
+void HitboxNode::do_sync_b2p() {
+    if (!_is_synced_b2p) return;
+    BulletGhostNode::do_sync_b2p();
+}
+
+void HitboxNode::do_sync_p2b() {
+    if (!_is_synced_p2b) return;
+    BulletGhostNode::do_sync_p2b();
 }
 
 bool HitboxNode::get_synced_b2p() {
@@ -23,16 +37,4 @@ bool HitboxNode::get_synced_p2b() {
 
 void HitboxNode::set_synced_p2b(bool synced) {
     _is_synced_p2b = synced;
-}
-
-void HitboxNode::do_sync_b2p() {
-    if (_is_synced_b2p) {
-        BulletGhostNode::do_sync_b2p();
-    }
-}
-
-void HitboxNode::do_sync_p2b() {
-    if (_is_synced_p2b) {
-        BulletGhostNode::do_sync_p2b();
-    }
 }

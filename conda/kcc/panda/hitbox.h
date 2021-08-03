@@ -7,12 +7,9 @@
 class EXPORT_CLASS HitboxNode : public BulletGhostNode {
 PUBLISHED:
     explicit HitboxNode(const char *name="ghost");
-    /* ~HitboxNode() { */
-    /*     delete _ghost; */
-    /* } */
-
-    void do_sync_p2b();
-    void do_sync_b2p();
+    ~HitboxNode() {
+        delete _ghost;
+    }
 
     bool get_synced_b2p();
     void set_synced_b2p(bool synced);
@@ -21,6 +18,9 @@ PUBLISHED:
     void set_synced_p2b(bool synced);
 
 public:
+    virtual void do_sync_p2b();
+    virtual void do_sync_b2p();
+
     static TypeHandle get_class_type() {
         return _type_handle;
     }
