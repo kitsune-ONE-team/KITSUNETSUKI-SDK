@@ -51,32 +51,10 @@ index ddec79641a..aebce5a191 100644
  
  public:
 diff --git a/panda/src/bullet/bulletWorld.h b/panda/src/bullet/bulletWorld.h
-index b655e0b349..334a217419 100644
+index b655e0b349..bbcd8f5912 100644
 --- a/panda/src/bullet/bulletWorld.h
 +++ b/panda/src/bullet/bulletWorld.h
-@@ -199,6 +199,21 @@ public:
- 
-   static LightMutex &get_global_lock();
- 
-+protected:
-+  btBroadphaseInterface *_broadphase;
-+  btCollisionConfiguration *_configuration;
-+  btCollisionDispatcher *_dispatcher;
-+  btConstraintSolver *_solver;
-+  btSoftRigidDynamicsWorld *_world;
-+
-+  btGhostPairCallback _ghost_cb;
-+
-+  FilterAlgorithm _filter_algorithm;
-+  btFilterCallback1 _filter_cb1;
-+  btFilterCallback2 _filter_cb2;
-+  btFilterCallback3 _filter_cb3;
-+  btOverlapFilterCallback *_filter_cb;
-+
- private:
-   void do_sync_p2b(PN_stdfloat dt, int num_substeps);
-   void do_sync_b2p();
-@@ -257,20 +272,6 @@ private:
+@@ -257,20 +257,6 @@ private:
      PT(CallbackObject) _filter_callback_obj;
    };
  
@@ -97,3 +75,25 @@ index b655e0b349..334a217419 100644
    PT(CallbackObject) _tick_callback_obj;
    PT(CallbackObject) _contact_added_callback_obj;
  
+@@ -285,6 +271,21 @@ private:
+   BulletVehicles _vehicles;
+   BulletConstraints _constraints;
+ 
++protected:
++  btBroadphaseInterface *_broadphase;
++  btCollisionConfiguration *_configuration;
++  btCollisionDispatcher *_dispatcher;
++  btConstraintSolver *_solver;
++  btSoftRigidDynamicsWorld *_world;
++
++  btGhostPairCallback _ghost_cb;
++
++  FilterAlgorithm _filter_algorithm;
++  btFilterCallback1 _filter_cb1;
++  btFilterCallback2 _filter_cb2;
++  btFilterCallback3 _filter_cb3;
++  btOverlapFilterCallback *_filter_cb;
++
+ public:
+   static TypeHandle get_class_type() {
+     return _type_handle;
