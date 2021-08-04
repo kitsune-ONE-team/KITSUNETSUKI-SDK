@@ -50,6 +50,27 @@ index ddec79641a..aebce5a191 100644
    void do_transform_changed();
  
  public:
+diff --git a/panda/src/bullet/bulletRigidBodyNode.h b/panda/src/bullet/bulletRigidBodyNode.h
+index 6c1879e911..08f69297b8 100644
+--- a/panda/src/bullet/bulletRigidBodyNode.h
++++ b/panda/src/bullet/bulletRigidBodyNode.h
+@@ -147,7 +147,6 @@ private:
+   };
+ 
+   MotionState _motion;
+-  btRigidBody *_rigid;
+ 
+ public:
+   static void register_with_read_factory();
+@@ -159,6 +158,8 @@ protected:
+   static TypedWritable *make_from_bam(const FactoryParams &params);
+   void fillin(DatagramIterator &scan, BamReader *manager);
+ 
++  btRigidBody* _rigid;
++
+ public:
+   static TypeHandle get_class_type() {
+     return _type_handle;
 diff --git a/panda/src/bullet/bulletWorld.h b/panda/src/bullet/bulletWorld.h
 index b655e0b349..b923f6c346 100644
 --- a/panda/src/bullet/bulletWorld.h
