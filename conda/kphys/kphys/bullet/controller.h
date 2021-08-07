@@ -33,7 +33,7 @@ public:
     virtual void updateAction(btCollisionWorld* collisionWorld, btScalar deltaTime);
 
 private:
-    bool _is_synced;
+    bool _is_simulated;
 };
 
 #endif

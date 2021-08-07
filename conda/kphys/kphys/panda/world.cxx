@@ -28,8 +28,8 @@ World::World():
     _world->getDispatchInfo().m_enableSPU = true;
     _world->getDispatchInfo().m_useContinuous = true;
     _world->getSolverInfo().m_splitImpulse = false;
-    // _world->getSolverInfo().m_numIterations = 10;
-    _world->getSolverInfo().m_numIterations = 1;
+    _world->getSolverInfo().m_numIterations = 10;
+    // _world->getSolverInfo().m_numIterations = 1;
 }
 
 void World::do_sync_p2b(PN_stdfloat dt, int num_substeps) {

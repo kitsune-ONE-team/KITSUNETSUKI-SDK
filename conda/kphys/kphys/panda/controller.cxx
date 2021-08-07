@@ -32,3 +32,11 @@ bool ControllerNode::get_jumping() {
 void ControllerNode::set_jumping(bool jumping) {
     ((btController*) _character)->set_jumping(jumping);
 }
+
+bool ControllerNode::get_simulated() {
+    return ((btController*) _character)->get_simulated();
+}
+
+void ControllerNode::set_simulated(bool simulated) {
+    ((btController*) _character)->set_simulated(simulated);
+}

@@ -5,7 +5,7 @@ btController::btController(
         btPairCachingGhostObject* ghostObject, btConvexShape* convexShape,
         btScalar stepHeight, const btVector3 & upAxis):
     btKinematicCharacterController(ghostObject, convexShape, stepHeight, upAxis) {
-    _is_synced = true;
+    _is_simulated = true;
 }
 
 btScalar btController::get_vertical_velocity() {
@@ -29,7 +29,7 @@ bool btController::get_synced() {
 }
 
 void btController::set_synced(bool synced) {
-    _is_synced = synced;
+    _is_simulated = synced;
 }
 
 void btController::jump () {
@@ -38,7 +38,7 @@ void btController::jump () {
 }
 
 void btController::updateAction(btCollisionWorld* collisionWorld, btScalar deltaTime) {
-    if (_is_synced) {
+    if (_is_simulated) {
         preStep(collisionWorld);
         playerStep(collisionWorld, deltaTime);
     }

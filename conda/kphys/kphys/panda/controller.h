@@ -17,6 +17,9 @@ PUBLISHED:
     bool get_jumping();
     void set_jumping(bool jumping);
 
+    bool get_simulated();
+    void set_simulated(bool simulated);
+
 private:
     static TypeHandle _type_handle;
 
