@@ -68,7 +68,7 @@ copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd ^
                                                             %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\kcc.pyd ^
+    %CONDA_PREFIX%\Lib\site-packages\kphys.pyd ^
                                                             %PREFIX%\kitsunetsuki-runtime
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^

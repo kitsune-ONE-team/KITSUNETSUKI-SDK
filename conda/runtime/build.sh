@@ -63,7 +63,7 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/*.so \
                                                   ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/kcc.so \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/kphys.so \
                                                   ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
