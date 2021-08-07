@@ -21,56 +21,6 @@ index bb7457dfe0..98d0522cee 100644
    PT(BulletShape) _shape;
  
    LVector3 _linear_movement;
-diff --git a/panda/src/bullet/bulletGhostNode.h b/panda/src/bullet/bulletGhostNode.h
-index ddec79641a..aebce5a191 100644
---- a/panda/src/bullet/bulletGhostNode.h
-+++ b/panda/src/bullet/bulletGhostNode.h
-@@ -43,20 +43,20 @@ PUBLISHED:
- public:
-   virtual btCollisionObject *get_object() const;
- 
--  void do_sync_p2b();
--  void do_sync_b2p();
-+  virtual void do_sync_p2b();
-+  virtual void do_sync_b2p();
- 
- protected:
-   virtual void parents_changed();
-   virtual void transform_changed();
- 
-+  btPairCachingGhostObject *_ghost;
-+
- private:
-   CPT(TransformState) _sync;
-   bool _sync_disable;
-   bool _sync_local;
- 
--  btPairCachingGhostObject *_ghost;
--
-   void do_transform_changed();
- 
- public:
-diff --git a/panda/src/bullet/bulletRigidBodyNode.h b/panda/src/bullet/bulletRigidBodyNode.h
-index 6c1879e911..08f69297b8 100644
---- a/panda/src/bullet/bulletRigidBodyNode.h
-+++ b/panda/src/bullet/bulletRigidBodyNode.h
-@@ -147,7 +147,6 @@ private:
-   };
- 
-   MotionState _motion;
--  btRigidBody *_rigid;
- 
- public:
-   static void register_with_read_factory();
-@@ -159,6 +158,8 @@ protected:
-   static TypedWritable *make_from_bam(const FactoryParams &params);
-   void fillin(DatagramIterator &scan, BamReader *manager);
- 
-+  btRigidBody* _rigid;
-+
- public:
-   static TypeHandle get_class_type() {
-     return _type_handle;
 diff --git a/panda/src/bullet/bulletWorld.h b/panda/src/bullet/bulletWorld.h
 index b655e0b349..b923f6c346 100644
 --- a/panda/src/bullet/bulletWorld.h
