@@ -1,13 +1,13 @@
 ![logo](icon.png)
 
-KITSUNETSUKI Character Controller
-=================================
+KITSUNETSUKI Physics
+====================
 
-Character Controller for to use with Panda3D and Bullet.
+Bullet-based physics module for Panda3D.
 
 KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
 
-Conda package: https://anaconda.org/kitsune.ONE/kcc
+Conda package: https://anaconda.org/kitsune.ONE/kitsunetsuki-phys
 
 
 Building conda package
@@ -15,8 +15,8 @@ Building conda package
 
 ```
 git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
-conda build conda/kcc
-conda install kcc --use-local
+conda build conda/kphys
+conda install kitsunetsuki-phys --use-local
 ```
 
 
@@ -25,5 +25,5 @@ Installing prebuild conda package
 
 ```
 conda config --add channels kitsune.one
-conda install kcc
+conda install kitsunetsuki-phys
 ```

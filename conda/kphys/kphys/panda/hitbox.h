@@ -4,23 +4,14 @@
 #include "bulletGhostNode.h"
 
 
-class EXPORT_CLASS HitboxNode : public BulletGhostNode {
+class EXPORT_CLASS HitboxNode: public BulletGhostNode {
 PUBLISHED:
     explicit HitboxNode(const char *name="ghost");
-    ~HitboxNode() {
-        delete _ghost;
-    }
 
-    bool get_synced_b2p();
-    void set_synced_b2p(bool synced);
-
-    bool get_synced_p2b();
-    void set_synced_p2b(bool synced);
+private:
+    static TypeHandle _type_handle;
 
 public:
-    virtual void do_sync_p2b();
-    virtual void do_sync_b2p();
-
     static TypeHandle get_class_type() {
         return _type_handle;
     }
@@ -37,12 +28,6 @@ public:
         init_type();
         return get_class_type();
     }
-
-private:
-    bool _is_synced_b2p;
-    bool _is_synced_p2b;
-
-    static TypeHandle _type_handle;
 };
 
 #endif

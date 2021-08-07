@@ -24,17 +24,21 @@ get_filename_component(PANDA_LIBRARY_DIR ${PANDAFRAMEWORK_LIBRARY_PATH} DIRECTOR
 link_directories(${PANDA_LIBRARY_DIR})
 
 set(KPHYS_SOURCES
-  ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.cxx
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.cxx
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.cxx
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/hitbox.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/bullet/controller.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/bullet/world.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/config.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/controller.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/world.cxx
 )
 
 set(KPHYS_HEADERS
-  ${CMAKE_CURRENT_SOURCE_DIR}/bullet/kcc.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/config.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/kcc.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/panda/hitbox.h
+  ${CMAKE_SOURCE_DIR}/kphys/bullet/controller.h
+  ${CMAKE_SOURCE_DIR}/kphys/bullet/world.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/config.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/controller.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/world.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
@@ -42,14 +46,16 @@ include_directories(${CMAKE_SOURCE_DIR})
 add_custom_command(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
+  -I${CMAKE_SOURCE_DIR}
   -I${PANDA_INCLUDE_DIR}/panda3d
+  -S${CMAKE_SOURCE_DIR}
   -S${PANDA_INCLUDE_DIR}/panda3d/parser-inc
   -oc ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
   -od ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
   -fnames -string -refcount -assert -python-native -nomangle
   -module kphys -library kphys
   ${KPHYS_HEADERS}
-  DEPENDS ${KPHYS_SOURCES} ${KPHYS_HEADERS})
+  DEPENDS ${KPHYS_SOURCES} ${KPHYS_HEADERS} ${CMAKE_SOURCE_DIR}/kphys/interrogate.h)
 
 add_custom_command(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp
