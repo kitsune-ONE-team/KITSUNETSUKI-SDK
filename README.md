@@ -21,12 +21,13 @@ What's Inside
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender 3rd party libraries](conda/blender-thirdparty) (for building python-blender)
 
+
 Files and directories structure
 -------------------------------
 
 * [conda](conda) - conda package recipes for anaconda/miniconda
+* [container](container) - container build files
 * [README.md](README.md) - this file
-* [ksdk.yml](ksdk.yml) - conda environment file
 * [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
 * [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
 * [jenkins.jobs.yaml](jenkins.jobs.yaml) - Jenkins Jobs Builder file for jobs generation
