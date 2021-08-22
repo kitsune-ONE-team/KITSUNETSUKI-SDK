@@ -1,0 +1,3 @@
+#!/bin/sh
+export JENKINS_HOME=/var/lib/jenkins
+java -jar /usr/share/jenkins/jenkins.war

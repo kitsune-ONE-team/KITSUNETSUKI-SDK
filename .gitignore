@@ -2,4 +2,6 @@
 /conda/kphys/build/
 /conda/panda3d/test.txt
 /conda/panda3d/test.zip
+/container/sdk_builder/jenkins/*
+/container/sdk_builder/continuum/*
 __pycache__
