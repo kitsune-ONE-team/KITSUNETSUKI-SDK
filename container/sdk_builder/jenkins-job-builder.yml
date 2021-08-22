@@ -27,7 +27,7 @@
         - string:
             name: ANACONDA_TOKEN
             default:
-                !include-raw: /root/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
+                !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - shell: |
             ./jenkins.lyn.sh
@@ -53,7 +53,7 @@
         - string:
             name: ANACONDA_TOKEN
             default:
-                !include-raw: /root/.continuum/anaconda-client/tokens/https%3A%2F%2Fapi.anaconda.org.token
+                !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - batch: |
             jenkins.win.bat

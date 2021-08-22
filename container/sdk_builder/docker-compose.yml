@@ -7,5 +7,6 @@ services:
             - "8080:8080"
         volumes:
             - ./jenkins:/var/lib/jenkins:Z
-            - ./continuum:/root/.continuum:Z
             - ./jenkins-job-builder.yml:/opt/jenkins-job-builder.yml:Z
+            - ./binstar:/root/.config/binstar:Z
+            - ./jenkins_jobs:/root/.config/jenkins_jobs:Z

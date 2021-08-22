@@ -9,7 +9,7 @@ RUN \
     apt install -y \
         build-essential linux-libc-dev uuid-dev gettext && \
     apt install -y \
-        git subversion wget p7zip-full software-properties-common && \
+        git subversion wget p7zip-full && \
     apt install -y \
         mingw-w64 mingw-w64-tools g++-mingw-w64 libz-mingw-w64-dev \
         mingw-w64-x86-64-dev mingw-w64-i686-dev && \
@@ -21,12 +21,12 @@ RUN \
     echo UTC > /etc/timezone
 
 RUN \
-    wget -q -O /opt/m3.sh \
+    wget -q -O /opt/miniconda3.sh \
         https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh && \
-    chmod +x /opt/m3.sh && \
-    /opt/m3.sh -b -p /opt/m3 && \
-    /opt/m3/bin/conda install -y conda==4.8.3 anaconda-client && \
-    /opt/m3/bin/conda clean -a -y && \
-    echo "source /opt/m3/etc/profile.d/conda.sh" > /etc/profile.d/conda.sh && \
+    chmod +x /opt/miniconda3.sh && \
+    /opt/miniconda3.sh -b -p /opt/miniconda3 && \
+    /opt/miniconda3/bin/conda install -y conda==4.8.3 anaconda-client && \
+    /opt/miniconda3/bin/conda clean -a -y && \
+    ln -sf /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo "source /etc/profile" >> /root/.profile && \
     echo "conda activate" >> /root/.profile
