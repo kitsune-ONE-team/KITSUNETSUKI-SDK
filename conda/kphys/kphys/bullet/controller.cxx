@@ -24,12 +24,12 @@ void btController::set_jumping(bool jumping) {
     m_wasJumping = jumping;
 }
 
-bool btController::get_synced() {
-    return m_wasJumping;
+bool btController::get_simulated() {
+    return _is_simulated;
 }
 
-void btController::set_synced(bool synced) {
-    _is_simulated = synced;
+void btController::set_simulated(bool simulated) {
+    _is_simulated = simulated;
 }
 
 void btController::jump () {

@@ -26,8 +26,8 @@ public:
     bool get_jumping();
     void set_jumping(bool jumping);
 
-    bool get_synced();
-    void set_synced(bool synced);
+    bool get_simulated();
+    void set_simulated(bool simulated);
 
     void jump();
     virtual void updateAction(btCollisionWorld* collisionWorld, btScalar deltaTime);
