@@ -54,6 +54,7 @@ requirements:
     # - blender-thirdparty # [unix]
     - bullet
     - cmake
+    - conda ==4.8.3
     - fontconfig # [unix]
     - freetype # [unix]
     - git

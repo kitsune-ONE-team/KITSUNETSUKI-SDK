@@ -47,14 +47,15 @@ build:
 
 requirements:
   build:
+    - conda ==4.8.3
     - idna ==2.9
     - jsonschema ==3.2.0
     - kitsunetsuki-phys
     - panda3d
     - pyrsistent ==0.16.0
+    - pytest-runner
     - python ==3.8
     - six ==1.14.0
-    - pytest-runner
   run:
     - freetype # [unix]
     - libgcc-ng # [unix]

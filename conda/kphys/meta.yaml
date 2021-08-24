@@ -20,6 +20,7 @@ requirements:
   build:
     - bullet ==3.17
     - cmake
+    - conda ==4.8.3
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d

@@ -59,9 +59,9 @@ build:
 
 requirements:
   build:
-    - m2-p7zip # [win]
     - bullet ==3.17
     - cmake
+    - conda ==4.8.3
     - fontconfig # [unix]
     - freetype # [unix]
     - libgcc-ng # [unix]
@@ -70,6 +70,7 @@ requirements:
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
     - m2-gcc-libs # [win]
+    - m2-p7zip # [win]
     - m2-patch # [win]
     - msinttypes # [win]
     - openssl >=1.1.1g
