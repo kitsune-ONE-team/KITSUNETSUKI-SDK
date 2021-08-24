@@ -70,7 +70,7 @@
         - 'LYNX64/{name}':
             name: panda3d
         - 'LYNX64/{name}':
-            name: kcc
+            name: kphys
         - 'LYNX64/{name}':
             name: runtime
 
@@ -86,7 +86,7 @@
         - 'WINX64/{name}':
             name: panda3d
         - 'WINX64/{name}':
-            name: kcc
+            name: kphys
         - 'WINX64/{name}':
             name: runtime
 
@@ -98,16 +98,16 @@
     node: linux
     dsl: |
         stage('bullet') {{
-            build(job: 'bullet')
+            build job: 'bullet', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('panda3d') {{
-            build(job: 'panda3d')
+            build job: 'panda3d', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
-        stage('kcc') {{
-            build(job: 'kcc')
+        stage('kphys') {{
+            build job: 'kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
-            build(job: 'runtime')
+            build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
 
 - job-template:
@@ -118,16 +118,16 @@
     node: windows
     dsl: |
         stage('bullet') {{
-            build(job: 'bullet')
+            build job: 'bullet', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('panda3d') {{
-            build(job: 'panda3d')
+            build job: 'panda3d', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
-        stage('kcc') {{
-            build(job: 'kcc')
+        stage('kphys') {{
+            build job: 'kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
-            build(job: 'runtime')
+            build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
 
 - project:
