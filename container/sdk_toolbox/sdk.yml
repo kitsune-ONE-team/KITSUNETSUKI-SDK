@@ -15,7 +15,7 @@ dependencies:
 - jedi ==0.16.0
 - jinja2 ==2.11.2
 - jsonschema ==3.2.0
-- kitsunetuski-phys
+- kitsunetsuki-phys
 - panda3d
 - pip ==20.0.2
 - pyqt ==5.9.2

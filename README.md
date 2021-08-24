@@ -33,43 +33,48 @@ Files and directories structure
 * [jenkins.jobs.yaml](jenkins.jobs.yaml) - Jenkins Jobs Builder file for jobs generation
 
 
-SDK Requirements
-----------------
+Installing SDK into Anaconda/Miniconda
+--------------------------------------
 
-You have to install those software packages to use the prebuild SDK.
+You have to install one of those software packages to use the prebuild SDK:
+* Miniconda3 (version 4.8+, Python 3.8) - https://conda.io/en/latest/miniconda.html
+* Anaconda3 (version 4.8+, Python 3.8) - https://www.anaconda.com/
 
-* Anaconda3 or Miniconda3 (version 4.8+, Python 3.8) - https://conda.io/en/latest/miniconda.html
-
-
-Installing
-----------
-
+**Installing**
 ```
 conda env create kitsune.one/ksdk
 ```
 
-
-Updating
---------
-
+**Updating**
 ```
 conda env update -n ksdk kitsune.one/ksdk
 ```
 
-
-Using
------
-
+**Using**
 ```
 conda activate ksdk
 ```
 
-
-Uninstalling
-------------
-
+**Uninstalling**
 ```
 conda env remove -n ksdk
+```
+
+
+Installing SDK into Docker/Podman
+---------------------------------
+
+You have to install one of those software packages to use the prebuild SDK:
+* Podman - https://podman.io/
+* Docker - https://www.docker.com/
+
+**Installing and Updating**
+```
+podman pull docker.io/yonnji/sdk:toolbox
+```
+or
+```
+docker pull docker.io/yonnji/sdk:toolbox
 ```
 
 
