@@ -29,4 +29,6 @@ RUN \
     /opt/miniconda3/bin/conda clean -a -y && \
     ln -sf /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo "source /etc/profile" >> /root/.profile && \
-    echo "conda activate" >> /root/.profile
+    echo "conda activate" >> /root/.profile && \
+    echo "source /etc/profile" >> /root/.bashrc && \
+    echo "conda activate" >> /root/.bashrc
