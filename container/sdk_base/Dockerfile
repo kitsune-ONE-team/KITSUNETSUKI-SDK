@@ -9,14 +9,15 @@ RUN \
     apt install -y \
         build-essential linux-libc-dev uuid-dev gettext && \
     apt install -y \
-        git subversion wget p7zip-full && \
+        git subversion wget p7zip-full libcap2-bin sudo && \
     apt install -y \
-        mingw-w64 mingw-w64-tools g++-mingw-w64 libz-mingw-w64-dev \
-        mingw-w64-x86-64-dev mingw-w64-i686-dev && \
+        mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev \
+        g++-mingw-w64 libz-mingw-w64-dev && \
     apt install -y \
         mesa-common-dev mesa-utils libgl1-mesa-dev libglu1-mesa-dev \
         libglew-dev libxxf86vm-dev cxxtest \
         libopenal-dev && \
+    apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone
 
@@ -28,7 +29,4 @@ RUN \
     /opt/miniconda3/bin/conda install -y conda==4.8.3 anaconda-client && \
     /opt/miniconda3/bin/conda clean -a -y && \
     ln -sf /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo "source /etc/profile" >> /root/.profile && \
-    echo "conda activate" >> /root/.profile && \
-    echo "source /etc/profile" >> /root/.bashrc && \
-    echo "conda activate" >> /root/.bashrc
+    rm -f /opt/miniconda3.sh

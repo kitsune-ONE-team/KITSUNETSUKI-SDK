@@ -5,4 +5,5 @@ COPY ./sdk.yml /opt/sdk.yml
 
 RUN \
     /opt/miniconda3/bin/conda env update -n base -f /opt/sdk.yml && \
-    /opt/miniconda3/bin/conda clean -a -y
+    /opt/miniconda3/bin/conda clean -a -y && \
+    rm -Rf /root/.cache
