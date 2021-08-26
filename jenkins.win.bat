@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 set WORKSPACES=D:\Build
 if not exist %WORKSPACES% (
@@ -8,7 +8,7 @@ if not exist %WORKSPACES% (
 set WORKSPACE=%WORKSPACES%\%JOB_BASE_NAME%
 
 echo "CLEAN: %CLEAN%"
-if "%CLEAN%" == "true"(
+if "%CLEAN%" == "true" (
     rmdir /S /Q %WORKSPACE%
 )
 
