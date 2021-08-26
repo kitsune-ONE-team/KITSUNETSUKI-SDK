@@ -5,11 +5,11 @@ if not exist %WORKSPACES% (
     mkdir %WORKSPACES%
 )
 
-set WORKSPACE=D:\Workspaces\%JOB_BASE_NAME%
+set WORKSPACE=%WORKSPACES%\%JOB_BASE_NAME%
 
 echo "CLEAN: %CLEAN%"
 if "%CLEAN%" == "true"(
-    rmdir /S /Q %WORKSPACE%\build_env
+    rmdir /S /Q %WORKSPACE%
 )
 
 if not exist %WORKSPACE% (
