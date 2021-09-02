@@ -7,6 +7,4 @@ RUN wget -q -O /opt/jenkins.war https://get.jenkins.io/war-stable/2.289.3/jenkin
 
 COPY ./run-jenkins /usr/local/bin/run-jenkins
 
-RUN \
-    /opt/miniconda3/bin/pip install jenkins-job-builder && \
-    rm -Rf /root/.cache
+RUN /opt/miniconda3/bin/pip install jenkins-job-builder && rm -Rf /root/.cache

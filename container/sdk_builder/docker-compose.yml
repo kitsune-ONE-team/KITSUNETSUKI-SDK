@@ -4,9 +4,10 @@ services:
         image: docker.io/yonnji/sdk:builder
         command: run-jenkins
         ports:
-            - "8080:8080"
+            - "0.0.0.0:8080:8080"
         volumes:
             - ./jenkins:/var/lib/jenkins:Z
             - ./jenkins-job-builder.yml:/opt/jenkins-job-builder.yml:Z
             - ./binstar:/root/.config/binstar:Z
             - ./jenkins_jobs:/root/.config/jenkins_jobs:Z
+

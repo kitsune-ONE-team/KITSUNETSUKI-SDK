@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 set WORKSPACES=D:\Build
 if not exist %WORKSPACES% (

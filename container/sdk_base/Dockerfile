@@ -9,7 +9,7 @@ RUN \
     apt install -y \
         build-essential linux-libc-dev uuid-dev gettext && \
     apt install -y \
-        git subversion wget p7zip-full libcap2-bin sudo && \
+        sudo git subversion wget p7zip-full libcap2-bin libxi6 && \
     apt install -y \
         mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev \
         g++-mingw-w64 libz-mingw-w64-dev && \

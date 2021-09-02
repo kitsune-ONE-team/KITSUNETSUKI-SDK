@@ -31,6 +31,7 @@ Files and directories structure
 * [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
 * [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
 * [jenkins.jobs.yaml](jenkins.jobs.yaml) - Jenkins Jobs Builder file for jobs generation
+* [sdk.yml](sdk.yml) - conda environment file
 
 
 Installing SDK into Anaconda/Miniconda
