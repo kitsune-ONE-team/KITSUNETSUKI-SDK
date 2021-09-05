@@ -59,6 +59,7 @@ requirements:
     - git
     - jpeg
     - libgcc-ng # [unix]
+    - libogg # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
@@ -73,6 +74,7 @@ requirements:
     - freetype # [unix]
     - jpeg # [unix]
     - libgcc-ng # [unix]
+    - libogg # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
