@@ -45,7 +45,7 @@ if exist %WORKSPACE%\build_env (
 
 if not exist %WORKSPACE%\build_env (
     %KONDA% create --yes --prefix %WORKSPACE%\build_env
-    %KONDA% install --prefix %WORKSPACE%\build_env conda==4.8.3 conda-build anaconda-client ripgrep
+    %KONDA% install --prefix %WORKSPACE%\build_env conda==4.10.3 conda-build anaconda-client ripgrep
 
     :: fix ssl connection problems
     copy /V /Y %WORKSPACE%\build_env\Library\bin\libcrypto*.dll %WORKSPACE%\build_env\DLLs

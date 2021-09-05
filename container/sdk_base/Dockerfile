@@ -23,10 +23,10 @@ RUN \
 
 RUN \
     wget -q -O /opt/miniconda3.sh \
-        https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh && \
+        https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh && \
     chmod +x /opt/miniconda3.sh && \
     /opt/miniconda3.sh -b -p /opt/miniconda3 && \
-    /opt/miniconda3/bin/conda install -y conda==4.8.3 anaconda-client && \
+    /opt/miniconda3/bin/conda install -y conda==4.10.3 anaconda-client && \
     /opt/miniconda3/bin/conda clean -a -y && \
     ln -sf /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     rm -f /opt/miniconda3.sh

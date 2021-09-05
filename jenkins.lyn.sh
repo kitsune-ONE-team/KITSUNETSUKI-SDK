@@ -42,7 +42,7 @@ fi
 
 if [ ! -d ${WORKSPACE}/build_env ]; then
     ${KONDA} create --yes --prefix ${WORKSPACE}/build_env;
-    ${KONDA} install --prefix ${WORKSPACE}/build_env conda==4.8.3 conda-build anaconda-client ripgrep;
+    ${KONDA} install --prefix ${WORKSPACE}/build_env conda==4.10.3 conda-build anaconda-client ripgrep;
 fi
 
 KONDA_PAK=$(${WORKSPACE}/build_env/bin/conda build --output ${KONDA_ARGS})
