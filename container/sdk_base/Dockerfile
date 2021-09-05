@@ -7,9 +7,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN \
     apt update -y && \
     apt install -y \
-        build-essential linux-libc-dev uuid-dev gettext && \
+        sudo kmod git subversion wget p7zip-full && \
     apt install -y \
-        sudo git subversion wget p7zip-full libcap2-bin libxi6 && \
+        build-essential gettext linux-libc-dev libcap2-bin libxi6 uuid-dev && \
     apt install -y \
         mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev \
         g++-mingw-w64 libz-mingw-w64-dev && \

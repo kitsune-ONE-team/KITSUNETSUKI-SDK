@@ -1,6 +1,6 @@
 @echo off
 
-set WORKSPACES=D:\Build
+set WORKSPACES=%APPDATA%\Build
 if not exist %WORKSPACES% (
     mkdir %WORKSPACES%
 )
@@ -16,7 +16,7 @@ if not exist %WORKSPACE% (
     mkdir %WORKSPACE%
 )
 
-set CACHE=D:\Cache
+set CACHE=%APPDATA%\Cache
 if not exist %CACHE% (
     mkdir %CACHE%
 )
