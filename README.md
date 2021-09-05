@@ -19,7 +19,6 @@ What's Inside
 * ![logo](conda/kphys/icon_32.png) [KITSUNETSUKI Asset Tools](https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools)
 * ![logo](conda/kphys/icon_32.png) [KITSUNETSUKI Physics](conda/kphys)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
-* ![logo](conda/blender/blender_icon_32x32.png) [Blender 3rd party libraries](conda/blender-thirdparty) (for building python-blender)
 
 
 Files and directories structure
