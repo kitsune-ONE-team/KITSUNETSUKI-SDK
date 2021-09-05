@@ -59,4 +59,6 @@ cmake \
 make
 make install
 
+cp -fv /usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.0 ${PREFIX}/lib/libFLAC.so.8
+
 cd ..
