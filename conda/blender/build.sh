@@ -22,10 +22,10 @@ cd bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+    -DLIBSNDFILE_ROOT_DIR=THIRDPARTY/sndfile \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.9 \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.9.so \
     -DPYTHON_VERSION=3.9 \
-    -DLIBSNDFILE_ROOT_DIR=THIRDPARTY/sndfile \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=ON \
     -DWITH_CODEC_FFMPEG=ON \
@@ -61,7 +61,5 @@ cmake \
 
 make
 make install
-
-cp -fv /usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.0 ${PREFIX}/lib/libFLAC.so.8
 
 cd ..
