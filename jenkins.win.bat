@@ -16,7 +16,8 @@ if not exist %WORKSPACE% (
     mkdir %WORKSPACE%
 )
 
-set CACHE=%APPDATA%\Cache
+rem set CACHE=%APPDATA%\Cache
+set CACHE=D:\Cache
 if not exist %CACHE% (
     mkdir %CACHE%
 )
