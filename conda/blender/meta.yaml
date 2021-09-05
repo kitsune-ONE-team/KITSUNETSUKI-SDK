@@ -51,7 +51,6 @@ build:
 
 requirements:
   build:
-    # - blender-thirdparty # [unix]
     - bullet
     - cmake
     - conda ==4.10.3
@@ -65,6 +64,7 @@ requirements:
     - libtiff # [unix]
     - llvmdev # [unix]
     - m2-patch # [win]
+    - numpy
     - openjpeg
     - python ==3.9.6
     - requests # [unix]
@@ -76,6 +76,7 @@ requirements:
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
+    - numpy
     - python >=3.9.6,<3.10.0
     - zlib # [unix]
 
