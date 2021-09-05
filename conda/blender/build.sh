@@ -1,6 +1,8 @@
 #!/bin/sh
 
-THIRDPARTY=${CONDA_PREFIX}/blender-thirdparty
+THIRDPARTY=lib/linux_centos7_x86_64
+
+rm -Rf ${THIRDPARTY}/python
 
 mkdir -p blender/bld
 
@@ -58,5 +60,3 @@ make
 make install
 
 cd ..
-
-# cp -fv ${CONDA_PREFIX}/blender-thirdparty/lib/libOpenImageIO* ${PREFIX}/lib/
