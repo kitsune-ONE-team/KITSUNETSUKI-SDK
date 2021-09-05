@@ -20,9 +20,9 @@ cd bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.8 \
-    -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.8.so \
-    -DPYTHON_VERSION=3.8 \
+    -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.9 \
+    -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.9.so \
+    -DPYTHON_VERSION=3.9 \
     -DWITH_AUDASPACE=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
     -DWITH_CYCLES=OFF \

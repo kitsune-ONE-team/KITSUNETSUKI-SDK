@@ -13,10 +13,10 @@ rem copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImage
 rd /s /q lib\%WINLIBS%\python
 
 mkdir lib\%WINLIBS%\python
-mkdir lib\%WINLIBS%\python\38
-mkdir lib\%WINLIBS%\python\38\bin
-copy /V /Y %CONDA_PREFIX%\python38.dll lib\%WINLIBS%\python\38\bin
-copy /V /Y %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\38\bin
+mkdir lib\%WINLIBS%\python\39
+mkdir lib\%WINLIBS%\python\39\bin
+copy /V /Y %CONDA_PREFIX%\python39.dll lib\%WINLIBS%\python\39\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\39\bin
 
 robocopy /E %RECIPE_DIR%\boost lib\%WINLIBS%\boost
 
@@ -44,8 +44,8 @@ cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
-    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python38.lib ^
-    -DPYTHON_VERSION=3.8 ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python39.lib ^
+    -DPYTHON_VERSION=3.9 ^
     -DWITH_AUDASPACE=OFF ^
     -DWITH_CODEC_FFMPEG=OFF ^
     -DWITH_CYCLES=OFF ^
