@@ -54,7 +54,7 @@ requirements:
     # - blender-thirdparty # [unix]
     - bullet
     - cmake
-    - conda ==4.8.3
+    - conda ==4.10.3
     - fontconfig # [unix]
     - freetype # [unix]
     - git
@@ -66,7 +66,7 @@ requirements:
     - llvmdev # [unix]
     - m2-patch # [win]
     - openjpeg
-    - python ==3.8
+    - python ==3.9.6
     - requests # [unix]
     - zlib
   run:
@@ -76,7 +76,7 @@ requirements:
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
-    - python ==3.8
+    - python >=3.9.6 <=3.10.0
     - zlib # [unix]
 
 about:
