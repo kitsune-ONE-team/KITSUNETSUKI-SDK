@@ -1,7 +1,7 @@
 #!/bin/sh
-
 THIRDPARTY=lib/linux_centos7_x86_64
 
+# remove included python
 rm -Rf ${THIRDPARTY}/python
 
 mkdir -p blender/bld

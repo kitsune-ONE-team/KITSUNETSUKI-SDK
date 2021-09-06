@@ -1,15 +1,15 @@
 if "%ARCH%" == "64" (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
-    set WINLIBS=thirdparty\win-libs-vc14-x64
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x64
+    set THIRDPARTY=thirdparty\win-libs-vc14-x64
 ) else (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86
-    set WINLIBS=thirdparty\win-libs-vc14
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x86
+    set THIRDPARTY=thirdparty\win-libs-vc14
 )
 color 0f
 
 :: remove included libs
-rmdir /S /Q %WINLIBS%\bullet
-rmdir /S /Q %WINLIBS%\openssl
+rmdir /S /Q %THIRDPARTY%\bullet
+rmdir /S /Q %THIRDPARTY%\openssl
 
 set BUILT=built
 
@@ -24,7 +24,7 @@ python makepanda/makepanda.py ^
     --zlib-libdir %CONDA_PREFIX%\lib ^
     --png-incdir %CONDA_PREFIX%\Library\include ^
     --png-libdir %CONDA_PREFIX%\Library\lib ^
-    --msvc-version=14.2 ^
+    --msvc-version=14.3 ^
     --nothing ^
     --outputdir %BUILT% ^
     --threads=2 ^

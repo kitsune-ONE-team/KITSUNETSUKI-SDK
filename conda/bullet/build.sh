@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 mkdir -p bld
 cd bld
 cmake \

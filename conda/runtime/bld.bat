@@ -1,19 +1,11 @@
 if "%ARCH%" == "64" (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x64
 ) else (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x86
 )
 color 0f
 
-rem TODO: nuget setup
-rem docs - https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file#package-source-sections
-rem repo - https://api.nuget.org/v3/index.json
-
-rem TODO: xbox live setup
-rem docs - https://social.technet.microsoft.com/wiki/contents/articles/51027.xbox-live-authentication-for-uwp-projects-using-c.aspx
-rem reqs - https://www.nuget.org/packages/Microsoft.Xbox.Live.SDK.Cpp.UWP/
-
-set PYTHON_VERSION=python38
+set PYTHON_VERSION=python39
 set RP_VERSION=2.0.1
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.12
@@ -101,7 +93,7 @@ D:\Apps\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
     %CONDA_PREFIX%\Lib\site-packages\gltf ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
-    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.17.3.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.19.3.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^

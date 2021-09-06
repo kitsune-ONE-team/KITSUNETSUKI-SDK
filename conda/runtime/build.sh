@@ -1,8 +1,8 @@
 #!/bin/bash
 
 PANDA_VERSION=1.11
-PYTHON_VERSION=python3.8
-PYTHONVERSION=python38
+PYTHON_VERSION=python3.9
+PYTHONVERSION=python39
 RP_VERSION=2.0.1
 
 if [ "${ARCH}" = "64" ]; then
@@ -107,7 +107,7 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/direct \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/gltf \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2 \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2-0.17.3.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2-0.19.3.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/idna \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \

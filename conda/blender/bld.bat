@@ -1,24 +1,22 @@
 if "%ARCH%" == "64" (
     call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x64
-    set WINLIBS=win64_vc15
+    set THIRDPARTY=win64_vc15
 ) else (
     call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x86
-    set WINLIBS=win64_vc15
+    set THIRDPARTY=win64_vc15
 )
 color 0f
 
-rem copy /V /Y %RECIPE_DIR%\export.h lib\%WINLIBS%\OpenImageIO\include\OpenImageIO
-
 :: remove included python
-rd /s /q lib\%WINLIBS%\python
+rd /s /q lib\%THIRDPARTY%\python
 
-mkdir lib\%WINLIBS%\python
-mkdir lib\%WINLIBS%\python\39
-mkdir lib\%WINLIBS%\python\39\bin
-copy /V /Y %CONDA_PREFIX%\python39.dll lib\%WINLIBS%\python\39\bin
-copy /V /Y %CONDA_PREFIX%\python3.dll lib\%WINLIBS%\python\39\bin
+mkdir lib\%THIRDPARTY%\python
+mkdir lib\%THIRDPARTY%\python\39
+mkdir lib\%THIRDPARTY%\python\39\bin
+copy /V /Y %CONDA_PREFIX%\python39.dll lib\%THIRDPARTY%\python\39\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll lib\%THIRDPARTY%\python\39\bin
 
-robocopy /E %RECIPE_DIR%\boost lib\%WINLIBS%\boost
+robocopy /E %RECIPE_DIR%\boost lib\%THIRDPARTY%\boost
 
 if not exist blender\bld (
    cd blender
@@ -28,11 +26,6 @@ if not exist blender\bld (
 )
 
 cd blender
-
-rem rd /s /q release\scripts\addons
-rem rd /s /q release\scripts\addons_contrib
-rem rd /s /q release\datafiles\locale
-rem rd /s /q source\tools
 
 robocopy /E ..\blender_extras\release\scripts\addons release\scripts\addons
 robocopy /E ..\blender_extras\release\scripts\addons_contrib release\scripts\addons_contrib
@@ -46,8 +39,10 @@ cmake -G "NMake Makefiles" ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python39.lib ^
     -DPYTHON_VERSION=3.9 ^
-    -DWITH_AUDASPACE=OFF ^
-    -DWITH_CODEC_FFMPEG=OFF ^
+    -DWITH_AUDASPACE=ON ^
+    -DWITH_CODEC_AVI=ON ^
+    -DWITH_CODEC_FFMPEG=ON ^
+    -DWITH_CODEC_SNDFILE=ON ^
     -DWITH_CYCLES=OFF ^
     -DWITH_CYCLES_EMBREE=OFF ^
     -DWITH_DRACO=OFF ^
@@ -93,4 +88,4 @@ rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
 
 cd ..
 
-copy /V /Y lib\%WINLIBS%\gmp\lib\*.dll %PREFIX%\DLLs
+copy /V /Y lib\%THIRDPARTY%\gmp\lib\*.dll %PREFIX%\DLLs
