@@ -61,7 +61,7 @@ requirements:
   build:
     - bullet ==3.17
     - cmake
-    - conda ==4.8.3
+    - conda ==4.10.3
     - fontconfig # [unix]
     - freetype # [unix]
     - libgcc-ng # [unix]
