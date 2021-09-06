@@ -1,8 +1,4 @@
 @echo off
-set PATH=%PATH%;^
-condabin;^
-Scripts;^
-Library\bin
 
 set WORKSPACES=%APPDATA%\Build
 if not exist %WORKSPACES% (
