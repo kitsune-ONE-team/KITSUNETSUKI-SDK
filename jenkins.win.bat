@@ -39,13 +39,13 @@ set KONDA_ARGS=^
 --output-folder %WORKSPACE%\output ^
 conda\%JOB_BASE_NAME%
 
-FOR /F "tokens=*" %%g IN ('condabin\conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
 echo "CONDA BUILD: %KONDA_PAK%"
-call condabin\conda build %KONDA_ARGS%
+call conda build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
-condabin\anaconda ^
+anaconda ^
     --disable-ssl-warnings ^
     --show-traceback ^
     --verbose ^
