@@ -1,5 +1,5 @@
 #!/bin/bash
-set +x
+PATH=${PATH}:/opt/miniconda3/bin
 
 WORKSPACES=/var/lib/jenkins/build
 if [ ! -d ${WORKSPACES} ]; then
@@ -22,11 +22,10 @@ if [ ! -d ${CACHE} ]; then
     mkdir -p ${CACHE};
 fi
 
-KONDA=/opt/miniconda3/bin/conda
 KONDA_ARGS="\
 --cache-dir ${CACHE} \
 --channel kitsune.one \
---croot ${WORKSPACE}/build_root \
+--croot ${WORKSPACE}/build \
 --dirty \
 --error-overlinking \
 --keep-old-work \
@@ -35,23 +34,13 @@ KONDA_ARGS="\
 --no-remove-work-dir \
 --output-folder ${WORKSPACE}/output \
 conda/${JOB_BASE_NAME,,}"
-
-if [ -d ${WORKSPACE}/build_env ]; then
-    rm -Rf ${WORKSPACE}/build_env;
-fi
-
-if [ ! -d ${WORKSPACE}/build_env ]; then
-    ${KONDA} create --yes --prefix ${WORKSPACE}/build_env;
-    ${KONDA} install --prefix ${WORKSPACE}/build_env conda==4.10.3 conda-build anaconda-client ripgrep;
-fi
-
-KONDA_PAK=$(${WORKSPACE}/build_env/bin/conda build --output ${KONDA_ARGS})
+KONDA_PAK=$(conda build --output ${KONDA_ARGS})
 
 echo "CONDA BUILD: ${KONDA_PAK}"
-${WORKSPACE}/build_env/bin/conda build ${KONDA_ARGS}
+conda build ${KONDA_ARGS}
 
 echo "ANACONDA UPLOAD: ${KONDA_PAK}"
-${WORKSPACE}/build_env/bin/anaconda \
+anaconda \
     --disable-ssl-warnings \
     --show-traceback \
     --verbose \
