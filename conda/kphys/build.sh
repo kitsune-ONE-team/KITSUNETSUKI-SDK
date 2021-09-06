@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PYTHON_VERSION=python3.8
+PYTHON_VERSION=python3.9
 
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
