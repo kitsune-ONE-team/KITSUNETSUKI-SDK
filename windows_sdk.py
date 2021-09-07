@@ -6,9 +6,6 @@ sdk_arch = 'x64'
 
 versions = []
 for version in os.listdir(KIT):
-    if version == '10.0.19041.0':
-        continue
-
     if not version.split('.')[0].isdigit():
         continue
 
