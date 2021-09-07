@@ -6,9 +6,13 @@ sdk_arch = 'x64'
 
 versions = []
 for version in os.listdir(KIT):
-    parts = version.split('.')
-    if os.path.isdir(os.path.join(KIT, version)) and parts[0].isdigit():
-        versions.append(version)
+    if version == '10.0.19041.0':
+        continue
+
+    if not version.split('.')[0].isdigit():
+        continue
+
+    versions.append(version)
 
 
 def sort(item):
