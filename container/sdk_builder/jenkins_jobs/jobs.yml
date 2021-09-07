@@ -62,8 +62,6 @@
     name: 'LYNX64-jobs'
     jobs:
         - 'LYNX64/{name}':
-            name: blender-thirdparty
-        - 'LYNX64/{name}':
             name: blender
         - 'LYNX64/{name}':
             name: bullet
@@ -77,8 +75,6 @@
 - project:
     name: 'WINX64-jobs'
     jobs:
-        - 'WINX64/{name}':
-            name: blender-thirdparty
         - 'WINX64/{name}':
             name: blender
         - 'WINX64/{name}':
