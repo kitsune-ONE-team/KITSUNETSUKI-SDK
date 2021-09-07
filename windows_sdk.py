@@ -6,7 +6,7 @@ KIT = 'C:\\Program Files (x86)\\Windows Kits\\10\\Bin'
 versions = []
 for i in os.listdir(KIT):
     v = i.split('.')
-    if os.path.isdir(i) and v[0].isdigit():
+    if os.path.isdir(os.path.join(KIT, i)) and v[0].isdigit():
         versions.append(tuple(map(int, v)))
 
 
