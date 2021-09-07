@@ -2,8 +2,7 @@ import os
 import sys
 
 KIT = 'C:\\Program Files (x86)\\Windows Kits\\10\\Bin'
-
-sdk_arch = 'x64' if os.getenv('ARCH') else 'x86'
+sdk_arch = 'x64'
 
 versions = []
 for version in os.listdir(KIT):

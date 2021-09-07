@@ -1,5 +1,5 @@
 @echo off
-set VSCMD_DEBUG=2
+rem set VSCMD_DEBUG=2
 
 set JENKINS_DIR=%APPDATA%\Jenkins
 if not exist %JENKINS_DIR% (
