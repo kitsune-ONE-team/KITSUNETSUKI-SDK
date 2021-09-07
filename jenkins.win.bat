@@ -1,5 +1,12 @@
 @echo off
 rem set VSCMD_DEBUG=2
+set PATH=%PATH%;^
+D:\7-Zip;^
+D:\Git\bin;^
+D:\Miniconda3;^
+D:\Miniconda3\condabin;^
+D:\NuGet;^
+D:\Svn\bin
 
 set JENKINS_DIR=%APPDATA%\Jenkins
 if not exist %JENKINS_DIR% (
