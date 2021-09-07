@@ -8,7 +8,7 @@ sdk_arch = 'x64' if os.getenv('ARCH') else 'x86'
 versions = []
 for version in os.listdir(KIT):
     parts = version.split('.')
-    if os.path.isdir(os.path.join(KIT, i)) and v[0].isdigit():
+    if os.path.isdir(os.path.join(KIT, version)) and parts[0].isdigit():
         versions.append(version)
 
 

@@ -87,7 +87,7 @@ anaconda login
 Upload jobs into Jenkins (inside the container):
 
 ```
-jenkins-jobs update /opt/jenkins-job-builder.yml
+jenkins-jobs update ~/.config/jenkins_jobs/jobs.yml
 ```
 
 
