@@ -15,6 +15,14 @@ requirements:
     - cmake
     - conda ==4.10.3
 
+c_compiler:
+  - gcc # [linux]
+  - vs2019 # [win]
+
+cxx_compiler:
+  - gxx # [linux]
+  - vs2019 # [win]
+
 about:
   home: http://bulletphysics.org
   license: Zlib
