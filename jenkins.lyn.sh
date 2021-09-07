@@ -1,38 +1,38 @@
 #!/bin/bash
 PATH=${PATH}:/opt/miniconda3/bin
 
-WORKSPACES=/var/lib/jenkins/build
-if [ ! -d ${WORKSPACES} ]; then
-    mkdir -p ${WORKSPACES};
+JENKINS_DIR=${HOME}/jenkins
+if [ ! -d ${JENKINS_DIR} ]; then
+    mkdir -p ${JENKINS_DIR};
 fi
 
-WORKSPACE=${WORKSPACES}/${JOB_BASE_NAME,,}
+JOB_DIR=${JENKINS_DIR}/${JOB_BASE_NAME,,}
+CACHE_DIR=${JENKINS_DIR}/cache
 
 echo "CLEAN: ${CLEAN}"
 if [ "${CLEAN}" = "true" ]; then
-    rm -Rf ${WORKSPACE};
+    rm -Rf ${JOB_DIR};
 fi
 
-if [ ! -d ${WORKSPACE} ]; then
-    mkdir -p ${WORKSPACE};
+if [ ! -d ${JOB_DIR} ]; then
+    mkdir -p ${JOB_DIR};
 fi
 
-CACHE=/var/lib/jenkins/cache
-if [ ! -d ${CACHE} ]; then
-    mkdir -p ${CACHE};
+if [ ! -d ${CACHE_DIR} ]; then
+    mkdir -p ${CACHE_DIR};
 fi
 
 KONDA_ARGS="\
---cache-dir ${CACHE} \
+--cache-dir ${CACHE_DIR} \
 --channel kitsune.one \
---croot ${WORKSPACE}/build \
+--croot ${JOB_DIR}/build \
 --dirty \
 --error-overlinking \
 --keep-old-work \
 --no-anaconda-upload \
 --no-build-id \
 --no-remove-work-dir \
---output-folder ${WORKSPACE}/output \
+--output-folder ${JOB_DIR}/output \
 conda/${JOB_BASE_NAME,,}"
 KONDA_PAK=$(conda build --output ${KONDA_ARGS})
 

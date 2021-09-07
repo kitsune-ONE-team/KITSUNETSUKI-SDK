@@ -5,20 +5,20 @@ if not exist %JENKINS_DIR% (
     mkdir %JENKINS_DIR%
 )
 
-set WORKSPACE=%JENKINS_DIR%\%JOB_BASE_NAME%
-set CACHE=%JENKINS_DIR%\Cache
+set JOB_DIR=%JENKINS_DIR%\%JOB_BASE_NAME%
+set CACHE_DIR=%JENKINS_DIR%\cache
 
 echo "CLEAN: %CLEAN%"
 if "%CLEAN%" == "true" (
-    rmdir /S /Q %WORKSPACE%
+    rmdir /S /Q %JOB_DIR%
 )
 
-if not exist %WORKSPACE% (
-    mkdir %WORKSPACE%
+if not exist %JOB_DIR% (
+    mkdir %JOB_DIR%
 )
 
-if not exist %CACHE% (
-    mkdir %CACHE%
+if not exist %CACHE_DIR% (
+    mkdir %CACHE_DIR%
 )
 
 FOR /F "tokens=*" %%g IN ('python windows_sdk.py path') do (SET WINDOWS_SDK_PATH=%%g)
@@ -28,19 +28,19 @@ FOR /F "tokens=*" %%g IN ('python windows_sdk.py version') do (SET WINDOWS_SDK_V
 echo "WINDOWS SDK VERSION: %WINDOWS_SDK_VERSION%"
 
 set KONDA_ARGS=^
---cache-dir %CACHE% ^
+--cache-dir %CACHE_DIR% ^
 --channel kitsune.one ^
---croot %WORKSPACE%\build ^
+--croot %JOB_DIR%\build ^
 --dirty ^
 --error-overlinking ^
 --keep-old-work ^
 --no-anaconda-upload ^
 --no-build-id ^
 --no-remove-work-dir ^
---output-folder %WORKSPACE%\output ^
+--output-folder %JOB_DIR%\output ^
 conda\%JOB_BASE_NAME%
-
 FOR /F "tokens=*" %%g IN ('conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+
 echo "CONDA BUILD: %KONDA_PAK%"
 call conda build %KONDA_ARGS%
 
