@@ -1,11 +1,11 @@
 import os
 import sys
 
-KIT = 'C:\\Program Files (x86)\\Windows Kits\\10\\Bin'
+kits_dir = 'C:\\Program Files (x86)\\Windows Kits\\10\\Bin'
 sdk_arch = 'x64'
 
 versions = []
-for version in os.listdir(KIT):
+for version in os.listdir(kits_dir):
     if not version.split('.')[0].isdigit():
         continue
 
@@ -17,7 +17,7 @@ def sort(item):
 
 
 for version in reversed(sorted(versions, key=sort)):
-    sdk_path = os.path.join(KIT, version, sdk_arch)
+    sdk_path = os.path.join(kits_dir, version, sdk_arch)
 
     if os.path.exists(os.path.join(sdk_path, 'rc.exe')):
         if sys.argv[-1] == 'path':

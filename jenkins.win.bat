@@ -4,7 +4,7 @@ set PATH=%PATH%;^
 D:\7-Zip;^
 D:\Git\bin;^
 D:\Miniconda3;^
-D:\Miniconda3\condabin;^
+D:\Miniconda3\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
 
@@ -35,8 +35,8 @@ rem echo "WINDOWS SDK PATH: %WINDOWS_SDK_PATH%"
 rem FOR /F "tokens=*" %%g IN ('python windows_sdk.py version') do (SET WINDOWS_SDK_VERSION=%%g)
 rem echo "WINDOWS SDK VERSION: %WINDOWS_SDK_VERSION%"
 
-rem set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat"
-set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
+set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat"
+rem set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
 
 set KONDA_ARGS=^
 --cache-dir %CACHE_DIR% ^
@@ -50,10 +50,10 @@ set KONDA_ARGS=^
 --no-remove-work-dir ^
 --output-folder %JOB_DIR%\output ^
 conda\%JOB_BASE_NAME%
-FOR /F "tokens=*" %%g IN ('conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('conda-build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
 
 echo "CONDA BUILD: %KONDA_PAK%"
-call conda build %KONDA_ARGS%
+conda-build %KONDA_ARGS%
 
 echo "ANACONDA UPLOAD: %KONDA_PAK%"
 anaconda ^
