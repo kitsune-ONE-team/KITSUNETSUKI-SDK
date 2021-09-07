@@ -1,11 +1,12 @@
 @echo off
 
-set WORKSPACES=%APPDATA%\Build
-if not exist %WORKSPACES% (
-    mkdir %WORKSPACES%
+set JENKINS_DIR=%APPDATA%\Jenkins
+if not exist %JENKINS_DIR% (
+    mkdir %JENKINS_DIR%
 )
 
-set WORKSPACE=%WORKSPACES%\%JOB_BASE_NAME%
+set WORKSPACE=%JENKINS_DIR%\%JOB_BASE_NAME%
+set CACHE=%JENKINS_DIR%\Cache
 
 echo "CLEAN: %CLEAN%"
 if "%CLEAN%" == "true" (
@@ -16,11 +17,15 @@ if not exist %WORKSPACE% (
     mkdir %WORKSPACE%
 )
 
-set CACHE=%APPDATA%\Cache
-rem set CACHE=D:\Cache
 if not exist %CACHE% (
     mkdir %CACHE%
 )
+
+FOR /F "tokens=*" %%g IN ('python windows_sdk.py path') do (SET WINDOWS_SDK_PATH=%%g)
+echo "WINDOWS SDK PATH: %WINDOWS_SDK_PATH%"
+
+FOR /F "tokens=*" %%g IN ('python windows_sdk.py version') do (SET WINDOWS_SDK_VERSION=%%g)
+echo "WINDOWS SDK VERSION: %WINDOWS_SDK_VERSION%"
 
 set KONDA_ARGS=^
 --cache-dir %CACHE% ^
@@ -36,7 +41,6 @@ set KONDA_ARGS=^
 conda\%JOB_BASE_NAME%
 
 FOR /F "tokens=*" %%g IN ('conda build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
-
 echo "CONDA BUILD: %KONDA_PAK%"
 call conda build %KONDA_ARGS%
 
