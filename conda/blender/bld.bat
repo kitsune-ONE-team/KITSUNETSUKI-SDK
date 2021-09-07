@@ -1,8 +1,8 @@
 if "%ARCH%" == "64" (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x64 -vcvars_ver=14.1
+    call %VSBT_PATH% x64 %WINDOWS_SDK_VERSION%
     set THIRDPARTY=win64_vc15
 ) else (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat" x86 -vcvars_ver=14.1
+    call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
     set THIRDPARTY=win64_vc15
 )
 color 0f

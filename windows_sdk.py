@@ -3,18 +3,24 @@ import sys
 
 KIT = 'C:\\Program Files (x86)\\Windows Kits\\10\\Bin'
 
+sdk_arch = 'x64' if os.getenv('ARCH') else 'x86'
+
 versions = []
-for i in os.listdir(KIT):
-    v = i.split('.')
+for version in os.listdir(KIT):
+    parts = version.split('.')
     if os.path.isdir(os.path.join(KIT, i)) and v[0].isdigit():
-        versions.append(tuple(map(int, v)))
+        versions.append(version)
 
 
-for i in reversed(sorted(versions)):
-    sdk_version = '.'.join(map(str, i))
-    sdk_path = os.path.join(KIT, sdk_version, 'x64')
+def sort(item):
+    return tuple(map(int, item.split('.')))
+
+
+for version in reversed(sorted(versions, key=sort)):
+    sdk_path = os.path.join(KIT, version, sdk_arch)
+
     if os.path.exists(os.path.join(sdk_path, 'rc.exe')):
         if sys.argv[-1] == 'path':
             print(sdk_path)
         elif sys.argv[-1] == 'version':
-            print(sdk_version)
+            print(version)
