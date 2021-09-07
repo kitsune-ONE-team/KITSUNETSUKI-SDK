@@ -22,5 +22,7 @@ for version in reversed(sorted(versions, key=sort)):
     if os.path.exists(os.path.join(sdk_path, 'rc.exe')):
         if sys.argv[-1] == 'path':
             print(sdk_path)
+            break
         elif sys.argv[-1] == 'version':
             print(version)
+            break
