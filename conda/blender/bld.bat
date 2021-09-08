@@ -36,8 +36,9 @@ cd bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
-    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python39.lib ^
+    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
+    -DPYTHON_NUMPY_INCLUDE_DIRS=%CONDA_PREFIX%\Lib\site-packages\numpy\core\include ^
     -DPYTHON_VERSION=3.9 ^
     -DWITH_AUDASPACE=ON ^
     -DWITH_CODEC_AVI=ON ^
