@@ -3,6 +3,7 @@ set PATH=%PATH%;^
 D:\7-Zip;^
 D:\Git\bin;^
 D:\Miniconda3;^
+D:\Miniconda3\Library\bin;^
 D:\Miniconda3\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
