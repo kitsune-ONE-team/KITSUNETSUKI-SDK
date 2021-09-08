@@ -42,38 +42,36 @@ set(KPHYS_HEADERS
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys.in ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
+  OUTPUT kphys.in kphys_igate.cpp
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
   -I${CMAKE_SOURCE_DIR}
   -I${PANDA_INCLUDE_DIR}/panda3d
   -S${CMAKE_SOURCE_DIR}
   -S${PANDA_INCLUDE_DIR}/panda3d/parser-inc
-  -oc ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
-  -od ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
+  -oc kphys_igate.cpp
+  -od kphys.in
   -fnames -string -refcount -assert -python-native -nomangle
   -module kphys -library kphys
   ${KPHYS_HEADERS}
   DEPENDS ${KPHYS_SOURCES} ${KPHYS_HEADERS} ${CMAKE_SOURCE_DIR}/kphys/interrogate.h)
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp
+  OUTPUT kphys_module.cpp
   COMMAND interrogate_module
-  -oc ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp
+  -oc kphys_module.cpp
   -module kphys -library kphys
   -python-native
   -import panda3d.core
   -import panda3d.bullet
-  ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
-  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/kphys.in ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp)
+  kphys.in
+  DEPENDS kphys.in kphys_igate.cpp)
 
 add_library(kphys SHARED
   ${KPHYS_SOURCES}
-  ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/kphys_module.cpp)
+  kphys_igate.cpp
+  kphys_module.cpp)
 
 set_target_properties(kphys PROPERTIES PREFIX "")
 if(WIN32)
