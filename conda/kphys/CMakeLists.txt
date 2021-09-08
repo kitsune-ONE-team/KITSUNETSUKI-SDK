@@ -42,9 +42,11 @@ set(KPHYS_HEADERS
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp ${CMAKE_CURRENT_BINARY_DIR}/kphys.in
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kphys.in ${CMAKE_CURRENT_BINARY_DIR}/kphys_igate.cpp
   COMMAND interrogate -DCPPPARSER -D__STDC__=1 -D__cplusplus=201103L
   -I${CMAKE_SOURCE_DIR}
   -I${PANDA_INCLUDE_DIR}/panda3d
