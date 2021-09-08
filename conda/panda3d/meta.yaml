@@ -16,6 +16,7 @@ source:
       - prefix108.patch # [win]
       - rp_light.patch
       - udp.patch
+      - vs2022.patch # [win]
 
   # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
   #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
