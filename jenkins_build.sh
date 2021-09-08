@@ -1,7 +1,7 @@
 #!/bin/bash
 PATH=${PATH}:/opt/miniconda3/bin
 
-JENKINS_DIR=${HOME}/jenkins
+JENKINS_DIR=${HOME}/jenkins/conda
 if [ ! -d ${JENKINS_DIR} ]; then
     mkdir -p ${JENKINS_DIR};
 fi
@@ -22,7 +22,7 @@ if [ ! -d ${CACHE_DIR} ]; then
     mkdir -p ${CACHE_DIR};
 fi
 
-KONDA_ARGS="\
+CONDA_BUILD_ARGS="\
 --cache-dir ${CACHE_DIR} \
 --channel kitsune.one \
 --croot ${JOB_DIR}/build \
@@ -34,12 +34,12 @@ KONDA_ARGS="\
 --no-remove-work-dir \
 --output-folder ${JOB_DIR}/output \
 conda/${JOB_BASE_NAME,,}"
-KONDA_PAK=$(conda build --output ${KONDA_ARGS})
+CONDA_PAK=$(conda build --output ${CONDA_BUILD_ARGS})
 
-echo "CONDA BUILD: ${KONDA_PAK}"
-conda build ${KONDA_ARGS}
+echo "CONDA BUILD: ${CONDA_PAK}"
+conda build ${CONDA_BUILD_ARGS}
 
-echo "ANACONDA UPLOAD: ${KONDA_PAK}"
+echo "ANACONDA UPLOAD: ${CONDA_PAK}"
 anaconda \
     --disable-ssl-warnings \
     --show-traceback \
@@ -49,4 +49,4 @@ anaconda \
     -u kitsune.one \
     --no-progress \
     --force \
-    ${KONDA_PAK}
+    ${CONDA_PAK}

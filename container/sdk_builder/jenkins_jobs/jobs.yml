@@ -30,7 +30,7 @@
                 !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - shell: |
-            ./jenkins.lyn.sh
+            ./jenkins_build.sh
 
 - job-template:
     name: 'WINX64/{name}'
@@ -56,7 +56,7 @@
                 !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - batch: |
-            jenkins.win.bat
+            jenkins_build.bat
 
 - project:
     name: 'LYNX64-jobs'

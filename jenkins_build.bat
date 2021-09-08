@@ -1,5 +1,4 @@
 @echo off
-rem set VSCMD_DEBUG=2
 set PATH=%PATH%;^
 D:\7-Zip;^
 D:\Git\bin;^
@@ -8,7 +7,7 @@ D:\Miniconda3\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
 
-set JENKINS_DIR=%APPDATA%\Jenkins
+set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
 if not exist %JENKINS_DIR% (
     mkdir %JENKINS_DIR%
 )
@@ -29,16 +28,10 @@ if not exist %CACHE_DIR% (
     mkdir %CACHE_DIR%
 )
 
-rem FOR /F "tokens=*" %%g IN ('python windows_sdk.py path') do (SET WINDOWS_SDK_PATH=%%g)
-rem echo "WINDOWS SDK PATH: %WINDOWS_SDK_PATH%"
-
-rem FOR /F "tokens=*" %%g IN ('python windows_sdk.py version') do (SET WINDOWS_SDK_VERSION=%%g)
-rem echo "WINDOWS SDK VERSION: %WINDOWS_SDK_VERSION%"
-
 set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat"
 rem set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
 
-set KONDA_ARGS=^
+set CONDA_BUILD_ARGS=^
 --cache-dir %CACHE_DIR% ^
 --channel kitsune.one ^
 --croot %JOB_DIR%\build ^
@@ -50,12 +43,12 @@ set KONDA_ARGS=^
 --no-remove-work-dir ^
 --output-folder %JOB_DIR%\output ^
 conda\%JOB_BASE_NAME%
-FOR /F "tokens=*" %%g IN ('conda-build --output %KONDA_ARGS%') do (SET KONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('conda-build --output %CONDA_BUILD_ARGS%') do (SET CONDA_PAK=%%g)
 
-echo "CONDA BUILD: %KONDA_PAK%"
-conda-build %KONDA_ARGS%
+echo "CONDA BUILD: %CONDA_PAK%"
+conda-build %CONDA_BUILD_ARGS%
 
-echo "ANACONDA UPLOAD: %KONDA_PAK%"
+echo "ANACONDA UPLOAD: %CONDA_PAK%"
 anaconda ^
     --disable-ssl-warnings ^
     --show-traceback ^
@@ -65,4 +58,4 @@ anaconda ^
     -u kitsune.one ^
     --no-progress ^
     --force ^
-    %KONDA_PAK%
+    %CONDA_PAK%
