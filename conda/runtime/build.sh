@@ -13,7 +13,7 @@ fi
 
 ULIBX=/usr/lib/${LARCH}-linux-gnu
 
-pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.12
+pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.17.3
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
@@ -114,7 +114,7 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.12.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.13.dist-info \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
