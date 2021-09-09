@@ -1,3 +1,6 @@
 #!/bin/sh
 export JENKINS_HOME=/root/jenkins
-java -jar /opt/jenkins.war
+exec java \
+    -Xdebug \
+    -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y \
+    -jar /opt/jenkins.war
