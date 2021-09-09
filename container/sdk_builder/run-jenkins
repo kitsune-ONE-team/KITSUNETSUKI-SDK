@@ -1,6 +1,5 @@
 #!/bin/sh
 export JENKINS_HOME=/root/jenkins
 exec java \
-    -Xdebug \
-    -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y \
+    -Xmx2048m -Djava.awt.headless=true \
     -jar /opt/jenkins.war
