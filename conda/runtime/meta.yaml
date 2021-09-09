@@ -1,6 +1,6 @@
 package:
   name: kitsunetsuki-runtime
-  version: "0.6"
+  version: "0.7"
 
 source:
   path: .
@@ -47,27 +47,27 @@ build:
 
 requirements:
   build:
-    - conda ==4.8.3
-    - idna ==2.9
+    - conda ==4.10.3
+    - idna
     - jsonschema ==3.2.0
     - kitsunetsuki-phys
     - panda3d
-    - pyrsistent ==0.16.0
+    - pyrsistent
     - pytest-runner
-    - python ==3.8
-    - six ==1.14.0
+    - python ==3.9.6
+    - six
   run:
     - freetype # [unix]
     - libgcc-ng # [unix]
     - libogg # [unix]
+    - libpng
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
     - openssl >=1.1.1g
     - panda3d
-    - python ==3.8
+    - python >=3.9.6,<3.10.0
     - xz # [unix]
     - zlib
-    - libpng
 
 about:
   home: https://kitsune.one/
