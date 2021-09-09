@@ -2,7 +2,7 @@ version: "3"
 services:
     jenkins:
         image: docker.io/yonnji/sdk:builder
-        command: /sbin/tini -- /usr/local/bin/run-jenkins
+        command: /usr/bin/tini -- /usr/local/bin/run-jenkins
         ports:
             - "0.0.0.0:8080:8080"
         volumes:
