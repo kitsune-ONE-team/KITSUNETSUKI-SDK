@@ -1,5 +1,7 @@
 #!/bin/sh
 export JENKINS_HOME=/root/jenkins
 exec java \
-    -Xmx4096m -Djava.awt.headless=true \
-    -jar /opt/jenkins.war
+    -jar /opt/jenkins.war \
+    --httpPort=8080 \
+    --logfile=${JENKINS_HOME}/jenkins.log \
+    --debug=1
