@@ -27,7 +27,7 @@ dependencies:
 - sphinx
 - pip:
   - epc
-  - httplib2==0.19.3
+  - httplib2==0.19.1
   - oauth2==1.9.0.post1
   - panda3d-gltf==0.13
   - py-ubjson==0.16.1
