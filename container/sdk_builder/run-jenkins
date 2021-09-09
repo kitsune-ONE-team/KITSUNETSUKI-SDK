@@ -1,5 +1,5 @@
 #!/bin/sh
 export JENKINS_HOME=/root/jenkins
 exec java \
-    -Xmx2048m -Djava.awt.headless=true \
+    -Xmx4096m -Djava.awt.headless=true \
     -jar /opt/jenkins.war
