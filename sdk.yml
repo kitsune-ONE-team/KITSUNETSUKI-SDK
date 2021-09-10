@@ -1,37 +1,30 @@
 name: sdk
-
 channels:
-- kitsune.one
-- defaults
-
+  - kitsune.one
+  - defaults
 dependencies:
-- anaconda-client
-- attrs ==21.2.0
-- cmake >=3.16.0
-- conda ==4.10.3
-- cython ==0.29.17
-- flake8
-- idna
-- jedi
-- jinja2
-- jsonschema ==3.2.0
-- kitsunetsuki-phys
-- panda3d
-- pip
-- pyqt ==5.9.2
-- pyrsistent
-- python ==3.9.6
-- python-blender
-- setuptools
-- six
-- sphinx
-- pip:
-  - epc
-  - httplib2==0.19.1
-  - oauth2==1.9.0.post1
-  - panda3d-gltf==0.13
-  - py-ubjson==0.16.1
+  - anaconda-client
+  - cmake=3.19.6
+  - conda=4.10.3
+  - cython=0.29.24
+  - flake8
+  - jedi
+  - jinja2
+  - jsonschema=3.2.0
+  - kitsunetsuki-phys=0.2
+  - panda3d=1.10.8
+  - pip
   - pylint
-  - sphinx-materialdesign-theme
-  - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
-  - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl
+  - pyqt=5.9.2
+  - python=3.9.6
+  - python-blender=2.93
+  - qt=5.9.7
+  - sphinx
+  - pip:
+    - httplib2==0.19.1
+    - oauth2==1.9.0.post1
+    - panda3d-gltf==0.13
+    - py-ubjson==0.16.1
+    - sphinx-materialdesign-theme
+    - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
+    - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl
