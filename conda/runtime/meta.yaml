@@ -58,6 +58,7 @@ requirements:
     - six
   run:
     - freetype # [unix]
+    - libffi
     - libgcc-ng # [unix]
     - libogg # [unix]
     - libpng
