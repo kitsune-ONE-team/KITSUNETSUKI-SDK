@@ -30,6 +30,7 @@ set(KPHYS_SOURCES
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/world.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/spring.cxx
 )
 
 set(KPHYS_HEADERS
@@ -39,6 +40,7 @@ set(KPHYS_HEADERS
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/world.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/spring.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
