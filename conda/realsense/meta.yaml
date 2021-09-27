@@ -1,0 +1,23 @@
+package:
+  name: python-realsense
+  version: "2.49"
+
+source:
+  - git_url: https://github.com/IntelRealSense/librealsense.git
+    git_rev: v2.49.0
+
+build:
+  number: 0
+  string: 1631255844
+
+requirements:
+  build:
+    - cmake
+    - conda ==4.10.3
+    - python ==3.9.6
+  run:
+    - python >=3.9.6,<3.10.0
+
+about:
+  home: https://www.intelrealsense.com
+  license: Apache
