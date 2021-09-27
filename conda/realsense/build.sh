@@ -11,6 +11,8 @@ cmake \
     -DBUILD_UNIT_TESTS=OFF \
     -DBUILD_WITH_TM2=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_EXTERNAL_USB=OFF \
+    -DLIBUSB_INC=/usr/include \
     ..
 
 make

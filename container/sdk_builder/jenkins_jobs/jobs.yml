@@ -71,6 +71,8 @@
             name: kphys
         - 'LYNX64/{name}':
             name: runtime
+        - 'LYNX64/{name}':
+            name: realsense
 
 - project:
     name: 'WINX64-jobs'
