@@ -11,6 +11,7 @@ cmake \
     -DBUILD_UNIT_TESTS=OFF \
     -DBUILD_WITH_TM2=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DUSE_EXTERNAL_USB=OFF \
     ..
 
