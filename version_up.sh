@@ -4,7 +4,7 @@ VERSION=$(date +%s)
 
 TARGETS=${1};
 if [ "${1}" = "all" ]; then
-    TARGETS="blender bullet panda3d kphys runtime";
+    TARGETS="blender bullet panda3d kphys runtime realsense";
 fi
 if [ "${1}" = "panda" ]; then
     TARGETS="panda3d kphys runtime";
