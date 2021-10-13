@@ -1,3 +1,16 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index 9b710019a7..4ac519229e 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -917,7 +917,7 @@ if (COMPILER=="GCC"):
+         # CgGL is covered by the Cg framework, and we don't need X11 components on OSX
+         if not PkgSkip("NVIDIACG"):
+             SmartPkgEnable("CGGL", "", ("CgGL"), "Cg/cgGL.h", thirdparty_dir = "nvidiacg")
+-        SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
++        SmartPkgEnable("X11", "x11", ("X11", "Xrender"), ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
+ 
+     if GetHost() != "darwin":
+         # Workaround for an issue where pkg-config does not include this path
 diff --git a/panda/src/display/get_x11.h b/panda/src/display/get_x11.h
 index 57ca5cf44e..12194f394d 100644
 --- a/panda/src/display/get_x11.h
