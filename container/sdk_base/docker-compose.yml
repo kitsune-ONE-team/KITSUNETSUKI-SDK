@@ -1,0 +1,8 @@
+version: "3"
+services:
+  sdk:
+    image: docker.io/yonnji/sdk:base
+    command: bash --init-file /etc/profile
+    volumes:
+      - /home/${USERNAME}/Dev:/home/${USERNAME}/Dev:Z
+      # - /home/${USERNAME}/.conda:/home/${USERNAME}/.conda:Z
