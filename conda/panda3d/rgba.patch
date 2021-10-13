@@ -1,8 +1,17 @@
 diff --git a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
-index 83ea5f2b2f..a0066a33c5 100644
+index 83ea5f2b2f..ef609925ef 100644
 --- a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
 +++ b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
-@@ -303,6 +303,8 @@ choose_pixel_format(const FrameBufferProperties &properties,
+@@ -16,6 +16,8 @@
+ #include "config_glgsg.h"
+ #include "lightReMutexHolder.h"
+ 
++#include <X11/extensions/Xrender.h>
++
+ #include <dlfcn.h>
+ 
+ using std::string;
+@@ -303,6 +305,8 @@ choose_pixel_format(const FrameBufferProperties &properties,
    GLXFBConfig *configs =
      _glXChooseFBConfig(_display, _screen, attrib_list, &num_configs);
  
@@ -11,13 +20,13 @@ index 83ea5f2b2f..a0066a33c5 100644
    if (configs != nullptr) {
      bool context_has_pbuffer, context_has_pixmap, slow;
      int quality, i;
-@@ -327,6 +329,18 @@ choose_pixel_format(const FrameBufferProperties &properties,
+@@ -327,6 +331,18 @@ choose_pixel_format(const FrameBufferProperties &properties,
          continue;
        }
  
 +      if (need_alpha) {
 +	  _visuals = _glXGetVisualFromFBConfig(_display, configs[i]);
-+	  if (!visinfo) continue;
++	  if (!_visuals) continue;
 +
 +	  XRenderPictFormat* pict_format = XRenderFindVisualFormat(_display, _visuals->visual);
 +	  if (!pict_format) continue;
