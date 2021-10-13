@@ -1,17 +1,20 @@
+diff --git a/panda/src/display/get_x11.h b/panda/src/display/get_x11.h
+index 57ca5cf44e..12194f394d 100644
+--- a/panda/src/display/get_x11.h
++++ b/panda/src/display/get_x11.h
+@@ -50,6 +50,7 @@ struct XVisualInfo;
+ #include <X11/Xutil.h>
+ #include <X11/keysym.h>
+ #include <X11/Xatom.h>
++#include <X11/extensions/Xrender.h>
+ #include "post_x11_include.h"
+ 
+ #endif  // CPPPARSER
 diff --git a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
-index 83ea5f2b2f..ef609925ef 100644
+index 83ea5f2b2f..c82cae0138 100644
 --- a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
 +++ b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
-@@ -16,6 +16,8 @@
- #include "config_glgsg.h"
- #include "lightReMutexHolder.h"
- 
-+#include <X11/extensions/Xrender.h>
-+
- #include <dlfcn.h>
- 
- using std::string;
-@@ -303,6 +305,8 @@ choose_pixel_format(const FrameBufferProperties &properties,
+@@ -303,6 +303,8 @@ choose_pixel_format(const FrameBufferProperties &properties,
    GLXFBConfig *configs =
      _glXChooseFBConfig(_display, _screen, attrib_list, &num_configs);
  
@@ -20,7 +23,7 @@ index 83ea5f2b2f..ef609925ef 100644
    if (configs != nullptr) {
      bool context_has_pbuffer, context_has_pixmap, slow;
      int quality, i;
-@@ -327,6 +331,18 @@ choose_pixel_format(const FrameBufferProperties &properties,
+@@ -327,6 +329,18 @@ choose_pixel_format(const FrameBufferProperties &properties,
          continue;
        }
  
