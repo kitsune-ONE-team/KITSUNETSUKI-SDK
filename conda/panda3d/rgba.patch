@@ -1,16 +1,48 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 9b710019a7..4ac519229e 100755
+index 9b710019a7..ab22b4a83a 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -917,7 +917,7 @@ if (COMPILER=="GCC"):
-         # CgGL is covered by the Cg framework, and we don't need X11 components on OSX
+@@ -918,6 +918,7 @@ if (COMPILER=="GCC"):
          if not PkgSkip("NVIDIACG"):
              SmartPkgEnable("CGGL", "", ("CgGL"), "Cg/cgGL.h", thirdparty_dir = "nvidiacg")
--        SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
-+        SmartPkgEnable("X11", "x11", ("X11", "Xrender"), ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
+         SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
++        SmartPkgEnable("XRENDER", "xrender", "Xrender", ("X11", "X11/extensions/Xrender.h"))
  
      if GetHost() != "darwin":
          # Workaround for an issue where pkg-config does not include this path
+@@ -3708,12 +3709,12 @@ TargetAdd('libp3device.in', opts=['IMOD:panda3d.core', 'ILIB:libp3device', 'SRCD
+ # DIRECTORY: panda/src/display/
+ #
+ 
+-OPTS=['DIR:panda/src/display', 'BUILDING:PANDA', 'X11']
++OPTS=['DIR:panda/src/display', 'BUILDING:PANDA', 'X11', 'XRENDER']
+ TargetAdd('p3display_graphicsStateGuardian.obj', opts=OPTS, input='graphicsStateGuardian.cxx')
+ TargetAdd('p3display_composite1.obj', opts=OPTS, input='p3display_composite1.cxx')
+ TargetAdd('p3display_composite2.obj', opts=OPTS, input='p3display_composite2.cxx')
+ 
+-OPTS=['DIR:panda/src/display', 'X11']
++OPTS=['DIR:panda/src/display', 'X11', 'XRENDER']
+ IGATEFILES=GetDirectoryContents('panda/src/display', ["*.h", "*_composite*.cxx"])
+ IGATEFILES.remove("renderBuffer.h")
+ TargetAdd('libp3display.in', opts=OPTS, input=IGATEFILES)
+@@ -4440,7 +4441,7 @@ if not PkgSkip("EGG"):
+ #
+ 
+ if (GetTarget() not in ['windows', 'darwin'] and PkgSkip("X11")==0):
+-  OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11']
++  OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11', 'XRENDER']
+   TargetAdd('p3x11display_composite1.obj', opts=OPTS, input='p3x11display_composite1.cxx')
+ 
+ #
+@@ -4458,7 +4459,7 @@ if (GetTarget() not in ['windows', 'darwin'] and PkgSkip("GL")==0 and PkgSkip("X
+   TargetAdd('libpandagl.dll', input='p3glgsg_glgsg.obj')
+   TargetAdd('libpandagl.dll', input='p3glxdisplay_composite1.obj')
+   TargetAdd('libpandagl.dll', input=COMMON_PANDA_LIBS)
+-  TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11'])
++  TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11', 'XRENDER'])
+ 
+ #
+ # DIRECTORY: panda/src/cocoadisplay/
 diff --git a/panda/src/display/get_x11.h b/panda/src/display/get_x11.h
 index 57ca5cf44e..12194f394d 100644
 --- a/panda/src/display/get_x11.h
