@@ -34,7 +34,7 @@ docker pull docker.io/yonnji/sdk:base
 ```
 
 
-Preparing the toolbox
+Running with toolbox
 ----------------------
 
 You will need [https://github.com/containers/toolbox](toolbox) for it.
@@ -51,6 +51,26 @@ Enter the toolbox:
 
 ```
 toolbox enter sdk_base
+```
+
+
+Create a new conda environment:
+
+```
+conda env create kitsune.one/sdk
+```
+
+
+Running with podman-compose
+------------------------
+
+You will need [https://github.com/containers/podman-compose](podman-compose) for it.
+
+
+Create and run container:
+
+```
+podman-compose run sdk
 ```
 
 
