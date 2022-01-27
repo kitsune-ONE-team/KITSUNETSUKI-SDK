@@ -1,39 +1,28 @@
 package:
   name: panda3d
-  version: "1.10.8"
+  version: "1.10.11"
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: 51a3a2b4a1c10f3161c9dbfb2a975bd396913049
+    git_rev: ce7c1ec16c5a0b0ceb7c9bebb30e85e76e34592f
     folder: .
     patches:
       - bullet.patch
       - bullet3.patch
-      - fabrik108.patch
       - icon108.patch # [unix]
       - libs.patch
       - nopy.patch # [win]
       - prefix108.patch # [win]
       - rp_light.patch
-      - udp.patch
       - vs2022.patch # [win]
       - rgba.patch # [unix]
 
-  # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win32.zip # [win32]
-  #   md5: 5841b1527c20a2a697784710e60fcfdf # [win32]
-
-  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win32.zip # [win32]
-    md5: 037e5109878ff943e0342c61ee39fdca # [win32]
-
-  # - url: https://www.panda3d.org/download/panda3d-1.10.8/panda3d-1.10.8-tools-win64.zip # [win64]
-  #   md5: d17e997dfb2a84e4b935a930650df053 # [win64]
-
-  - url: https://www.panda3d.org/download/panda3d-1.10.7/panda3d-1.10.7-tools-win64.zip # [win64]
-    md5: ed1438c59471abd1ee11e3414c97e0fe # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]
+    md5: a2eca781871274f5a05bc4bc74b419ad # [win64]
 
 build:
   number: 0
-  string: 1634136349
+  string: 1643287170
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
