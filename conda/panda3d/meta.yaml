@@ -55,6 +55,7 @@ requirements:
     - conda ==4.10.3
     - fontconfig # [unix]
     - freetype # [unix]
+    - harfbuzz # [unix]
     - libgcc-ng # [unix]
     - libogg # [unix]
     - libpng
@@ -71,6 +72,7 @@ requirements:
     - zlib
   run:
     - freetype # [unix]
+    - harfbuzz # [unix]
     - libgcc-ng # [unix]
     - libpng # [unix]
     - libstdcxx-ng # [unix]

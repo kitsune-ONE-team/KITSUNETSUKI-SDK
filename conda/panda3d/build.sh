@@ -42,6 +42,7 @@ python makepanda/makepanda.py \
     --use-egg \
     --use-freetype \
     --use-gl \
+    --use-harfbuzz \
     --use-openal \
     --use-openssl \
     --use-pandafx \
