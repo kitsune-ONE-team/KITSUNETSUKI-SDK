@@ -1,8 +1,8 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 9b710019a7..bd3d5d97e9 100755
+index d58482d80c..42a7874821 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -742,6 +742,11 @@ if (COMPILER == "MSVC"):
+@@ -776,6 +776,11 @@ if (COMPILER == "MSVC"):
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
@@ -14,85 +14,12 @@ index 9b710019a7..bd3d5d97e9 100755
  
  if (COMPILER=="GCC"):
      if GetTarget() != "darwin":
-@@ -793,7 +798,7 @@ if (COMPILER=="GCC"):
+@@ -846,7 +851,7 @@ if (COMPILER=="GCC"):
      SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
-     SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "OpenEXR/ImfOutputFile.h"))
+     SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
      SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
 -    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
 +    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
      SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
      SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
      SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
-diff --git a/panda/src/bullet/bulletHeightfieldShape.cxx b/panda/src/bullet/bulletHeightfieldShape.cxx
-index 55ed86d16e..a5599c8a49 100644
---- a/panda/src/bullet/bulletHeightfieldShape.cxx
-+++ b/panda/src/bullet/bulletHeightfieldShape.cxx
-@@ -45,9 +45,8 @@ BulletHeightfieldShape(const PNMImage &image, PN_stdfloat max_height, BulletUpAx
-   _shape = new btHeightfieldTerrainShape(_num_rows,
-                                          _num_cols,
-                                          _data,
--                                         max_height,
--                                         up,
--                                         true, false);
-+                                         max_height / 65535, 0, max_height,
-+                                         up, PHY_FLOAT, false);
-   _shape->setUserPointer(this);
- }
- 
-@@ -103,9 +102,8 @@ BulletHeightfieldShape(Texture *tex, PN_stdfloat max_height, BulletUpAxis up) :
-   _shape = new btHeightfieldTerrainShape(_num_rows,
-                                          _num_cols,
-                                          _data,
--                                         max_height,
--                                         up,
--                                         true, false);
-+                                         max_height / 65535, 0, max_height,
-+                                         up, PHY_FLOAT, false);
-   _shape->setUserPointer(this);
- }
- 
-@@ -128,9 +126,8 @@ BulletHeightfieldShape(const BulletHeightfieldShape &copy) {
-   _shape = new btHeightfieldTerrainShape(_num_rows,
-                                          _num_cols,
-                                          _data,
--                                         _max_height,
--                                         _up,
--                                         true, false);
-+                                         _max_height / 65535, 0, _max_height,
-+                                         _up, PHY_FLOAT, false);
-   _shape->setUserPointer(this);
- }
- 
-@@ -209,9 +206,8 @@ fillin(DatagramIterator &scan, BamReader *manager) {
-   _shape = new btHeightfieldTerrainShape(_num_rows,
-                                          _num_cols,
-                                          _data,
--                                         _max_height,
--                                         _up,
--                                         true, false);
-+                                         _max_height / 65535, 0, _max_height,
-+                                         _up, PHY_FLOAT, false);
-   _shape->setUserPointer(this);
-   _shape->setMargin(margin);
- }
-diff --git a/panda/src/bullet/bulletSoftBodyNode.cxx b/panda/src/bullet/bulletSoftBodyNode.cxx
-index f4ae8d2120..f6da7a6fd8 100644
---- a/panda/src/bullet/bulletSoftBodyNode.cxx
-+++ b/panda/src/bullet/bulletSoftBodyNode.cxx
-@@ -187,14 +187,14 @@ transform_changed() {
- 
-     // Offset between current approx center and current initial transform
-     btVector3 pos = LVecBase3_to_btVector3(this->do_get_aabb().get_approx_center());
--    btVector3 origin = _soft->m_initialWorldTransform.getOrigin();
-+    btVector3 origin = _soft->getWorldTransform().getOrigin();
-     btVector3 offset = pos - origin;
- 
-     // Subtract offset to get new transform for the body
-     trans.setOrigin(trans.getOrigin() - offset);
- 
-     // Now apply the new transform
--    _soft->transform(_soft->m_initialWorldTransform.inverse());
-+    _soft->transform(_soft->getWorldTransform().inverse());
-     _soft->transform(trans);
- 
-     if (ts->has_scale()) {

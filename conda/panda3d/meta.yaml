@@ -7,7 +7,6 @@ source:
     git_rev: ce7c1ec16c5a0b0ceb7c9bebb30e85e76e34592f
     folder: .
     patches:
-      - bullet.patch
       - bullet3.patch
       - icon108.patch # [unix]
       - libs.patch
