@@ -29,8 +29,8 @@ set(KPHYS_SOURCES
   ${CMAKE_SOURCE_DIR}/kphys/panda/config.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.cxx
-  ${CMAKE_SOURCE_DIR}/kphys/panda/world.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/spring.cxx
+  ${CMAKE_SOURCE_DIR}/kphys/panda/world.cxx
 )
 
 set(KPHYS_HEADERS
@@ -39,8 +39,8 @@ set(KPHYS_HEADERS
   ${CMAKE_SOURCE_DIR}/kphys/panda/config.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.h
-  ${CMAKE_SOURCE_DIR}/kphys/panda/world.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/spring.h
+  ${CMAKE_SOURCE_DIR}/kphys/panda/world.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
@@ -123,6 +123,6 @@ target_link_libraries(kphys
   ${BULLET_DYNAMICS_LIBRARY}
   ${BULLET_MATH_LIBRARY}
   ${BULLET_SOFTBODY_LIBRARY}
-  )
+)
 
 install(TARGETS kphys DESTINATION ${CMAKE_INSTALL_PREFIX})
