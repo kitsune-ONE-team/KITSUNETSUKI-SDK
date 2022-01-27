@@ -12,9 +12,8 @@ source:
       - libs.patch
       - nopy.patch # [win]
       - prefix108.patch # [win]
-      - rp_light.patch
-      - vs2022.patch # [win]
       - rgba.patch # [unix]
+      - rp_light.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]
     md5: a2eca781871274f5a05bc4bc74b419ad # [win64]
