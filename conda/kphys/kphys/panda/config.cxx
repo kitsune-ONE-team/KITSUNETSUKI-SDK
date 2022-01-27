@@ -3,7 +3,6 @@
 #include "kphys/panda/controller.h"
 #include "kphys/panda/hitbox.h"
 #include "kphys/panda/spring.h"
-#include "kphys/panda/world.h"
 
 
 Configure(config_kphys);
@@ -23,7 +22,6 @@ void init_libkphys() {
     ControllerNode::init_type();
     HitboxNode::init_type();
     SpringConstraint::init_type();
-    World::init_type();
 
     return;
 }

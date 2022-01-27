@@ -25,22 +25,18 @@ link_directories(${PANDA_LIBRARY_DIR})
 
 set(KPHYS_SOURCES
   ${CMAKE_SOURCE_DIR}/kphys/bullet/controller.cxx
-  ${CMAKE_SOURCE_DIR}/kphys/bullet/world.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/config.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.cxx
   ${CMAKE_SOURCE_DIR}/kphys/panda/spring.cxx
-  ${CMAKE_SOURCE_DIR}/kphys/panda/world.cxx
 )
 
 set(KPHYS_HEADERS
   ${CMAKE_SOURCE_DIR}/kphys/bullet/controller.h
-  ${CMAKE_SOURCE_DIR}/kphys/bullet/world.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/config.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/controller.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/hitbox.h
   ${CMAKE_SOURCE_DIR}/kphys/panda/spring.h
-  ${CMAKE_SOURCE_DIR}/kphys/panda/world.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
