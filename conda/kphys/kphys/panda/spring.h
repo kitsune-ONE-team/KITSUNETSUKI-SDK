@@ -50,7 +50,7 @@ PUBLISHED:
         const BulletRigidBodyNode* node_b,
         const TransformState* frame_a,
         const TransformState* frame_b,
-	bool use_frame_a_ref);
+        bool use_frame_a_ref);
     ~SpringConstraint() {
         delete _constraint;
     }
@@ -75,7 +75,7 @@ PUBLISHED:
 
 public:
     virtual btTypedConstraint* ptr() const {
-	return _constraint;
+        return _constraint;
     }
 
 private:

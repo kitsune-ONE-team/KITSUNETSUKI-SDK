@@ -3,4 +3,4 @@ import panda3d.bullet
 
 from kphys import ControllerNode
 from kphys import HitboxNode
-from kphys import World
+from kphys import SpringConstraint
