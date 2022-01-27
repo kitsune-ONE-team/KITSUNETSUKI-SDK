@@ -10,7 +10,7 @@ set RP_VERSION=2.0.1
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
-pip install git+https://github.com/httplib2/httplib2.git@v0.19.1
+pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v%RP_VERSION%/render_pipeline-%RP_VERSION%-py3-none-any.whl
 
@@ -90,10 +90,12 @@ D:\Apps\7-Zip\7z a ^
     %PREFIX%\kitsunetsuki-runtime\%PYTHON_VERSION%.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\attr ^
+    %CONDA_PREFIX%\Lib\site-packages\config ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
+    %CONDA_PREFIX%\Lib\site-packages\effects ^
     %CONDA_PREFIX%\Lib\site-packages\gltf ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
-    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.19.1.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.20.2.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
@@ -104,10 +106,10 @@ D:\Apps\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\pyparser ^
+    %CONDA_PREFIX%\Lib\site-packages\pyparser ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\render_pipeline-%RP_VERSION%.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\config ^
-    %CONDA_PREFIX%\Lib\site-packages\effects ^
     %CONDA_PREFIX%\Lib\site-packages\rpcore ^
     %CONDA_PREFIX%\Lib\site-packages\rplibs ^
     %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
