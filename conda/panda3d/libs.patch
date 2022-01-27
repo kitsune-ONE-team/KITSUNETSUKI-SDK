@@ -1,6 +1,8 @@
---- makepanda/makepanda.py.old	2021-07-14 18:37:00.539424615 +0300
-+++ makepanda/makepanda.py	2021-07-14 18:40:57.133934191 +0300
-@@ -601,17 +601,10 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index 42a7874821..c20f69e646 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -634,17 +634,10 @@ if (COMPILER == "MSVC"):
      if (PkgSkip("DIRECTCAM")==0): LibName("DIRECTCAM", "odbc32.lib")
      if (PkgSkip("DIRECTCAM")==0): LibName("DIRECTCAM", "odbccp32.lib")
      if (PkgSkip("OPENSSL")==0):
@@ -21,9 +23,9 @@
      if (PkgSkip("TIFF")==0):
          if os.path.isfile(GetThirdpartyDir() + "tiff/lib/libtiff.lib"):
              LibName("TIFF", GetThirdpartyDir() + "tiff/lib/libtiff.lib")
-@@ -637,7 +630,8 @@
-             LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/Half" + suffix + ".lib")
+@@ -671,7 +664,8 @@ if (COMPILER == "MSVC"):
          IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/OpenEXR")
+         IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/Imath")
      if (PkgSkip("JPEG")==0):     LibName("JPEG",     GetThirdpartyDir() + "jpeg/lib/jpeg-static.lib")
 -    if (PkgSkip("ZLIB")==0):     LibName("ZLIB",     GetThirdpartyDir() + "zlib/lib/zlibstatic.lib")
 +    if (PkgSkip("ZLIB")==0):
@@ -31,7 +33,7 @@
      if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/vrpn.lib")
      if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/quat.lib")
      if (PkgSkip("NVIDIACG")==0): LibName("CGGL",     GetThirdpartyDir() + "nvidiacg/lib/cgGL.lib")
-@@ -736,17 +730,16 @@
+@@ -770,17 +764,16 @@ if (COMPILER == "MSVC"):
          IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
      if (PkgSkip("BULLET")==0):
          suffix = '.lib'

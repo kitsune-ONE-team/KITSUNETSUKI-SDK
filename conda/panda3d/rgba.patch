@@ -1,16 +1,16 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 9b710019a7..ab22b4a83a 100755
+index 44e3c84717..51ed07b786 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -918,6 +918,7 @@ if (COMPILER=="GCC"):
-         if not PkgSkip("NVIDIACG"):
+@@ -970,6 +970,7 @@ if (COMPILER=="GCC"):
              SmartPkgEnable("CGGL", "", ("CgGL"), "Cg/cgGL.h", thirdparty_dir = "nvidiacg")
-         SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
-+        SmartPkgEnable("XRENDER", "xrender", "Xrender", ("X11", "X11/extensions/Xrender.h"))
+         if GetTarget() != "android":
+             SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
++            SmartPkgEnable("XRENDER", "xrender", "Xrender", ("X11", "X11/extensions/Xrender.h"))
+         else:
+             PkgDisable("X11")
  
-     if GetHost() != "darwin":
-         # Workaround for an issue where pkg-config does not include this path
-@@ -3708,12 +3709,12 @@ TargetAdd('libp3device.in', opts=['IMOD:panda3d.core', 'ILIB:libp3device', 'SRCD
+@@ -3837,12 +3838,12 @@ TargetAdd('libp3device.in', opts=['IMOD:panda3d.core', 'ILIB:libp3device', 'SRCD
  # DIRECTORY: panda/src/display/
  #
  
@@ -25,21 +25,21 @@ index 9b710019a7..ab22b4a83a 100755
  IGATEFILES=GetDirectoryContents('panda/src/display', ["*.h", "*_composite*.cxx"])
  IGATEFILES.remove("renderBuffer.h")
  TargetAdd('libp3display.in', opts=OPTS, input=IGATEFILES)
-@@ -4440,7 +4441,7 @@ if not PkgSkip("EGG"):
+@@ -4569,7 +4570,7 @@ if not PkgSkip("EGG"):
  #
  
- if (GetTarget() not in ['windows', 'darwin'] and PkgSkip("X11")==0):
--  OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11']
-+  OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11', 'XRENDER']
-   TargetAdd('p3x11display_composite1.obj', opts=OPTS, input='p3x11display_composite1.cxx')
+ if GetTarget() not in ['windows', 'darwin'] and not PkgSkip("X11"):
+-    OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11']
++    OPTS=['DIR:panda/src/x11display', 'BUILDING:PANDAX11', 'X11', 'XRENDER']
+     TargetAdd('p3x11display_composite1.obj', opts=OPTS, input='p3x11display_composite1.cxx')
  
  #
-@@ -4458,7 +4459,7 @@ if (GetTarget() not in ['windows', 'darwin'] and PkgSkip("GL")==0 and PkgSkip("X
-   TargetAdd('libpandagl.dll', input='p3glgsg_glgsg.obj')
-   TargetAdd('libpandagl.dll', input='p3glxdisplay_composite1.obj')
-   TargetAdd('libpandagl.dll', input=COMMON_PANDA_LIBS)
--  TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11'])
-+  TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11', 'XRENDER'])
+@@ -4588,7 +4589,7 @@ if GetTarget() not in ['windows', 'darwin'] and not PkgSkip("GL") and not PkgSki
+     TargetAdd('libpandagl.dll', input='p3glgsg_glgsg.obj')
+     TargetAdd('libpandagl.dll', input='p3glxdisplay_composite1.obj')
+     TargetAdd('libpandagl.dll', input=COMMON_PANDA_LIBS)
+-    TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11'])
++    TargetAdd('libpandagl.dll', opts=['MODULE', 'GL', 'NVIDIACG', 'CGGL', 'X11', 'XRENDER'])
  
  #
  # DIRECTORY: panda/src/cocoadisplay/
@@ -56,7 +56,7 @@ index 57ca5cf44e..12194f394d 100644
  
  #endif  // CPPPARSER
 diff --git a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
-index 83ea5f2b2f..c82cae0138 100644
+index 83ea5f2b2f..c53afb7093 100644
 --- a/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
 +++ b/panda/src/glxdisplay/glxGraphicsStateGuardian.cxx
 @@ -303,6 +303,8 @@ choose_pixel_format(const FrameBufferProperties &properties,
@@ -73,15 +73,15 @@ index 83ea5f2b2f..c82cae0138 100644
        }
  
 +      if (need_alpha) {
-+	  _visuals = _glXGetVisualFromFBConfig(_display, configs[i]);
-+	  if (!_visuals) continue;
++        _visuals = _glXGetVisualFromFBConfig(_display, configs[i]);
++        if (!_visuals) continue;
 +
-+	  XRenderPictFormat* pict_format = XRenderFindVisualFormat(_display, _visuals->visual);
-+	  if (!pict_format) continue;
-+	  if (pict_format->direct.alphaMask == 0) continue;
++        XRenderPictFormat* pict_format = XRenderFindVisualFormat(_display, _visuals->visual);
++        if (!pict_format) continue;
++        if (pict_format->direct.alphaMask == 0) continue;
 +
-+	  XFree(_visuals);
-+	  _visuals = nullptr;
++        XFree(_visuals);
++        _visuals = nullptr;
 +      }
 +
        if (quality > best_quality) {

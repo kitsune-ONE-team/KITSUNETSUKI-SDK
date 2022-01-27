@@ -8,10 +8,10 @@ source:
     folder: .
     patches:
       - bullet3.patch
-      - icon108.patch # [unix]
+      - icon.patch # [unix]
       - libs.patch
       - nopy.patch # [win]
-      - prefix108.patch # [win]
+      - prefix.patch # [win]
       - rgba.patch # [unix]
       - rp_light.patch
 

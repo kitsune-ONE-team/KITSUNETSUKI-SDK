@@ -1,5 +1,5 @@
 diff --git a/panda/src/x11display/x11GraphicsPipe.cxx b/panda/src/x11display/x11GraphicsPipe.cxx
-index b181318861..8c3455ae86 100644
+index 6d42d399df..08a6488376 100644
 --- a/panda/src/x11display/x11GraphicsPipe.cxx
 +++ b/panda/src/x11display/x11GraphicsPipe.cxx
 @@ -389,6 +389,7 @@ x11GraphicsPipe(const std::string &display) :
@@ -23,10 +23,10 @@ index b363259f4e..15fd0158b6 100644
    // Extension functions.
    typedef int (*pfn_XcursorGetDefaultSize)(X11_Display *);
 diff --git a/panda/src/x11display/x11GraphicsWindow.cxx b/panda/src/x11display/x11GraphicsWindow.cxx
-index 51a1a3eff7..3097b1ec67 100644
+index da2ab3a4be..59bf03ce50 100644
 --- a/panda/src/x11display/x11GraphicsWindow.cxx
 +++ b/panda/src/x11display/x11GraphicsWindow.cxx
-@@ -1418,6 +1418,11 @@ set_wm_properties(const WindowProperties &properties, bool already_mapped) {
+@@ -1432,6 +1432,11 @@ set_wm_properties(const WindowProperties &properties, bool already_mapped) {
    nassertv(next_state_data < max_state_data);
    nassertv(next_set_data < max_set_data);
  

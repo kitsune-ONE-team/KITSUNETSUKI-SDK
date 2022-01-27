@@ -1,8 +1,8 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 75e4ecfe4..0380905a3 100755
+index c20f69e646..44e3c84717 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -2921,7 +2921,7 @@ if tp_dir is not None:
+@@ -3006,7 +3006,7 @@ if tp_dir is not None:
                          # It's a Python module, like _rocketcore.so.
                          CopyFile(GetOutputDir() + "/" + base, tp_lib)
  
