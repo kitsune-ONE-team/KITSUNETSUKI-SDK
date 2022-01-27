@@ -59,6 +59,7 @@ requirements:
     - six
   run:
     - freetype # [unix]
+    - harfbuzz # [unix]
     - libffi
     - libgcc-ng # [unix]
     - libogg # [unix]
