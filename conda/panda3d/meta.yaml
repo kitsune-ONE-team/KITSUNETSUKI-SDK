@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: ce7c1ec16c5a0b0ceb7c9bebb30e85e76e34592f
+    git_rev: 77710bb813688209e1cb136952a33b90b0f2e1b0
     folder: .
     patches:
       - bullet3.patch
@@ -21,7 +21,7 @@ source:
 
 build:
   number: 0
-  string: 1643296472
+  string: 1644387826
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
