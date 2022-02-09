@@ -1,8 +1,8 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index d58482d80c..42a7874821 100755
+index e66768aa5b..67cd464374 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -776,6 +776,11 @@ if (COMPILER == "MSVC"):
+@@ -965,6 +965,11 @@ if (COMPILER == "MSVC"):
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
          LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
@@ -13,13 +13,13 @@ index d58482d80c..42a7874821 100755
 +        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/Bullet3OpenCL_clew" + suffix)
  
  if (COMPILER=="GCC"):
-     if GetTarget() != "darwin":
-@@ -846,7 +851,7 @@ if (COMPILER=="GCC"):
-     SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
-     SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
-     SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
--    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
-+    SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
-     SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
-     SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
-     SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
+     PkgDisable("MIMALLOC") # no discernable benefit over glibc
+@@ -1040,7 +1045,7 @@ if (COMPILER=="GCC"):
+         SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
+         SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
+         SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
+-        SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
++        SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
+         SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
+         SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
+         SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
