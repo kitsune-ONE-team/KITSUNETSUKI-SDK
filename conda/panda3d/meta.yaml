@@ -7,15 +7,15 @@ source:
     git_rev: b401884f1c1b25dde079139666f03a01427e8d05
     folder: .
     patches:
-      - bullet3.patch
-      - bullet_char.patch
-      - icon.patch # [unix]
-      - libs.patch
-      - nopy.patch # [win]
-      - prefix.patch # [win]
-      - rgba.patch # [unix]
-      - kbd.patch # [unix]
-      - rp_light.patch
+      - 01_bullet_v3.patch
+      - 02_bullet_char.patch
+      - 03_icon.patch # [unix]
+      - 04_libs.patch
+      - 05_py_noinst.patch # [win]
+      - 06_py_prefix.patch # [win]
+      - 07_rgba.patch # [unix]
+      - 08_kbd.patch # [unix]
+      - 09_rp_light.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]
     md5: a2eca781871274f5a05bc4bc74b419ad # [win64]

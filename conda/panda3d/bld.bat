@@ -10,6 +10,7 @@ color 0f
 :: remove included libs
 rmdir /S /Q %THIRDPARTY%\bullet
 rmdir /S /Q %THIRDPARTY%\openssl
+rmdir /S /Q %THIRDPARTY%\png
 
 set BUILT=built
 
