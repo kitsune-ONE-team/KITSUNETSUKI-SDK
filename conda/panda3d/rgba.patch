@@ -1,16 +1,16 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 44e3c84717..51ed07b786 100755
+index 52cf2d1dc0..852d1d879b 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -970,6 +970,7 @@ if (COMPILER=="GCC"):
+@@ -947,6 +947,7 @@ if (COMPILER=="GCC"):
              SmartPkgEnable("CGGL", "", ("CgGL"), "Cg/cgGL.h", thirdparty_dir = "nvidiacg")
          if GetTarget() != "android":
              SmartPkgEnable("X11", "x11", "X11", ("X11", "X11/Xlib.h", "X11/XKBlib.h"))
 +            SmartPkgEnable("XRENDER", "xrender", "Xrender", ("X11", "X11/extensions/Xrender.h"))
-         else:
-             PkgDisable("X11")
  
-@@ -3837,12 +3838,12 @@ TargetAdd('libp3device.in', opts=['IMOD:panda3d.core', 'ILIB:libp3device', 'SRCD
+     if GetHost() != "darwin":
+         # Workaround for an issue where pkg-config does not include this path
+@@ -3800,12 +3801,12 @@ TargetAdd('libp3device.in', opts=['IMOD:panda3d.core', 'ILIB:libp3device', 'SRCD
  # DIRECTORY: panda/src/display/
  #
  
@@ -25,7 +25,7 @@ index 44e3c84717..51ed07b786 100755
  IGATEFILES=GetDirectoryContents('panda/src/display', ["*.h", "*_composite*.cxx"])
  IGATEFILES.remove("renderBuffer.h")
  TargetAdd('libp3display.in', opts=OPTS, input=IGATEFILES)
-@@ -4569,7 +4570,7 @@ if not PkgSkip("EGG"):
+@@ -4532,7 +4533,7 @@ if not PkgSkip("EGG"):
  #
  
  if GetTarget() not in ['windows', 'darwin'] and not PkgSkip("X11"):
@@ -34,7 +34,7 @@ index 44e3c84717..51ed07b786 100755
      TargetAdd('p3x11display_composite1.obj', opts=OPTS, input='p3x11display_composite1.cxx')
  
  #
-@@ -4588,7 +4589,7 @@ if GetTarget() not in ['windows', 'darwin'] and not PkgSkip("GL") and not PkgSki
+@@ -4551,7 +4552,7 @@ if GetTarget() not in ['windows', 'darwin'] and not PkgSkip("GL") and not PkgSki
      TargetAdd('libpandagl.dll', input='p3glgsg_glgsg.obj')
      TargetAdd('libpandagl.dll', input='p3glxdisplay_composite1.obj')
      TargetAdd('libpandagl.dll', input=COMMON_PANDA_LIBS)
