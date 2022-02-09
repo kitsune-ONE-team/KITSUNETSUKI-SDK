@@ -5,7 +5,7 @@ package:
 source:
   - git_url: https://github.com/panda3d/panda3d.git
     git_branch: master
-    git_rev: b401884f1c1b25dde079139666f03a01427e8d05
+    git_rev: 77b0d2d6a7e6853ab0046ce924160b0f6dfd9b27
     folder: .
     patches:
       - 01_bullet_v3.patch
