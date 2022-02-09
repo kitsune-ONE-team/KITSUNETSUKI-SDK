@@ -1,32 +1,32 @@
 diff --git a/panda/src/x11display/x11GraphicsPipe.cxx b/panda/src/x11display/x11GraphicsPipe.cxx
-index e871cb20a7..604d6ff03c 100644
+index 6d42d399df..08a6488376 100644
 --- a/panda/src/x11display/x11GraphicsPipe.cxx
 +++ b/panda/src/x11display/x11GraphicsPipe.cxx
-@@ -337,6 +337,7 @@ x11GraphicsPipe(const std::string &display) :
-   _net_wm_state_add = XInternAtom(_display, "_NET_WM_STATE_ADD", false);
-   _net_wm_state_remove = XInternAtom(_display, "_NET_WM_STATE_REMOVE", false);
+@@ -389,6 +389,7 @@ x11GraphicsPipe(const std::string &display) :
    _net_wm_bypass_compositor = XInternAtom(_display, "_NET_WM_BYPASS_COMPOSITOR", false);
+   _net_wm_state_maximized_vert = XInternAtom(_display, "_NET_WM_STATE_MAXIMIZED_VERT", false);
+   _net_wm_state_maximized_horz = XInternAtom(_display, "_NET_WM_STATE_MAXIMIZED_HORZ", false);
 +  _net_wm_icon = XInternAtom(_display, "_NET_WM_ICON", false);
  }
  
  /**
 diff --git a/panda/src/x11display/x11GraphicsPipe.h b/panda/src/x11display/x11GraphicsPipe.h
-index e1abf80b00..a3b7c019a3 100644
+index b363259f4e..15fd0158b6 100644
 --- a/panda/src/x11display/x11GraphicsPipe.h
 +++ b/panda/src/x11display/x11GraphicsPipe.h
-@@ -136,6 +136,7 @@ public:
-   Atom _net_wm_state_add;
-   Atom _net_wm_state_remove;
+@@ -179,6 +179,7 @@ public:
    Atom _net_wm_bypass_compositor;
+   Atom _net_wm_state_maximized_vert;
+   Atom _net_wm_state_maximized_horz;
 +  Atom _net_wm_icon;
  
    // Extension functions.
    typedef int (*pfn_XcursorGetDefaultSize)(X11_Display *);
 diff --git a/panda/src/x11display/x11GraphicsWindow.cxx b/panda/src/x11display/x11GraphicsWindow.cxx
-index 8548d05eea..a5de18285e 100644
+index da2ab3a4be..59bf03ce50 100644
 --- a/panda/src/x11display/x11GraphicsWindow.cxx
 +++ b/panda/src/x11display/x11GraphicsWindow.cxx
-@@ -1309,6 +1309,11 @@ set_wm_properties(const WindowProperties &properties, bool already_mapped) {
+@@ -1432,6 +1432,11 @@ set_wm_properties(const WindowProperties &properties, bool already_mapped) {
    nassertv(next_state_data < max_state_data);
    nassertv(next_set_data < max_set_data);
  
