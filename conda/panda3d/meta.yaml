@@ -14,7 +14,7 @@ source:
       - 05_py_noinst.patch # [win]
       - 06_py_prefix.patch # [win]
       - 07_rgba.patch # [unix]
-      - 08_kbd.patch # [unix]
+      # - 08_kbd.patch # [unix]
       - 09_rp_light.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]
