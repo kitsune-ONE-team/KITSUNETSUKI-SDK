@@ -14,6 +14,7 @@ source:
       - nopy.patch # [win]
       - prefix.patch # [win]
       - rgba.patch # [unix]
+      - kbd.patch # [unix]
       - rp_light.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]

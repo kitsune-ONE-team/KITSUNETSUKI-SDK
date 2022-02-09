@@ -1,0 +1,14 @@
+diff --git a/panda/src/x11display/x11GraphicsWindow.cxx b/panda/src/x11display/x11GraphicsWindow.cxx
+index 8d28847b39..476da43ccc 100644
+--- a/panda/src/x11display/x11GraphicsWindow.cxx
++++ b/panda/src/x11display/x11GraphicsWindow.cxx
+@@ -2338,8 +2338,7 @@ check_event(X11_Display *display, XEvent *event, char *arg) {
+   // We accept any event that is sent to our window.  However, we have to let
+   // raw mouse events through, since they're not associated with any window.
+   return (event->xany.window == self->_xwindow ||
+-    (event->type == GenericEvent && self->_raw_mouse_enabled)) ||
+-    (event->type == ClientMessage);
++    (event->type == GenericEvent && self->_raw_mouse_enabled));
+ }
+ 
+ /**
