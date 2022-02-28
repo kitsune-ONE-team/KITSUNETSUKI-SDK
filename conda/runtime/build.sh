@@ -18,6 +18,7 @@ pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
 pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v${RP_VERSION}/render_pipeline-${RP_VERSION}-py3-none-any.whl
+pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
 cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}.so.1.0   ${PREFIX}/kitsunetsuki-runtime
@@ -133,4 +134,5 @@ pip uninstall --yes \
     oauth2 \
     panda3d-gltf \
     py-ubjson \
-    render-pipeline
+    render-pipeline \
+    nvidia-ml-py

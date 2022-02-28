@@ -20,7 +20,9 @@ RUN \
     apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     ln -sf /home /var/home && \
-    echo UTC > /etc/timezone
+    echo "#!/bin/sh\\nsource /etc/profile\\nconda activate sdk\\n" > /opt/sdk.sh && \
+    echo UTC > /etc/timezone && \
+    chmod +x /opt/sdk.sh
 
 RUN \
     wget -q -O /opt/miniconda3.sh \
