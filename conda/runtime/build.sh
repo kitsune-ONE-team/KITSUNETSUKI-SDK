@@ -2,7 +2,6 @@
 
 PANDA_VERSION=1.11
 PYTHON_VERSION=python3.9
-PYTHONVERSION=python39
 RP_VERSION=2.0.1
 
 if [ "${ARCH}" = "64" ]; then
@@ -21,8 +20,10 @@ pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download
 pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
-cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}.so.1.0   ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime
+mkdir -pv ${PREFIX}/kitsunetsuki-runtime/include
+cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}.so.1.0    ${PREFIX}/kitsunetsuki-runtime/
+cp -fv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime/
+cp -Rfv ${CONDA_PREFIX}/include/${PYTHON_VERSION}/*       ${PREFIX}/kitsunetsuki-runtime/include/
 
 cp -Rfv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
@@ -100,7 +101,7 @@ cp -fv \
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
-    ${PREFIX}/kitsunetsuki-runtime/${PYTHONVERSION}.zip \
+    ${PREFIX}/kitsunetsuki-runtime/${PYTHON_VERSION/./}.zip \
     "${CONDA_PREFIX}/lib/${PYTHON_VERSION}/*" \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/attr \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/config \

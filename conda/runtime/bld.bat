@@ -19,6 +19,7 @@ mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y %CONDA_PREFIX%\%PYTHON_VERSION%.dll              %PREFIX%\kitsunetsuki-runtime\
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
+xcopy /I /E /Y %CONDA_PREFIX%\include                       %PREFIX%\kitsunetsuki-runtime\include
 
 del %PREFIX%\kitsunetsuki-runtime\cg.dll
 del %PREFIX%\kitsunetsuki-runtime\cgGL.dll
