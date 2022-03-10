@@ -120,6 +120,7 @@ cp -fv \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
+    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pynvml.py \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyparsing \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
     ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \

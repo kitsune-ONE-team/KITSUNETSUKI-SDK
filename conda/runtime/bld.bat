@@ -108,6 +108,7 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\pynvml.py ^
     %CONDA_PREFIX%\Lib\site-packages\pyparsing ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
     %CONDA_PREFIX%\Lib\site-packages\render_pipeline-%RP_VERSION%.dist-info ^
