@@ -85,7 +85,7 @@ cp -fv ${ULIBX}/libsndio.so.*                     ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \
    ${CONDA_PREFIX}/lib/libglib-2.0.so.* \
-   ${CONDA_PREFIX}/lib/libgraphite.so.* \
+   ${CONDA_PREFIX}/lib/libgraphite2.so.* \
    ${CONDA_PREFIX}/lib/libharfbuzz.so.* \
    ${CONDA_PREFIX}/lib/libogg.so.* \
    ${CONDA_PREFIX}/lib/libp3*.so.* \
