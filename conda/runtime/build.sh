@@ -94,7 +94,7 @@ cp -fv \
    ${CONDA_PREFIX}/lib/libpanda*.so.* \
    ${CONDA_PREFIX}/lib/libpandagl.so \
    ${CONDA_PREFIX}/lib/libpcre.so.* \
-   ${CONDA_PREFIX}/lib/libpfreetype.so.* \
+   ${CONDA_PREFIX}/lib/libfreetype.so.* \
    ${CONDA_PREFIX}/lib/libssl.so.* \
    ${CONDA_PREFIX}/lib/libvorbis.so.* \
    ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
