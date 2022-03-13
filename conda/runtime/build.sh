@@ -84,6 +84,8 @@ cp -fv ${ULIBX}/libsndio.so.*                     ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \
+   ${CONDA_PREFIX}/lib/libffi.so.* \
+   ${CONDA_PREFIX}/lib/libfreetype.so.* \
    ${CONDA_PREFIX}/lib/libglib-2.0.so.* \
    ${CONDA_PREFIX}/lib/libgraphite2.so.* \
    ${CONDA_PREFIX}/lib/libharfbuzz.so.* \
@@ -94,7 +96,6 @@ cp -fv \
    ${CONDA_PREFIX}/lib/libpanda*.so.* \
    ${CONDA_PREFIX}/lib/libpandagl.so \
    ${CONDA_PREFIX}/lib/libpcre.so.* \
-   ${CONDA_PREFIX}/lib/libfreetype.so.* \
    ${CONDA_PREFIX}/lib/libssl.so.* \
    ${CONDA_PREFIX}/lib/libvorbis.so.* \
    ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
