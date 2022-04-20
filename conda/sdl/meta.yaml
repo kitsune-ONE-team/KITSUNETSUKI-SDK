@@ -8,10 +8,11 @@ source:
 
 build:
   number: 0
-  string: 1631255844
+  string: 1650469243
 
   missing_dso_whitelist:
     - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/libusb-1.0.so.0 # [unix]
