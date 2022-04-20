@@ -2,6 +2,7 @@
 /conda/kphys/build/
 /conda/panda3d/test.txt
 /conda/panda3d/test.zip
+/container/sdk_base/conda/*
 /container/sdk_builder/binstar/*
 /container/sdk_builder/jenkins/*
 /container/sdk_builder/jenkins_jobs/jenkins_jobs.ini

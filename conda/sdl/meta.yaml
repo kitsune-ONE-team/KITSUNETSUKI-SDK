@@ -1,0 +1,27 @@
+package:
+  name: sdl
+  version: "2.0.20"
+
+source:
+  - git_url: https://github.com/libsdl-org/SDL.git
+    git_rev: release-2.0.20
+
+build:
+  number: 0
+  string: 1631255844
+
+  missing_dso_whitelist:
+    - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - $RPATH/libpthread.so.0 # [unix]
+    - $RPATH/libusb-1.0.so.0 # [unix]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
+
+requirements:
+  build:
+    - cmake
+    - conda ==4.10.3
+
+about:
+  home: http://libsdl.org
+  license: ZLib

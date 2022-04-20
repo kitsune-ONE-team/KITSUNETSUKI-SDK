@@ -1,7 +1,9 @@
 name: sdk
+
 channels:
   - kitsune.one
   - defaults
+
 dependencies:
   - anaconda-client
   - cmake=3.19.6
@@ -12,7 +14,7 @@ dependencies:
   - jinja2
   - jsonschema=3.2.0
   - kitsunetsuki-phys=0.2
-  - panda3d=1.10.8
+  - panda3d=1.10.11
   - pip
   - pylint
   - pyqt=5.9.2
@@ -23,6 +25,7 @@ dependencies:
   - pip:
     - epc
     - httplib2==0.20.2
+    - nvidia-ml-py==11.515.0
     - oauth2==1.9.0.post1
     - panda3d-gltf==0.13
     - py-ubjson==0.16.1

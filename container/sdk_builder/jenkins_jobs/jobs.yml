@@ -73,6 +73,8 @@
             name: runtime
         - 'LYNX64/{name}':
             name: realsense
+        - 'LYNX64/{name}':
+            name: sdl
 
 - project:
     name: 'WINX64-jobs'
@@ -94,6 +96,11 @@
     project-type: pipeline
     description: 'LYNX64 pipeline'
     node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
     dsl: |
         stage('bullet') {{
             build job: 'bullet', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
@@ -114,6 +121,11 @@
     project-type: pipeline
     description: 'WINX64 pipeline'
     node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
     dsl: |
         stage('bullet') {{
             build job: 'bullet', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
