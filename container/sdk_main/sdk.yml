@@ -7,7 +7,7 @@ channels:
 dependencies:
   - anaconda-client
   - cmake=3.19.6
-  - conda=4.10.3
+  - conda=4.13.0
   - cython=0.29.24
   - flake8
   - jedi
@@ -18,8 +18,8 @@ dependencies:
   - pip
   - pylint
   - pyqt=5.9.2
-  - python=3.9.6
-  - python-blender=2.93
+  - python-blender=3.2
+  - python=3.10.0
   - qt=5.9.7
   - sphinx
   - pip:
