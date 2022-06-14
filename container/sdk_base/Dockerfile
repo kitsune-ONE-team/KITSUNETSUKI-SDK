@@ -19,10 +19,8 @@ RUN \
         libglew-dev libxxf86vm-dev libxrender-dev libxext-dev libopenal-dev && \
     apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
-    ln -sf /home /var/home && \
-    echo "#!/bin/sh\\nsource /etc/profile\\nconda activate sdk\\n" > /opt/sdk.sh && \
     echo UTC > /etc/timezone && \
-    chmod +x /opt/sdk.sh
+    ln -sf /home /var/home
 
 RUN \
     wget -q -O /opt/miniconda3.sh \

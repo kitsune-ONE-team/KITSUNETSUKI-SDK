@@ -12,6 +12,6 @@ podman run \
     --volume /home/${USERNAME}/Dev/kdata:/home/${USERNAME}/Dev/kdata:z \
     --env HOME=/home/${USERNAME} \
     docker.io/yonnji/sdk:base \
-    bash --init-file /opt/sdk.sh
+    bash --init-file /etc/profile
 
 podman rm sdk_base

@@ -11,3 +11,9 @@ cd container/sdk_builder
 podman build -f Dockerfile -t ${TAG}
 podman push ${TAG}
 cd ../..
+
+TAG=docker.io/yonnji/sdk:main
+cd container/sdk_main
+podman build -f Dockerfile -t ${TAG}
+podman push ${TAG}
+cd ../..
