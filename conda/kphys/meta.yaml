@@ -7,7 +7,7 @@ source:
 
 build:
   number: 0
-  string: 1644404879
+  string: 1655223947
 
   missing_dso_whitelist:
     - $RPATH/libc.so.6 # [unix]
@@ -20,16 +20,16 @@ requirements:
   build:
     - bullet ==3.17
     - cmake
-    - conda ==4.10.3
+    - conda ==4.13.0
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d
-    - python ==3.9.6
+    - python ==3.10.0
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d
-    - python >=3.9.6,<3.10.0
+    - python >=3.10.0,<3.11.0
 
 about:
   home: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK

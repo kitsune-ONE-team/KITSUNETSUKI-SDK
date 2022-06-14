@@ -31,7 +31,7 @@ source:
 
 build:
   number: 0
-  string: 1655207558
+  string: 1655223947
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
@@ -53,17 +53,17 @@ requirements:
   build:
     - bullet
     - cmake
-    - conda ==4.10.3
+    - conda ==4.13.0
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - m2-patch # [win]
     - numpy
-    - python ==3.9.6
+    - python ==3.10.0
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - numpy
-    - python >=3.9.6,<3.10.0
+    - python >=3.10.0,<3.11.0
 
 about:
   home: https://www.blender.org/

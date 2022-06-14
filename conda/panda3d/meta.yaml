@@ -22,7 +22,7 @@ source:
 
 build:
   number: 0
-  string: 1644404879
+  string: 1655223947
 
   missing_dso_whitelist:
     - /lib64/ld-linux-x86-64.so.2 # [unix]
@@ -53,7 +53,7 @@ requirements:
   build:
     - bullet ==3.17
     - cmake
-    - conda ==4.10.3
+    - conda ==4.13.0
     - fontconfig # [unix]
     - freetype # [unix]
     - harfbuzz # [unix]
@@ -69,7 +69,7 @@ requirements:
     - openssl >=1.1.1g
     - patchelf # [unix]
     - pillow # [unix]
-    - python ==3.9.6
+    - python ==3.10.0
     - zlib
   run:
     - freetype # [unix]
@@ -78,7 +78,7 @@ requirements:
     - libpng # [unix]
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
-    - python >=3.9.6,<3.10.0
+    - python >=3.10.0,<3.11.0
     - vs2015_runtime # [win]
     - zlib # [unix]
 
