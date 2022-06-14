@@ -6,29 +6,28 @@ channels:
 
 dependencies:
   - anaconda-client
-  - cmake=3.19.6
-  - conda=4.13.0
-  - cython=0.29.24
-  - flake8
-  - jedi
-  - jinja2
-  - jsonschema=3.2.0
-  - kitsunetsuki-phys=0.2
-  - panda3d=1.10.11
+  - cmake==3.19.6
+  - conda==4.13.0
+  - jsonschema==3.2.0
+  - kitsunetsuki-phys==0.2
+  - panda3d==1.10.11
   - pip
-  - pylint
-  - pyqt=5.9.2
-  - python-blender=3.2
-  - python=3.10.0
-  - qt=5.9.7
-  - sphinx
+  - pyqt==5.9.2
+  - python-blender==3.2
+  - python==3.10.0
   - pip:
+    - cython==0.29.24
     - epc
+    - flake8
     - httplib2==0.20.2
+    - jedi
+    - jinja2
     - nvidia-ml-py==11.515.0
     - oauth2==1.9.0.post1
     - panda3d-gltf==0.13
     - py-ubjson==0.16.1
+    - pylint
+    - sphinx
     - sphinx-materialdesign-theme
     - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
     - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl
