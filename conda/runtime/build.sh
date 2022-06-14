@@ -1,7 +1,6 @@
 #!/bin/bash
-
 PANDA_VERSION=1.11
-PYTHON_VERSION=python3.9
+PYTHON_VERSION=3.10
 RP_VERSION=2.0.1
 
 if [ "${ARCH}" = "64" ]; then
@@ -21,11 +20,11 @@ pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/include
-cp -fv ${CONDA_PREFIX}/lib/lib${PYTHON_VERSION}.so.1.0    ${PREFIX}/kitsunetsuki-runtime/
-cp -fv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime/
-cp -Rfv ${CONDA_PREFIX}/include/${PYTHON_VERSION}/*       ${PREFIX}/kitsunetsuki-runtime/include/
+cp -fv ${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so.1.0    ${PREFIX}/kitsunetsuki-runtime/
+cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime/
+cp -Rfv ${CONDA_PREFIX}/include/python${PYTHON_VERSION}/*       ${PREFIX}/kitsunetsuki-runtime/include/
 
-cp -Rfv ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime
+cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_crypt.cpython-*-linux-gnu.so
@@ -59,14 +58,14 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
 
 cp -fv \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d/*.so \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/*.so \
                                                   ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/kphys.so \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/kphys.so \
                                                   ${PREFIX}/kitsunetsuki-runtime
 cp -fv \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
                                                   ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
@@ -108,35 +107,35 @@ cp -fv \
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
-    ${PREFIX}/kitsunetsuki-runtime/${PYTHON_VERSION/./}.zip \
-    "${CONDA_PREFIX}/lib/${PYTHON_VERSION}/*" \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/attr \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/config \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/direct \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/effects \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/gltf \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2 \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/httplib2-0.20.2.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/idna \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2 \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/panda3d_gltf-0.13.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pandac \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pkg_resources \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pynvml.py \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyparsing \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/pyrsistent \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpcore \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rplibs \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/rpplugins \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/shader \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/six.py \
-    ${CONDA_PREFIX}/lib/${PYTHON_VERSION}/site-packages/ubjson
+    ${PREFIX}/kitsunetsuki-runtime/python${PYTHON_VERSION/./}.zip \
+    "${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/*" \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/attr \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/config \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/direct \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/effects \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/gltf \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2 \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2-0.20.2.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/idna \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/jsonschema \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2 \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d_gltf-0.13.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pandac \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pkg_resources \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pynvml.py \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pyparsing \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pyrsistent \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rpcore \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rplibs \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rpplugins \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/shader \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/six.py \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/ubjson
 
 pip uninstall --yes \
     httplib2 \

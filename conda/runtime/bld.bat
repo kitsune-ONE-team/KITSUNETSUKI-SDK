@@ -5,7 +5,7 @@ if "%ARCH%" == "64" (
 )
 color 0f
 
-set PYTHON_VERSION=python39
+set PYTHONVERSION=310
 set RP_VERSION=2.0.1
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
@@ -16,7 +16,7 @@ pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download
 pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
-copy /V /Y %CONDA_PREFIX%\%PYTHON_VERSION%.dll              %PREFIX%\kitsunetsuki-runtime\
+copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll              %PREFIX%\kitsunetsuki-runtime\
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
 xcopy /I /E /Y %CONDA_PREFIX%\include                       %PREFIX%\kitsunetsuki-runtime\include
@@ -89,7 +89,7 @@ del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll
 
 D:\7-Zip\7z a ^
     -tzip -x@%RECIPE_DIR%\exclude.txt -xr@%RECIPE_DIR%\excluder.txt ^
-    %PREFIX%\kitsunetsuki-runtime\%PYTHON_VERSION%.zip ^
+    %PREFIX%\kitsunetsuki-runtime\python%PYTHONVERSION%.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\attr ^
     %CONDA_PREFIX%\Lib\site-packages\config ^

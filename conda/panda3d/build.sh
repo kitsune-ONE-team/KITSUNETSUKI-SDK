@@ -1,6 +1,5 @@
 #!/bin/bash
-
-PYTHON_VERSION=python3.9
+PYTHON_VERSION=3.10
 
 if [ "${ARCH}" = "64" ]; then
     LARCH=x86_64;
@@ -79,8 +78,8 @@ cp -Rfv ${BUILT}/include                  ${PREFIX}/include/panda3d
 mkdir -pv ${PREFIX}/share/panda3d
 cp -Rfv ${BUILT}/models                   ${PREFIX}/share/panda3d
 
-mkdir -pv ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/direct                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/panda3d                  ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/pandac                   ${PREFIX}/lib/${PYTHON_VERSION}/site-packages
+mkdir -pv ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/direct                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/panda3d                  ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+cp -Rfv ${BUILT}/pandac                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages

@@ -1,5 +1,6 @@
 #!/bin/sh
 THIRDPARTY=lib/linux_centos7_x86_64
+PYTHON_VERSION=3.10
 
 # remove included python
 rm -Rf ${THIRDPARTY}/python
@@ -23,9 +24,9 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DLIBSNDFILE_ROOT_DIR=THIRDPARTY/sndfile \
-    -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python3.10 \
-    -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython3.10.so \
-    -DPYTHON_VERSION=3.10 \
+    -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
+    -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
+    -DPYTHON_VERSION=${PYTHON_VERSION} \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=ON \
     -DWITH_CODEC_FFMPEG=ON \

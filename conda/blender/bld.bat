@@ -5,16 +5,19 @@ if "%ARCH%" == "64" (
     call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
     set THIRDPARTY=win64_vc15
 )
+set PYTHON_VERSION=3.10
+set PYTHONVERSION=310
+
 color 0f
 
 :: remove included python
 rd /s /q lib\%THIRDPARTY%\python
 
 mkdir lib\%THIRDPARTY%\python
-mkdir lib\%THIRDPARTY%\python\310
-mkdir lib\%THIRDPARTY%\python\310\bin
-copy /V /Y %CONDA_PREFIX%\python310.dll lib\%THIRDPARTY%\python\310\bin
-copy /V /Y %CONDA_PREFIX%\python3.dll lib\%THIRDPARTY%\python\310\bin
+mkdir lib\%THIRDPARTY%\python\%PYTHONVERSION%
+mkdir lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
+copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
 
 robocopy /E %RECIPE_DIR%\boost lib\%THIRDPARTY%\boost
 
@@ -36,10 +39,10 @@ cd blender\bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
-    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python310.lib ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python%PYTHONVERSION%.lib ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_NUMPY_INCLUDE_DIRS=%CONDA_PREFIX%\Lib\site-packages\numpy\core\include ^
-    -DPYTHON_VERSION=3.10 ^
+    -DPYTHONVERSION=%PYTHON_VERSION% ^
     -DWITH_AUDASPACE=ON ^
     -DWITH_CODEC_AVI=ON ^
     -DWITH_CODEC_FFMPEG=ON ^
