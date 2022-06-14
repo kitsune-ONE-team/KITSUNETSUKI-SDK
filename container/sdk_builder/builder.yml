@@ -1,0 +1,13 @@
+name: builder
+
+channels:
+  - defaults
+
+dependencies:
+  - anaconda-client
+  - conda-build
+  - conda=4.13.0
+  - pip
+  - python==3.10.0
+  - pip:
+    - jenkins-job-builder

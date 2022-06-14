@@ -1,5 +1,7 @@
 #!/bin/bash
-PATH=${PATH}:/opt/miniconda3/bin
+source /etc/profile
+conda activate builder
+# PATH=${PATH}:/opt/miniconda3/bin
 
 JENKINS_DIR=${HOME}/jenkins/conda
 if [ ! -d ${JENKINS_DIR} ]; then
