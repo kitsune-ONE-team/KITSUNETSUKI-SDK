@@ -11,10 +11,10 @@ color 0f
 rd /s /q lib\%THIRDPARTY%\python
 
 mkdir lib\%THIRDPARTY%\python
-mkdir lib\%THIRDPARTY%\python\39
-mkdir lib\%THIRDPARTY%\python\39\bin
-copy /V /Y %CONDA_PREFIX%\python39.dll lib\%THIRDPARTY%\python\39\bin
-copy /V /Y %CONDA_PREFIX%\python3.dll lib\%THIRDPARTY%\python\39\bin
+mkdir lib\%THIRDPARTY%\python\310
+mkdir lib\%THIRDPARTY%\python\310\bin
+copy /V /Y %CONDA_PREFIX%\python310.dll lib\%THIRDPARTY%\python\310\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll lib\%THIRDPARTY%\python\310\bin
 
 robocopy /E %RECIPE_DIR%\boost lib\%THIRDPARTY%\boost
 
@@ -36,10 +36,10 @@ cd blender\bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
-    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python39.lib ^
+    -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python310.lib ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_NUMPY_INCLUDE_DIRS=%CONDA_PREFIX%\Lib\site-packages\numpy\core\include ^
-    -DPYTHON_VERSION=3.9 ^
+    -DPYTHON_VERSION=3.10 ^
     -DWITH_AUDASPACE=ON ^
     -DWITH_CODEC_AVI=ON ^
     -DWITH_CODEC_FFMPEG=ON ^
