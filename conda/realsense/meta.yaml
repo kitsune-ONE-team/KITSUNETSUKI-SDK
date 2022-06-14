@@ -23,11 +23,11 @@ requirements:
     - conda ==4.13.0
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
-    - python ==3.10.0
+    - python ==3.10
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
-    - python >=3.10.0,<3.11.0
+    - python >=3.10,<3.11
 
 about:
   home: https://www.intelrealsense.com
