@@ -57,8 +57,8 @@ requirements:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - m2-patch # [win]
-    - numpy
-    - python >=3.10.0,<3.11.0
+    - numpy >=1.22.3
+    - python ==3.10.0
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]

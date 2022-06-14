@@ -55,7 +55,7 @@ requirements:
     - panda3d
     - pyrsistent
     - pytest-runner
-    - python ==3.10
+    - python ==3.10.0
     - six
   run:
     - freetype # [unix]
@@ -68,7 +68,7 @@ requirements:
     - libvorbis # [unix]
     - openssl >=1.1.1g
     - panda3d
-    - python >=3.10,<3.11
+    - python >=3.10.0,<3.11.0
     - xz # [unix]
     - zlib
 
