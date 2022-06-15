@@ -34,13 +34,17 @@ build:
   string: 1655223947
 
   missing_dso_whitelist:
-    - /lib64/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/avcodec-59.dll # [win]
+    - $RPATH/avformat-59.dll # [win]
+    - $RPATH/avutil-57.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libGL.so.1 # [unix]
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
+    - $RPATH/libsndfile-1.dll # [win]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\AVIFIL32.dll # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
     - C:\Windows\System32\OPENGL32.dll # [win]

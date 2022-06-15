@@ -95,3 +95,4 @@ cd ..\..
 
 copy /V /Y lib\%THIRDPARTY%\ffmpeg\lib\*.dll %PREFIX%\DLLs
 copy /V /Y lib\%THIRDPARTY%\gmp\lib\*.dll %PREFIX%\DLLs
+copy /V /Y lib\%THIRDPARTY%\gmp\sndfile\*.dll %PREFIX%\DLLs
