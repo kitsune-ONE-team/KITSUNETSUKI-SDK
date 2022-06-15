@@ -34,6 +34,7 @@ build:
   string: 1655223947
 
   missing_dso_whitelist:
+    - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
     - $RPATH/avcodec-59.dll # [win]
     - $RPATH/avformat-59.dll # [win]
     - $RPATH/avutil-57.dll # [win]
@@ -44,6 +45,8 @@ build:
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/libsndfile-1.dll # [win]
+    - $RPATH/swresample-4.dll # [win]
+    - $RPATH/tbbmalloc.dll # [win]
     - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\AVIFIL32.dll # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
@@ -68,6 +71,7 @@ requirements:
     - libstdcxx-ng # [unix]
     - numpy >=1.22.3
     - python >=3.10.0,<3.11.0
+    - zlib
 
 about:
   home: https://www.blender.org/

@@ -11,6 +11,9 @@ build:
 
   missing_dso_whitelist:
     - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
+    - $RPATH/api-ms-win-core-winrt-error-l1-1-0.dll # [win]
+    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll # [win]
+    - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
@@ -21,17 +24,14 @@ build:
     - $RPATH/libbsd.so.0 # [unix]
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libdl.so.2 # [unix]
+    - $RPATH/libffi-7.dll # [win]
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/librt.so.1 # [unix]
     - $RPATH/libsndio.so.7.0 # [unix]
     - $RPATH/libutil.so.1 # [unix]
-    - $RPATH\api-ms-win-core-winrt-error-l1-1-0.dll # [win]
-    - $RPATH\api-ms-win-core-winrt-l1-1-0.dll # [win]
-    - $RPATH\api-ms-win-core-winrt-string-l1-1-0.dll # [win]
-    - $RPATH\libffi-7.dll # [win]
-    - $RPATH\pgort140.DLL # [win]
+    - $RPATH/pgort140.DLL # [win]
     - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\GLU32.dll # [win]
     - C:\Windows\System32\IPHLPAPI.DLL # [win]
@@ -44,8 +44,8 @@ build:
     - C:\Windows\System32\VERSION.dll # [win]
     - C:\Windows\System32\WINMM.dll # [win]
     - C:\Windows\System32\WSOCK32.dll # [win]
-    - Library\bin\MSVCP140.dll # [win]
-    - Library\bin\VCRUNTIME140.dll # [win]
+    - Library/bin/MSVCP140.dll # [win]
+    - Library/bin/VCRUNTIME140.dll # [win]
 
 requirements:
   build:
