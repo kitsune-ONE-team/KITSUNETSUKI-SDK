@@ -2,14 +2,11 @@
 set PATH=%PATH%;^
 D:\7-Zip;^
 D:\Git\bin;^
-D:\Miniconda3;^
-D:\Miniconda3\Library\bin;^
-D:\Miniconda3\Scripts;^
+D:\Miniconda3\envs\builder;^
+D:\Miniconda3\envs\builder\Library\bin;^
+D:\Miniconda3\envs\builder\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
-
-rem conda activate builder
-D:\Miniconda3\envs\builder\Scripts\activate
 
 set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
 if not exist %JENKINS_DIR% (
