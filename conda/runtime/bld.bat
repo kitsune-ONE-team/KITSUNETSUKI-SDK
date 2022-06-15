@@ -6,7 +6,7 @@ if "%ARCH%" == "64" (
 color 0f
 
 set PYTHONVERSION=310
-set RP_VERSION=2.0.1
+set RP_VERSION=2.0.3
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1

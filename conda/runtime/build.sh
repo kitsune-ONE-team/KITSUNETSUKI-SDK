@@ -1,8 +1,4 @@
 #!/bin/bash
-PANDA_VERSION=1.11
-PYTHON_VERSION=3.10
-RP_VERSION=2.0.1
-
 if [ "${ARCH}" = "64" ]; then
     LARCH=x86_64;
 else
@@ -10,6 +6,9 @@ else
 fi
 
 ULIBX=/usr/lib/${LARCH}-linux-gnu
+PANDA_VERSION=1.11
+PYTHON_VERSION=3.10
+RP_VERSION=2.0.3
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
