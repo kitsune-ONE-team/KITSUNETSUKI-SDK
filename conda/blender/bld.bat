@@ -26,7 +26,6 @@ if not exist blender\bld (
 
    cd blender
    patch -p1 -i %RECIPE_DIR%\platform.patch
-   patch -p1 -i %RECIPE_DIR%\tbb.patch
    cd ..
 )
 
