@@ -8,6 +8,9 @@ D:\Miniconda3\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
 
+conda activate builder
+conda env list
+
 set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
 if not exist %JENKINS_DIR% (
     mkdir %JENKINS_DIR%
@@ -28,6 +31,8 @@ if not exist %JOB_DIR% (
 if not exist %CACHE_DIR% (
     mkdir %CACHE_DIR%
 )
+
+rem copy libcrypto*dll and libssl*dll from Library\bin to DLLS
 
 set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat"
 rem set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
