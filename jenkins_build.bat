@@ -9,7 +9,6 @@ D:\NuGet;^
 D:\Svn\bin
 
 conda activate builder
-conda env list
 
 set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
 if not exist %JENKINS_DIR% (
@@ -49,10 +48,10 @@ set CONDA_BUILD_ARGS=^
 --no-remove-work-dir ^
 --output-folder %JOB_DIR%\output ^
 conda\%JOB_BASE_NAME%
-FOR /F "tokens=*" %%g IN ('conda-build --output %CONDA_BUILD_ARGS%') do (SET CONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('conda build --output %CONDA_BUILD_ARGS%') do (SET CONDA_PAK=%%g)
 
 echo "CONDA BUILD: %CONDA_PAK%"
-conda-build %CONDA_BUILD_ARGS%
+conda build %CONDA_BUILD_ARGS%
 
 echo "ANACONDA UPLOAD: %CONDA_PAK%"
 anaconda ^
