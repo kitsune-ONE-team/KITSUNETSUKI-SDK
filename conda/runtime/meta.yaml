@@ -10,7 +10,7 @@ build:
   string: 1655298046
 
   missing_dso_whitelist:
-    - /lib64/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
@@ -32,6 +32,7 @@ build:
     - $RPATH\api-ms-win-core-winrt-string-l1-1-0.dll # [win]
     - $RPATH\libffi-7.dll # [win]
     - $RPATH\pgort140.DLL # [win]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\GLU32.dll # [win]
     - C:\Windows\System32\IPHLPAPI.DLL # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
@@ -58,7 +59,7 @@ requirements:
     - python ==3.10.0
     - six
   run:
-    - bzip2 # [unix]
+    - bzip2
     - freetype # [unix]
     - harfbuzz # [unix]
     - libffi
@@ -71,7 +72,8 @@ requirements:
     - openssl >=1.1.1g
     - panda3d
     - python >=3.10.0,<3.11.0
-    - xz # [unix]
+    - pywin32 # [win]
+    - xz
     - zlib
 
 about:
