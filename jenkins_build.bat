@@ -8,7 +8,8 @@ D:\Miniconda3\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
 
-conda activate builder
+rem conda activate builder
+D:\Miniconda3\envs\builder\Scripts\activate
 
 set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
 if not exist %JENKINS_DIR% (
