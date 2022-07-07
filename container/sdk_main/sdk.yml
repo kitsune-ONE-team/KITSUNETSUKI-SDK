@@ -31,4 +31,4 @@ dependencies:
     - sphinx
     - sphinx-materialdesign-theme
     - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
-    - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.3/render_pipeline-2.0.3-py3-none-any.whl
+    - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.4/render_pipeline-2.0.4-py3-none-any.whl
