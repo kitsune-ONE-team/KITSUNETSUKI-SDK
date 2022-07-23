@@ -13,6 +13,7 @@ build:
   missing_dso_whitelist:
     - $RPATH/libc.so.6 # [unix]
     - $RPATH/libm.so.6 # [unix]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\MSVCP140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
