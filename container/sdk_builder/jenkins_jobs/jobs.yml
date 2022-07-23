@@ -68,7 +68,7 @@
         - 'LYNX64/{name}':
             name: panda3d
         - 'LYNX64/{name}':
-            name: kphys
+            name: panda3d-kphys
         - 'LYNX64/{name}':
             name: runtime
         - 'LYNX64/{name}':
@@ -86,7 +86,7 @@
         - 'WINX64/{name}':
             name: panda3d
         - 'WINX64/{name}':
-            name: kphys
+            name: panda3d-kphys
         - 'WINX64/{name}':
             name: runtime
 
@@ -108,8 +108,8 @@
         stage('panda3d') {{
             build job: 'panda3d', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
-        stage('kphys') {{
-            build job: 'kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
+        stage('panda3d-kphys') {{
+            build job: 'panda3d-kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
             build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
@@ -133,8 +133,8 @@
         stage('panda3d') {{
             build job: 'panda3d', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
-        stage('kphys') {{
-            build job: 'kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
+        stage('panda3d-kphys') {{
+            build job: 'panda3d-kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
             build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]

@@ -46,13 +46,13 @@ set CONDA_BUILD_ARGS=^
 --no-remove-work-dir ^
 --output-folder %JOB_DIR%\output ^
 conda\%JOB_BASE_NAME%
-FOR /F "tokens=*" %%g IN ('conda build --output %CONDA_BUILD_ARGS%') do (SET CONDA_PAK=%%g)
+FOR /F "tokens=*" %%g IN ('conda.exe build --output %CONDA_BUILD_ARGS%') do (SET CONDA_PAK=%%g)
 
 echo "CONDA BUILD: %CONDA_PAK%"
-conda build %CONDA_BUILD_ARGS%
+conda.exe build %CONDA_BUILD_ARGS%
 
 echo "ANACONDA UPLOAD: %CONDA_PAK%"
-anaconda ^
+anaconda.exe ^
     --disable-ssl-warnings ^
     --show-traceback ^
     --verbose ^

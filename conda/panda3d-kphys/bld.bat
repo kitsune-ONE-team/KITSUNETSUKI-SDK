@@ -13,6 +13,7 @@ cd bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Lib\site-packages" ^
+    -DINSTALL_PY=ON ^
     ..
 
 nmake
@@ -20,4 +21,4 @@ nmake install
 
 cd ..
 
-del /F /S %PREFIX%\Lib\site-packages\kphys.lib
+del /F /S %PREFIX%\Lib\site-packages\kphys\core.lib
