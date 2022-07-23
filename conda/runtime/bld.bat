@@ -16,9 +16,10 @@ pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download
 pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
-copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll              %PREFIX%\kitsunetsuki-runtime\
+copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll         %PREFIX%\kitsunetsuki-runtime\
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
+xcopy /I /E /Y %CONDA_PREFIX%\Lib\site-packages\kphys       %PREFIX%\kitsunetsuki-runtime\kphys
 xcopy /I /E /Y %CONDA_PREFIX%\include                       %PREFIX%\kitsunetsuki-runtime\include
 
 del %PREFIX%\kitsunetsuki-runtime\cg.dll
@@ -56,17 +57,12 @@ del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll
 del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll
 
 copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py ^
-                                                            %PREFIX%\kitsunetsuki-runtime\panda3d
+    %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py    %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd ^
-                                                            %PREFIX%\kitsunetsuki-runtime\panda3d
+    %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd          %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\kphys.pyd ^
-                                                            %PREFIX%\kitsunetsuki-runtime
-copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt ^
-                                                            %PREFIX%\kitsunetsuki-runtime
+    %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt   %PREFIX%\kitsunetsuki-runtime
+
 copy /V /Y %RECIPE_DIR%\Miniconda3-LICENSE.txt              %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\OpenAL-soft-LICENSE.txt             %PREFIX%\kitsunetsuki-runtime
 copy /V /Y %RECIPE_DIR%\Panda3D-LICENSE.txt                 %PREFIX%\kitsunetsuki-runtime
@@ -80,9 +76,11 @@ copy /V /Y %RECIPE_DIR%\zlib-LICENSE.txt                    %PREFIX%\kitsunetsuk
 copy /V /Y %CONDA_PREFIX%\Library\bin\*.dll                 %PREFIX%\kitsunetsuki-runtime
 
 if "%ARCH%" == "64" (
-   copy /V /Y "%VCToolsRedistDir%\x64\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+   copy /V /Y ^
+       "%VCToolsRedistDir%\x64\Microsoft.VC142.CRT\*.dll"   %PREFIX%\kitsunetsuki-runtime
 ) else (
-   copy /V /Y "%VCToolsRedistDir%\x86\Microsoft.VC142.CRT\*.dll" %PREFIX%\kitsunetsuki-runtime
+   copy /V /Y ^
+       "%VCToolsRedistDir%\x86\Microsoft.VC142.CRT\*.dll"   %PREFIX%\kitsunetsuki-runtime
 )
 
 del %PREFIX%\kitsunetsuki-runtime\sqlite3.dll

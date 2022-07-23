@@ -52,8 +52,8 @@ requirements:
     - conda ==4.13.0
     - idna
     - jsonschema ==3.2.0
-    - kitsunetsuki-phys
     - panda3d
+    - panda3d-kphys ==0.3.0
     - pyrsistent
     - pytest-runner
     - python ==3.10.0

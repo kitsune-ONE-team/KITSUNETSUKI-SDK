@@ -19,11 +19,17 @@ pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/include
-cp -fv ${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so.1.0    ${PREFIX}/kitsunetsuki-runtime/
-cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/os.py        ${PREFIX}/kitsunetsuki-runtime/
-cp -Rfv ${CONDA_PREFIX}/include/python${PYTHON_VERSION}/*       ${PREFIX}/kitsunetsuki-runtime/include/
+cp -fv ${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so.1.0 \
+                                                            ${PREFIX}/kitsunetsuki-runtime/
+cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/os.py \
+                                                            ${PREFIX}/kitsunetsuki-runtime/
+cp -Rfv ${CONDA_PREFIX}/include/python${PYTHON_VERSION}/* \
+                                                            ${PREFIX}/kitsunetsuki-runtime/include/
 
-cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/lib-dynload ${PREFIX}/kitsunetsuki-runtime
+cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/lib-dynload \
+                                                            ${PREFIX}/kitsunetsuki-runtime
+cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/kphys \
+                                                            ${PREFIX}/kitsunetsuki-runtime
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_crypt.cpython-*-linux-gnu.so
@@ -58,26 +64,23 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.
 cp -fv \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/*.so \
-                                                  ${PREFIX}/kitsunetsuki-runtime/panda3d/
-cp -fv \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/kphys.so \
-                                                  ${PREFIX}/kitsunetsuki-runtime
+                                                            ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
-                                                  ${PREFIX}/kitsunetsuki-runtime
+                                                            ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/OpenAL-soft-LICENSE.txt      ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt          ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt       ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt        ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt         ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/vorbis-LICENSE.txt           ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${RECIPE_DIR}/zlib-LICENSE.txt             ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt                 ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/OpenAL-soft-LICENSE.txt                ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/Panda3D-LICENSE.txt                    ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/jsonschema-LICENSE.txt                 ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/oauth2-LICENSE.txt                     ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/py-ubjson-LICENSE.txt                  ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/py-ubjson-NOTICE.txt                   ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/vorbis-LICENSE.txt                     ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${RECIPE_DIR}/zlib-LICENSE.txt                       ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv ${ULIBX}/libopenal.so.*                    ${PREFIX}/kitsunetsuki-runtime
-cp -fv ${ULIBX}/libsndio.so.*                     ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libopenal.so.*                              ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${ULIBX}/libsndio.so.*                               ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libcrypto.so.* \
@@ -97,11 +100,11 @@ cp -fv \
    ${CONDA_PREFIX}/lib/libssl.so.* \
    ${CONDA_PREFIX}/lib/libvorbis.so.* \
    ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
-                                                  ${PREFIX}/kitsunetsuki-runtime
+                                                            ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
    ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
-                                                  ${PREFIX}/kitsunetsuki-runtime/libpandaegg.so
+                                                            ${PREFIX}/kitsunetsuki-runtime/libpandaegg.so
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
