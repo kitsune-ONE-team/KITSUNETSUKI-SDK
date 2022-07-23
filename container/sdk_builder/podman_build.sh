@@ -1,5 +1,6 @@
 #!/bin/sh
 
+DIR=$(dirname ${0})
 TAG=docker.io/yonnji/sdk:builder
-podman build -f Dockerfile -t ${TAG}
+podman build -t ${TAG} ${DIR}
 podman push ${TAG}

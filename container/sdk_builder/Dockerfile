@@ -2,7 +2,7 @@
 FROM docker.io/yonnji/sdk:base
 
 RUN apt install -y openjdk-11-jre && apt clean
-RUN wget -q -O /opt/jenkins.war https://get.jenkins.io/war/2.313/jenkins.war
+RUN wget -q -O /opt/jenkins.war https://get.jenkins.io/war-stable/2.346.2/jenkins.war
 COPY ./run-jenkins /usr/local/bin/run-jenkins
 
 COPY ./builder.yml /opt/builder.yml
