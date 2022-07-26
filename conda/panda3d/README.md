@@ -23,5 +23,5 @@ Installing prebuild conda package
 
 ```
 conda config --add channels kitsune.one
-conda install panda3d-kitsunetsuki
+conda install panda3d
 ```
