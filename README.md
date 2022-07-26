@@ -16,8 +16,8 @@ What's Inside
 * ![logo](conda/panda3d/icon_32.png) [Panda3D Game Engine](conda/panda3d) (prebuilt with headers included)
 * ![logo](conda/panda3d/icon_32.png) [Panda3D glTF Loader](https://github.com/Moguri/panda3d-gltf)
 * ![logo](conda/panda3d/icon_32.png) [RenderPipeline](https://github.com/tobspr/RenderPipeline)
-* ![logo](conda/kphys/icon_32.png) [KITSUNETSUKI Asset Tools](https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools)
-* ![logo](conda/kphys/icon_32.png) [KITSUNETSUKI Physics](conda/kphys)
+* ![logo](conda/panda3d-kphys/icon_32.png) [KITSUNETSUKI Asset Tools](https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools)
+* ![logo](conda/panda3d-kphys/icon_32.png) [KITSUNETSUKI Physics](conda/panda3d-kphys)
 * ![logo](conda/blender/blender_icon_32x32.png) [Blender](conda/blender) (as a Python module)
 
 
@@ -30,7 +30,6 @@ Files and directories structure
 * [jenkins.win.bat](jenkins.win.bat) - Jenkins job building script (Windows)
 * [jenkins.lyn.sh](jenkins.lyn.sh) - Jenkins job building script (Linux)
 * [jenkins.jobs.yaml](jenkins.jobs.yaml) - Jenkins Jobs Builder file for jobs generation
-* [sdk.yml](sdk.yml) - conda environment file
 
 
 Installing SDK into Anaconda/Miniconda
@@ -42,22 +41,22 @@ You have to install one of those software packages to use the prebuild SDK:
 
 **Installing**
 ```
-conda env create kitsune.one/ksdk
+conda env create kitsune.one/sdk
 ```
 
 **Updating**
 ```
-conda env update -n ksdk kitsune.one/ksdk
+conda env update -n sdk kitsune.one/sdk
 ```
 
 **Using**
 ```
-conda activate ksdk
+conda activate sdk
 ```
 
 **Uninstalling**
 ```
-conda env remove -n ksdk
+conda env remove -n sdk
 ```
 
 
@@ -70,11 +69,11 @@ You have to install one of those software packages to use the prebuild SDK:
 
 **Installing and Updating**
 ```
-podman pull docker.io/yonnji/sdk:toolbox
+podman pull docker.io/yonnji/sdk:main
 ```
 or
 ```
-docker pull docker.io/yonnji/sdk:toolbox
+docker pull docker.io/yonnji/sdk:main
 ```
 
 
@@ -83,7 +82,7 @@ Building Requirements (Windows)
 
 You have to install those software packages if you want to modify and build your own SDK.
 
-* Visual Studio Build Tools 2017
+* Visual Studio Build Tools 2022
 
 
 Building Requirements (Linux)
@@ -91,8 +90,7 @@ Building Requirements (Linux)
 
 You have to install those software packages if you want to modify and build your own SDK.
 
-* Ubuntu 20.04 Focal (for Blender)
-* Ubuntu 16.04 Xenial (for everything else)
+* Ubuntu 20.04 Focal
 * Glu
 * Mesa
 * Ogg
