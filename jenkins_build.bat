@@ -31,8 +31,8 @@ if not exist %CACHE_DIR% (
 
 rem copy libcrypto*dll and libssl*dll from Library\bin to DLLS
 
-set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Auxiliary\Build\vcvarsall.bat"
 rem set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
+set VSBT_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
 
 set CONDA_BUILD_ARGS=^
 --cache-dir %CACHE_DIR% ^
