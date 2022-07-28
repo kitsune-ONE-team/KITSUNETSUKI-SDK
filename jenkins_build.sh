@@ -1,15 +1,14 @@
 #!/bin/bash
 source /etc/profile
 conda activate builder
-# PATH=${PATH}:/opt/miniconda3/bin
 
-JENKINS_DIR=${HOME}/jenkins/conda
+JENKINS_DIR=${HOME}/jenkins
 if [ ! -d ${JENKINS_DIR} ]; then
     mkdir -p ${JENKINS_DIR};
 fi
 
-JOB_DIR=${JENKINS_DIR}/${JOB_BASE_NAME,,}
-CACHE_DIR=${JENKINS_DIR}/cache
+JOB_DIR=${JENKINS_DIR}/conda_root/${JOB_BASE_NAME,,}
+CACHE_DIR=${JENKINS_DIR}/conda_cache
 
 echo "CLEAN: ${CLEAN}"
 if [ "${CLEAN}" = "true" ]; then

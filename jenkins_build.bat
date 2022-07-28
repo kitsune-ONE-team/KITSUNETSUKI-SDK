@@ -8,13 +8,13 @@ D:\Miniconda3\envs\builder\Scripts;^
 D:\NuGet;^
 D:\Svn\bin
 
-set JENKINS_DIR=%USERPROFILE%\Jenkins\conda
+set JENKINS_DIR=D:\Jenkins
 if not exist %JENKINS_DIR% (
     mkdir %JENKINS_DIR%
 )
 
-set JOB_DIR=%JENKINS_DIR%\%JOB_BASE_NAME%
-set CACHE_DIR=%JENKINS_DIR%\cache
+set JOB_DIR=%JENKINS_DIR%\conda_root\%JOB_BASE_NAME%
+set CACHE_DIR=%JENKINS_DIR%\conda_cache
 
 echo "CLEAN: %CLEAN%"
 if "%CLEAN%" == "true" (
