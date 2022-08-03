@@ -5,7 +5,7 @@ Physics extensions for Panda3D
 
 Physics extensions for Panda3D originally made for the KITSUNETSUKI project game.
 
-KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
+KITSUNETSUKI project: https://k.kitsune.one/
 
 Conda package: https://anaconda.org/kitsune.ONE/panda3d-kphys
 

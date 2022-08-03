@@ -6,7 +6,7 @@ KITSUNETSUKI SDK is a game development environment for the KITSUNETSUKI project.
 KITSUNETSUKI project is a multiplayer-focused arena
 third-person shooter (TPS) game in anime style.
 
-KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
+KITSUNETSUKI project: https://k.kitsune.one/
 
 
 What's Inside

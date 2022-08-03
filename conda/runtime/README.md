@@ -4,7 +4,7 @@ KITSUNETSUKI Game Runtime
 KITSUNETSUKI project is a multiplayer-focused arena
 third-person shooter (TPS) game in anime style.
 
-KITSUNETSUKI project: https://www.patreon.com/kitsunetsuki
+KITSUNETSUKI project: https://k.kitsune.one/
 
 Conda package: https://anaconda.org/kitsune.ONE/kitsunetsuki-runtime
 
