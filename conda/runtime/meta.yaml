@@ -7,7 +7,7 @@ source:
 
 build:
   number: 0
-  string: 1659387998
+  string: 1661290502
 
   missing_dso_whitelist:
     - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
@@ -53,7 +53,7 @@ requirements:
     - idna
     - jsonschema ==3.2.0
     - panda3d
-    - panda3d-kphys ==0.3.2
+    - panda3d-kphys ==0.4.0
     - pyrsistent
     - pytest-runner
     - python ==3.10.0

@@ -11,7 +11,7 @@ dependencies:
   - conda==4.13.0
   - jsonschema==3.2.0
   - panda3d==1.10.11
-  - panda3d-kphys==0.3.0
+  - panda3d-kphys==0.4.0
   - pip
   - pyqt==5.9.2
   - python-blender==3.2
