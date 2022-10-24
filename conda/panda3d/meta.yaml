@@ -29,6 +29,7 @@ build:
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
+    - $RPATH/libEGL.so.1 # [unix]
     - $RPATH/libGL.so.1 # [unix]
     - $RPATH/libGLESv1_CM.so.1 # [unix]
     - $RPATH/libGLESv2.so.2 # [unix]
