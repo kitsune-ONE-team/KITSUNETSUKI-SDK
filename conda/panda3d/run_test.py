@@ -7,7 +7,6 @@ import panda3d.direct
 import panda3d.egg
 import panda3d.fx
 import panda3d.physics
-import panda3d.skel
 
 from panda3d.core import load_prc_file_data, VirtualFileSystem, Filename
 
