@@ -6,7 +6,7 @@ if "%ARCH%" == "64" (
 color 0f
 
 if not exist bld (
-   mkdir bld
+    mkdir bld
 )
 
 cd bld
