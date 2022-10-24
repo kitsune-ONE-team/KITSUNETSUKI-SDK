@@ -57,6 +57,26 @@ python ${RECIPE_DIR}/icon.py \
 #     --use-zlib \
 #     --verbose
 
+# python makepanda/makewheel.py \
+#     --outputdir ${BUILT} \
+#     --verbose
+
+# cp -Rfv ${BUILT}/bin ${PREFIX}
+# cp -Rfv ${BUILT}/etc ${PREFIX}
+# cp -Rfv ${BUILT}/lib ${PREFIX}
+
+# mkdir -pv ${PREFIX}/include
+# cp -Rfv ${BUILT}/include                  ${PREFIX}/include/panda3d
+
+# mkdir -pv ${PREFIX}/share/panda3d
+# cp -Rfv ${BUILT}/models                   ${PREFIX}/share/panda3d
+
+# mkdir -pv ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+# cp -Rfv ${BUILT}/direct                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+# cp -Rfv ${BUILT}/panda3d                  ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+# cp -Rfv ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+# cp -Rfv ${BUILT}/pandac                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
+
 mkdir -p ${BUILT}
 cd ${BUILT}
 cmake \
@@ -71,31 +91,6 @@ cmake \
     ..
 
 make
+make install
+
 cd ..
-
-python makepanda/makewheel.py \
-    --outputdir ${BUILT} \
-    --verbose
-
-# cmake \
-#     -DCMAKE_BUILD_TYPE=Release \
-#     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-#     .
-# make
-# make install
-
-cp -Rfv ${BUILT}/bin ${PREFIX}
-cp -Rfv ${BUILT}/etc ${PREFIX}
-cp -Rfv ${BUILT}/lib ${PREFIX}
-
-mkdir -pv ${PREFIX}/include
-cp -Rfv ${BUILT}/include                  ${PREFIX}/include/panda3d
-
-mkdir -pv ${PREFIX}/share/panda3d
-cp -Rfv ${BUILT}/models                   ${PREFIX}/share/panda3d
-
-mkdir -pv ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/direct                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/panda3d                  ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/panda3d.dist-info        ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
-cp -Rfv ${BUILT}/pandac                   ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages
