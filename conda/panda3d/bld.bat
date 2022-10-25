@@ -12,6 +12,16 @@ rmdir /S /Q %THIRDPARTY%\bullet
 rmdir /S /Q %THIRDPARTY%\openssl
 rmdir /S /Q %THIRDPARTY%\png
 
+:: remove included python
+if exist thirdparty\win-python3.4-x64 ( rmdir /S /Q thirdparty\win-python3.4-x64 )
+if exist thirdparty\win-python3.5-x64 ( rmdir /S /Q thirdparty\win-python3.5-x64 )
+if exist thirdparty\win-python3.6-x64 ( rmdir /S /Q thirdparty\win-python3.6-x64 )
+if exist thirdparty\win-python3.7-x64 ( rmdir /S /Q thirdparty\win-python3.7-x64 )
+if exist thirdparty\win-python3.8-x64 ( rmdir /S /Q thirdparty\win-python3.8-x64 )
+if exist thirdparty\win-python3.9-x64 ( rmdir /S /Q thirdparty\win-python3.9-x64 )
+if exist thirdparty\win-python3.10-x64 ( rmdir /S /Q thirdparty\win-python3.10-x64 )
+if exist thirdparty\win-python-x64 ( rmdir /S /Q thirdparty\win-python-x64 )
+
 set BUILT=built
 
 if not exist %BUILT% (
@@ -48,12 +58,14 @@ rem mkdir %PREFIX%\Library\share
 rem mkdir %PREFIX%\Library\share\panda3d
 rem xcopy /I /E /Y %BUILT%\models                     %PREFIX%\Library\share\panda3d\models
 
-rem mkdir %PREFIX%\Lib
-rem mkdir %PREFIX%\Lib\site-packages
-rem xcopy /I /E /Y %BUILT%\direct                     %PREFIX%\Lib\site-packages\direct
-rem xcopy /I /E /Y %BUILT%\panda3d                    %PREFIX%\Lib\site-packages\panda3d
-rem xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
-rem xcopy /I /E /Y %BUILT%\pandac                     %PREFIX%\Lib\site-packages\pandac
+mkdir %PREFIX%\Lib
+mkdir %PREFIX%\Lib\site-packages
+xcopy /I /E /Y %PREFIX%\Library\direct            %PREFIX%\Lib\site-packages\direct
+xcopy /I /E /Y %PREFIX%\Library\panda3d           %PREFIX%\Lib\site-packages\panda3d
+xcopy /I /E /Y %PREFIX%\Library\pandac            %PREFIX%\Lib\site-packages\pandac
+rmdir /S /Q %PREFIX%\Library\direct
+rmdir /S /Q %PREFIX%\Library\panda3d
+rmdir /S /Q %PREFIX%\Library\pandac
 
 rem del %PREFIX%\Library\bin\cg.dll
 rem del %PREFIX%\Library\bin\cgGL.dll
