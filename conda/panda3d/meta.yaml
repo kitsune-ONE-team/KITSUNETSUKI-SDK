@@ -25,7 +25,7 @@ build:
   string: 1666631181
 
   missing_dso_whitelist:
-    - $RPATH/D3DCOMPILER_43.dll # [unix]
+    - $RPATH/D3DCOMPILER_43.dll # [win]
     - $RPATH/d3dx10_43.dll # [win]
     - $RPATH/d3dx11_43.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
