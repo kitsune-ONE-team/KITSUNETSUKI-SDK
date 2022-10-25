@@ -56,7 +56,7 @@ build:
 
 requirements:
   build:
-    - bison
+    - bison # [unix]
     - bullet ==3.17
     - cmake
     - conda ==4.13.0
