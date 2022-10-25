@@ -25,7 +25,9 @@ build:
   string: 1666631181
 
   missing_dso_whitelist:
-    - /lib64/ld-linux-x86-64.so.2 # [unix]
+    - $RPATH/D3DCOMPILER_43.dll # [unix]
+    - $RPATH/d3dx10_43.dll # [win]
+    - $RPATH/d3dx11_43.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
@@ -43,6 +45,7 @@ build:
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/python39.dll # [win]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\GLU32.dll # [win]
     - C:\Windows\System32\IPHLPAPI.DLL # [win]
     - C:\Windows\System32\MSVCP140.dll # [win]
