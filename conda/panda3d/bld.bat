@@ -22,6 +22,7 @@ cd %BUILT%
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
+    -DCMAKE_CXX_FLAGS="/bigobj" ^
     -DBUILD_DTOOL=ON ^
     -DBUILD_PANDA=ON ^
     -DBUILD_DIRECT=ON ^

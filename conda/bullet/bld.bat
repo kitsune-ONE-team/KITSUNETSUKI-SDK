@@ -11,6 +11,8 @@ if not exist bld (
 
 cd bld
 cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
     -DBUILD_BULLET2_DEMOS=OFF ^
     -DBUILD_CPU_DEMOS=OFF ^
     -DBUILD_EGL=OFF ^
@@ -21,8 +23,6 @@ cmake -G "NMake Makefiles" ^
     -DBUILD_PYBULLET_NUMPY=OFF ^
     -DBUILD_SHARED_LIBS=OFF ^
     -DBUILD_UNIT_TESTS=OFF ^
-    -DCMAKE_BUILD_TYPE=Release ^
-    -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
     -DINSTALL_LIBS=ON ^
     -DUSE_DOUBLE_PRECISION=OFF ^
     -DUSE_GLUT=OFF ^
