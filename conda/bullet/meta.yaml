@@ -12,8 +12,8 @@ build:
 
 requirements:
   build:
-    - cmake
-    - conda ==22.9.0
+    - cmake==3.22.1
+    - conda==4.13.0
 
 about:
   home: http://bulletphysics.org

@@ -60,9 +60,9 @@ build:
 requirements:
   build:
     - bison # [unix]
-    - bullet ==3.17
-    - cmake
-    - conda ==22.9.0
+    - bullet==3.17
+    - cmake==3.22.1
+    - conda==4.13.0
     - fontconfig # [unix]
     - freetype # [unix]
     - harfbuzz # [unix]
@@ -80,7 +80,7 @@ requirements:
     - openssl
     - patchelf # [unix]
     - pillow # [unix]
-    - python ==3.10.6
+    - python==3.10.0
     - zlib
   run:
     - freetype # [unix]
@@ -91,7 +91,7 @@ requirements:
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - libvorbis # [unix]
-    - python >=3.10.0,<3.11.0
+    - python>=3.10.0,<3.11.0
     - vs2015_runtime # [win]
     - zlib # [unix]
 
