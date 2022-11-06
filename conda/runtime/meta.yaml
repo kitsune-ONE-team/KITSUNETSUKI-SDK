@@ -49,14 +49,14 @@ build:
 
 requirements:
   build:
-    - conda ==4.13.0
+    - conda==4.13.0
     - idna
-    - jsonschema ==3.2.0
-    - panda3d
-    - panda3d-kphys ==0.4.1
+    - jsonschema==3.2.0
+    - panda3d==1.10.11
+    - panda3d-kphys==0.4.3
     - pyrsistent
     - pytest-runner
-    - python ==3.10.0
+    - python==3.10.0
     - six
   run:
     - bzip2
@@ -69,7 +69,6 @@ requirements:
     - libstdcxx-ng # [unix]
     - libuuid # [unix]
     - libvorbis # [unix]
-    - openssl >=1.1.1g
     - panda3d
     - python >=3.10.0,<3.11.0
     - pywin32 # [win]
