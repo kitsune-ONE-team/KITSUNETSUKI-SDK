@@ -22,7 +22,7 @@ source:
 
 build:
   number: 0
-  string: 1666631181
+  string: 1667741767
 
   missing_dso_whitelist:
     - $RPATH/D3DCOMPILER_43.dll # [win]
@@ -65,7 +65,6 @@ requirements:
     - conda ==4.13.0
     - fontconfig # [unix]
     - freetype # [unix]
-    - glib <=2.64 # [unix]
     - harfbuzz # [unix]
     - jpeg # [unix]
     - libgcc-ng # [unix]
@@ -78,7 +77,7 @@ requirements:
     - m2-p7zip # [win]
     - m2-patch # [win]
     - msinttypes # [win]
-    - openssl >=1.1.1g
+    - openssl
     - patchelf # [unix]
     - pillow # [unix]
     - python ==3.10.0
