@@ -62,7 +62,6 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
 
 cp -fv \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/__init__.py \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/*.so \
                                                             ${PREFIX}/kitsunetsuki-runtime/panda3d/
 cp -fv \
