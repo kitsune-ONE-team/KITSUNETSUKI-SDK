@@ -26,8 +26,6 @@
             default: false
         - string:
             name: ANACONDA_TOKEN
-            default:
-                !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - shell: |
             ./jenkins_build.sh
@@ -52,8 +50,6 @@
             default: false
         - string:
             name: ANACONDA_TOKEN
-            default:
-                !include-raw: /root/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token
     builders:
         - batch: |
             jenkins_build.bat

@@ -23,6 +23,10 @@ if [ ! -d ${CACHE_DIR} ]; then
     mkdir -p ${CACHE_DIR};
 fi
 
+if [ -z "${ANACONDA_TOKEN}" ]; then
+    ANACONDA_TOKEN=$(cat ${HOME}/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token);
+fi
+
 CONDA_BUILD_ARGS="\
 --cache-dir ${CACHE_DIR} \
 --channel kitsune.one \
