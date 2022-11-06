@@ -34,4 +34,6 @@ make install
 
 cd ..
 
+# copy missing includes
 cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
+cp -fv dtool/src/dtoolbase/patomic.h              ${PREFIX}/include/panda3d/

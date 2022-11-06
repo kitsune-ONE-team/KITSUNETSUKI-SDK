@@ -56,4 +56,6 @@ rmdir /S /Q %PREFIX%\Library\direct
 rmdir /S /Q %PREFIX%\Library\panda3d
 rmdir /S /Q %PREFIX%\Library\pandac
 
+:: copy missing includes
 xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
+copy /V /Y dtool\src\dtoolbase\patomic.h          %PREFIX%\Library\include\panda3d\
