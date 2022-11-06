@@ -33,3 +33,5 @@ make
 make install
 
 cd ..
+
+cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/

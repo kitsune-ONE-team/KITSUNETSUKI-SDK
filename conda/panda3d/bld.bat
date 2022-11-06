@@ -46,18 +46,7 @@ nmake install
 
 cd ..
 
-rem mkdir %PREFIX%\Library
-rem xcopy /I /E /Y %BUILT%\bin                        %PREFIX%\Library\bin
-rem xcopy /I /E /Y %BUILT%\etc                        %PREFIX%\Library\etc
-rem xcopy /I /E /Y %BUILT%\lib                        %PREFIX%\Library\lib
-
-rem mkdir %PREFIX%\Library\include
-rem xcopy /I /E /Y %BUILT%\include                    %PREFIX%\Library\include\panda3d
-
-rem mkdir %PREFIX%\Library\share
-rem mkdir %PREFIX%\Library\share\panda3d
-rem xcopy /I /E /Y %BUILT%\models                     %PREFIX%\Library\share\panda3d\models
-
+:: move python packages to site-packages
 mkdir %PREFIX%\Lib
 mkdir %PREFIX%\Lib\site-packages
 xcopy /I /E /Y %PREFIX%\Library\direct            %PREFIX%\Lib\site-packages\direct
@@ -67,11 +56,4 @@ rmdir /S /Q %PREFIX%\Library\direct
 rmdir /S /Q %PREFIX%\Library\panda3d
 rmdir /S /Q %PREFIX%\Library\pandac
 
-rem del %PREFIX%\Library\bin\cg.dll
-rem del %PREFIX%\Library\bin\cgGL.dll
-rem del %PREFIX%\Library\bin\cgD3D9.dll
-rem del %PREFIX%\Library\bin\cgD3D10.dll
-rem del %PREFIX%\Library\bin\cgD3D11.dll
-rem del %PREFIX%\Library\bin\*.pdb
-rem del %PREFIX%\Library\lib\*.pdb
-rem del %PREFIX%\Lib\site-packages\panda3d\*.pdb
+xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
