@@ -44,7 +44,6 @@ build:
     - $RPATH/libm.so.6 # [unix]
     - $RPATH/libopenal.so.1 # [unix]
     - $RPATH/libpthread.so.0 # [unix]
-    - $RPATH/python39.dll # [win]
     - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\GLU32.dll # [win]
     - C:\Windows\System32\IPHLPAPI.DLL # [win]
@@ -66,6 +65,7 @@ requirements:
     - conda ==4.13.0
     - fontconfig # [unix]
     - freetype # [unix]
+    - glib <=2.64 # [unix]
     - harfbuzz # [unix]
     - jpeg # [unix]
     - libgcc-ng # [unix]
