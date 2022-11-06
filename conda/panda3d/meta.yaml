@@ -22,7 +22,7 @@ source:
 
 build:
   number: 0
-  string: 1667741767
+  string: 1667744463
 
   missing_dso_whitelist:
     - $RPATH/D3DCOMPILER_43.dll # [win]
@@ -62,7 +62,7 @@ requirements:
     - bison # [unix]
     - bullet ==3.17
     - cmake
-    - conda ==4.13.0
+    - conda ==22.9.0
     - fontconfig # [unix]
     - freetype # [unix]
     - harfbuzz # [unix]
@@ -80,7 +80,7 @@ requirements:
     - openssl
     - patchelf # [unix]
     - pillow # [unix]
-    - python ==3.10.0
+    - python ==3.10.6
     - zlib
   run:
     - freetype # [unix]

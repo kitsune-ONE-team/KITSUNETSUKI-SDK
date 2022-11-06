@@ -8,12 +8,12 @@ source:
 
 build:
   number: 0
-  string: 1667741765
+  string: 1667744461
 
 requirements:
   build:
     - cmake
-    - conda ==4.13.0
+    - conda ==22.9.0
 
 about:
   home: http://bulletphysics.org
