@@ -121,7 +121,6 @@ cp -fv \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2 \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d_gltf-0.13.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pkg_resources \
