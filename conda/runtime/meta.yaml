@@ -65,17 +65,12 @@ requirements:
     - six
   run:
     - bzip2
-    - freetype # [unix]
-    - harfbuzz # [unix]
     - jpeg # [unix]
     - libffi
     - libgcc-ng # [unix]
-    - libogg # [unix]
-    - libpng
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - libuuid # [unix]
-    - libvorbis # [unix]
     - openssl
     - panda3d
     - python >=3.10.0,<3.11.0
