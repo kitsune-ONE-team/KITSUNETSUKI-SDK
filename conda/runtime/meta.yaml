@@ -58,7 +58,7 @@ requirements:
     - idna
     - jsonschema==3.2.0
     - panda3d==1.10.11
-    - panda3d-kphys==0.4.3
+    - panda3d-kphys==0.4.4
     - pyrsistent
     - pytest-runner
     - python==3.10.0
