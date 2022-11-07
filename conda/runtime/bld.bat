@@ -99,6 +99,7 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.13.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^

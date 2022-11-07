@@ -60,3 +60,6 @@ rmdir /S /Q %PREFIX%\Library\pandac
 :: copy missing includes
 xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
 copy /V /Y dtool\src\dtoolbase\patomic.h          %PREFIX%\Library\include\panda3d\
+
+:: copy dist-info for pip
+xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info

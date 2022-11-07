@@ -37,3 +37,6 @@ cd ..
 # copy missing includes
 cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
 cp -fv dtool/src/dtoolbase/patomic.h              ${PREFIX}/include/panda3d/
+
+# copy dist-info for pip
+cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/
