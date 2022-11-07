@@ -30,11 +30,12 @@ if not exist %BUILT% (
 
 cd %BUILT%
 cmake -G "NMake Makefiles" ^
-    -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
+    -DCMAKE_BUILD_TYPE=Release ^
     -DBUILD_CONTRIB=ON ^
     -DBUILD_DIRECT=ON ^
     -DBUILD_DTOOL=ON ^
+    -DBUILD_METALIBS=OFF ^
     -DBUILD_MODELS=ON ^
     -DBUILD_PANDA=ON ^
     -DBUILD_PANDATOOL=ON ^
