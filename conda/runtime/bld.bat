@@ -57,8 +57,6 @@ del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll
 del %PREFIX%\kitsunetsuki-runtime\DLLs\tk86t.dll
 
 copy /V /Y ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d\__init__.py    %PREFIX%\kitsunetsuki-runtime\panda3d
-copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d\*.pyd          %PREFIX%\kitsunetsuki-runtime\panda3d
 copy /V /Y ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2\cacerts.txt   %PREFIX%\kitsunetsuki-runtime
@@ -101,7 +99,6 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.13.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
