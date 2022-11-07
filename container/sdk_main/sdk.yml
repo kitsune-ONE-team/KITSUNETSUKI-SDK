@@ -7,16 +7,16 @@ channels:
 dependencies:
   - anaconda-client
   - bullet
-  - cmake==3.19.6
+  - cmake==3.22.1
   - conda==4.13.0
   - jsonschema==3.2.0
-  - panda3d-kphys==0.4.1
-  - panda3d==1.10.11
+  - panda3d-kphys==0.4.4
+  - panda3d==1.11.0
   - pip
   - pyqt==5.9.2
   - python-blender==3.2
   - python==3.10.0
-  - qt=5.9.7
+  - qt==5.9.7
   - sdl==2.0.20
   - pip:
     - cython==0.29.24
