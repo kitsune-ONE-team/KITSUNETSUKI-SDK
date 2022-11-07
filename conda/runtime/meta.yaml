@@ -10,10 +10,14 @@ build:
   string: 1667748744
 
   missing_dso_whitelist:
+    - $RPATH/D3DCOMPILER_43.dll # [win]
+    - $RPATH/D3DCOMPILER_43.dll # [win]
     - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
     - $RPATH/api-ms-win-core-winrt-error-l1-1-0.dll # [win]
     - $RPATH/api-ms-win-core-winrt-l1-1-0.dll # [win]
     - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll # [win]
+    - $RPATH/d3dx10_43.dll # [win]
+    - $RPATH/d3dx11_43.dll # [win]
     - $RPATH/ld-linux-x86-64.so.2 # [unix]
     - $RPATH/libCg.so # [unix]
     - $RPATH/libCgGL.so # [unix]
@@ -68,6 +72,7 @@ requirements:
     - jpeg # [unix]
     - libffi
     - libgcc-ng # [unix]
+    - libpng
     - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - libuuid # [unix]
