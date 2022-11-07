@@ -25,6 +25,8 @@ fi
 
 if [ -z "${ANACONDA_TOKEN}" ]; then
     ANACONDA_TOKEN=$(cat ${HOME}/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token);
+else
+    echo -n ${ANACONDA_TOKEN} > ${HOME}/.config/binstar/https%3A%2F%2Fapi.anaconda.org.token;
 fi
 
 CONDA_BUILD_ARGS="\

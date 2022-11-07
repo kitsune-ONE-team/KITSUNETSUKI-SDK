@@ -31,6 +31,8 @@ if not exist %CACHE_DIR% (
 
 if "%ANACONDA_TOKEN%" == "" (
     FOR /F "tokens=*" %%i in ('type %USERPROFILE%\AppData\Local\ContinuumIO\binstar\https%3A%2F%2Fapi.anaconda.org.token') do (SET ANACONDA_TOKEN=%%i)
+) else (
+    echo %ANACONDA_TOKEN% > %USERPROFILE%\AppData\Local\ContinuumIO\binstar\https%3A%2F%2Fapi.anaconda.org.token
 )
 
 rem copy libcrypto*dll and libssl*dll from Library\bin to DLLS
