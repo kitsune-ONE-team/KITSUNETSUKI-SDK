@@ -16,6 +16,7 @@ source:
       - 07_rgba.patch # [unix]
       - 08_kbd.patch # [unix]
       - 09_rp_light.patch
+      - 10_libp3rplight.patch
 
   - url: https://www.panda3d.org/download/panda3d-1.10.12/panda3d-1.10.12-tools-win64.zip # [win64]
     md5: d3a52735ccd23295d3913239e6e6a364 # [win64]

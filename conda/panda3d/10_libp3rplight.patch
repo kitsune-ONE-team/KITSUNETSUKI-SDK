@@ -1,0 +1,13 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index d5b4f11fd0..5ffe8242f7 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -6072,6 +6072,8 @@ if not PkgSkip("CONTRIB"):
+ if not PkgSkip("CONTRIB") and not PkgSkip("PYTHON"):
+     OPTS=['DIR:contrib/src/rplight', 'BUILDING:RPLIGHT']
+     TargetAdd('p3rplight_composite1.obj', opts=OPTS, input='p3rplight_composite1.cxx')
++    TargetAdd('libp3rplight.dll', input='p3rplight_composite1.obj')
++    TargetAdd('libp3rplight.dll', input=COMMON_PANDA_LIBS)
+ 
+     IGATEFILES=GetDirectoryContents('contrib/src/rplight', ["*.h", "*_composite*.cxx"])
+     TargetAdd('libp3rplight.in', opts=OPTS, input=IGATEFILES)
