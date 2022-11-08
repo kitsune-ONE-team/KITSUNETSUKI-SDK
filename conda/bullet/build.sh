@@ -3,8 +3,8 @@
 mkdir -p bld
 cd bld
 cmake \
+    -DCMAKE_BUILD_TYPE=Standard \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_BULLET2_DEMOS=OFF \
     -DBUILD_CPU_DEMOS=OFF \
     -DBUILD_EGL=OFF \
@@ -15,7 +15,7 @@ cmake \
     -DBUILD_PYBULLET_NUMPY=OFF \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_UNIT_TESTS=OFF \
-    -DCMAKE_CXX_FLAGS=-fPIC \
+    -DCMAKE_CXX_FLAGS="-fPIC -fno-rtti" \
     -DINSTALL_LIBS=ON \
     -DUSE_DOUBLE_PRECISION=OFF \
     -DUSE_GLUT=OFF \
