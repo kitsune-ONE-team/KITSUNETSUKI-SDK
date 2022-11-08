@@ -28,38 +28,117 @@ if not exist %BUILT% (
     mkdir %BUILT%
 )
 
-cd %BUILT%
-cmake -G "NMake Makefiles" ^
-    -DCMAKE_BUILD_TYPE=Standard ^
-    -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
-    -DBUILD_CONTRIB=ON ^
-    -DBUILD_DIRECT=ON ^
-    -DBUILD_DTOOL=ON ^
-    -DBUILD_METALIBS=ON ^
-    -DBUILD_MODELS=ON ^
-    -DBUILD_PANDA=ON ^
-    -DBUILD_PANDATOOL=ON ^
-    -DCMAKE_CXX_FLAGS="/bigobj" ^
-    -DHAVE_EIGEN=NO ^
-    ..
+rem cd %BUILT%
+rem cmake -G "NMake Makefiles" ^
+rem     -DCMAKE_BUILD_TYPE=Standard ^
+rem     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
+rem     -DBUILD_CONTRIB=ON ^
+rem     -DBUILD_DIRECT=ON ^
+rem     -DBUILD_DTOOL=ON ^
+rem     -DBUILD_METALIBS=ON ^
+rem     -DBUILD_MODELS=ON ^
+rem     -DBUILD_PANDA=ON ^
+rem     -DBUILD_PANDATOOL=ON ^
+rem     -DCMAKE_CXX_FLAGS="/bigobj" ^
+rem     -DHAVE_EIGEN=NO ^
+rem     ..
 
-nmake
-nmake install
+rem nmake
+rem nmake install
 
-cd ..
+rem cd ..
 
 :: move python packages to site-packages
-mkdir %PREFIX%\Lib
-mkdir %PREFIX%\Lib\site-packages
-xcopy /I /E /Y %PREFIX%\Library\direct            %PREFIX%\Lib\site-packages\direct
-xcopy /I /E /Y %PREFIX%\Library\panda3d           %PREFIX%\Lib\site-packages\panda3d
-xcopy /I /E /Y %PREFIX%\Library\pandac            %PREFIX%\Lib\site-packages\pandac
-rmdir /S /Q %PREFIX%\Library\direct
-rmdir /S /Q %PREFIX%\Library\panda3d
-rmdir /S /Q %PREFIX%\Library\pandac
+rem mkdir %PREFIX%\Lib
+rem mkdir %PREFIX%\Lib\site-packages
+rem xcopy /I /E /Y %PREFIX%\Library\direct            %PREFIX%\Lib\site-packages\direct
+rem xcopy /I /E /Y %PREFIX%\Library\panda3d           %PREFIX%\Lib\site-packages\panda3d
+rem xcopy /I /E /Y %PREFIX%\Library\pandac            %PREFIX%\Lib\site-packages\pandac
+rem rmdir /S /Q %PREFIX%\Library\direct
+rem rmdir /S /Q %PREFIX%\Library\panda3d
+rem rmdir /S /Q %PREFIX%\Library\pandac
 
 :: copy missing includes
-xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
+rem xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
 
 :: copy dist-info for pip
+rem xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
+
+python makepanda/makepanda.py ^
+    --openssl-incdir %CONDA_PREFIX%\include ^
+    --openssl-libdir %CONDA_PREFIX%\lib ^
+    --bullet-incdir %CONDA_PREFIX%\include ^
+    --bullet-libdir %CONDA_PREFIX%\lib ^
+    --python-incdir %CONDA_PREFIX%\include ^
+    --python-libdir %CONDA_PREFIX%\lib ^
+    --zlib-incdir %CONDA_PREFIX%\include ^
+    --zlib-libdir %CONDA_PREFIX%\lib ^
+    --png-incdir %CONDA_PREFIX%\Library\include ^
+    --png-libdir %CONDA_PREFIX%\Library\lib ^
+    --msvc-version=14.3 ^
+    --nothing ^
+    --outputdir %BUILT% ^
+    --threads=2 ^
+    --use-bullet ^
+    --use-contrib ^
+    --use-deploytools ^
+    --use-direct ^
+    --use-egg ^
+    --use-freetype ^
+    --use-gl ^
+    --use-harfbuzz ^
+    --use-openal ^
+    --use-openssl ^
+    --use-pandafx ^
+    --use-pandaparticlesystem ^
+    --use-pandaphysics ^
+    --use-pandatool ^
+    --use-png ^
+    --use-pview ^
+    --use-python ^
+    --use-skel ^
+    --use-vorbis ^
+    --use-x11 ^
+    --use-zlib ^
+    --verbose ^
+    --windows-sdk=10
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+python makepanda/makewheel.py ^
+    --outputdir %BUILT% ^
+    --verbose
+
+if "%ERRORLEVEL%" == "1" (
+    exit /B 1
+)
+
+mkdir %PREFIX%\Library
+xcopy /I /E /Y %BUILT%\bin                        %PREFIX%\Library\bin
+xcopy /I /E /Y %BUILT%\etc                        %PREFIX%\Library\etc
+xcopy /I /E /Y %BUILT%\lib                        %PREFIX%\Library\lib
+
+mkdir %PREFIX%\Library\include
+xcopy /I /E /Y %BUILT%\include                    %PREFIX%\Library\include\panda3d
+
+mkdir %PREFIX%\Library\share
+mkdir %PREFIX%\Library\share\panda3d
+xcopy /I /E /Y %BUILT%\models                     %PREFIX%\Library\share\panda3d\models
+
+mkdir %PREFIX%\Lib
+mkdir %PREFIX%\Lib\site-packages
+xcopy /I /E /Y %BUILT%\direct                     %PREFIX%\Lib\site-packages\direct
+xcopy /I /E /Y %BUILT%\panda3d                    %PREFIX%\Lib\site-packages\panda3d
 xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
+xcopy /I /E /Y %BUILT%\pandac                     %PREFIX%\Lib\site-packages\pandac
+
+del %PREFIX%\Library\bin\cg.dll
+del %PREFIX%\Library\bin\cgGL.dll
+del %PREFIX%\Library\bin\cgD3D9.dll
+del %PREFIX%\Library\bin\cgD3D10.dll
+del %PREFIX%\Library\bin\cgD3D11.dll
+del %PREFIX%\Library\bin\*.pdb
+del %PREFIX%\Library\lib\*.pdb
+del %PREFIX%\Lib\site-packages\panda3d\*.pdb

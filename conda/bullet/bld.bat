@@ -11,7 +11,7 @@ if not exist bld (
 
 cd bld
 cmake -G "NMake Makefiles" ^
-    -DCMAKE_BUILD_TYPE=Standard ^
+    -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
     -DBUILD_BULLET2_DEMOS=OFF ^
     -DBUILD_CPU_DEMOS=OFF ^
