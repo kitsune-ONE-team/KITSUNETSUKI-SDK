@@ -24,7 +24,7 @@ cmake \
     -DBUILD_CONTRIB=ON \
     -DBUILD_DIRECT=ON \
     -DBUILD_DTOOL=ON \
-    -DBUILD_METALIBS=OFF \
+    -DBUILD_METALIBS=ON \
     -DBUILD_MODELS=ON \
     -DBUILD_PANDA=ON \
     -DBUILD_PANDATOOL=ON \
@@ -36,8 +36,8 @@ make install
 cd ..
 
 # copy missing includes
-cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
-cp -fv dtool/src/dtoolbase/patomic.h              ${PREFIX}/include/panda3d/
+# cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
+# cp -fv dtool/src/dtoolbase/patomic.h              ${PREFIX}/include/panda3d/
 
 # copy dist-info for pip
-cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/
+# cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/

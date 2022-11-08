@@ -4,7 +4,7 @@ package:
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: 77b0d2d6a7e6853ab0046ce924160b0f6dfd9b27
+    git_rev: 63017864ab978a4f4ff69f60584677c7dcf13eb0
     folder: .
     patches:
       - 01_bullet_v3.patch
@@ -17,8 +17,8 @@ source:
       - 08_kbd.patch # [unix]
       - 09_rp_light.patch
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.11/panda3d-1.10.11-tools-win64.zip # [win64]
-    md5: a2eca781871274f5a05bc4bc74b419ad # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.12/panda3d-1.10.12-tools-win64.zip # [win64]
+    md5: d3a52735ccd23295d3913239e6e6a364 # [win64]
 
 build:
   number: 0
