@@ -19,8 +19,8 @@ python ${RECIPE_DIR}/icon.py \
 mkdir -p ${BUILT}
 cd ${BUILT}
 cmake \
+    -DCMAKE_BUILD_TYPE=Standard \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_CONTRIB=ON \
     -DBUILD_DIRECT=ON \
     -DBUILD_DTOOL=ON \
@@ -28,6 +28,7 @@ cmake \
     -DBUILD_MODELS=ON \
     -DBUILD_PANDA=ON \
     -DBUILD_PANDATOOL=ON \
+    -DCMAKE_CXX_FLAGS="-fno-rtti" \
     ..
 
 make
@@ -36,8 +37,7 @@ make install
 cd ..
 
 # copy missing includes
-# cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
-# cp -fv dtool/src/dtoolbase/patomic.h              ${PREFIX}/include/panda3d/
+cp -Rfv dtool/src/parser-inc                      ${PREFIX}/include/panda3d/
 
 # copy dist-info for pip
-# cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/
+cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/

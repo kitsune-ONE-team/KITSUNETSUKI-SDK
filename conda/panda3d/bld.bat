@@ -30,8 +30,8 @@ if not exist %BUILT% (
 
 cd %BUILT%
 cmake -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Standard ^
     -DCMAKE_INSTALL_PREFIX="%PREFIX%\Library" ^
-    -DCMAKE_BUILD_TYPE=Release ^
     -DBUILD_CONTRIB=ON ^
     -DBUILD_DIRECT=ON ^
     -DBUILD_DTOOL=ON ^
@@ -59,8 +59,7 @@ rmdir /S /Q %PREFIX%\Library\panda3d
 rmdir /S /Q %PREFIX%\Library\pandac
 
 :: copy missing includes
-rem xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
-rem copy /V /Y dtool\src\dtoolbase\patomic.h          %PREFIX%\Library\include\panda3d\
+xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\panda3d\parser-inc
 
 :: copy dist-info for pip
-rem xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
+xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
