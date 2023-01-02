@@ -66,6 +66,8 @@
         - 'LYNX64/{name}':
             name: panda3d-kphys
         - 'LYNX64/{name}':
+            name: panda3d-krender
+        - 'LYNX64/{name}':
             name: runtime
         - 'LYNX64/{name}':
             name: realsense
@@ -83,6 +85,8 @@
             name: panda3d
         - 'WINX64/{name}':
             name: panda3d-kphys
+        - 'WINX64/{name}':
+            name: panda3d-krender
         - 'WINX64/{name}':
             name: runtime
 
@@ -106,6 +110,9 @@
         }}
         stage('panda3d-kphys') {{
             build job: 'panda3d-kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
+        }}
+        stage('panda3d-krender') {{
+            build job: 'panda3d-krender', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
             build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
@@ -131,6 +138,9 @@
         }}
         stage('panda3d-kphys') {{
             build job: 'panda3d-kphys', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
+        }}
+        stage('panda3d-krender') {{
+            build job: 'panda3d-krender', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
         }}
         stage('runtime') {{
             build job: 'runtime', parameters: [booleanParam(name: 'CLEAN', value: 'true')]
