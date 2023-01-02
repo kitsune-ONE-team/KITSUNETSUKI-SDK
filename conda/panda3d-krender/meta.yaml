@@ -1,0 +1,37 @@
+package:
+  name: panda3d-krender
+  version: "0.0.1"
+
+source:
+  git_rev: 0.0.1
+  git_url: https://github.com/kitsune-ONE-team/panda3d-krender.git
+
+build:
+  number: 0
+  string: 1667748744
+
+  missing_dso_whitelist:
+    - $RPATH/libc.so.6 # [unix]
+    - $RPATH/libm.so.6 # [unix]
+    - /lib64/ld-linux-x86-64.so.2 # [unix]
+    - C:\Windows\System32\MSVCP140.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140.dll # [win]
+    - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
+
+requirements:
+  build:
+    - cmake==3.22.1
+    - conda==4.13.0
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
+    - panda3d
+    - python==3.10.0
+  run:
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
+    - panda3d
+    - python >=3.10.0,<3.11.0
+
+about:
+  home: https://github.com/kitsune-ONE-team/panda3d-krender
+  license: MIT
