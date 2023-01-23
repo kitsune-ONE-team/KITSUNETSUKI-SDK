@@ -1,9 +1,9 @@
 package:
   name: panda3d-krender
-  version: "0.0.6"
+  version: "0.0.7"
 
 source:
-  git_rev: 0.0.6
+  git_rev: 0.0.7
   git_url: https://github.com/kitsune-ONE-team/panda3d-krender.git
 
 build:
