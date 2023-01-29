@@ -1,7 +1,18 @@
 diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
-index 7a2d3ad948a..599f999a4e6 100644
+index 7a2d3ad948a..a8fb697d66d 100644
 --- a/build_files/cmake/platform/platform_win32.cmake
 +++ b/build_files/cmake/platform/platform_win32.cmake
+@@ -408,8 +408,8 @@ if(WITH_IMAGE_OPENEXR)
+     set(IMATH_INCLUDE_DIRS ${IMATH_INCLUDE_DIR} ${IMATH}/include/Imath)
+     set(IMATH_LIBPATH ${IMATH}/lib)
+     set(IMATH_LIBRARIES
+-      optimized ${IMATH_LIBPATH}/Imath_s.lib
+-      debug ${IMATH_LIBPATH}/Imath_s_d.lib
++      optimized ${IMATH_LIBPATH}/Imath.lib
++      debug ${IMATH_LIBPATH}/Imath_d.lib
+     )
+   endif()
+   set(OPENEXR_ROOT_DIR ${LIBDIR}/openexr)
 @@ -423,32 +423,32 @@ if(WITH_IMAGE_OPENEXR)
      set(OPENEXR_LIBPATH ${OPENEXR}/lib)
      # Check if the 3.x library name exists
