@@ -1,10 +1,13 @@
 diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
-index 7a2d3ad948a..d588e849c4e 100644
+index 7a2d3ad948a..599f999a4e6 100644
 --- a/build_files/cmake/platform/platform_win32.cmake
 +++ b/build_files/cmake/platform/platform_win32.cmake
-@@ -425,30 +425,30 @@ if(WITH_IMAGE_OPENEXR)
+@@ -423,32 +423,32 @@ if(WITH_IMAGE_OPENEXR)
+     set(OPENEXR_LIBPATH ${OPENEXR}/lib)
+     # Check if the 3.x library name exists
      # if not assume this is a 2.x library folder
-     if(EXISTS "${OPENEXR_LIBPATH}/OpenEXR_s.lib")
+-    if(EXISTS "${OPENEXR_LIBPATH}/OpenEXR_s.lib")
++    if(EXISTS "${OPENEXR_LIBPATH}/OpenEXR.lib")
        set(OPENEXR_LIBRARIES
 -        optimized ${OPENEXR_LIBPATH}/Iex_s.lib
 -        optimized ${OPENEXR_LIBPATH}/IlmThread_s.lib
