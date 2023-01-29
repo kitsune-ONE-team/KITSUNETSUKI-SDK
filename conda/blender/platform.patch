@@ -1,5 +1,5 @@
 diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
-index 7a2d3ad948a..a8fb697d66d 100644
+index 7a2d3ad948a..971ba715cf9 100644
 --- a/build_files/cmake/platform/platform_win32.cmake
 +++ b/build_files/cmake/platform/platform_win32.cmake
 @@ -408,8 +408,8 @@ if(WITH_IMAGE_OPENEXR)
@@ -88,3 +88,16 @@ index 7a2d3ad948a..a8fb697d66d 100644
    # uncached vars
    set(PYTHON_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR}")
    set(PYTHON_LIBRARIES debug "${PYTHON_LIBRARY_DEBUG}" optimized "${PYTHON_LIBRARY}" )
+@@ -522,12 +508,6 @@ if(WITH_BOOST)
+     endif()
+     set(BOOST_POSTFIX "vc142-mt-x64-${BOOST_VERSION}.lib")
+     set(BOOST_DEBUG_POSTFIX "vc142-mt-gd-x64-${BOOST_VERSION}.lib")
+-    if(NOT EXISTS ${BOOST_LIBPATH}/libboost_date_time-${BOOST_POSTFIX})
+-      # If the new library names do not exist fall back to the old ones
+-      # to ease the transition period between the libs.
+-      set(BOOST_POSTFIX "vc141-mt-x64-${BOOST_VERSION}.lib")
+-      set(BOOST_DEBUG_POSTFIX "vc141-mt-gd-x64-${BOOST_VERSION}.lib")
+-    endif()
+     set(BOOST_LIBRARIES
+       optimized ${BOOST_LIBPATH}/libboost_date_time-${BOOST_POSTFIX}
+       optimized ${BOOST_LIBPATH}/libboost_filesystem-${BOOST_POSTFIX}
