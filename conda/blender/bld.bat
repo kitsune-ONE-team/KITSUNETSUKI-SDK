@@ -44,6 +44,7 @@ cmake -G "NMake Makefiles" ^
     -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
     -DPYTHON_NUMPY_INCLUDE_DIRS=%CONDA_PREFIX%\Lib\site-packages\numpy\core\include ^
     -DPYTHON_VERSION=%PYTHON_VERSION% ^
+    -DTEST_PYTHON_EXE=%CONDA_PREFIX%\python.exe ^
     -DWITH_AUDASPACE=ON ^
     -DWITH_CODEC_AVI=ON ^
     -DWITH_CODEC_FFMPEG=ON ^
