@@ -41,7 +41,7 @@ cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%PREFIX%\Lib\site-packages ^
     -DPYTHON_LIBRARY=%CONDA_PREFIX%\libs\python%PYTHONVERSION%.lib ^
-    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include ^
+    -DPYTHON_INCLUDE_DIR=%CONDA_PREFIX%\include\python%PYTHON_VERSION% ^
     -DPYTHON_NUMPY_INCLUDE_DIRS=%CONDA_PREFIX%\Lib\site-packages\numpy\core\include ^
     -DPYTHON_VERSION=%PYTHON_VERSION% ^
     -DWITH_AUDASPACE=ON ^
