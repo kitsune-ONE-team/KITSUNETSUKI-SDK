@@ -23,8 +23,7 @@ source:
     git_rev: v3.4.0
     folder: blender_extras/source/tools
 
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc15 # [win64]
-    svn_rev: blender-3.4-release
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-3.4-release/lib/win64_vc15 # [win64]
     folder: lib/win64_vc15 # [win64]
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 # [unix]
