@@ -1,5 +1,5 @@
 diff --git a/build_files/cmake/platform/platform_win32.cmake b/build_files/cmake/platform/platform_win32.cmake
-index 7a2d3ad948a..971ba715cf9 100644
+index 7a2d3ad948a..7e7a1ba2f92 100644
 --- a/build_files/cmake/platform/platform_win32.cmake
 +++ b/build_files/cmake/platform/platform_win32.cmake
 @@ -408,8 +408,8 @@ if(WITH_IMAGE_OPENEXR)
@@ -88,7 +88,7 @@ index 7a2d3ad948a..971ba715cf9 100644
    # uncached vars
    set(PYTHON_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR}")
    set(PYTHON_LIBRARIES debug "${PYTHON_LIBRARY_DEBUG}" optimized "${PYTHON_LIBRARY}" )
-@@ -522,12 +508,6 @@ if(WITH_BOOST)
+@@ -522,36 +508,30 @@ if(WITH_BOOST)
      endif()
      set(BOOST_POSTFIX "vc142-mt-x64-${BOOST_VERSION}.lib")
      set(BOOST_DEBUG_POSTFIX "vc142-mt-gd-x64-${BOOST_VERSION}.lib")
@@ -99,5 +99,45 @@ index 7a2d3ad948a..971ba715cf9 100644
 -      set(BOOST_DEBUG_POSTFIX "vc141-mt-gd-x64-${BOOST_VERSION}.lib")
 -    endif()
      set(BOOST_LIBRARIES
-       optimized ${BOOST_LIBPATH}/libboost_date_time-${BOOST_POSTFIX}
-       optimized ${BOOST_LIBPATH}/libboost_filesystem-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_date_time-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_filesystem-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_regex-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_system-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_thread-${BOOST_POSTFIX}
+-      optimized ${BOOST_LIBPATH}/libboost_chrono-${BOOST_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_date_time-${BOOST_DEBUG_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_filesystem-${BOOST_DEBUG_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_regex-${BOOST_DEBUG_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_system-${BOOST_DEBUG_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_thread-${BOOST_DEBUG_POSTFIX}
+-      debug ${BOOST_LIBPATH}/libboost_chrono-${BOOST_DEBUG_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_date_time-${BOOST_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_filesystem-${BOOST_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_regex-${BOOST_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_system-${BOOST_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_thread-${BOOST_POSTFIX}
++      optimized ${BOOST_LIBPATH}/boost_chrono-${BOOST_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_date_time-${BOOST_DEBUG_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_filesystem-${BOOST_DEBUG_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_regex-${BOOST_DEBUG_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_system-${BOOST_DEBUG_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_thread-${BOOST_DEBUG_POSTFIX}
++      debug ${BOOST_LIBPATH}/boost_chrono-${BOOST_DEBUG_POSTFIX}
+     )
+     if(WITH_CYCLES AND WITH_CYCLES_OSL)
+       set(BOOST_LIBRARIES ${BOOST_LIBRARIES}
+-        optimized ${BOOST_LIBPATH}/libboost_wave-${BOOST_POSTFIX}
+-        debug ${BOOST_LIBPATH}/libboost_wave-${BOOST_DEBUG_POSTFIX}
++        optimized ${BOOST_LIBPATH}/boost_wave-${BOOST_POSTFIX}
++        debug ${BOOST_LIBPATH}/boost_wave-${BOOST_DEBUG_POSTFIX}
+       )
+     endif()
+     if(WITH_INTERNATIONAL)
+       set(BOOST_LIBRARIES ${BOOST_LIBRARIES}
+-        optimized ${BOOST_LIBPATH}/libboost_locale-${BOOST_POSTFIX}
+-        debug ${BOOST_LIBPATH}/libboost_locale-${BOOST_DEBUG_POSTFIX}
++        optimized ${BOOST_LIBPATH}/boost_locale-${BOOST_POSTFIX}
++        debug ${BOOST_LIBPATH}/boost_locale-${BOOST_DEBUG_POSTFIX}
+       )
+     endif()
+   else() # we found boost using find_package
