@@ -88,12 +88,7 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
-rem copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
-rem robocopy /E %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
-rem rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
+cd ..\..
 
-rem cd ..\..
-
-rem copy /V /Y lib\%THIRDPARTY%\ffmpeg\lib\*.dll %PREFIX%\DLLs
-rem copy /V /Y lib\%THIRDPARTY%\gmp\lib\*.dll %PREFIX%\DLLs
-rem copy /V /Y lib\%THIRDPARTY%\sndfile\lib\*.dll %PREFIX%\DLLs
+robocopy /E %PREFIX%\Lib\site-packages\blender.crt %PREFIX%\Lib\site-packages\bpy\blender.crt
+rd /s /q %PREFIX%\Lib\site-packages\blender.crt
