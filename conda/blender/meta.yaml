@@ -49,6 +49,7 @@ build:
     - $RPATH/libpthread.so.0 # [unix]
     - $RPATH/libsndfile-1.dll # [win]
     - $RPATH/swresample-4.dll # [win]
+    - $RPATH/swscale-6.dll # [win]
     - $RPATH/tbbmalloc.dll # [win]
     - /lib64/ld-linux-x86-64.so.2 # [unix]
     - C:\Windows\System32\AVIFIL32.dll # [win]
