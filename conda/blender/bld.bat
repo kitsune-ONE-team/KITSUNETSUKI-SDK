@@ -88,12 +88,12 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
-copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
-robocopy /E %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
-rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
+rem copy /V /Y bin\bpy.pyd %PREFIX%\Lib\site-packages
+rem robocopy /E %PREFIX%\Lib\site-packages\%PKG_VERSION% %PREFIX%\%PKG_VERSION%
+rem rd /s /q %PREFIX%\Lib\site-packages\%PKG_VERSION%
 
-cd ..\..
+rem cd ..\..
 
-copy /V /Y lib\%THIRDPARTY%\ffmpeg\lib\*.dll %PREFIX%\DLLs
-copy /V /Y lib\%THIRDPARTY%\gmp\lib\*.dll %PREFIX%\DLLs
-copy /V /Y lib\%THIRDPARTY%\sndfile\lib\*.dll %PREFIX%\DLLs
+rem copy /V /Y lib\%THIRDPARTY%\ffmpeg\lib\*.dll %PREFIX%\DLLs
+rem copy /V /Y lib\%THIRDPARTY%\gmp\lib\*.dll %PREFIX%\DLLs
+rem copy /V /Y lib\%THIRDPARTY%\sndfile\lib\*.dll %PREFIX%\DLLs
