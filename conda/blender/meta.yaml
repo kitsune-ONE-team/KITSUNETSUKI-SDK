@@ -36,6 +36,7 @@ build:
   missing_dso_whitelist:
     - $RPATH/api-ms-win-core-path-l1-1-0.dll # [win]
     - $RPATH/avcodec-59.dll # [win]
+    - $RPATH/avdevice-59.dll # [win]
     - $RPATH/avformat-59.dll # [win]
     - $RPATH/avutil-57.dll # [win]
     - $RPATH/epoxy-0.dll # [win]
