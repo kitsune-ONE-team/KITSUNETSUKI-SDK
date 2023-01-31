@@ -1,0 +1,35 @@
+name: sdk
+
+channels:
+  - kitsune.one
+  - defaults
+
+dependencies:
+  - anaconda-client
+  - cmake==3.22.1
+  - conda==4.13.0
+  - jsonschema==3.2.0
+  - panda3d-kphys==0.4.8
+  - panda3d-krender==0.0.8
+  - panda3d==1.10.11
+  - pip
+  - pyqt==5.9.2
+  - python-blender==3.4
+  - python==3.10.0
+  - qt==5.9.7
+  - sphinx
+  - pip:
+    - cython==0.29.24
+    - epc
+    - flake8
+    - httplib2==0.20.2
+    - jedi
+    - jinja2
+    - nvidia-ml-py==11.515.0
+    - oauth2==1.9.0.post1
+    - panda3d-gltf==0.13
+    - py-ubjson==0.16.1
+    - sphinx-materialdesign-theme
+    - git+https://github.com/Moguri/panda3d-gltf@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
+    - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
+    - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl
