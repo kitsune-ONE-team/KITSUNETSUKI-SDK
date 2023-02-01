@@ -9,7 +9,7 @@ dependencies:
   - cmake==3.22.1
   - conda==4.13.0
   - jsonschema==3.2.0
-  - panda3d-kphys==0.4.12
+  - panda3d-kphys==0.4.13
   - panda3d-krender==0.0.8
   - panda3d==1.11.0
   - pip
