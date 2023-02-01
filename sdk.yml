@@ -11,13 +11,12 @@ dependencies:
   - jsonschema==3.2.0
   - panda3d-kphys==0.4.8
   - panda3d-krender==0.0.8
-  - panda3d==1.10.11
+  - panda3d==1.11.0
   - pip
   - pyqt==5.9.2
   - python-blender==3.4
   - python==3.10.0
   - qt==5.9.7
-  - sphinx
   - pip:
     - cython==0.29.24
     - epc
@@ -27,8 +26,8 @@ dependencies:
     - jinja2
     - nvidia-ml-py==11.515.0
     - oauth2==1.9.0.post1
-    - panda3d-gltf==0.13
     - py-ubjson==0.16.1
+    - sphinx
     - sphinx-materialdesign-theme
     - git+https://github.com/Moguri/panda3d-gltf@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
     - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git

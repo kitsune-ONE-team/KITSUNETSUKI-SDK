@@ -10,7 +10,7 @@ PANDA_VERSION=1.11
 PYTHON_VERSION=3.10
 RP_VERSION=2.0.4
 
-pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
+pip install git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
@@ -19,17 +19,21 @@ pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/include
+
 cp -fv ${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so.1.0 \
-                                                            ${PREFIX}/kitsunetsuki-runtime/
+    ${PREFIX}/kitsunetsuki-runtime/
 cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/os.py \
-                                                            ${PREFIX}/kitsunetsuki-runtime/
+    ${PREFIX}/kitsunetsuki-runtime/
 cp -Rfv ${CONDA_PREFIX}/include/python${PYTHON_VERSION}/* \
-                                                            ${PREFIX}/kitsunetsuki-runtime/include/
+    ${PREFIX}/kitsunetsuki-runtime/include/
 
 cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/lib-dynload \
-                                                            ${PREFIX}/kitsunetsuki-runtime
+    ${PREFIX}/kitsunetsuki-runtime
 cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/kphys \
-                                                            ${PREFIX}/kitsunetsuki-runtime
+    ${PREFIX}/kitsunetsuki-runtime
+cp -Rfv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/krender \
+    ${PREFIX}/kitsunetsuki-runtime
+
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_bisect.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_codecs_*.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/_crypt.cpython-*-linux-gnu.so
@@ -61,12 +65,10 @@ rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/syslog.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/termios.cpython-*-linux-gnu.so
 rm -fv ${PREFIX}/kitsunetsuki-runtime/lib-dynload/xxlimited.cpython-*-linux-gnu.so
 
-cp -fv \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/*.so \
-                                                            ${PREFIX}/kitsunetsuki-runtime/panda3d/
-cp -fv \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
-                                                            ${PREFIX}/kitsunetsuki-runtime
+cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d/*.so \
+    ${PREFIX}/kitsunetsuki-runtime/panda3d/
+cp -fv ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2/cacerts.txt \
+    ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv ${RECIPE_DIR}/Miniconda3-LICENSE.txt                 ${PREFIX}/kitsunetsuki-runtime
 cp -fv ${RECIPE_DIR}/OpenAL-soft-LICENSE.txt                ${PREFIX}/kitsunetsuki-runtime
@@ -82,28 +84,27 @@ cp -fv ${ULIBX}/libopenal.so.*                              ${PREFIX}/kitsunetsu
 cp -fv ${ULIBX}/libsndio.so.*                               ${PREFIX}/kitsunetsuki-runtime
 
 cp -fv \
-   ${CONDA_PREFIX}/lib/libcrypto.so.* \
-   ${CONDA_PREFIX}/lib/libffi.so.* \
-   ${CONDA_PREFIX}/lib/libfreetype.so.* \
-   ${CONDA_PREFIX}/lib/libglib-2.0.so.* \
-   ${CONDA_PREFIX}/lib/libgraphite2.so.* \
-   ${CONDA_PREFIX}/lib/libharfbuzz.so.* \
-   ${CONDA_PREFIX}/lib/libogg.so.* \
-   ${CONDA_PREFIX}/lib/libp3*.so.* \
-   ${CONDA_PREFIX}/lib/libp3openal_audio.so \
-   ${CONDA_PREFIX}/lib/libp3ptloader.so \
-   ${CONDA_PREFIX}/lib/libpanda*.so.* \
-   ${CONDA_PREFIX}/lib/libpandagl.so \
-   ${CONDA_PREFIX}/lib/libpcre.so.* \
-   ${CONDA_PREFIX}/lib/libpng16.so.* \
-   ${CONDA_PREFIX}/lib/libssl.so.* \
-   ${CONDA_PREFIX}/lib/libvorbis.so.* \
-   ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
-                                                            ${PREFIX}/kitsunetsuki-runtime
+        ${CONDA_PREFIX}/lib/libcrypto.so.* \
+        ${CONDA_PREFIX}/lib/libffi.so.* \
+        ${CONDA_PREFIX}/lib/libfreetype.so.* \
+        ${CONDA_PREFIX}/lib/libglib-2.0.so.* \
+        ${CONDA_PREFIX}/lib/libgraphite2.so.* \
+        ${CONDA_PREFIX}/lib/libharfbuzz.so.* \
+        ${CONDA_PREFIX}/lib/libogg.so.* \
+        ${CONDA_PREFIX}/lib/libp3*.so.* \
+        ${CONDA_PREFIX}/lib/libp3openal_audio.so \
+        ${CONDA_PREFIX}/lib/libp3ptloader.so \
+        ${CONDA_PREFIX}/lib/libpanda*.so.* \
+        ${CONDA_PREFIX}/lib/libpandagl.so \
+        ${CONDA_PREFIX}/lib/libpcre.so.* \
+        ${CONDA_PREFIX}/lib/libpng16.so.* \
+        ${CONDA_PREFIX}/lib/libssl.so.* \
+        ${CONDA_PREFIX}/lib/libvorbis.so.* \
+        ${CONDA_PREFIX}/lib/libvorbisfile.so.* \
+    ${PREFIX}/kitsunetsuki-runtime
 
-cp -fv \
-   ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
-                                                            ${PREFIX}/kitsunetsuki-runtime/libpandaegg.so
+cp -fv ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
+    ${PREFIX}/kitsunetsuki-runtime/libpandaegg.so
 
 7za a \
     -tzip -x@${RECIPE_DIR}/exclude.txt -xr@${RECIPE_DIR}/excluder.txt \
