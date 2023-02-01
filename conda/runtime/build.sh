@@ -123,7 +123,7 @@ cp -fv ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2 \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d.dist-info \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d_gltf-0.13.dist-info \
+    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d_gltf-0.14.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pkg_resources \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
@@ -139,9 +139,9 @@ cp -fv ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/ubjson
 
 pip uninstall --yes \
-    httplib2 \
-    oauth2 \
     panda3d-gltf \
     py-ubjson \
+    httplib2 \
+    oauth2 \
     render-pipeline \
     nvidia-ml-py

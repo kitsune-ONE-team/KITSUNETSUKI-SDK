@@ -8,7 +8,7 @@ color 0f
 set PYTHONVERSION=310
 set RP_VERSION=2.0.4
 
-pip install git+https://github.com/Moguri/panda3d-gltf.git@v0.13
+pip install git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
@@ -20,6 +20,7 @@ copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll         %PREFIX%\kitsunetsuk
 copy /V /Y %CONDA_PREFIX%\Lib\os.py                         %PREFIX%\kitsunetsuki-runtime\
 xcopy /I /E /Y %CONDA_PREFIX%\DLLs                          %PREFIX%\kitsunetsuki-runtime\DLLs
 xcopy /I /E /Y %CONDA_PREFIX%\Lib\site-packages\kphys       %PREFIX%\kitsunetsuki-runtime\kphys
+xcopy /I /E /Y %CONDA_PREFIX%\Lib\site-packages\krender     %PREFIX%\kitsunetsuki-runtime\krender
 xcopy /I /E /Y %CONDA_PREFIX%\include                       %PREFIX%\kitsunetsuki-runtime\include
 
 del %PREFIX%\kitsunetsuki-runtime\cg.dll
@@ -100,7 +101,7 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.13.dist-info ^
+    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.14.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
     %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
@@ -116,9 +117,9 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
 pip uninstall --yes ^
-    httplib2 ^
-    oauth2 ^
     panda3d-gltf ^
     py-ubjson ^
+    httplib2 ^
+    oauth2 ^
     render-pipeline ^
     nvidia-ml-py

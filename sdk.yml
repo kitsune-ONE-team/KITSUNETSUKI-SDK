@@ -29,6 +29,6 @@ dependencies:
     - py-ubjson==0.16.1
     - sphinx
     - sphinx-materialdesign-theme
-    - git+https://github.com/Moguri/panda3d-gltf@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
+    - git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
     - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
     - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl
