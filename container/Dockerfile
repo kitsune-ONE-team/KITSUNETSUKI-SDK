@@ -17,10 +17,15 @@ RUN \
     apt install -y \
         mesa-common-dev mesa-utils libgl1-mesa-dev libglu1-mesa-dev \
         libglew-dev libxxf86vm-dev libxrender-dev libxext-dev libopenal-dev && \
+    apt install -y openjdk-11-jre && \
     apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone && \
     ln -sf /home /var/home
+
+RUN wget -q -O /opt/jenkins.war https://get.jenkins.io/war-stable/2.346.2/jenkins.war
+COPY ./run-jenkins /usr/local/bin/run-jenkins
+COPY ./builder.yml /opt/builder.yml
 
 RUN \
     wget -q -O /opt/miniconda3.sh \
@@ -28,5 +33,6 @@ RUN \
     chmod +x /opt/miniconda3.sh && \
     /opt/miniconda3.sh -b -p /opt/miniconda3 && \
     ln -sf /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    /opt/miniconda3/bin/conda env create -f=/opt/builder.yml -p /opt/builder && \
     /opt/miniconda3/bin/conda clean -a -y && \
     rm -f /opt/miniconda3.sh

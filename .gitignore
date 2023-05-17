@@ -2,9 +2,9 @@
 /conda/kphys/build/
 /conda/panda3d/test.txt
 /conda/panda3d/test.zip
-/container/sdk_base/conda/envs/*
-/container/sdk_base/itch/*
-/container/sdk_builder/binstar/*
-/container/sdk_builder/jenkins/*
-/container/sdk_builder/jenkins_jobs/jenkins_jobs.ini
+/container/conda/envs/*
+/container/itch/*
+/container/binstar/*
+/container/jenkins/*
+/container/jenkins_jobs/jenkins_jobs.ini
 __pycache__

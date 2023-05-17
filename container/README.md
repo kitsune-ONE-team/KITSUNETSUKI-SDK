@@ -1,9 +1,34 @@
-Collection of container image build files
-=========================================
+KITSUNETSUKI SDK image
+======================
+
+KITSUNETSUKI SDK container image.
 
 
-Files and directories structure
--------------------------------
+Building image
+--------------
 
-* [sdk_base](sdk_base) - base SDK (miniconda) container image
-* [sdk_builder](sdk_builder) - SDK builder (Jenkins master node) container image
+You can skip it if you want to use prebuilt images.
+
+```
+podman build -f Dockerfile
+```
+
+or
+
+```
+docker build -f Dockerfile
+```
+
+
+Downloading prebuilt image
+--------------------------
+
+```
+podman pull docker.io/yonnji/sdk
+```
+
+or
+
+```
+docker pull docker.io/yonnji/sdk
+```
