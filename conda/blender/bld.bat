@@ -83,3 +83,19 @@ cd ..\..
 
 robocopy /E %PREFIX%\Lib\site-packages\blender.crt %PREFIX%\Lib\site-packages\bpy\blender.crt
 rd /s /q %PREFIX%\Lib\site-packages\blender.crt
+
+copy /V /Y %THIRDPARTY%\MaterialX\bin\*.dll   %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\OpenImageIO\bin\*.dll %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\boost\lib\*.dll       %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\dpcpp\bin\*.dll       %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\ffmpeg\lib\*.dll      %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\imath\bin\*.dll       %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\level-zero\bin\*.dll  %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\opencolorio\bin\*.dll %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\openexr\bin\*.dll     %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\openvdb\bin\*.dll     %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\tbb\bin\*.dll         %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\embree\bin\*.dll      %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\openal\lib\*.dll      %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\sdl\lib\*.dll         %PREFIX%\Library\bin
+copy /V /Y %THIRDPARTY%\fftw3\lib\*.dll       %PREFIX%\Library\bin
