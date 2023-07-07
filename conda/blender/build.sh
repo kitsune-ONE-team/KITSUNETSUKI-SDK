@@ -9,16 +9,6 @@ mkdir -p blender/bld
 
 cd blender
 
-rm -Rf release/scripts/addons
-rm -Rf release/scripts/addons_contrib
-rm -Rf release/datafiles/locale
-rm -Rf source/tools
-
-cp -Rf ../blender_extras/release/scripts/addons release/scripts/
-cp -Rf ../blender_extras/release/scripts/addons_contrib release/scripts/
-cp -Rf ../blender_extras/release/datafiles/locale release/datafiles/
-cp -Rf ../blender_extras/source/tools source/
-
 cd bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \

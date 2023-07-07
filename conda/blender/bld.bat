@@ -31,11 +31,6 @@ if not exist blender\bld (
     cd ..
 )
 
-robocopy /E blender_extras\release\scripts\addons         blender\release\scripts\addons
-robocopy /E blender_extras\release\scripts\addons_contrib blender\release\scripts\addons_contrib
-robocopy /E blender_extras\release\datafiles\locale       blender\release\datafiles\locale
-robocopy /E blender_extras\source\tools                   blender\source\tools
-
 cd blender\bld
 cmake -G "NMake Makefiles" ^
     -DCMAKE_BUILD_TYPE=Release ^
