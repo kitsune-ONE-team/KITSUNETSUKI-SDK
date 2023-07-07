@@ -1,9 +1,9 @@
 if "%ARCH%" == "64" (
     call %VSBT_PATH% x64 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=%PKG_NAME%-%PKG_VERSION%\thirdparty\win-libs-vc14-x64
+    set THIRDPARTY=thirdparty\win-libs-vc14-x64
 ) else (
     call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=%PKG_NAME%-%PKG_VERSION%\thirdparty\win-libs-vc14
+    set THIRDPARTY=thirdparty\win-libs-vc14
 )
 color 0f
 
