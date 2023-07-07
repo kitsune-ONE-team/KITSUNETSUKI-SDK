@@ -1,9 +1,9 @@
 if "%ARCH%" == "64" (
     call %VSBT_PATH% x64 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=win64_vc15
+    set THIRDPARTY=lib/win64_vc15
 ) else (
     call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=win64_vc15
+    set THIRDPARTY=lib/win64_vc15
 )
 set PYTHON_VERSION=3.10
 set PYTHONVERSION=310
@@ -11,17 +11,17 @@ set PYTHONVERSION=310
 color 0f
 
 :: remove included python
-if exist lib\%THIRDPARTY%\python (
-    rd /s /q lib\%THIRDPARTY%\python
+if exist %THIRDPARTY%\python (
+    rd /s /q %THIRDPARTY%\python
 )
 
-mkdir lib\%THIRDPARTY%\python
-mkdir lib\%THIRDPARTY%\python\%PYTHONVERSION%
-mkdir lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
-copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
-copy /V /Y %CONDA_PREFIX%\python3.dll               lib\%THIRDPARTY%\python\%PYTHONVERSION%\bin
+mkdir %THIRDPARTY%\python
+mkdir %THIRDPARTY%\python\%PYTHONVERSION%
+mkdir %THIRDPARTY%\python\%PYTHONVERSION%\bin
+copy /V /Y %CONDA_PREFIX%\python%PYTHONVERSION%.dll %THIRDPARTY%\python\%PYTHONVERSION%\bin
+copy /V /Y %CONDA_PREFIX%\python3.dll               %THIRDPARTY%\python\%PYTHONVERSION%\bin
 
-robocopy /E %RECIPE_DIR%\boost lib\%THIRDPARTY%\boost
+robocopy /E %RECIPE_DIR%\boost %THIRDPARTY%\boost
 
 if not exist blender\bld (
     mkdir blender\bld
