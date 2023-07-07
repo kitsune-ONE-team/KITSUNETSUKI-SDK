@@ -38,6 +38,7 @@ build:
     - $RPATH/libopenal.so.1
     - $RPATH/libpthread.so.0
     - $RPATH/librt.so.1
+    - $RPATH/libsndio.so.7
     - $RPATH/libsndio.so.7.0
     - $RPATH/libutil.so.1
     - $RPATH/pgort140.DLL
