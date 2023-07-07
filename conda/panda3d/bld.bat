@@ -66,7 +66,7 @@ rem xcopy /I /E /Y dtool\src\parser-inc               %PREFIX%\Library\include\p
 :: copy dist-info for pip
 rem xcopy /I /E /Y %BUILT%\panda3d.dist-info          %PREFIX%\Lib\site-packages\panda3d.dist-info
 
-python makepanda/makepanda.py ^
+%PYTHON% makepanda/makepanda.py ^
     --openssl-incdir %CONDA_PREFIX%\include ^
     --openssl-libdir %CONDA_PREFIX%\lib ^
     --bullet-incdir %CONDA_PREFIX%\include ^
@@ -109,7 +109,7 @@ if "%ERRORLEVEL%" == "1" (
     exit /B 1
 )
 
-python makepanda/makewheel.py ^
+%PYTHON% makepanda/makewheel.py ^
     --outputdir %BUILT% ^
     --verbose
 
