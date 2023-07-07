@@ -9,17 +9,17 @@ source:
 
   - git_url: https://projects.blender.org/blender/blender-addons.git
     git_rev: v3.6.0
-    folder: blender_extras/release/scripts/addons
+    folder: scripts/addons
 
   - git_url: https://projects.blender.org/blender/blender-addons-contrib.git
     git_rev: v3.6.0
-    folder: blender_extras/release/scripts/addons_contrib
+    folder: scripts/addons_contrib
 
   - svn_url: https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15 # [win64]
     folder: lib/win64_vc15 # [win64]
 
-  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64 # [unix]
-    folder: lib/linux_centos7_x86_64 # [unix]
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_x86_64_glibc_228 # [unix]
+    folder: lib/linux_x86_64_glibc_228 # [unix]
 
 build:
   number: 0
