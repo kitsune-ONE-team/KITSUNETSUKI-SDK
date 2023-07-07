@@ -11,7 +11,7 @@ cmake \
     -DINSTALL_PY=ON \
     ..
 
-make
+make VERBOSE=1
 make install
 
 cd ..
