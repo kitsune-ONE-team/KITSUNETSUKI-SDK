@@ -1,9 +1,9 @@
 if "%ARCH%" == "64" (
     call %VSBT_PATH% x64 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=thirdparty\win-libs-vc14-x64
+    set THIRDPARTY=%PKG_NAME%-%PKG_VERSION%\thirdparty\win-libs-vc14-x64
 ) else (
     call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=thirdparty\win-libs-vc14
+    set THIRDPARTY=%PKG_NAME%-%PKG_VERSION%\thirdparty\win-libs-vc14
 )
 color 0f
 
@@ -20,6 +20,8 @@ if exist thirdparty\win-python3.7-x64 ( rmdir /S /Q thirdparty\win-python3.7-x64
 if exist thirdparty\win-python3.8-x64 ( rmdir /S /Q thirdparty\win-python3.8-x64 )
 if exist thirdparty\win-python3.9-x64 ( rmdir /S /Q thirdparty\win-python3.9-x64 )
 if exist thirdparty\win-python3.10-x64 ( rmdir /S /Q thirdparty\win-python3.10-x64 )
+if exist thirdparty\win-python3.11-x64 ( rmdir /S /Q thirdparty\win-python3.11-x64 )
+if exist thirdparty\win-python3.12-x64 ( rmdir /S /Q thirdparty\win-python3.12-x64 )
 if exist thirdparty\win-python-x64 ( rmdir /S /Q thirdparty\win-python-x64 )
 
 set BUILT=built
