@@ -1,1 +1,1 @@
-from krender.core import RenderPipeline, LightingPipeline
+from krender.core import RenderPipeline
