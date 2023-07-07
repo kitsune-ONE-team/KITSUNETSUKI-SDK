@@ -21,7 +21,7 @@ build:
 requirements:
   build:
     - cmake==3.22.1
-    - conda==4.13.0
+    - conda==23.3.1
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - panda3d

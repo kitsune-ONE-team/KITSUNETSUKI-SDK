@@ -62,7 +62,7 @@ requirements:
     - bison # [unix]
     - bullet==3.17
     - cmake==3.22.1
-    - conda==4.13.0
+    - conda==23.3.1
     - fontconfig # [unix]
     - freetype # [unix]
     - harfbuzz # [unix]

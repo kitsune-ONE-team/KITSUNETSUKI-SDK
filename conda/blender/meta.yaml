@@ -59,13 +59,13 @@ build:
 requirements:
   build:
     - bullet
-    - cmake
-    - conda ==4.13.0
+    - cmake==3.22.1
+    - conda==23.3.1
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - m2-patch # [win]
     - numpy >=1.22.3
-    - python ==3.10.0
+    - python==3.10.0
   run:
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]

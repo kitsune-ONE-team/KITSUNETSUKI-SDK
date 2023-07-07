@@ -1,6 +1,6 @@
 package:
   name: kitsunetsuki-runtime
-  version: "0.7"
+  version: "0.8"
 
 source:
   path: .
@@ -58,12 +58,12 @@ build:
 
 requirements:
   build:
-    - conda==4.13.0
+    - conda==23.3.1
     - idna
     - jsonschema==3.2.0
     - panda3d==1.11.0
-    - panda3d-kphys==0.4.13
-    - panda3d-krender==0.0.9
+    - panda3d-kphys==0.5.3
+    - panda3d-krender==0.0.13
     - pyparsing
     - pyrsistent
     - pytest-runner
