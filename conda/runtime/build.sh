@@ -109,9 +109,7 @@ cp -fv ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
     ${PREFIX}/kitsunetsuki-runtime/python${PYTHON_VERSION/./}.zip \
     "${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/*" \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/attr \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/config \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/direct \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/effects \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/gltf \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2 \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/idna \

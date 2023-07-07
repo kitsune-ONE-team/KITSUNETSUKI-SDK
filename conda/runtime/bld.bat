@@ -87,9 +87,7 @@ D:\7-Zip\7z a ^
     %PREFIX%\kitsunetsuki-runtime\python%PYTHONVERSION%.zip ^
     "%CONDA_PREFIX%\Lib\*" ^
     %CONDA_PREFIX%\Lib\site-packages\attr ^
-    %CONDA_PREFIX%\Lib\site-packages\config ^
     %CONDA_PREFIX%\Lib\site-packages\direct ^
-    %CONDA_PREFIX%\Lib\site-packages\effects ^
     %CONDA_PREFIX%\Lib\site-packages\gltf ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
