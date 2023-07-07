@@ -1,10 +1,10 @@
 package:
   name: panda3d
-  version: "1.11.0"
+  version: "1.10.13"
 
 source:
   - git_url: https://github.com/panda3d/panda3d.git
-    git_rev: 63017864ab978a4f4ff69f60584677c7dcf13eb0
+    git_rev: v1.10.13
     folder: .
     patches:
       - 01_bullet_v3.patch
@@ -14,16 +14,16 @@ source:
       - 05_py_noinst.patch # [win]
       - 06_py_prefix.patch # [win]
       - 07_rgba.patch # [unix]
-      - 08_kbd.patch # [unix]
+      # - 08_kbd.patch # [unix]
       - 09_rp_light.patch
       - 10_libp3rplight.patch
 
-  - url: https://www.panda3d.org/download/panda3d-1.10.12/panda3d-1.10.12-tools-win64.zip # [win64]
-    md5: d3a52735ccd23295d3913239e6e6a364 # [win64]
+  - url: https://www.panda3d.org/download/panda3d-1.10.13/panda3d-1.10.13-tools-win64.zip # [win64]
+    md5: d51607cff36314ab1ac5911123820277 # [win64]
 
 build:
   number: 0
-  string: 1667748744
+  string: 1688726225
 
   missing_dso_whitelist:
     - $RPATH/D3DCOMPILER_43.dll # [win]
