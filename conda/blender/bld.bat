@@ -1,9 +1,9 @@
 if "%ARCH%" == "64" (
     call %VSBT_PATH% x64 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=lib/win64_vc15
+    set THIRDPARTY=lib\win64_vc15
 ) else (
     call %VSBT_PATH% x86 %WINDOWS_SDK_VERSION%
-    set THIRDPARTY=lib/win64_vc15
+    set THIRDPARTY=lib\win64_vc15
 )
 set PYTHON_VERSION=3.10
 set PYTHONVERSION=310
