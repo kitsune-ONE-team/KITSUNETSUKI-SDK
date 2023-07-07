@@ -50,6 +50,7 @@ build:
     - $RPATH/libgmp-10.dll
     - $RPATH/libgmpxx.dll
     - $RPATH/libm.so.6
+    - $RPATH/libmvec.so.1
     - $RPATH/libpthread.so.0
     - $RPATH/librt.so.1
     - $RPATH/libsndfile-1.dll

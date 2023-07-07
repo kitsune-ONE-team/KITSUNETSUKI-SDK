@@ -7,9 +7,7 @@ rm -Rf ${THIRDPARTY}/python
 
 mkdir -p blender/bld
 
-cd blender
-
-cd bld
+cd blender/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
@@ -49,4 +47,6 @@ cmake \
 make
 make install
 
-cd ..
+cd ../..
+
+cp -fv ${THIRDPARTY}/level-zero/lib/*.so.* ${PREFIX}/lib/
