@@ -1,6 +1,6 @@
 #!/bin/bash
 source /etc/profile
-conda activate builder
+conda activate /opt/builder
 
 JENKINS_DIR=${HOME}/jenkins
 if [ ! -d ${JENKINS_DIR} ]; then
