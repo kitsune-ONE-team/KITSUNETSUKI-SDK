@@ -1,8 +1,16 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 23fd57afaa..968ed7c7ef 100755
+index 23fd57afaa..9ad76fb0fa 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -6973,6 +6973,7 @@ if (PkgSkip("CONTRIB")==0 and not RUNTIME):
+@@ -3755,6 +3755,7 @@ if (PkgSkip("PANDATOOL")==0):
+ if (PkgSkip("CONTRIB")==0):
+     CopyAllHeaders('contrib/src/contribbase')
+     CopyAllHeaders('contrib/src/ai')
++    CopyAllHeaders('contrib/src/rplight')
+ 
+ ########################################################################
+ #
+@@ -6973,6 +6974,7 @@ if (PkgSkip("CONTRIB")==0 and not RUNTIME):
  if not PkgSkip("CONTRIB") and not PkgSkip("PYTHON") and not RUNTIME:
    OPTS=['DIR:contrib/src/rplight', 'BUILDING:RPLIGHT']
    TargetAdd('p3rplight_composite1.obj', opts=OPTS, input='p3rplight_composite1.cxx')
