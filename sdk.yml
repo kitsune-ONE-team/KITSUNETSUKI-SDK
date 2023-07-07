@@ -13,10 +13,8 @@ dependencies:
   - panda3d-krender==0.0.9
   - panda3d==1.11.0
   - pip
-  - pyqt==5.9.2
   - python-blender==3.4
   - python==3.10.0
-  - qt==5.9.7
   - pip:
     - cython==0.29.24
     - epc
@@ -31,4 +29,3 @@ dependencies:
     - sphinx-materialdesign-theme
     - git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
     - git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git
-    - https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v2.0.1/render_pipeline-2.0.1-py3-none-any.whl

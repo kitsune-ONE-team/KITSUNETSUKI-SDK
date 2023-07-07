@@ -6,13 +6,11 @@ if "%ARCH%" == "64" (
 color 0f
 
 set PYTHONVERSION=310
-set RP_VERSION=2.0.4
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
-pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v%RP_VERSION%/render_pipeline-%RP_VERSION%-py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir %PREFIX%\kitsunetsuki-runtime\panda3d
@@ -94,25 +92,14 @@ D:\7-Zip\7z a ^
     %CONDA_PREFIX%\Lib\site-packages\effects ^
     %CONDA_PREFIX%\Lib\site-packages\gltf ^
     %CONDA_PREFIX%\Lib\site-packages\httplib2 ^
-    %CONDA_PREFIX%\Lib\site-packages\httplib2-0.20.2.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\idna ^
     %CONDA_PREFIX%\Lib\site-packages\jsonschema ^
-    %CONDA_PREFIX%\Lib\site-packages\jsonschema-3.2.0.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\oauth2 ^
-    %CONDA_PREFIX%\Lib\site-packages\oauth2-1.9.0.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\panda3d_gltf-0.14.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pandac ^
     %CONDA_PREFIX%\Lib\site-packages\pkg_resources ^
-    %CONDA_PREFIX%\Lib\site-packages\py_ubjson-0.16.1.dist-info ^
     %CONDA_PREFIX%\Lib\site-packages\pynvml.py ^
     %CONDA_PREFIX%\Lib\site-packages\pyparsing ^
     %CONDA_PREFIX%\Lib\site-packages\pyrsistent ^
-    %CONDA_PREFIX%\Lib\site-packages\render_pipeline-%RP_VERSION%.dist-info ^
-    %CONDA_PREFIX%\Lib\site-packages\rpcore ^
-    %CONDA_PREFIX%\Lib\site-packages\rplibs ^
-    %CONDA_PREFIX%\Lib\site-packages\rpplugins ^
-    %CONDA_PREFIX%\Lib\site-packages\shader ^
     %CONDA_PREFIX%\Lib\site-packages\six.py ^
     %CONDA_PREFIX%\Lib\site-packages\ubjson
 
@@ -121,5 +108,4 @@ pip uninstall --yes ^
     py-ubjson ^
     httplib2 ^
     oauth2 ^
-    render-pipeline ^
     nvidia-ml-py

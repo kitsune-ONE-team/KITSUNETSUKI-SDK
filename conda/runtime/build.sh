@@ -6,15 +6,13 @@ else
 fi
 
 ULIBX=/usr/lib/${LARCH}-linux-gnu
-PANDA_VERSION=1.11
+PANDA_VERSION=1.10
 PYTHON_VERSION=3.10
-RP_VERSION=2.0.4
 
 pip install git+https://github.com/Moguri/panda3d-gltf.git@cd8387f2f965ff9fca8b0eaeb023d1e7d2597fac
 pip install git+https://github.com/Iotic-Labs/py-ubjson.git@v0.16.1
 pip install git+https://github.com/httplib2/httplib2.git@v0.20.2
 pip install git+https://github.com/joestump/python-oauth2.git@v1.9
-pip install https://github.com/kitsune-ONE-team/RenderPipeline/releases/download/v${RP_VERSION}/render_pipeline-${RP_VERSION}-py3-none-any.whl
 pip install https://files.pythonhosted.org/packages/1b/ed/0be2dc05391e2ab43a07be0b0c9e068f70eb9811ab6b1d407c9c3f245d32/nvidia_ml_py-11.515.0-py3-none-any.whl
 
 mkdir -pv ${PREFIX}/kitsunetsuki-runtime/panda3d
@@ -116,25 +114,14 @@ cp -fv ${CONDA_PREFIX}/lib/libpandaegg.so.${PANDA_VERSION} \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/effects \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/gltf \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2 \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/httplib2-0.20.2.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/idna \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/jsonschema \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/jsonschema-3.2.0.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2 \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/oauth2-1.9.0.dist-info \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d.dist-info \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/panda3d_gltf-0.14.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pandac \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pkg_resources \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/py_ubjson-0.16.1.dist-info \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pynvml.py \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pyparsing \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/pyrsistent \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/render_pipeline-${RP_VERSION}.dist-info \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rpcore \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rplibs \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/rpplugins \
-    ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/shader \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/six.py \
     ${CONDA_PREFIX}/lib/python${PYTHON_VERSION}/site-packages/ubjson
 
@@ -143,5 +130,4 @@ pip uninstall --yes \
     py-ubjson \
     httplib2 \
     oauth2 \
-    render-pipeline \
     nvidia-ml-py
