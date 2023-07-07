@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 23fd57afaa..4c678259a2 100755
+index 23fd57afaa..b570479767 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
 @@ -788,15 +788,15 @@ if (COMPILER == "MSVC"):
@@ -53,3 +53,12 @@ index 23fd57afaa..4c678259a2 100755
  
  if (COMPILER=="GCC"):
      PkgDisable("MIMALLOC") # no discernable benefit over glibc
+@@ -1051,7 +1055,7 @@ if (COMPILER=="GCC"):
+         SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
+         SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
+         SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
+-        SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
++        SmartPkgEnable("BULLET", "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
+         SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
+         SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
+         SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")

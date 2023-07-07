@@ -7,10 +7,9 @@ source:
     git_rev: v1.10.13
     folder: .
     patches:
-      - 01_bullet_v3.patch
+      - 01_libs.patch
       - 02_bullet_char.patch
       - 03_icon.patch # [unix]
-      - 04_libs.patch
       - 05_py_noinst.patch # [win]
       - 06_py_prefix.patch # [win]
       - 07_rgba.patch # [unix]
