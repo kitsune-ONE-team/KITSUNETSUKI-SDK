@@ -69,6 +69,7 @@ build:
     - C:\Windows\System32\VCRUNTIME140_1.dll
     - Library\bin\Imath.dll
     - Library\bin\Imath_d.dll
+    - Library\bin\OpenAL32.dll
     - lib/libgcc_s.so.1
     - lib/libstdc++.so.6
 
@@ -83,7 +84,7 @@ requirements:
   run:
     - numpy >=1.22.3
     - python >=3.10.0,<3.11.0
-    - zlib
+    - zlib # [unix]
     - tbb
     - _openmp_mutex # [unix]
 
