@@ -55,6 +55,7 @@ build:
     - $RPATH/librt.so.1
     - $RPATH/libsndfile-1.dll
     - $RPATH/libutil.so.1
+    - $RPATH/python310_d.dll
     - $RPATH/swresample-4.dll
     - $RPATH/swscale-6.dll
     - $RPATH/tbbmalloc.dll
@@ -66,6 +67,8 @@ build:
     - C:\Windows\System32\SHLWAPI.dll
     - C:\Windows\System32\VCRUNTIME140.dll
     - C:\Windows\System32\VCRUNTIME140_1.dll
+    - Library\bin\Imath.dll
+    - Library\bin\Imath_d.dll
 
 requirements:
   build:
@@ -79,6 +82,7 @@ requirements:
     - numpy >=1.22.3
     - python >=3.10.0,<3.11.0
     - zlib
+    - tbb
     - _openmp_mutex # [unix]
 
 about:
