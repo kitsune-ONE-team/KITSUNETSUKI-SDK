@@ -15,7 +15,8 @@ RUN \
         g++-mingw-w64 libz-mingw-w64-dev && \
     apt install -y \
         mesa-common-dev mesa-utils libgl1-mesa-dev libglu1-mesa-dev \
-        libglew-dev libxxf86vm-dev libxrender-dev libxext-dev libopenal-dev && \
+        libglew-dev libopenal-dev \
+        libxxf86dga-dev libxxf86vm-dev libxrender-dev libxext-dev && \
     apt install -y libavcodec-dev libxvidcore-dev && \
     apt install -y openjdk-11-jre && \
     apt clean && \
