@@ -56,6 +56,8 @@ build:
     - C:\Windows\System32\WSOCK32.dll
     - Library/bin/MSVCP140.dll
     - Library/bin/VCRUNTIME140.dll
+    - lib/libgcc_s.so.1
+    - lib/libstdc++.so.6
 
 requirements:
   build:

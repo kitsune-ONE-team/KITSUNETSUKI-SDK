@@ -69,6 +69,8 @@ build:
     - C:\Windows\System32\VCRUNTIME140_1.dll
     - Library\bin\Imath.dll
     - Library\bin\Imath_d.dll
+    - lib/libgcc_s.so.1
+    - lib/libstdc++.so.6
 
 requirements:
   build:
