@@ -74,9 +74,7 @@ requirements:
     - bzip2
     - jpeg # [unix]
     - libffi
-    - libgcc-ng # [unix]
     - libpng
-    - libstdcxx-ng # [unix]
     - libtiff # [unix]
     - libuuid # [unix]
     - openssl
