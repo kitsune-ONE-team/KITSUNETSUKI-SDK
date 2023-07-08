@@ -17,6 +17,8 @@ build:
     - C:\Windows\System32\MSVCP140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140.dll # [win]
     - C:\Windows\System32\VCRUNTIME140_1.dll # [win]
+    - lib/libgcc_s.so.1
+    - lib/libstdc++.so.6
 
 requirements:
   build:
