@@ -83,6 +83,7 @@ requirements:
     - numpy >=1.22.3
     - python >=3.10.0,<3.11.0
     - zlib
+    - _openmp_mutex # [unix]
 
 about:
   home: https://www.blender.org/
