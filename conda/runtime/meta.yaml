@@ -7,7 +7,7 @@ source:
 
 build:
   number: 0
-  string: 1688804274
+  string: 1688830779
 
   missing_dso_whitelist:
     - $RPATH/D3DCOMPILER_43.dll
@@ -65,7 +65,7 @@ requirements:
     - idna
     - jsonschema==3.2.0
     - panda3d-kphys==0.5.4
-    - panda3d-krender==0.0.14
+    - panda3d-krender==0.0.15
     - panda3d==1.10.13
     - pyparsing
     - pyrsistent
