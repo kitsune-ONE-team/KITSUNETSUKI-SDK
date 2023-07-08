@@ -13,7 +13,7 @@ dependencies:
   - panda3d-krender==0.0.14
   - panda3d==1.10.13
   - pip
-  - python-blender==3.4
+  - python-blender==3.6
   - python==3.10.0
   - pip:
     - cython==0.29.24
