@@ -42,7 +42,7 @@ cmake \
     -DSDL2_LIBRARY=${THIRDPARTY}/sdl/lib/libSDL2.a \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
-    -D_openimageio_LIBRARIES=${THIRDPARTY}/openimageio/lib/libOpenImageIO.so.2.4.11;${THIRDPARTY}/openimageio/lib/libOpenImageIO_Util.so.2.4.11 \
+    -D_openimageio_LIBRARIES="${THIRDPARTY}/openimageio/lib/libOpenImageIO.so.2.4.11;${THIRDPARTY}/openimageio/lib/libOpenImageIO_Util.so.2.4.11" \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
