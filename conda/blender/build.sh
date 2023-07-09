@@ -27,6 +27,7 @@ cmake \
     -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
     -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
+    -DPNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPNG_PNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
