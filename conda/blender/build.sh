@@ -17,6 +17,9 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
+    -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
+    -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
+    -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
     -DEpoxy_INCLUDE_DIR=${THIRDPARTY}/epoxy/include \
     -DEpoxy_LIBRARY=${THIRDPARTY}/epoxy/lib/libepoxy.a \
     -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
@@ -30,7 +33,6 @@ cmake \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
-    -DFT_REQUIRE_BROTLI=OFF \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
@@ -39,6 +41,7 @@ cmake \
     -DWITH_CYCLES_EMBREE=ON \
     -DWITH_DRACO=ON \
     -DWITH_FREESTYLE=ON \
+    -DWITH_FREETYPE=OFF \
     -DWITH_HEADLESS=ON \
     -DWITH_INSTALL_PORTABLE=OFF \
     -DWITH_JACK=ON \
@@ -56,6 +59,7 @@ cmake \
     -DWITH_PYTHON_INSTALL_NUMPY=OFF \
     -DWITH_PYTHON_MODULE=ON \
     -DWITH_SDL=ON \
+    -DWITH_SYSTEM_FREETYPE=ON \
     -DWITH_TBB=ON \
     -DWITH_X11_XINPUT=ON \
     -D_LEVEL_ZERO_INCLUDE_DIR=${THIRDPARTY}/level-zero/include \
