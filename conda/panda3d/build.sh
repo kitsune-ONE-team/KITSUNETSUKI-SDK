@@ -42,16 +42,16 @@ mkdir -p bld
 python makepanda/makepanda.py \
     --bullet-incdir ${CONDA_PREFIX}/include \
     --bullet-libdir ${CONDA_PREFIX}/lib \
-    --freetype-incdir ${THIRDPARTY}/include \
-    --freetype-libdir ${THIRDPARTY}/lib \
-    --jpeg-incdir ${THIRDPARTY}/include \
-    --jpeg-libdir ${THIRDPARTY}/lib \
-    --openal-incdir ${THIRDPARTY}/include \
-    --openal-libdir ${THIRDPARTY}/lib \
+    --freetype-incdir ${THIRDPARTY}/freetype/include \
+    --freetype-libdir ${THIRDPARTY}/freetype/lib \
+    --jpeg-incdir ${THIRDPARTY}/jpeg/include \
+    --jpeg-libdir ${THIRDPARTY}/jpeg/lib \
+    --openal-incdir ${THIRDPARTY}/openal/include \
+    --openal-libdir ${THIRDPARTY}/openal/lib \
     --openssl-incdir ${CONDA_PREFIX}/include \
     --openssl-libdir ${CONDA_PREFIX}/lib \
-    --png-incdir ${THIRDPARTY}/include \
-    --png-libdir ${THIRDPARTY}/lib \
+    --png-incdir ${THIRDPARTY}/png/include \
+    --png-libdir ${THIRDPARTY}/png/lib \
     --python-incdir ${CONDA_PREFIX}/include \
     --python-libdir ${CONDA_PREFIX}/lib \
     --vorbis-incdir ${CONDA_PREFIX}/include \
