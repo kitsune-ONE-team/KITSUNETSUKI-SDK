@@ -74,6 +74,7 @@ requirements:
     - libogg # [unix]
     - libstdcxx-ng # [unix]
     - libvorbis # [unix]
+    - libx11-devel-cos6-x86_64 # [unix]
     - m2-gcc-libs # [win]
     - m2-p7zip # [win]
     - m2-patch # [win]
