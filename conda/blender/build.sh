@@ -40,6 +40,8 @@ cmake \
     -DOPENEXR_INCLUDE_DIR=${THIRDPARTY}/openexr/include \
     -DOPENEXR_LIBPATH=${THIRDPARTY}/openexr/lib \
     -DOPENEXR_ROOT_DIR=${THIRDPARTY}/openexr \
+    -DIMATH_ROOT_DIR=${THIRDPARTY}/openexr \
+    -DFFTW3_ROOT_DIR=${THIRDPARTY}/fftw3 \
     -DOPENIMAGEIO_INCLUDE_DIR=${THIRDPARTY}/openimageio/include \
     -DPNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
