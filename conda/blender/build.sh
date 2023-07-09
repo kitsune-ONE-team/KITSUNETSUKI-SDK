@@ -17,11 +17,11 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
-    -DBoost_INCLUDE_DIR=${THIRDPARTY}/boost/include \
     -DBOOST_LIBPATH=${THIRDPARTY}/boost/lib \
     -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
     -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
     -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
+    -DBoost_INCLUDE_DIR=${THIRDPARTY}/boost/include \
     -DEpoxy_INCLUDE_DIR=${THIRDPARTY}/epoxy/include \
     -DEpoxy_LIBRARY=${THIRDPARTY}/epoxy/lib/libepoxy.a \
     -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
@@ -32,7 +32,6 @@ cmake \
     -DOPENEXR_INCLUDE_DIR=${THIRDPARTY}/openexr/include \
     -DOPENEXR_LIBPATH=${THIRDPARTY}/openexr/lib \
     -DOPENIMAGEIO_INCLUDE_DIR=${THIRDPARTY}/openimageio/include \
-    -DOPENIMAGEIO_LIBPATH=${THIRDPARTY}/openimageio/lib \
     -DPNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
     -DPNG_PNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
@@ -43,6 +42,7 @@ cmake \
     -DSDL2_LIBRARY=${THIRDPARTY}/sdl/lib/libSDL2.a \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
+    -D_openimageio_LIBRARIES=${THIRDPARTY}/openimageio/lib/libOpenImageIO.so.2.4.11;${THIRDPARTY}/openimageio/lib/libOpenImageIO_Util.so.2.4.11 \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
