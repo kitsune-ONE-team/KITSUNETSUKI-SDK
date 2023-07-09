@@ -11,6 +11,7 @@ cd blender/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+    -DFFMPEG_ROOT_DIR=/usr/lib/x86_64-linux-gnu \
     -DLIBSNDFILE_ROOT_DIR=${THIRDPARTY}/sndfile \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
