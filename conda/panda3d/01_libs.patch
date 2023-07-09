@@ -1,7 +1,16 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 23fd57afaa..b570479767 100755
+index 23fd57afaa..b24e825cff 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
+@@ -88,7 +88,7 @@ PkgListSet(["PYTHON", "DIRECT",                        # Python support
+   "SPEEDTREE",                                         # SpeedTree
+   "ZLIB", "PNG", "JPEG", "TIFF", "OPENEXR", "SQUISH",  # 2D Formats support
+   ] + MAYAVERSIONS + MAXVERSIONS + [ "FCOLLADA", "ASSIMP", "EGG", # 3D Formats support
+-  "FREETYPE", "HARFBUZZ",                              # Text rendering
++  "FREETYPE", "HARFBUZZ", "BROTLI",                    # Text rendering
+   "VRPN", "OPENSSL",                                   # Transport
+   "FFTW",                                              # Algorithm helpers
+   "ARTOOLKIT", "OPENCV", "DIRECTCAM", "VISION",        # Augmented Reality
 @@ -788,15 +788,15 @@ if (COMPILER == "MSVC"):
              LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libeay32.lib")
              LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/ssleay32.lib")
@@ -53,7 +62,15 @@ index 23fd57afaa..b570479767 100755
  
  if (COMPILER=="GCC"):
      PkgDisable("MIMALLOC") # no discernable benefit over glibc
-@@ -1051,7 +1055,7 @@ if (COMPILER=="GCC"):
+@@ -1040,6 +1044,7 @@ if (COMPILER=="GCC"):
+         SmartPkgEnable("FMODEX",    "",          ("fmodex"), ("fmodex", "fmodex/fmod.h"))
+         SmartPkgEnable("FREETYPE",  "freetype2", ("freetype"), ("freetype2", "freetype2/freetype/freetype.h"))
+         SmartPkgEnable("HARFBUZZ",  "harfbuzz",  ("harfbuzz"), ("harfbuzz", "harfbuzz/hb-ft.h"))
++        SmartPkgEnable("BROTLI",    "brotli",    ("brotlicommon-static", "brotlidec-static", "brotlienc-static"), ("brotli", "brotli/types.h"))
+         SmartPkgEnable("GL",        "gl",        ("GL"), ("GL/gl.h"), framework = "OpenGL")
+         SmartPkgEnable("GLES",      "glesv1_cm", ("GLESv1_CM"), ("GLES/gl.h"), framework = "OpenGLES")
+         SmartPkgEnable("GLES2",     "glesv2",    ("GLESv2"), ("GLES2/gl2.h")) #framework = "OpenGLES"?
+@@ -1051,7 +1056,7 @@ if (COMPILER=="GCC"):
          SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
          SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
          SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
@@ -62,3 +79,66 @@ index 23fd57afaa..b570479767 100755
          SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
          SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
          SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
+@@ -4385,10 +4390,10 @@ if (not RUNTIME):
+ #
+ 
+ if (PkgSkip("FREETYPE")==0 and not RUNTIME):
+-  OPTS=['DIR:panda/src/pnmtext', 'BUILDING:PANDA',  'FREETYPE']
++  OPTS=['DIR:panda/src/pnmtext', 'BUILDING:PANDA',  'FREETYPE', 'BROTLI']
+   TargetAdd('p3pnmtext_composite1.obj', opts=OPTS, input='p3pnmtext_composite1.cxx')
+ 
+-  OPTS=['DIR:panda/src/pnmtext', 'FREETYPE']
++  OPTS=['DIR:panda/src/pnmtext', 'FREETYPE', 'BROTLI']
+   IGATEFILES=GetDirectoryContents('panda/src/pnmtext', ["*.h", "*_composite*.cxx"])
+   TargetAdd('libp3pnmtext.in', opts=OPTS, input=IGATEFILES)
+   TargetAdd('libp3pnmtext.in', opts=['IMOD:panda3d.core', 'ILIB:libp3pnmtext', 'SRCDIR:panda/src/pnmtext'])
+@@ -4401,11 +4406,11 @@ if (not RUNTIME):
+   if not PkgSkip("HARFBUZZ"):
+     DefSymbol("HARFBUZZ", "HAVE_HARFBUZZ")
+ 
+-  OPTS=['DIR:panda/src/text', 'BUILDING:PANDA', 'ZLIB',  'FREETYPE', 'HARFBUZZ']
++  OPTS=['DIR:panda/src/text', 'BUILDING:PANDA', 'ZLIB',  'FREETYPE', 'HARFBUZZ', 'BROTLI']
+   TargetAdd('p3text_composite1.obj', opts=OPTS, input='p3text_composite1.cxx')
+   TargetAdd('p3text_composite2.obj', opts=OPTS, input='p3text_composite2.cxx')
+ 
+-  OPTS=['DIR:panda/src/text', 'ZLIB', 'FREETYPE']
++  OPTS=['DIR:panda/src/text', 'ZLIB', 'FREETYPE', 'BROTLI']
+   IGATEFILES=GetDirectoryContents('panda/src/text', ["*.h", "*_composite*.cxx"])
+   TargetAdd('libp3text.in', opts=OPTS, input=IGATEFILES)
+   TargetAdd('libp3text.in', opts=['IMOD:panda3d.core', 'ILIB:libp3text', 'SRCDIR:panda/src/text'])
+@@ -4544,7 +4549,7 @@ if (not RUNTIME):
+ 
+ if (not RUNTIME):
+   OPTS=['DIR:panda/metalibs/panda', 'BUILDING:PANDA', 'JPEG', 'PNG', 'HARFBUZZ',
+-      'TIFF', 'OPENEXR', 'ZLIB', 'OPENSSL', 'FREETYPE', 'FFTW', 'ADVAPI', 'WINSOCK2',
++      'TIFF', 'OPENEXR', 'ZLIB', 'OPENSSL', 'FREETYPE', 'BROTLI', 'FFTW', 'ADVAPI', 'WINSOCK2',
+       'SQUISH', 'NVIDIACG', 'VORBIS', 'OPUS', 'WINUSER', 'WINMM', 'WINGDI', 'IPHLPAPI',
+       'SETUPAPI', 'INOTIFY']
+ 
+@@ -6285,7 +6290,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+ #
+ 
+ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+-  OPTS=['DIR:pandatool/src/egg-mkfont', 'DIR:pandatool/src/palettizer', 'FREETYPE']
++  OPTS=['DIR:pandatool/src/egg-mkfont', 'DIR:pandatool/src/palettizer', 'FREETYPE', 'BROTLI']
+   TargetAdd('egg-mkfont_eggMakeFont.obj', opts=OPTS, input='eggMakeFont.cxx')
+   TargetAdd('egg-mkfont_rangeDescription.obj', opts=OPTS, input='rangeDescription.cxx')
+   TargetAdd('egg-mkfont_rangeIterator.obj', opts=OPTS, input='rangeIterator.cxx')
+@@ -6294,7 +6299,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+   TargetAdd('egg-mkfont.exe', input='egg-mkfont_rangeIterator.obj')
+   TargetAdd('egg-mkfont.exe', input='libp3palettizer.lib')
+   TargetAdd('egg-mkfont.exe', input=COMMON_EGG2X_LIBS)
+-  TargetAdd('egg-mkfont.exe', opts=['ADVAPI', 'FREETYPE'])
++  TargetAdd('egg-mkfont.exe', opts=['ADVAPI', 'FREETYPE', 'BROTLI'])
+ 
+ #
+ # DIRECTORY: pandatool/src/eggcharbase/
+@@ -6321,7 +6326,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+   TargetAdd('egg-optchar.exe', input='egg-optchar_vertexMembership.obj')
+   TargetAdd('egg-optchar.exe', input='libp3eggcharbase.lib')
+   TargetAdd('egg-optchar.exe', input=COMMON_EGG2X_LIBS)
+-  TargetAdd('egg-optchar.exe', opts=['ADVAPI', 'FREETYPE'])
++  TargetAdd('egg-optchar.exe', opts=['ADVAPI', 'FREETYPE', 'BROTLI'])
+ 
+ #
+ # DIRECTORY: pandatool/src/egg-palettize/
