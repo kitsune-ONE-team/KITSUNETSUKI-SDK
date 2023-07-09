@@ -64,6 +64,8 @@ python makepanda/makepanda.py \
     --python-libdir ${CONDA_PREFIX}/lib \
     --vorbis-incdir ${CONDA_PREFIX}/include \
     --vorbis-libdir ${CONDA_PREFIX}/lib \
+    --x11-incdir /usr/include \
+    --x11-libdir /usr/lib \
     --zlib-incdir ${CONDA_PREFIX}/include \
     --zlib-libdir ${CONDA_PREFIX}/lib \
     --nothing \
