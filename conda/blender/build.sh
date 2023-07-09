@@ -24,6 +24,8 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
+    -DEpoxy_INCLUDE_DIR=${THIRDPARTY}/epoxy/include \
+    -DEpoxy_LIBRARY=${THIRDPARTY}/epoxy/lib/libepoxy.a \
     -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
     -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
