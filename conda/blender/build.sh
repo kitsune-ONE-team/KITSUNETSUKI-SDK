@@ -28,7 +28,9 @@ cmake \
     -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
     -DOPENAL_LIBRARY=${THIRDPARTY}/openal/lib/libopenal.a \
     -DOPENEXR_INCLUDE_DIR=${THIRDPARTY}/openexr/include \
+    -DOPENEXR_LIBPATH=${THIRDPARTY}/openexr/lib \
     -DOPENIMAGEIO_INCLUDE_DIR=${THIRDPARTY}/openimageio/include \
+    -DOPENIMAGEIO_LIBPATH=${THIRDPARTY}/openimageio/lib \
     -DPNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
     -DPNG_PNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
@@ -39,8 +41,6 @@ cmake \
     -DSDL2_LIBRARY=${THIRDPARTY}/sdl/lib/libSDL2.a \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
-    -D_openexr_LIBRARIES=${THIRDPARTY}/openexr/lib \
-    -D_openimageio_LIBRARIES=${THIRDPARTY}/openimageio/lib \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
