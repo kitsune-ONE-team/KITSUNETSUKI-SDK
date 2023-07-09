@@ -13,6 +13,8 @@ cd blender/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
+    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
+    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
@@ -20,6 +22,8 @@ cmake \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
+    -DJPEG_LIBRARY=${THIRDPARTY}/lib/libjpeg.a \
+    -DJPEG_INCLUDE_DIR=${THIRDPARTY}/include \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=ON \
     -DWITH_CODEC_FFMPEG=ON \
