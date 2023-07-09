@@ -17,6 +17,8 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
+    -DBOOST_INCLUDE_DIR=${THIRDPARTY}/boost/include \
+    -DBOOST_LIBPATH=${THIRDPARTY}/boost/lib \
     -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
     -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
     -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
