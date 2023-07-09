@@ -18,19 +18,19 @@ cd blender/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
-    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
     -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
+    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
+    -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
+    -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
+    -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
+    -DPNG_PNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
-    -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
-    -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
-    -D_LEVEL_ZERO_LIBRARY=${THIRDPARTY}/level-zero/lib \
-    -D_LEVEL_ZERO_INCLUDE_DIR=${THIRDPARTY}/level-zero/include \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
@@ -58,6 +58,8 @@ cmake \
     -DWITH_SDL=ON \
     -DWITH_TBB=ON \
     -DWITH_X11_XINPUT=ON \
+    -D_LEVEL_ZERO_INCLUDE_DIR=${THIRDPARTY}/level-zero/include \
+    -D_LEVEL_ZERO_LIBRARY=${THIRDPARTY}/level-zero/lib \
     ..
 
 make
