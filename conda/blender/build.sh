@@ -22,8 +22,10 @@ cmake \
     -DPYTHON_INCLUDE_DIR=${CONDA_PREFIX}/include/python${PYTHON_VERSION} \
     -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PYTHON_VERSION}.so \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
-    -DJPEG_LIBRARY=${THIRDPARTY}/lib/libjpeg.a \
-    -DJPEG_INCLUDE_DIR=${THIRDPARTY}/include \
+    -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
+    -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
+    -D_LEVEL_ZERO_LIBRARY=${THIRDPARTY}/level-zero/lib \
+    -D_LEVEL_ZERO_INCLUDE_DIR=${THIRDPARTY}/level-zero/include \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=ON \
     -DWITH_CODEC_FFMPEG=ON \
