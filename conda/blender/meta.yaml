@@ -84,6 +84,7 @@ requirements:
     - libstdcxx-ng # [unix]
     - m2-patch # [win]
     - make # [unix]
+    - mesa-libegl-devel-cos6-x86_64 # [unix]
     - numpy >=1.22.3
     - python==3.10.0
   run:

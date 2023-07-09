@@ -8,15 +8,18 @@ rm -Rf ${THIRDPARTY}/python
 mkdir -p blender/bld
 
 CMAKE_ARGS=
-CFLAGS="${CFLAGS} -I/usr/include"
-CPPFLAGS="${CPPFLAGS} -I/usr/include"
-echo FLAGS:
-echo ${CFLAGS}
-echo ${CPPFLAGS}
+# CFLAGS="${CFLAGS} -I/usr/include"
+# CPPFLAGS="${CPPFLAGS} -I/usr/include"
+# echo FLAGS:
+# echo ${CFLAGS}
+# echo ${CPPFLAGS}
 
 cd blender/bld
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
+    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
