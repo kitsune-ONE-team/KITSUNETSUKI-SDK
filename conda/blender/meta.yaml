@@ -79,6 +79,7 @@ requirements:
     - cmake==3.22.1
     - conda==23.3.1
     - gcc_linux-64 # [unix]
+    - gxx_linux-64 # [unix]
     - libgcc-ng # [unix]
     - libstdcxx-ng # [unix]
     - m2-patch # [win]
