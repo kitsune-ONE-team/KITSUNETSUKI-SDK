@@ -19,9 +19,13 @@ cmake \
     -DLIBDIR=${THIRDPARTY} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
+    -DBOOST_LIBRARYDIR=${THIRDPARTY}/boost/lib \
+    -DBOOST_ROOT=${THIRDPARTY}/boost \
     -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
     -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
     -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
+    -DBoost_NO_BOOST_CMAKE=ON \
+    -DBoost_NO_SYSTEM_PATHS=ON \
     -DEpoxy_INCLUDE_DIR=${THIRDPARTY}/epoxy/include \
     -DEpoxy_LIBRARY=${THIRDPARTY}/epoxy/lib/libepoxy.a \
     -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
@@ -31,6 +35,7 @@ cmake \
     -DOPENAL_LIBRARY=${THIRDPARTY}/openal/lib/libopenal.a \
     -DOPENEXR_INCLUDE_DIR=${THIRDPARTY}/openexr/include \
     -DOPENEXR_LIBPATH=${THIRDPARTY}/openexr/lib \
+    -DOPENEXR_ROOT_DIR=${THIRDPARTY}/openexr \
     -DOPENIMAGEIO_INCLUDE_DIR=${THIRDPARTY}/openimageio/include \
     -DPNG_INCLUDE_DIR=${THIRDPARTY}/png/include \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
