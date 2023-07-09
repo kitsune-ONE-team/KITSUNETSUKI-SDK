@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 23fd57afaa..b24e825cff 100755
+index 23fd57afaa..e684aaf976 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
 @@ -88,7 +88,7 @@ PkgListSet(["PYTHON", "DIRECT",                        # Python support
@@ -115,7 +115,15 @@ index 23fd57afaa..b24e825cff 100755
        'SQUISH', 'NVIDIACG', 'VORBIS', 'OPUS', 'WINUSER', 'WINMM', 'WINGDI', 'IPHLPAPI',
        'SETUPAPI', 'INOTIFY']
  
-@@ -6285,7 +6290,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -4622,6 +4627,7 @@ if (not RUNTIME):
+     TargetAdd('libpanda.dll', input="p3pnmtext_composite1.obj")
+ 
+   TargetAdd('libpanda.dll', dep='dtool_have_freetype.dat')
++  TargetAdd('libpanda.dll', dep='dtool_have_brotli.dat')
+   TargetAdd('libpanda.dll', opts=OPTS)
+ 
+   PyTargetAdd('core_module.obj', input='libp3dtoolbase.in')
+@@ -6285,7 +6291,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
  #
  
  if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
@@ -124,7 +132,7 @@ index 23fd57afaa..b24e825cff 100755
    TargetAdd('egg-mkfont_eggMakeFont.obj', opts=OPTS, input='eggMakeFont.cxx')
    TargetAdd('egg-mkfont_rangeDescription.obj', opts=OPTS, input='rangeDescription.cxx')
    TargetAdd('egg-mkfont_rangeIterator.obj', opts=OPTS, input='rangeIterator.cxx')
-@@ -6294,7 +6299,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -6294,7 +6300,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
    TargetAdd('egg-mkfont.exe', input='egg-mkfont_rangeIterator.obj')
    TargetAdd('egg-mkfont.exe', input='libp3palettizer.lib')
    TargetAdd('egg-mkfont.exe', input=COMMON_EGG2X_LIBS)
@@ -133,7 +141,7 @@ index 23fd57afaa..b24e825cff 100755
  
  #
  # DIRECTORY: pandatool/src/eggcharbase/
-@@ -6321,7 +6326,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -6321,7 +6327,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
    TargetAdd('egg-optchar.exe', input='egg-optchar_vertexMembership.obj')
    TargetAdd('egg-optchar.exe', input='libp3eggcharbase.lib')
    TargetAdd('egg-optchar.exe', input=COMMON_EGG2X_LIBS)
