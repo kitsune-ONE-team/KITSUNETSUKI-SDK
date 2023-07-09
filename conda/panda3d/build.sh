@@ -45,6 +45,8 @@ python makepanda/makepanda.py \
     --freetype-libdir ${THIRDPARTY}/lib \
     --jpeg-incdir ${THIRDPARTY}/include \
     --jpeg-libdir ${THIRDPARTY}/lib \
+    --openal-incdir ${THIRDPARTY}/include \
+    --openal-libdir ${THIRDPARTY}/lib \
     --openssl-incdir ${CONDA_PREFIX}/include \
     --openssl-libdir ${CONDA_PREFIX}/lib \
     --png-incdir ${THIRDPARTY}/include \
