@@ -66,6 +66,8 @@ python makepanda/makepanda.py \
     --vorbis-libdir ${CONDA_PREFIX}/lib \
     --x11-incdir ${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot/usr/include \
     --x11-libdir ${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib64 \
+    --xrender-incdir ${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot/usr/include \
+    --xrender-libdir ${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib64 \
     --zlib-incdir ${CONDA_PREFIX}/include \
     --zlib-libdir ${CONDA_PREFIX}/lib \
     --nothing \
