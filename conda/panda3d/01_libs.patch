@@ -151,10 +151,21 @@ index 23fd57afaa..d5f25ad4b9 100755
  #
  # DIRECTORY: pandatool/src/egg-palettize/
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index ad75ae6f1d..85e9ffd130 100644
+index ad75ae6f1d..0599899d6f 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
-@@ -1810,22 +1810,23 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
+@@ -524,6 +524,10 @@ def GetBison():
+     if BISON is not None:
+         return BISON
+ 
++    if "BISON" in os.environ:
++        BISON = os.environ["BISON"]
++        return BISON
++
+     # We now require a newer version of Bison than the one we previously
+     # shipped in the win-util dir.  The new version has a 'data'
+     # subdirectory, so check for that.
+@@ -1810,22 +1814,23 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
              if l.startswith("lib"):
                  libname = l[3:]
  
