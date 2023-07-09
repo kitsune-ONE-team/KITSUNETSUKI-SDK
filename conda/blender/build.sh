@@ -9,6 +9,9 @@ mkdir -p blender/bld
 cd blender/bld
 CMAKE_ARGS=
 cmake \
+    -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
+    -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
+    -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
     -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
@@ -19,6 +22,8 @@ cmake \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
     -DEpoxy_INCLUDE_DIR=${THIRDPARTY}/epoxy/include \
     -DEpoxy_LIBRARY=${THIRDPARTY}/epoxy/lib/libepoxy.a \
+    -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
+    -DFREETYPE_LIBRARY=${THIRDPARTY}/freetype/lib/libfreetype.a \
     -DJPEG_INCLUDE_DIR=${THIRDPARTY}/jpeg/include \
     -DJPEG_LIBRARY=${THIRDPARTY}/jpeg/lib/libjpeg.a \
     -DPNG_LIBRARY=${THIRDPARTY}/png/lib/libpng.a \
@@ -28,8 +33,6 @@ cmake \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
-    -DFREETYPE_LIBRARY=${THIRDPARTY}/freetype/lib/libfreetype.a \
-    -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
