@@ -1,4 +1,6 @@
 #!/bin/bash
+set -o verbose
+
 THIRDPARTY=lib/linux_x86_64_glibc_228
 PYTHON_VERSION=3.10
 
