@@ -20,6 +20,9 @@ source:
   - url: https://www.panda3d.org/download/panda3d-1.10.13/panda3d-1.10.13-tools-win64.zip # [win64]
     md5: d51607cff36314ab1ac5911123820277 # [win64]
 
+  - svn_url: https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_x86_64_glibc_228 # [unix]
+    folder: lib/linux_x86_64_glibc_228 # [unix]
+
 build:
   number: 0
   string: 1688830779
