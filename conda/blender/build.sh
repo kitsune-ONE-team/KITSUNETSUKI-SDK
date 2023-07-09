@@ -1,13 +1,14 @@
 #!/bin/sh
-THIRDPARTY=lib/linux_x86_64_glibc_228
+THIRDPARTY=../../lib/linux_x86_64_glibc_228
 PYTHON_VERSION=3.10
 
 # remove included python
 rm -Rf ${THIRDPARTY}/python
 
+unset CMAKE_ARGS
+
 mkdir -p blender/bld
 cd blender/bld
-CMAKE_ARGS=
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
@@ -15,6 +16,7 @@ cmake \
     -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+    -DLIBDIR=${THIRDPARTY} \
     -DCMAKE_LINKER=${PREFIX}/bin/x86_64-conda-linux-gnu-ld \
     -DCMAKE_STRIP=${PREFIX}/bin/x86_64-conda-linux-gnu-strip \
     -DBOOST_LIBPATH=${THIRDPARTY}/boost/lib \
