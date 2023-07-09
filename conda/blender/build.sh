@@ -35,6 +35,8 @@ cmake \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
+    -DFREETYPE_LIBRARY=${THIRDPARTY}/freetype/lib/libfreetype.a \
+    -DFREETYPE_INCLUDE_DIRS=${THIRDPARTY}/freetype/include \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
