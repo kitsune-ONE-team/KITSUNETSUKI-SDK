@@ -83,6 +83,7 @@ requirements:
     - patchelf # [unix]
     - pillow # [unix]
     - python==3.10.0
+    - xorg-x11-proto-devel-cos6-x86_64 # [unix]
     - zlib
   run:
     - python >=3.10.0,<3.11.0
