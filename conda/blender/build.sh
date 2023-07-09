@@ -8,6 +8,11 @@ rm -Rf ${THIRDPARTY}/python
 mkdir -p blender/bld
 
 CMAKE_ARGS=
+CFLAGS=${CFLAGS//\/include/\/include:\/usr\/include}
+CPPFLAGS=${CPPFLAGS//\/include/\/include:\/usr\/include}
+echo FLAGS:
+echo ${CFLAGS}
+echo ${CPPFLAGS}
 
 cd blender/bld
 cmake \
