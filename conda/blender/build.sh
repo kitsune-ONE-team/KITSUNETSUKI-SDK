@@ -9,9 +9,6 @@ mkdir -p blender/bld
 cd blender/bld
 CMAKE_ARGS=
 cmake \
-    -DBROTLI_INCLUDE_DIR=${THIRDPARTY}/brotli/include \
-    -DBROTLI_LIBRARY_COMMON=${THIRDPARTY}/brotli/lib/libbrotlicommon-static.a \
-    -DBROTLI_LIBRARY_DEC=${THIRDPARTY}/brotli/lib/libbrotlienc-static.a \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_FIND_ROOT_PATH="${PREFIX};${PREFIX}/x86_64-conda-linux-gnu/sysroot;${PREFIX}/x86_64-conda_cos6-linux-gnu/sysroot;/usr;/usr/lib/x86_64-linux-gnu" \
     -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
@@ -33,7 +30,7 @@ cmake \
     -DPYTHON_VERSION=${PYTHON_VERSION} \
     -DTIFF_INCLUDE_DIR=${THIRDPARTY}/tiff/include \
     -DTIFF_LIBRARY=${THIRDPARTY}/tiff/lib/libtiff.a \
-    -DWITH_BROTLI=OFF \
+    -DFT_REQUIRE_BROTLI=OFF \
     -DWITH_AUDASPACE=ON \
     -DWITH_CODEC_AVI=OFF \
     -DWITH_CODEC_FFMPEG=OFF \
