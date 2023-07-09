@@ -6,7 +6,7 @@ python ${RECIPE_DIR}/icon.py \
     ${RECIPE_DIR}/icon_256.png \
     panda/src/x11display/icon.h
 
-mkdir bld
+mkdir -p bld
 cd bld
 
 # CMAKE_ARGS=
