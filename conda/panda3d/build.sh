@@ -39,11 +39,17 @@ mkdir -p bld
 # copy dist-info for pip
 # cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/
 
+ln -sf ${AR} ${PREFIX}/bin/ar
+which ar
+ar --version
+
 python makepanda/makepanda.py \
     --bullet-incdir ${CONDA_PREFIX}/include \
     --bullet-libdir ${CONDA_PREFIX}/lib \
     --freetype-incdir ${THIRDPARTY}/freetype/include \
     --freetype-libdir ${THIRDPARTY}/freetype/lib \
+    --harfbuzz-incdir ${THIRDPARTY}/harfbuzz/include \
+    --harfbuzz-libdir ${THIRDPARTY}/harfbuzz/lib \
     --jpeg-incdir ${THIRDPARTY}/jpeg/include \
     --jpeg-libdir ${THIRDPARTY}/jpeg/lib \
     --openal-incdir ${THIRDPARTY}/openal/include \
