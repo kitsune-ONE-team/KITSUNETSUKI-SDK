@@ -39,9 +39,8 @@ mkdir -p bld
 # copy dist-info for pip
 # cp -Rfv ${BUILT}/panda3d.dist-info                 ${PREFIX}/lib/python${PYTHON_VERSION}/site-packages/
 
-ln -sf ${AR} ${PREFIX}/bin/ar
-which ar
-ar --version
+ln -sf ${AR}     ${PREFIX}/bin/ar
+ln -sf ${RANLIB} ${PREFIX}/bin/ranlib
 
 python makepanda/makepanda.py \
     --bullet-incdir ${CONDA_PREFIX}/include \
