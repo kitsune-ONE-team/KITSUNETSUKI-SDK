@@ -78,17 +78,18 @@ requirements:
     - bullet
     - cmake==3.22.1
     - conda==23.3.1
+    - gcc_linux-64 # [unix]
+    - libgcc-ng # [unix]
+    - libstdcxx-ng # [unix]
     - m2-patch # [win]
     - numpy >=1.22.3
     - python==3.10.0
-    - libgcc-ng # [unix]
-    - libstdcxx-ng # [unix]
   run:
+    - _openmp_mutex # [unix]
     - numpy >=1.22.3
     - python >=3.10.0,<3.11.0
-    - zlib # [unix]
     - tbb
-    - _openmp_mutex # [unix]
+    - zlib # [unix]
 
 about:
   home: https://www.blender.org/

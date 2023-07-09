@@ -8,7 +8,7 @@ RUN \
     apt install -y \
         sudo kmod git git-lfs subversion wget imagemagick openssh-server p7zip-full && \
     apt install -y \
-        build-essential cxxtest gettext linux-libc-dev libusb-1.0-0-dev libcap2-bin \
+        cxxtest gettext linux-libc-dev libusb-1.0-0-dev libcap2-bin \
         libxi6 uuid-dev && \
     apt install -y \
         mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev \
