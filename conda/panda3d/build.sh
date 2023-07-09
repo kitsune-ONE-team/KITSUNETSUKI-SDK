@@ -42,8 +42,8 @@ mkdir -p bld
 ln -sf ${AR}     ${PREFIX}/bin/ar
 ln -sf ${RANLIB} ${PREFIX}/bin/ranlib
 
-CFLAGS=${CFLAGS} -I/usr/include
-CPPFLAGS=${CPPFLAGS} -I/usr/include
+CFLAGS="${CFLAGS} -I/usr/include"
+CPPFLAGS="${CPPFLAGS} -I/usr/include"
 
 python makepanda/makepanda.py \
     --bullet-incdir ${CONDA_PREFIX}/include \
