@@ -92,6 +92,7 @@ python makepanda/makepanda.py \
     --use-skel \
     --use-vorbis \
     --use-x11 \
+    --use-xrender \
     --use-zlib \
     --verbose
 
