@@ -210,7 +210,7 @@ index 23fd57afaa..062c6d324a 100755
  #
  # DIRECTORY: pandatool/src/egg-palettize/
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index ad75ae6f1d..88df39efcc 100644
+index ad75ae6f1d..7b9b196d61 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
 @@ -524,6 +524,10 @@ def GetBison():
@@ -224,7 +224,12 @@ index ad75ae6f1d..88df39efcc 100644
      # We now require a newer version of Bison than the one we previously
      # shipped in the win-util dir.  The new version has a 'data'
      # subdirectory, so check for that.
-@@ -1688,6 +1692,8 @@ def LocateLibrary(lib, lpath=[], prefer_static=False):
+@@ -1685,9 +1689,13 @@ def LocateLibrary(lib, lpath=[], prefer_static=False):
+             if os.path.isfile(os.path.join(dir, 'lib%s.a' % lib)):
+                 return os.path.join(dir, 'lib%s.a' % lib)
+ 
++    print(os.path.join(dir, '%s.lib' % lib))
++
      for dir in lpath:
          if target == 'darwin' and os.path.isfile(os.path.join(dir, 'lib%s.dylib' % lib)):
              return os.path.join(dir, 'lib%s.dylib' % lib)
@@ -233,7 +238,7 @@ index ad75ae6f1d..88df39efcc 100644
          elif target != 'darwin' and os.path.isfile(os.path.join(dir, 'lib%s.so' % lib)):
              return os.path.join(dir, 'lib%s.so' % lib)
          elif os.path.isfile(os.path.join(dir, 'lib%s.a' % lib)):
-@@ -1875,29 +1881,31 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
+@@ -1875,29 +1883,31 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
              if l.startswith("lib"):
                  libname = l[3:]
  
