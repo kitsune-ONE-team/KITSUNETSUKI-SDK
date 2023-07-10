@@ -210,7 +210,7 @@ index 23fd57afaa..062c6d324a 100755
  #
  # DIRECTORY: pandatool/src/egg-palettize/
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index ad75ae6f1d..586bccfb62 100644
+index ad75ae6f1d..040b5bf081 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
 @@ -524,6 +524,10 @@ def GetBison():
@@ -224,12 +224,8 @@ index ad75ae6f1d..586bccfb62 100644
      # We now require a newer version of Bison than the one we previously
      # shipped in the win-util dir.  The new version has a 'data'
      # subdirectory, so check for that.
-@@ -1686,8 +1690,12 @@ def LocateLibrary(lib, lpath=[], prefer_static=False):
-                 return os.path.join(dir, 'lib%s.a' % lib)
- 
+@@ -1688,6 +1692,8 @@ def LocateLibrary(lib, lpath=[], prefer_static=False):
      for dir in lpath:
-+        print(os.path.join(dir, '%s.lib' % lib))
-+
          if target == 'darwin' and os.path.isfile(os.path.join(dir, 'lib%s.dylib' % lib)):
              return os.path.join(dir, 'lib%s.dylib' % lib)
 +        elif target == 'windows' and os.path.isfile(os.path.join(dir, '%s.lib' % lib)):
@@ -237,7 +233,7 @@ index ad75ae6f1d..586bccfb62 100644
          elif target != 'darwin' and os.path.isfile(os.path.join(dir, 'lib%s.so' % lib)):
              return os.path.join(dir, 'lib%s.so' % lib)
          elif os.path.isfile(os.path.join(dir, 'lib%s.a' % lib)):
-@@ -1875,29 +1883,31 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
+@@ -1875,29 +1881,33 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
              if l.startswith("lib"):
                  libname = l[3:]
  
@@ -257,10 +253,12 @@ index ad75ae6f1d..586bccfb62 100644
 +                    location = LocateLibrary(libname, lpath)
 +                    if location is not None:
 +                        LibName(target_pkg, location)
++                        print(GetColor("cyan") + "Found library " + location + GetColor())
++                        have_pkg = True
++                        break
 +                    else:
 +                        have_pkg = False
 +                        print(GetColor("cyan") + "Couldn't find library lib" + libname + GetColor())
-+                        print(lpath)
  
 -            elif SystemLibraryExists(libname):
 -                # It exists in a system library directory.
