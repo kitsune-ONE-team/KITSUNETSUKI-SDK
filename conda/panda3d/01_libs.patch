@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 23fd57afaa..ee1e183034 100755
+index 23fd57afaa..2b149b8639 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
 @@ -88,7 +88,7 @@ PkgListSet(["PYTHON", "DIRECT",                        # Python support
@@ -41,7 +41,7 @@ index 23fd57afaa..ee1e183034 100755
      if (PkgSkip("OPENEXR")==0):
          if os.path.isfile(GetThirdpartyDir() + "openexr/lib/OpenEXRCore-3_1.lib"):
              LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/OpenEXR-3_1.lib")
-@@ -838,17 +820,21 @@ if (COMPILER == "MSVC"):
+@@ -838,17 +820,23 @@ if (COMPILER == "MSVC"):
                  LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/Half" + suffix + ".lib")
          IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/OpenEXR")
          IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/Imath")
@@ -49,6 +49,8 @@ index 23fd57afaa..ee1e183034 100755
 -    if (PkgSkip("ZLIB")==0):     LibName("ZLIB",     GetThirdpartyDir() + "zlib/lib/zlibstatic.lib")
 +    if (PkgSkip("JPEG")==0):
 +        SmartPkgEnable("JPEG", None, ("jpeg"), "jpeglib.h")
++    if (PkgSkip("TIFF")==0):
++        SmartPkgEnable("TIFF", None, ("tiff"), "tiff.h")
 +    if (PkgSkip("ZLIB")==0):
 +        SmartPkgEnable("ZLIB", None, ("libz_st"), "zlib.h")
      if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/vrpn.lib")
@@ -68,7 +70,7 @@ index 23fd57afaa..ee1e183034 100755
      if (PkgSkip("FFTW")==0):     LibName("FFTW",     GetThirdpartyDir() + "fftw/lib/fftw3.lib")
      if (PkgSkip("ARTOOLKIT")==0):LibName("ARTOOLKIT",GetThirdpartyDir() + "artoolkit/lib/libAR.lib")
      if (PkgSkip("OPENCV")==0):   LibName("OPENCV",   GetThirdpartyDir() + "opencv/lib/cv.lib")
-@@ -882,10 +868,7 @@ if (COMPILER == "MSVC"):
+@@ -882,10 +870,7 @@ if (COMPILER == "MSVC"):
          if (GetOptimize() <= 3):
              LibName("ROCKET", GetThirdpartyDir() + "rocket/lib/RocketDebugger.lib")
      if (PkgSkip("OPENAL")==0):
@@ -80,7 +82,7 @@ index 23fd57afaa..ee1e183034 100755
      if (PkgSkip("ODE")==0):
          LibName("ODE",      GetThirdpartyDir() + "ode/lib/ode_single.lib")
          DefSymbol("ODE",    "dSINGLE", "")
-@@ -906,11 +889,7 @@ if (COMPILER == "MSVC"):
+@@ -906,11 +891,7 @@ if (COMPILER == "MSVC"):
          DefSymbol("WX",     "_UNICODE", "")
          DefSymbol("WX",     "UNICODE", "")
      if (PkgSkip("VORBIS")==0):
@@ -93,7 +95,7 @@ index 23fd57afaa..ee1e183034 100755
      if (PkgSkip("OPUS")==0):
          IncDirectory("OPUS", GetThirdpartyDir() + "opus/include/opus")
          for lib in ('ogg', 'opus', 'opusfile'):
-@@ -969,13 +948,7 @@ if (COMPILER == "MSVC"):
+@@ -969,13 +950,7 @@ if (COMPILER == "MSVC"):
              LibName("SPEEDTREE",  "glu32.lib")
          IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
      if (PkgSkip("BULLET")==0):
@@ -108,7 +110,7 @@ index 23fd57afaa..ee1e183034 100755
  
  if (COMPILER=="GCC"):
      PkgDisable("MIMALLOC") # no discernable benefit over glibc
-@@ -1040,6 +1013,7 @@ if (COMPILER=="GCC"):
+@@ -1040,6 +1015,7 @@ if (COMPILER=="GCC"):
          SmartPkgEnable("FMODEX",    "",          ("fmodex"), ("fmodex", "fmodex/fmod.h"))
          SmartPkgEnable("FREETYPE",  "freetype2", ("freetype"), ("freetype2", "freetype2/freetype/freetype.h"))
          SmartPkgEnable("HARFBUZZ",  "harfbuzz",  ("harfbuzz"), ("harfbuzz", "harfbuzz/hb-ft.h"))
@@ -116,7 +118,7 @@ index 23fd57afaa..ee1e183034 100755
          SmartPkgEnable("GL",        "gl",        ("GL"), ("GL/gl.h"), framework = "OpenGL")
          SmartPkgEnable("GLES",      "glesv1_cm", ("GLESv1_CM"), ("GLES/gl.h"), framework = "OpenGLES")
          SmartPkgEnable("GLES2",     "glesv2",    ("GLESv2"), ("GLES2/gl2.h")) #framework = "OpenGLES"?
-@@ -1051,7 +1025,7 @@ if (COMPILER=="GCC"):
+@@ -1051,7 +1027,7 @@ if (COMPILER=="GCC"):
          SmartPkgEnable("TIFF",      "libtiff-4", ("tiff"), "tiff.h")
          SmartPkgEnable("OPENEXR",   "OpenEXR",   ("IlmImf", "Imath", "Half", "Iex", "IexMath", "IlmThread"), ("OpenEXR", "Imath", "OpenEXR/ImfOutputFile.h"))
          SmartPkgEnable("VRPN",      "",          ("vrpn", "quat"), ("vrpn", "quat.h", "vrpn/vrpn_Types.h"))
@@ -125,7 +127,7 @@ index 23fd57afaa..ee1e183034 100755
          SmartPkgEnable("VORBIS",    "vorbisfile",("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
          SmartPkgEnable("OPUS",      "opusfile",  ("opusfile", "opus", "ogg"), ("ogg/ogg.h", "opus/opusfile.h", "opus"))
          SmartPkgEnable("JPEG",      "",          ("jpeg"), "jpeglib.h")
-@@ -1108,12 +1082,6 @@ if (COMPILER=="GCC"):
+@@ -1108,12 +1084,6 @@ if (COMPILER=="GCC"):
                  LibName("OPENEXR", "-Wl,--exclude-libs,libIlmThread.a")
                  LibName("OPENEXR", "-Wl,--exclude-libs,libImath.a")
  
@@ -138,7 +140,7 @@ index 23fd57afaa..ee1e183034 100755
              if not PkgSkip("OPUS"):
                  LibName("OPUS", "-Wl,--exclude-libs,libogg.a")
                  LibName("OPUS", "-Wl,--exclude-libs,libopus.a")
-@@ -4385,10 +4353,10 @@ if (not RUNTIME):
+@@ -4385,10 +4355,10 @@ if (not RUNTIME):
  #
  
  if (PkgSkip("FREETYPE")==0 and not RUNTIME):
@@ -151,7 +153,7 @@ index 23fd57afaa..ee1e183034 100755
    IGATEFILES=GetDirectoryContents('panda/src/pnmtext', ["*.h", "*_composite*.cxx"])
    TargetAdd('libp3pnmtext.in', opts=OPTS, input=IGATEFILES)
    TargetAdd('libp3pnmtext.in', opts=['IMOD:panda3d.core', 'ILIB:libp3pnmtext', 'SRCDIR:panda/src/pnmtext'])
-@@ -4401,11 +4369,11 @@ if (not RUNTIME):
+@@ -4401,11 +4371,11 @@ if (not RUNTIME):
    if not PkgSkip("HARFBUZZ"):
      DefSymbol("HARFBUZZ", "HAVE_HARFBUZZ")
  
@@ -165,7 +167,7 @@ index 23fd57afaa..ee1e183034 100755
    IGATEFILES=GetDirectoryContents('panda/src/text', ["*.h", "*_composite*.cxx"])
    TargetAdd('libp3text.in', opts=OPTS, input=IGATEFILES)
    TargetAdd('libp3text.in', opts=['IMOD:panda3d.core', 'ILIB:libp3text', 'SRCDIR:panda/src/text'])
-@@ -4544,7 +4512,7 @@ if (not RUNTIME):
+@@ -4544,7 +4514,7 @@ if (not RUNTIME):
  
  if (not RUNTIME):
    OPTS=['DIR:panda/metalibs/panda', 'BUILDING:PANDA', 'JPEG', 'PNG', 'HARFBUZZ',
@@ -174,7 +176,7 @@ index 23fd57afaa..ee1e183034 100755
        'SQUISH', 'NVIDIACG', 'VORBIS', 'OPUS', 'WINUSER', 'WINMM', 'WINGDI', 'IPHLPAPI',
        'SETUPAPI', 'INOTIFY']
  
-@@ -4622,6 +4590,7 @@ if (not RUNTIME):
+@@ -4622,6 +4592,7 @@ if (not RUNTIME):
      TargetAdd('libpanda.dll', input="p3pnmtext_composite1.obj")
  
    TargetAdd('libpanda.dll', dep='dtool_have_freetype.dat')
@@ -182,7 +184,7 @@ index 23fd57afaa..ee1e183034 100755
    TargetAdd('libpanda.dll', opts=OPTS)
  
    PyTargetAdd('core_module.obj', input='libp3dtoolbase.in')
-@@ -6285,7 +6254,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -6285,7 +6256,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
  #
  
  if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
@@ -191,7 +193,7 @@ index 23fd57afaa..ee1e183034 100755
    TargetAdd('egg-mkfont_eggMakeFont.obj', opts=OPTS, input='eggMakeFont.cxx')
    TargetAdd('egg-mkfont_rangeDescription.obj', opts=OPTS, input='rangeDescription.cxx')
    TargetAdd('egg-mkfont_rangeIterator.obj', opts=OPTS, input='rangeIterator.cxx')
-@@ -6294,7 +6263,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -6294,7 +6265,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
    TargetAdd('egg-mkfont.exe', input='egg-mkfont_rangeIterator.obj')
    TargetAdd('egg-mkfont.exe', input='libp3palettizer.lib')
    TargetAdd('egg-mkfont.exe', input=COMMON_EGG2X_LIBS)
@@ -200,7 +202,7 @@ index 23fd57afaa..ee1e183034 100755
  
  #
  # DIRECTORY: pandatool/src/eggcharbase/
-@@ -6321,7 +6290,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
+@@ -6321,7 +6292,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
    TargetAdd('egg-optchar.exe', input='egg-optchar_vertexMembership.obj')
    TargetAdd('egg-optchar.exe', input='libp3eggcharbase.lib')
    TargetAdd('egg-optchar.exe', input=COMMON_EGG2X_LIBS)
