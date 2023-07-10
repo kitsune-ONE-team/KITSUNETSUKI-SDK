@@ -210,7 +210,7 @@ index 23fd57afaa..a63ed5f920 100755
  #
  # DIRECTORY: pandatool/src/egg-palettize/
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index ad75ae6f1d..31f11e1dda 100644
+index ad75ae6f1d..ab85dd3810 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
 @@ -524,6 +524,10 @@ def GetBison():
@@ -224,7 +224,7 @@ index ad75ae6f1d..31f11e1dda 100644
      # We now require a newer version of Bison than the one we previously
      # shipped in the win-util dir.  The new version has a 'data'
      # subdirectory, so check for that.
-@@ -1875,29 +1879,30 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
+@@ -1875,29 +1879,31 @@ def SmartPkgEnable(pkg, pkgconfig = None, libs = None, incs = None, defs = None,
              if l.startswith("lib"):
                  libname = l[3:]
  
@@ -247,6 +247,7 @@ index ad75ae6f1d..31f11e1dda 100644
 +                    else:
 +                        have_pkg = False
 +                        print(GetColor("cyan") + "Couldn't find library lib" + libname + GetColor())
++                        print(lpath)
  
 -            elif SystemLibraryExists(libname):
 -                # It exists in a system library directory.
