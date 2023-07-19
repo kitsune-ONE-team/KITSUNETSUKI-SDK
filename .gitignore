@@ -1,11 +1,5 @@
 *.pyc
 .venv
-/conda/kphys/build/
-/conda/panda3d/test.txt
-/conda/panda3d/test.zip
-/container/conda/envs/*
 /container/itch/*
-/container/binstar/*
 /container/jenkins/*
-/container/jenkins_jobs/jenkins_jobs.ini
 __pycache__
