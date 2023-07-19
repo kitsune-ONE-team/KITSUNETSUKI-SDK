@@ -22,11 +22,12 @@
             fi
 
             mkdir -p ${DESTDIR}/include
+            mkdir -p ${DESTDIR}/include/SDL2
             mkdir -p ${DESTDIR}/lib
             cp -Rfv ${THIRDPARTY}/python/bin                                      ${DESTDIR}/
             cp -Rfv ${THIRDPARTY}/python/include/python3.10/*                     ${DESTDIR}/include/
             cp -Rfv ${THIRDPARTY}/python/lib/*                                    ${DESTDIR}/lib/
-            cp -Rfv ${THIRDPARTY}/sdl/include                                     ${DESTDIR}/
+            cp -Rfv ${THIRDPARTY}/sdl/include/*                                   ${DESTDIR}/include/SDL2/
             cp -Rfv ${THIRDPARTY}/sdl/lib                                         ${DESTDIR}/
             cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/bin                 ${DESTDIR}/
             cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/etc                 ${DESTDIR}/
