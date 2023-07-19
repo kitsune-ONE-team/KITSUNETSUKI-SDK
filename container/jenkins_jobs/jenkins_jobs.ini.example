@@ -1,4 +1,0 @@
-[jenkins]
-user=username
-password=api_token
-url=http://localhost:8080
