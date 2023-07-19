@@ -13,6 +13,7 @@
         - shell: |
             DESTDIR=dist/sdk
             JENKINS_WS=${JENKINS_HOME}/workspace
+            THIRDPARTY=${JENKINS_WS}/blender-thirdparty-lynx64
             PIP="${DESTDIR}/bin/python3.10 -m pip"
 
             if [ ! -f discord.zip ]; then
@@ -22,11 +23,11 @@
 
             mkdir -p ${DESTDIR}/include
             mkdir -p ${DESTDIR}/lib
-            cp -Rfv ${JENKINS_WS}/python-lynx64/dist/python/bin                   ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/python-lynx64/dist/python/include/python3.10/*  ${DESTDIR}/include/
-            cp -Rfv ${JENKINS_WS}/python-lynx64/dist/python/lib                   ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/sdl-lynx64/dist/sdl/include                     ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/sdl-lynx64/dist/sdl/lib                         ${DESTDIR}/
+            cp -Rfv ${THIRDPARTY}/python/bin                                      ${DESTDIR}/
+            cp -Rfv ${THIRDPARTY}/python/include/python3.10/*                     ${DESTDIR}/include/
+            cp -Rfv ${THIRDPARTY}/python/lib/*                                    ${DESTDIR}/lib/
+            cp -Rfv ${THIRDPARTY}/sdl/include                                     ${DESTDIR}/
+            cp -Rfv ${THIRDPARTY}/sdl/lib                                         ${DESTDIR}/
             cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/bin                 ${DESTDIR}/
             cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/etc                 ${DESTDIR}/
             cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/include             ${DESTDIR}/
@@ -63,26 +64,27 @@
         - batch: |
             set DESTDIR=dist\sdk
             set JENKINS_WS=D:\Jenkins\workspace
+            set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-lynx64
             set PIP=%DESTDIR%\bin\python -m pip
             set ZIP=D:\7-Zip\7z
             set PATH=%PATH%;D:\Git\bin
 
-            if [ ! -f discord.zip ]; then
+            if not exist discord.zip (
                 curl -o discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
-                7z x -odiscord discord.zip
-            fi
+                %ZIP% x -odiscord discord.zip
+            )
 
             if not exist %DESTDIR% (
                 mkdir %DESTDIR%
                 mkdir %DESTDIR%\include
                 mkdir %DESTDIR%\lib
             )
-            xcopy /I /E /Y %JENKINS_WS%\blender-thirdparty-winx64\python\310\DLLs       %DESTDIR%\DLLs
-            xcopy /I /E /Y %JENKINS_WS%\blender-thirdparty-winx64\python\310\bin        %DESTDIR%\bin
-            xcopy /I /E /Y %JENKINS_WS%\blender-thirdparty-winx64\python\310\include    %DESTDIR%\include
-            xcopy /I /E /Y %JENKINS_WS%\blender-thirdparty-winx64\python\310\lib        %DESTDIR%\lib
-            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\include                     %DESTDIR%\include
-            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\bin                         %DESTDIR%\lib
+            xcopy /I /E /Y %THIRDPARTY%\python\310\DLLs                                 %DESTDIR%\DLLs
+            xcopy /I /E /Y %THIRDPARTY%\python\310\bin                                  %DESTDIR%\bin
+            xcopy /I /E /Y %THIRDPARTY%\python\310\include                              %DESTDIR%\include
+            xcopy /I /E /Y %THIRDPARTY%\python\310\lib                                  %DESTDIR%\lib
+            xcopy /I /E /Y %THIRDPARTY%\sdl\include                                     %DESTDIR%\include
+            xcopy /I /E /Y %THIRDPARTY%\sdl\bin                                         %DESTDIR%\lib
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\bin                 %DESTDIR%\bin
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\etc                 %DESTDIR%\etc
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\include             %DESTDIR%\include

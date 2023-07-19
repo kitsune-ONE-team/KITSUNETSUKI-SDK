@@ -10,7 +10,6 @@
         artifactDaysToKeep: -1
         artifactNumToKeep: -1
     dsl: |
-        stage('sdl')             { build job: 'sdl-lynx64' }
         stage('bullet')          { build job: 'bullet-lynx64' }
         stage('ogg')             { build job: 'ogg-lynx64' }
         stage('vorbis')          { build job: 'vorbis-lynx64' }
@@ -31,7 +30,6 @@
         artifactDaysToKeep: -1
         artifactNumToKeep: -1
     dsl: |
-        stage('sdl')             { build job: 'sdl-winx64' }
         stage('bullet')          { build job: 'bullet-winx64' }
         stage('panda3d')         { build job: 'panda3d-winx64' }
         stage('panda3d-kphys')   { build job: 'panda3d-kphys-winx64' }

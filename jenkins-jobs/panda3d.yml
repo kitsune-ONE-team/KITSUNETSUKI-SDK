@@ -19,7 +19,7 @@
     builders:
         - shell: |
             THIRDPARTY=${JENKINS_HOME}/workspace/blender-thirdparty-lynx64
-            PYTHON=${JENKINS_HOME}/workspace/python-lynx64/dist/python/bin/python3.10
+            PYTHON=${THIRDPARTY}/python/bin/python3.10
 
             if [ ! -d sdk ]; then
                 git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
@@ -52,8 +52,8 @@
                 --openal-libdir ${THIRDPARTY}/openal/lib \
                 --png-incdir ${THIRDPARTY}/png/include \
                 --png-libdir ${THIRDPARTY}/png/lib \
-                --python-incdir ${JENKINS_HOME}/workspace/python-lynx64/dist/python/include \
-                --python-libdir ${JENKINS_HOME}/workspace/python-lynx64/dist/python/lib \
+                --python-incdir ${THIRDPARTY}/python/include \
+                --python-libdir ${THIRDPARTY}/python/lib \
                 --tiff-incdir ${THIRDPARTY}/tiff/include \
                 --tiff-libdir ${THIRDPARTY}/tiff/lib \
                 --vorbis-incdir ${JENKINS_HOME}/workspace/ogg-lynx64/dist/ogg/include \
@@ -140,7 +140,7 @@
 
             set THIRDPARTY=D:\Jenkins\workspace\blender-thirdparty-winx64
             set P3DTHIRDPARTY=panda3d-1.10.13\thirdparty
-            set PYTHON=%P3DTHIRDPARTY%\python\310\bin\python
+            set PYTHON=%THIRDPARTY%\python\310\bin\python
             set PATCH=D:\msys2-patch\bin\patch
             set GIT=D:\Git\bin\git
             set ZIP=D:\7-Zip\7z
@@ -184,8 +184,8 @@
                 --openssl-libdir %P3DTHIRDPARTY%\win-libs-vc14-x64\openssl\lib ^
                 --png-incdir %THIRDPARTY%\png\include ^
                 --png-libdir %THIRDPARTY%\png\lib ^
-                --python-incdir %P3DTHIRDPARTY%\python\310\include ^
-                --python-libdir %P3DTHIRDPARTY%\python\310\lib ^
+                --python-incdir %THIRDPARTY%\python\310\include ^
+                --python-libdir %THIRDPARTY%\python\310\lib ^
                 --tiff-incdir %THIRDPARTY%\tiff\include ^
                 --tiff-libdir %THIRDPARTY%\tiff\lib ^
                 --vorbis-incdir %P3DTHIRDPARTY%\win-libs-vc14-x64\vorbis\include ^
