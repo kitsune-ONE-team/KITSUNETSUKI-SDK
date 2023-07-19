@@ -64,7 +64,7 @@
         - batch: |
             set DESTDIR=dist\sdk
             set JENKINS_WS=D:\Jenkins\workspace
-            set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-lynx64
+            set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-winx64
             set PIP=%DESTDIR%\bin\python -m pip
             set ZIP=D:\7-Zip\7z
             set PATH=%PATH%;D:\Git\bin
