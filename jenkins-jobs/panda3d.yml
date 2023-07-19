@@ -29,13 +29,13 @@
                 cd ..
             fi
 
-            patch -p1 < sdk/conda/panda3d/01_libs.patch
-            patch -p1 < sdk/conda/panda3d/02_bullet_char.patch
-            patch -p1 < sdk/conda/panda3d/03_icon.patch
-            patch -p1 < sdk/conda/panda3d/07_rgba.patch
-            patch -p1 < sdk/conda/panda3d/09_rp_light.patch
-            patch -p1 < sdk/conda/panda3d/10_libp3rplight.patch
-            cp -fv sdk/conda/panda3d/icon.h panda/src/x11display/
+            patch -p1 < sdk/panda3d/01_libs.patch
+            patch -p1 < sdk/panda3d/02_bullet_char.patch
+            patch -p1 < sdk/panda3d/03_icon.patch
+            patch -p1 < sdk/panda3d/07_rgba.patch
+            patch -p1 < sdk/panda3d/09_rp_light.patch
+            patch -p1 < sdk/panda3d/10_libp3rplight.patch
+            cp -fv sdk/panda3d/icon.h panda/src/x11display/
 
             ${PYTHON} makepanda/makepanda.py \
                 --brotli-incdir ${THIRDPARTY}/brotli/include \
@@ -159,13 +159,13 @@
                 cd ..
             )
 
-            %PATCH% -p1 < sdk\conda\panda3d\01_libs.patch
-            %PATCH% -p1 < sdk\conda\panda3d\02_bullet_char.patch
-            %PATCH% -p1 < sdk\conda\panda3d\05_py_noinst.patch
-            %PATCH% -p1 < sdk\conda\panda3d\06_py_prefix.patch
-            %PATCH% -p1 < sdk\conda\panda3d\07_rgba.patch
-            %PATCH% -p1 < sdk\conda\panda3d\09_rp_light.patch
-            %PATCH% -p1 < sdk\conda\panda3d\10_libp3rplight.patch
+            %PATCH% -p1 < sdk\panda3d\01_libs.patch
+            %PATCH% -p1 < sdk\panda3d\02_bullet_char.patch
+            %PATCH% -p1 < sdk\panda3d\05_py_noinst.patch
+            %PATCH% -p1 < sdk\panda3d\06_py_prefix.patch
+            %PATCH% -p1 < sdk\panda3d\07_rgba.patch
+            %PATCH% -p1 < sdk\panda3d\09_rp_light.patch
+            %PATCH% -p1 < sdk\panda3d\10_libp3rplight.patch
 
             %PYTHON% makepanda\makepanda.py ^
                 --brotli-incdir %THIRDPARTY%\brotli\include ^
