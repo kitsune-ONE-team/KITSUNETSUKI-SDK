@@ -1,0 +1,144 @@
+- job:
+    name: blender-lynx64
+    display-name: blender-lynx64
+    project-type: freestyle
+    description: Free and Open 3D Creation Software.
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://projects.blender.org/blender/blender.git
+            branches:
+              - refs/tags/v3.6.0
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - shell: |
+            make update
+
+            mkdir -p build
+            cd build
+            cmake -G "Unix Makefiles" \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_INSTALL_PREFIX=/blender/lib/python3.10/site-packages \
+                -DLIBDIR=/root/jenkins/workspace/blender-thirdparty-lynx64 \
+                -DPYTHON_VERSION=3.10 \
+                -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include \
+                -DPYTHON_LIBRARY_DIR=/root/jenkins/workspace/python-lynx64/dist/python/lib \
+                -DSDL_INCLUDE_DIR=/root/jenkins/workspace/sdl-lynx64/dist/sdl/include \
+                -DSDL_LIBRARY_DIR=/root/jenkins/workspace/sdl-lynx64/dist/sdl/lib \
+                -DWITH_AUDASPACE=ON \
+                -DWITH_CODEC_AVI=ON \
+                -DWITH_CODEC_FFMPEG=ON \
+                -DWITH_CODEC_SNDFILE=ON \
+                -DWITH_CYCLES=ON \
+                -DWITH_CYCLES_EMBREE=ON \
+                -DWITH_DRACO=ON \
+                -DWITH_FREESTYLE=ON \
+                -DWITH_FREETYPE=ON \
+                -DWITH_HEADLESS=ON \
+                -DWITH_INSTALL_PORTABLE=ON \
+                -DWITH_JACK=ON \
+                -DWITH_LLVM=OFF \
+                -DWITH_MEM_JEMALLOC=OFF \
+                -DWITH_MOD_OCEANSIM=ON \
+                -DWITH_OPENAL=ON \
+                -DWITH_OPENCOLLADA=ON \
+                -DWITH_OPENCOLORIO=ON \
+                -DWITH_OPENIMAGEDENOISE=ON \
+                -DWITH_OPENIMAGEIO=ON \
+                -DWITH_OPENMP=ON \
+                -DWITH_OPENSUBDIV=ON \
+                -DWITH_PYTHON_INSTALL=OFF \
+                -DWITH_PYTHON_INSTALL_NUMPY=OFF \
+                -DWITH_PYTHON_MODULE=ON \
+                -DWITH_SDL=ON \
+                -DWITH_TBB=ON \
+                -DWITH_X11_XINPUT=ON \
+                ..
+
+            make
+            make install DESTDIR=../dist/
+            cd ..
+
+- job:
+    name: blender-winx64
+    display-name: blender-winx64
+    project-type: freestyle
+    description: Free and Open 3D Creation Software.
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://projects.blender.org/blender/blender.git
+            branches:
+              - refs/tags/v3.6.0
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - batch: |
+            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
+            @echo on
+
+            set PYTHON=D:\Jenkins\workspace\blender-thirdparty-winx64\python\310\bin\python
+            set GIT=D:\Git\bin\git.exe
+            set SVN=D:\Svn\bin\svn.exe
+            %PYTHON% -B build_files\utils\make_update.py --git-command "%GIT%" --svn-command "%SVN%" --no-libraries
+
+            if not exist build (
+                mkdir build
+            )
+            cd build
+            cmake -G "NMake Makefiles" ^
+                -DCMAKE_BUILD_TYPE=Release ^
+                -DCMAKE_INSTALL_PREFIX=\blender\lib\site-packages ^
+                -DLIBDIR=D:/Jenkins/workspace/blender-thirdparty-winx64 ^
+                -DWITH_AUDASPACE=ON ^
+                -DWITH_CODEC_AVI=ON ^
+                -DWITH_CODEC_FFMPEG=ON ^
+                -DWITH_CODEC_SNDFILE=ON ^
+                -DWITH_CYCLES=ON ^
+                -DWITH_CYCLES_EMBREE=ON ^
+                -DWITH_DRACO=ON ^
+                -DWITH_FREESTYLE=ON ^
+                -DWITH_FREETYPE=ON ^
+                -DWITH_HEADLESS=ON ^
+                -DWITH_INSTALL_PORTABLE=ON ^
+                -DWITH_JACK=ON ^
+                -DWITH_LLVM=OFF ^
+                -DWITH_MEM_JEMALLOC=OFF ^
+                -DWITH_MOD_OCEANSIM=ON ^
+                -DWITH_OPENAL=ON ^
+                -DWITH_OPENCOLLADA=ON ^
+                -DWITH_OPENCOLORIO=ON ^
+                -DWITH_OPENIMAGEDENOISE=ON ^
+                -DWITH_OPENIMAGEIO=ON ^
+                -DWITH_OPENMP=ON ^
+                -DWITH_OPENSUBDIV=ON ^
+                -DWITH_PYTHON_INSTALL=OFF ^
+                -DWITH_PYTHON_INSTALL_NUMPY=OFF ^
+                -DWITH_PYTHON_MODULE=ON ^
+                -DWITH_SDL=ON ^
+                -DWITH_TBB=ON ^
+                -DWITH_X11_XINPUT=ON ^
+                ..
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )
+
+            nmake
+            nmake install DESTDIR=..\dist\
+            cd ..
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )

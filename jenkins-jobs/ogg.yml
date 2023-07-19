@@ -1,0 +1,32 @@
+- job:
+    name: ogg-lynx64
+    display-name: ogg-lynx64
+    project-type: freestyle
+    description: Reference implementation of the Ogg media container.
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/xiph/ogg.git
+            branches:
+              - refs/tags/v1.3.5
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: build
+            generator: Unix Makefiles
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_INSTALL_PREFIX=/ogg
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_CXX_FLAGS=-fPIC
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: ''
+                - use-cmake: false
+                  arguments: 'install DESTDIR="../dist/"'

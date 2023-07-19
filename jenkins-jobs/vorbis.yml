@@ -1,0 +1,34 @@
+- job:
+    name: vorbis-lynx64
+    display-name: vorbis-lynx64
+    project-type: freestyle
+    description: Reference implementation of the Ogg Vorbis audio format.
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/xiph/vorbis.git
+            branches:
+              - refs/tags/v1.3.7
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: build
+            generator: Unix Makefiles
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_INSTALL_PREFIX=/ogg
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DOGG_LIBRARY=/root/jenkins/workspace/ogg-lynx64/dist/ogg/lib/libogg.a
+                -DOGG_INCLUDE_DIR=/root/jenkins/workspace/ogg-lynx64/dist/ogg/include
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: ''
+                - use-cmake: false
+                  arguments: 'install DESTDIR="/root/jenkins/workspace/ogg-lynx64/dist/"'

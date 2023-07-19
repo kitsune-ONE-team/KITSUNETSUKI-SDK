@@ -1,0 +1,39 @@
+- job:
+    name: pipeline-lynx64
+    display-name: pipeline-lynx64
+    project-type: pipeline
+    description: KITSUNETSUKI SDK pipeline
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    dsl: |
+        stage('sdl')             { build job: 'sdl-lynx64' }
+        stage('bullet')          { build job: 'bullet-lynx64' }
+        stage('ogg')             { build job: 'ogg-lynx64' }
+        stage('vorbis')          { build job: 'vorbis-lynx64' }
+        stage('panda3d')         { build job: 'panda3d-lynx64' }
+        stage('panda3d-kphys')   { build job: 'panda3d-kphys-lynx64' }
+        stage('panda3d-krender') { build job: 'panda3d-krender-lynx64' }
+        stage('sdk')             { build job: 'sdk-lynx64' }
+
+- job:
+    name: pipeline-winx64
+    display-name: pipeline-winx64
+    project-type: pipeline
+    description: KITSUNETSUKI SDK pipeline
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    dsl: |
+        stage('sdl')             { build job: 'sdl-winx64' }
+        stage('bullet')          { build job: 'bullet-winx64' }
+        stage('panda3d')         { build job: 'panda3d-winx64' }
+        stage('panda3d-kphys')   { build job: 'panda3d-kphys-winx64' }
+        stage('panda3d-krender') { build job: 'panda3d-krender-winx64' }
+        stage('sdk')             { build job: 'sdk-winx64' }

@@ -1,0 +1,115 @@
+- job-template:
+    name: 'panda3d-{module}-lynx64'
+    display-name: 'panda3d-{module}-lynx64'
+    project-type: freestyle
+    description: '{desc}'
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/panda3d-{module}.git
+            branches:
+              - refs/tags/{version}
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: build
+            generator: Unix Makefiles
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_INSTALL_PREFIX=/panda3d-{module}/lib/python3.10/site-packages
+                -DBULLET_INCLUDE_DIR=/root/jenkins/workspace/bullet-lynx64/dist/bullet/include
+                -DBULLET_LIBRARY_DIR=/root/jenkins/workspace/bullet-lynx64/dist/bullet/lib
+                -DINSTALL_PY=ON
+                -DPANDA_BINARY_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/bin
+                -DPANDA_INCLUDE_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/include
+                -DPANDA_LIBRARY_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/lib
+                -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include/python3.10
+                -DPYTHON_EXECUTABLE=/root/jenkins/workspace/python-lynx64/dist/python/bin/python3.10
+                -DPYTHON_LIBRARY=/root/jenkins/workspace/python-lynx64/dist/python/lib/libpython3.10.so.1.0
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: ''
+                - use-cmake: false
+                  arguments: 'install DESTDIR="../dist/"'
+
+- job-template:
+    name: 'panda3d-{module}-winx64'
+    display-name: 'panda3d-{module}-winx64'
+    project-type: freestyle
+    description: '{desc}'
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/panda3d-{module}.git
+            branches:
+              - refs/tags/{version}
+            wipe-workspace: false
+    builders:
+        - batch: |
+            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
+            @echo on
+
+            if not exist build (
+                mkdir build
+            )
+            cd build
+            cmake -G "NMake Makefiles" ^
+                -DCMAKE_BUILD_TYPE=Release ^
+                -DCMAKE_INSTALL_PREFIX=\panda3d-{module}\lib\site-packages ^
+                -DBULLET_INCLUDE_DIR=D:\Jenkins\workspace\bullet-winx64\dist\bullet\include ^
+                -DBULLET_LIBRARY_DIR=D:\Jenkins\workspace\bullet-winx64\dist\bullet\lib ^
+                -DINSTALL_PY=ON ^
+                -DPANDA_BINARY_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\bin ^
+                -DPANDA_INCLUDE_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\include ^
+                -DPANDA_LIBRARY_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\lib ^
+                -DPYTHON_INCLUDE_DIR=D:\Jenkins\workspace\blender-thirdparty-winx64\python\310\include ^
+                -DPYTHON_EXECUTABLE=D:\Jenkins\workspace\blender-thirdparty-winx64\python\310\bin\python ^
+                -DPYTHON_LIBRARY=D:\Jenkins\workspace\blender-thirdparty-winx64\python\310\libs\python310.lib ^
+                ..
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )
+
+            nmake
+            nmake install DESTDIR=..\dist\
+            cd ..
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )
+
+- project:
+    name: panda3d-extras-lynx64
+    jobs:
+        - 'panda3d-{module}-lynx64':
+            module: kphys
+            version: 0.5.13
+            desc: Physics extensions for Panda3D
+        - 'panda3d-{module}-lynx64':
+            module: krender
+            version: 0.0.21
+            desc: Custom Deferred Render Pipeline for Panda3D
+
+- project:
+    name: panda3d-extras-winx64
+    jobs:
+        - 'panda3d-{module}-winx64':
+            module: kphys
+            version: 0.5.13
+            desc: Physics extensions for Panda3D
+        - 'panda3d-{module}-winx64':
+            module: krender
+            version: 0.0.21
+            desc: Custom Deferred Render Pipeline for Panda3D

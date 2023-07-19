@@ -1,0 +1,258 @@
+- job:
+    name: panda3d-lynx64
+    display-name: panda3d-lynx64
+    project-type: freestyle
+    description: The Open Source Framework for 3D Rendering and Games
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/panda3d/panda3d.git
+            branches:
+              - refs/tags/v1.10.13
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - shell: |
+            THIRDPARTY=${JENKINS_HOME}/workspace/blender-thirdparty-lynx64
+            PYTHON=${JENKINS_HOME}/workspace/python-lynx64/dist/python/bin/python3.10
+
+            if [ ! -d sdk ]; then
+                git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
+            else
+                cd sdk
+                git pull
+                cd ..
+            fi
+
+            patch -p1 < sdk/conda/panda3d/01_libs.patch
+            patch -p1 < sdk/conda/panda3d/02_bullet_char.patch
+            patch -p1 < sdk/conda/panda3d/03_icon.patch
+            patch -p1 < sdk/conda/panda3d/07_rgba.patch
+            patch -p1 < sdk/conda/panda3d/09_rp_light.patch
+            patch -p1 < sdk/conda/panda3d/10_libp3rplight.patch
+            cp -fv sdk/conda/panda3d/icon.h panda/src/x11display/
+
+            ${PYTHON} makepanda/makepanda.py \
+                --brotli-incdir ${THIRDPARTY}/brotli/include \
+                --brotli-libdir ${THIRDPARTY}/brotli/lib \
+                --bullet-incdir ${JENKINS_HOME}/workspace/bullet-lynx64/dist/bullet/include \
+                --bullet-libdir ${JENKINS_HOME}/workspace/bullet-lynx64/dist/bullet/lib \
+                --freetype-incdir ${THIRDPARTY}/freetype/include \
+                --freetype-libdir ${THIRDPARTY}/freetype/lib \
+                --harfbuzz-incdir ${THIRDPARTY}/harfbuzz/include \
+                --harfbuzz-libdir ${THIRDPARTY}/harfbuzz/lib \
+                --jpeg-incdir ${THIRDPARTY}/jpeg/include \
+                --jpeg-libdir ${THIRDPARTY}/jpeg/lib \
+                --openal-incdir ${THIRDPARTY}/openal/include \
+                --openal-libdir ${THIRDPARTY}/openal/lib \
+                --png-incdir ${THIRDPARTY}/png/include \
+                --png-libdir ${THIRDPARTY}/png/lib \
+                --python-incdir ${JENKINS_HOME}/workspace/python-lynx64/dist/python/include \
+                --python-libdir ${JENKINS_HOME}/workspace/python-lynx64/dist/python/lib \
+                --tiff-incdir ${THIRDPARTY}/tiff/include \
+                --tiff-libdir ${THIRDPARTY}/tiff/lib \
+                --vorbis-incdir ${JENKINS_HOME}/workspace/ogg-lynx64/dist/ogg/include \
+                --vorbis-libdir ${JENKINS_HOME}/workspace/ogg-lynx64/dist/ogg/lib \
+                --zlib-incdir ${THIRDPARTY}/zlib/include \
+                --zlib-libdir ${THIRDPARTY}/zlib/lib \
+                --nothing \
+                --outputdir build \
+                --threads=2 \
+                --use-brotli \
+                --use-bullet \
+                --use-contrib \
+                --use-deploytools \
+                --use-direct \
+                --use-egg \
+                --use-freetype \
+                --use-gl \
+                --use-harfbuzz \
+                --use-jpeg \
+                --use-openal \
+                --use-openssl \
+                --use-pandafx \
+                --use-pandaparticlesystem \
+                --use-pandaphysics \
+                --use-pandatool \
+                --use-png \
+                --use-pview \
+                --use-python \
+                --use-skel \
+                --use-tiff \
+                --use-vorbis \
+                --use-x11 \
+                --use-xrender \
+                --use-zlib \
+                --verbose
+
+            # ${PYTHON} makepanda/makewheel.py \
+            #     --outputdir build \
+            #     --verbose
+
+            mkdir -p dist/panda3d/bin
+            mkdir -p dist/panda3d/etc
+            mkdir -p dist/panda3d/lib
+            mkdir -p dist/panda3d/include
+            mkdir -p dist/panda3d/share/panda3d
+            mkdir -p dist/panda3d/lib/python3.10/site-packages/
+
+            cp -Rfv build/bin               dist/panda3d/
+            cp -Rfv build/etc               dist/panda3d/
+            cp -Rfv build/lib               dist/panda3d/
+            cp -Rfv build/include           dist/panda3d/include/panda3d
+            cp -Rfv build/models            dist/panda3d/share/panda3d/
+            cp -Rfv build/direct            dist/panda3d/lib/python3.10/site-packages/
+            cp -Rfv build/panda3d           dist/panda3d/lib/python3.10/site-packages/
+            cp -Rfv build/panda3d.dist-info dist/panda3d/lib/python3.10/site-packages/
+            cp -Rfv build/pandac            dist/panda3d/lib/python3.10/site-packages/
+
+            patchelf --set-rpath \$ORIGIN          dist/panda3d/lib/*.so*
+            patchelf --set-rpath \$ORIGIN/../lib   dist/panda3d/bin/*
+            patchelf --set-rpath \$ORIGIN/../../.. dist/panda3d/lib/python3.10/site-packages/panda3d/*.so*
+
+- job:
+    name: panda3d-winx64
+    display-name: panda3d-winx64
+    project-type: freestyle
+    description: The Open Source Framework for 3D Rendering and Games
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/panda3d/panda3d.git
+            branches:
+              - refs/tags/v1.10.13
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - batch: |
+            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
+            @echo on
+
+            set THIRDPARTY=D:\Jenkins\workspace\blender-thirdparty-winx64
+            set P3DTHIRDPARTY=panda3d-1.10.13\thirdparty
+            set PYTHON=%P3DTHIRDPARTY%\python\310\bin\python
+            set PATCH=D:\msys2-patch\bin\patch
+            set GIT=D:\Git\bin\git
+            set ZIP=D:\7-Zip\7z
+            set BISON=%P3DTHIRDPARTY%\win-util\bison
+
+            if not exist panda3d-1.10.13 (
+                curl -O https://www.panda3d.org/download/panda3d-1.10.13/panda3d-1.10.13-tools-win64.zip
+                %ZIP% x panda3d-1.10.13-tools-win64.zip
+            )
+
+            if not exist sdk (
+                %GIT% clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
+            ) else (
+                cd sdk
+                %GIT% pull
+                cd ..
+            )
+
+            %PATCH% -p1 < sdk\conda\panda3d\01_libs.patch
+            %PATCH% -p1 < sdk\conda\panda3d\02_bullet_char.patch
+            %PATCH% -p1 < sdk\conda\panda3d\05_py_noinst.patch
+            %PATCH% -p1 < sdk\conda\panda3d\06_py_prefix.patch
+            %PATCH% -p1 < sdk\conda\panda3d\07_rgba.patch
+            %PATCH% -p1 < sdk\conda\panda3d\09_rp_light.patch
+            %PATCH% -p1 < sdk\conda\panda3d\10_libp3rplight.patch
+
+            %PYTHON% makepanda\makepanda.py ^
+                --brotli-incdir %THIRDPARTY%\brotli\include ^
+                --brotli-libdir %THIRDPARTY%\brotli\lib ^
+                --bullet-incdir D:\Jenkins\workspace\bullet-winx64\dist\bullet\include ^
+                --bullet-libdir D:\Jenkins\workspace\bullet-winx64\dist\bullet\lib ^
+                --freetype-incdir %THIRDPARTY%\freetype\include ^
+                --freetype-libdir %THIRDPARTY%\freetype\lib ^
+                --harfbuzz-incdir %THIRDPARTY%\harfbuzz\include ^
+                --harfbuzz-libdir %THIRDPARTY%\harfbuzz\lib ^
+                --jpeg-incdir %THIRDPARTY%\jpeg\include ^
+                --jpeg-libdir %THIRDPARTY%\jpeg\lib ^
+                --openal-incdir %THIRDPARTY%\openal\include ^
+                --openal-libdir %THIRDPARTY%\openal\lib ^
+                --openssl-incdir %P3DTHIRDPARTY%\win-libs-vc14-x64\openssl\include ^
+                --openssl-libdir %P3DTHIRDPARTY%\win-libs-vc14-x64\openssl\lib ^
+                --png-incdir %THIRDPARTY%\png\include ^
+                --png-libdir %THIRDPARTY%\png\lib ^
+                --python-incdir %P3DTHIRDPARTY%\python\310\include ^
+                --python-libdir %P3DTHIRDPARTY%\python\310\lib ^
+                --tiff-incdir %THIRDPARTY%\tiff\include ^
+                --tiff-libdir %THIRDPARTY%\tiff\lib ^
+                --vorbis-incdir %P3DTHIRDPARTY%\win-libs-vc14-x64\vorbis\include ^
+                --vorbis-libdir %P3DTHIRDPARTY%\win-libs-vc14-x64\vorbis\lib ^
+                --zlib-incdir %THIRDPARTY%\zlib\include ^
+                --zlib-libdir %THIRDPARTY%\zlib\lib ^
+                --msvc-version=14.3 ^
+                --nothing ^
+                --outputdir build ^
+                --threads=2 ^
+                --use-brotli ^
+                --use-bullet ^
+                --use-contrib ^
+                --use-deploytools ^
+                --use-direct ^
+                --use-egg ^
+                --use-freetype ^
+                --use-gl ^
+                --use-harfbuzz ^
+                --use-jpeg ^
+                --use-openal ^
+                --use-openssl ^
+                --use-pandafx ^
+                --use-pandaparticlesystem ^
+                --use-pandaphysics ^
+                --use-pandatool ^
+                --use-png ^
+                --use-pview ^
+                --use-python ^
+                --use-skel ^
+                --use-tiff ^
+                --use-vorbis ^
+                --use-vorbis ^
+                --use-x11 ^
+                --use-xrender ^
+                --use-zlib ^
+                --verbose ^
+                --windows-sdk=10
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )
+
+            rem %PYTHON% makepanda\makewheel.py ^
+            rem     --outputdir build ^
+            rem     --verbose
+
+            if "%ERRORLEVEL%" == "1" (
+                exit /B 1
+            )
+
+            mkdir dist\panda3d
+            mkdir dist\panda3d\bin
+            mkdir dist\panda3d\etc
+            mkdir dist\panda3d\lib
+            mkdir dist\panda3d\include
+            mkdir dist\panda3d\include\panda3d
+            mkdir dist\panda3d\share
+            mkdir dist\panda3d\share\panda3d
+            mkdir dist\panda3d\lib\site-packages
+
+            xcopy /I /E /Y build\bin               dist\panda3d\bin
+            xcopy /I /E /Y build\etc               dist\panda3d\etc
+            xcopy /I /E /Y build\lib               dist\panda3d\lib
+            xcopy /I /E /Y build\include           dist\panda3d\include\panda3d
+            xcopy /I /E /Y build\models            dist\panda3d\share\panda3d\models
+            xcopy /I /E /Y build\direct            dist\panda3d\lib\site-packages\direct
+            xcopy /I /E /Y build\panda3d           dist\panda3d\lib\site-packages\panda3d
+            xcopy /I /E /Y build\panda3d.dist-info dist\panda3d\lib\site-packages\panda3d.dist-info
+            xcopy /I /E /Y build\pandac            dist\panda3d\lib\site-packages\pandac
