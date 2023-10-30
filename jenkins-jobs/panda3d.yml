@@ -1,4 +1,4 @@
-- job:
+- job-template:
     name: panda3d-lynx64
     display-name: panda3d-lynx64
     project-type: freestyle
@@ -18,8 +18,8 @@
             timeout: 60
     builders:
         - shell: |
-            THIRDPARTY=${JENKINS_HOME}/workspace/blender-thirdparty-lynx64
-            PYTHON=${THIRDPARTY}/python/bin/python3.10
+            THIRDPARTY=${{JENKINS_HOME}}/workspace/blender-thirdparty-lynx64
+            PYTHON=${{JENKINS_HOME}}/workspace/python-lynx64/dist/python/bin/python{python_version}
 
             if [ ! -d sdk ]; then
                 git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
@@ -37,29 +37,29 @@
             patch -p1 < sdk/panda3d/10_libp3rplight.patch
             cp -fv sdk/panda3d/icon.h panda/src/x11display/
 
-            ${PYTHON} makepanda/makepanda.py \
-                --brotli-incdir ${THIRDPARTY}/brotli/include \
-                --brotli-libdir ${THIRDPARTY}/brotli/lib \
-                --bullet-incdir ${JENKINS_HOME}/workspace/bullet-lynx64/dist/bullet/include \
-                --bullet-libdir ${JENKINS_HOME}/workspace/bullet-lynx64/dist/bullet/lib \
-                --freetype-incdir ${THIRDPARTY}/freetype/include \
-                --freetype-libdir ${THIRDPARTY}/freetype/lib \
-                --harfbuzz-incdir ${THIRDPARTY}/harfbuzz/include \
-                --harfbuzz-libdir ${THIRDPARTY}/harfbuzz/lib \
-                --jpeg-incdir ${THIRDPARTY}/jpeg/include \
-                --jpeg-libdir ${THIRDPARTY}/jpeg/lib \
-                --openal-incdir ${THIRDPARTY}/openal/include \
-                --openal-libdir ${THIRDPARTY}/openal/lib \
-                --png-incdir ${THIRDPARTY}/png/include \
-                --png-libdir ${THIRDPARTY}/png/lib \
-                --python-incdir ${THIRDPARTY}/python/include \
-                --python-libdir ${THIRDPARTY}/python/lib \
-                --tiff-incdir ${THIRDPARTY}/tiff/include \
-                --tiff-libdir ${THIRDPARTY}/tiff/lib \
-                --vorbis-incdir ${JENKINS_HOME}/workspace/ogg-lynx64/dist/ogg/include \
-                --vorbis-libdir ${JENKINS_HOME}/workspace/ogg-lynx64/dist/ogg/lib \
-                --zlib-incdir ${THIRDPARTY}/zlib/include \
-                --zlib-libdir ${THIRDPARTY}/zlib/lib \
+            ${{PYTHON}} makepanda/makepanda.py \
+                --brotli-incdir ${{THIRDPARTY}}/brotli/include \
+                --brotli-libdir ${{THIRDPARTY}}/brotli/lib \
+                --bullet-incdir ${{JENKINS_HOME}}/workspace/bullet-lynx64/dist/bullet/include \
+                --bullet-libdir ${{JENKINS_HOME}}/workspace/bullet-lynx64/dist/bullet/lib \
+                --freetype-incdir ${{THIRDPARTY}}/freetype/include \
+                --freetype-libdir ${{THIRDPARTY}}/freetype/lib \
+                --harfbuzz-incdir ${{THIRDPARTY}}/harfbuzz/include \
+                --harfbuzz-libdir ${{THIRDPARTY}}/harfbuzz/lib \
+                --jpeg-incdir ${{THIRDPARTY}}/jpeg/include \
+                --jpeg-libdir ${{THIRDPARTY}}/jpeg/lib \
+                --openal-incdir ${{THIRDPARTY}}/openal/include \
+                --openal-libdir ${{THIRDPARTY}}/openal/lib \
+                --png-incdir ${{THIRDPARTY}}/png/include \
+                --png-libdir ${{THIRDPARTY}}/png/lib \
+                --python-incdir ${{JENKINS_HOME}}/workspace/python-lynx64/dist/python/include \
+                --python-libdir ${{JENKINS_HOME}}/workspace/python-lynx64/dist/python/lib \
+                --tiff-incdir ${{THIRDPARTY}}/tiff/include \
+                --tiff-libdir ${{THIRDPARTY}}/tiff/lib \
+                --vorbis-incdir ${{JENKINS_HOME}}/workspace/ogg-lynx64/dist/ogg/include \
+                --vorbis-libdir ${{JENKINS_HOME}}/workspace/ogg-lynx64/dist/ogg/lib \
+                --zlib-incdir ${{THIRDPARTY}}/zlib/include \
+                --zlib-libdir ${{THIRDPARTY}}/zlib/lib \
                 --nothing \
                 --outputdir build \
                 --threads=2 \
@@ -71,6 +71,7 @@
                 --use-egg \
                 --use-freetype \
                 --use-gl \
+                --use-gtk2 \
                 --use-harfbuzz \
                 --use-jpeg \
                 --use-openal \
@@ -90,32 +91,28 @@
                 --use-zlib \
                 --verbose
 
-            # ${PYTHON} makepanda/makewheel.py \
-            #     --outputdir build \
-            #     --verbose
-
             mkdir -p dist/panda3d/bin
             mkdir -p dist/panda3d/etc
             mkdir -p dist/panda3d/lib
             mkdir -p dist/panda3d/include
             mkdir -p dist/panda3d/share/panda3d
-            mkdir -p dist/panda3d/lib/python3.10/site-packages/
+            mkdir -p dist/panda3d/lib/python{python_version}/site-packages/
 
             cp -Rfv build/bin               dist/panda3d/
             cp -Rfv build/etc               dist/panda3d/
             cp -Rfv build/lib               dist/panda3d/
             cp -Rfv build/include           dist/panda3d/include/panda3d
             cp -Rfv build/models            dist/panda3d/share/panda3d/
-            cp -Rfv build/direct            dist/panda3d/lib/python3.10/site-packages/
-            cp -Rfv build/panda3d           dist/panda3d/lib/python3.10/site-packages/
-            cp -Rfv build/panda3d.dist-info dist/panda3d/lib/python3.10/site-packages/
-            cp -Rfv build/pandac            dist/panda3d/lib/python3.10/site-packages/
+            cp -Rfv build/direct            dist/panda3d/lib/python{python_version}/site-packages/
+            cp -Rfv build/panda3d           dist/panda3d/lib/python{python_version}/site-packages/
+            cp -Rfv build/panda3d.dist-info dist/panda3d/lib/python{python_version}/site-packages/
+            cp -Rfv build/pandac            dist/panda3d/lib/python{python_version}/site-packages/
 
             patchelf --set-rpath \$ORIGIN          dist/panda3d/lib/*.so*
             patchelf --set-rpath \$ORIGIN/../lib   dist/panda3d/bin/*
-            patchelf --set-rpath \$ORIGIN/../../.. dist/panda3d/lib/python3.10/site-packages/panda3d/*.so*
+            patchelf --set-rpath \$ORIGIN/../../.. dist/panda3d/lib/python{python_version}/site-packages/panda3d/*.so*
 
-- job:
+- job-template:
     name: panda3d-winx64
     display-name: panda3d-winx64
     project-type: freestyle
@@ -138,9 +135,10 @@
             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
             @echo on
 
-            set THIRDPARTY=D:\Jenkins\workspace\blender-thirdparty-winx64
-            set P3DTHIRDPARTY=panda3d-1.10.13\thirdparty
-            set PYTHON=%THIRDPARTY%\python\310\bin\python
+            set JENKINS_WS=D:\Jenkins\workspace
+            set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-winx64
+            set P3DTHIRDPARTY=%JENKINS_WS%\panda3d-winx64\panda3d-1.10.13\thirdparty
+            set PYTHON=%JENKINS_WS%\python-winx64\dist\python\bin\python
             set PATCH=D:\msys2-patch\bin\patch
             set GIT=D:\Git\bin\git
             set ZIP=D:\7-Zip\7z
@@ -184,8 +182,8 @@
                 --openssl-libdir %P3DTHIRDPARTY%\win-libs-vc14-x64\openssl\lib ^
                 --png-incdir %THIRDPARTY%\png\include ^
                 --png-libdir %THIRDPARTY%\png\lib ^
-                --python-incdir %THIRDPARTY%\python\310\include ^
-                --python-libdir %THIRDPARTY%\python\310\lib ^
+                --python-incdir %JENKINS_WS%\python-winx64\dist\python\include ^
+                --python-libdir %JENKINS_WS%\python-winx64\dist\python\libs ^
                 --tiff-incdir %THIRDPARTY%\tiff\include ^
                 --tiff-libdir %THIRDPARTY%\tiff\lib ^
                 --vorbis-incdir %P3DTHIRDPARTY%\win-libs-vc14-x64\vorbis\include ^
@@ -256,3 +254,15 @@
             xcopy /I /E /Y build\panda3d           dist\panda3d\lib\site-packages\panda3d
             xcopy /I /E /Y build\panda3d.dist-info dist\panda3d\lib\site-packages\panda3d.dist-info
             xcopy /I /E /Y build\pandac            dist\panda3d\lib\site-packages\pandac
+
+- project:
+    name: panda3d-lynx64
+    jobs:
+        - 'panda3d-lynx64':
+            python_version: '3.10'
+
+- project:
+    name: panda3d-winx64
+    jobs:
+        - 'panda3d-winx64':
+            python_version: '3.10'
