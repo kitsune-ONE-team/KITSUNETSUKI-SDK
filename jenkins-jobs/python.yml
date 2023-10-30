@@ -1,0 +1,88 @@
+- job-template:
+    name: python-lynx64
+    display-name: python-lynx64
+    project-type: freestyle
+    description: The Python programming language.
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/python/cpython.git
+            # url: https://github.com/colesbury/nogil-3.12.git
+            branches:
+              - refs/tags/v{python_version}.0
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - shell: |
+            THIRDPARTY=/root/jenkins/workspace/blender-thirdparty-lynx64
+            export CFLAGS=-I${{THIRDPARTY}}/zlib/include
+            export CPPFLAGS=-I${{THIRDPARTY}}/zlib/include
+            export LDFLAGS=-L${{THIRDPARTY}}/zlib/lib
+            mkdir -p build
+            cd build
+            ../configure \
+                --prefix=/python \
+                --enable-shared \
+                --enable-optimizations
+            make
+            make install DESTDIR=../dist
+            cd ..
+
+            patchelf --set-rpath \$ORIGIN/../lib dist/python/bin/python{python_version}
+
+- job-template:
+    name: python-winx64
+    display-name: python-winx64
+    project-type: freestyle
+    description: The Python programming language.
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/python/cpython.git
+            # url: https://github.com/colesbury/nogil-3.12.git
+            branches:
+              - refs/tags/v{python_version}.0
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - batch: |
+            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
+            @echo on
+
+            set PATH=%PATH%;D:\Git\bin
+            echo /p:PlatformToolset=v143 > PCbuild\msbuild.rsp
+            call PCBuild\build.bat
+
+            mkdir dist\python\DLLs
+            mkdir dist\python\bin
+            mkdir dist\python\libs
+            copy /V /Y PCbuild\amd64\*.pyd dist\python\DLLs
+            copy /V /Y PCbuild\amd64\*.exe dist\python\bin
+            copy /V /Y PCbuild\amd64\*.dll dist\python\bin
+            copy /V /Y PCbuild\amd64\*.lib dist\python\libs
+            xcopy /I /E /Y Lib             dist\python\lib
+            xcopy /I /E /Y Include         dist\python\include
+            copy /V /Y PC\pyconfig.h       dist\python\include
+            dist\python\bin\python -m ensurepip -v
+
+- project:
+    name: python-lynx64
+    jobs:
+        - 'python-lynx64':
+            python_version: '3.10'
+
+- project:
+    name: python-winx64
+    jobs:
+        - 'python-winx64':
+            python_version: '3.10'
