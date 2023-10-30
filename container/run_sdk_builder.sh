@@ -4,6 +4,8 @@ DIR=$(dirname ${0})
 
 echo -en "\033]0;sdk_builder\a"
 
+chcon -R system_u:object_r:container_file_t:s0 $(realpath ${DIR}/jenkins)
+
 podman run \
        --tty --interactive \
        --name sdk_builder \
