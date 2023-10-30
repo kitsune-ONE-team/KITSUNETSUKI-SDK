@@ -1,4 +1,4 @@
-- job:
+- job-template:
     name: sdk-lynx64
     display-name: sdk-lynx64
     project-type: freestyle
@@ -12,45 +12,44 @@
     builders:
         - shell: |
             DESTDIR=dist/sdk
-            JENKINS_WS=${JENKINS_HOME}/workspace
-            THIRDPARTY=${JENKINS_WS}/blender-thirdparty-lynx64
-            PIP="${DESTDIR}/bin/python3.10 -m pip"
+            JENKINS_WS=${{JENKINS_HOME}}/workspace
+            PIP="${{DESTDIR}}/bin/python{python_version} -m pip"
 
             if [ ! -f discord.zip ]; then
                 wget -O discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
                 7z x -odiscord discord.zip
             fi
 
-            mkdir -p ${DESTDIR}/include
-            mkdir -p ${DESTDIR}/include/SDL2
-            mkdir -p ${DESTDIR}/lib
-            cp -Rfv ${THIRDPARTY}/python/bin                                      ${DESTDIR}/
-            cp -Rfv ${THIRDPARTY}/python/include/python3.10/*                     ${DESTDIR}/include/
-            cp -Rfv ${THIRDPARTY}/python/lib/*                                    ${DESTDIR}/lib/
-            cp -Rfv ${THIRDPARTY}/sdl/include/*                                   ${DESTDIR}/include/SDL2/
-            cp -Rfv ${THIRDPARTY}/sdl/lib                                         ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/bin                 ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/etc                 ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/include             ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-lynx64/dist/panda3d/lib                 ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-kphys-lynx64/dist/panda3d-kphys/lib     ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/panda3d-krender-lynx64/dist/panda3d-krender/lib ${DESTDIR}/
-            cp -Rfv ${JENKINS_WS}/blender-lynx64/dist/blender/lib                 ${DESTDIR}/
-            cp -Rfv discord/c/*                                                   ${DESTDIR}/include/
-            cp -fv discord/lib/x86_64/discord_game_sdk.so                         ${DESTDIR}/lib/libdiscord_game_sdk.so
+            mkdir -p ${{DESTDIR}}/include
+            mkdir -p ${{DESTDIR}}/include/SDL2
+            mkdir -p ${{DESTDIR}}/lib
+            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/bin                              ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/include/python{python_version}/* ${{DESTDIR}}/include/
+            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/lib/*                            ${{DESTDIR}}/lib/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/bin                            ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/etc                            ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/include                        ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/lib                            ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-kphys-lynx64/dist/panda3d-kphys/lib                ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/panda3d-krender-lynx64/dist/panda3d-krender/lib            ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/blender-lynx64/dist/blender/lib                            ${{DESTDIR}}/
+            cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/include/SDL2                           ${{DESTDIR}}/include
+            cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/lib                                    ${{DESTDIR}}/
+            cp -Rfv discord/c/*                                                                ${{DESTDIR}}/include/
+            cp -fv discord/lib/x86_64/discord_game_sdk.so                                      ${{DESTDIR}}/lib/libdiscord_game_sdk.so
 
-            ${PIP} install --no-input --no-color cython==0.29.36
-            ${PIP} install --no-input --no-color httplib2==0.20.2
-            ${PIP} install --no-input --no-color jinja2==3.1.2
-            ${PIP} install --no-input --no-color jsonschema==3.2.0
-            ${PIP} install --no-input --no-color numpy==1.25.1
-            ${PIP} install --no-input --no-color nvidia-ml-py==11.515.0
-            ${PIP} install --no-input --no-color oauth2==1.9.0.post1
-            ${PIP} install --no-input --no-color py-ubjson==0.16.1
-            ${PIP} install --no-input --no-color git+https://github.com/kitsune-ONE-team/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
-            ${PIP} install --no-input --no-color git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git@2.0.0
+            ${{PIP}} install --no-input --no-color cython==0.29.36
+            ${{PIP}} install --no-input --no-color httplib2==0.20.2
+            ${{PIP}} install --no-input --no-color jinja2==3.1.2
+            ${{PIP}} install --no-input --no-color jsonschema==3.2.0
+            ${{PIP}} install --no-input --no-color numpy==1.25.1
+            ${{PIP}} install --no-input --no-color nvidia-ml-py==11.515.0
+            ${{PIP}} install --no-input --no-color oauth2==1.9.0.post1
+            ${{PIP}} install --no-input --no-color py-ubjson==0.16.1
+            ${{PIP}} install --no-input --no-color git+https://github.com/kitsune-ONE-team/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
+            ${{PIP}} install --no-input --no-color git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git@d3301a7a4a826f7c2225ccf204b7b32eb719b49b
 
-- job:
+- job-template:
     name: sdk-winx64
     display-name: sdk-winx64
     project-type: freestyle
@@ -65,7 +64,6 @@
         - batch: |
             set DESTDIR=dist\sdk
             set JENKINS_WS=D:\Jenkins\workspace
-            set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-winx64
             set PIP=%DESTDIR%\bin\python -m pip
             set ZIP=D:\7-Zip\7z
             set PATH=%PATH%;D:\Git\bin
@@ -78,20 +76,22 @@
             if not exist %DESTDIR% (
                 mkdir %DESTDIR%
                 mkdir %DESTDIR%\include
+                mkdir %DESTDIR%\include\SDL2
                 mkdir %DESTDIR%\lib
             )
-            xcopy /I /E /Y %THIRDPARTY%\python\310\DLLs                                 %DESTDIR%\DLLs
-            xcopy /I /E /Y %THIRDPARTY%\python\310\bin                                  %DESTDIR%\bin
-            xcopy /I /E /Y %THIRDPARTY%\python\310\include                              %DESTDIR%\include
-            xcopy /I /E /Y %THIRDPARTY%\python\310\lib                                  %DESTDIR%\lib
-            xcopy /I /E /Y %THIRDPARTY%\sdl\include                                     %DESTDIR%\include
-            xcopy /I /E /Y %THIRDPARTY%\sdl\bin                                         %DESTDIR%\lib
+            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\DLLs                  %DESTDIR%\DLLs
+            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\bin                   %DESTDIR%\bin
+            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\lib                   %DESTDIR%\lib
+            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\libs                  %DESTDIR%\libs
+            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\include               %DESTDIR%\include
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\bin                 %DESTDIR%\bin
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\etc                 %DESTDIR%\etc
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\include             %DESTDIR%\include
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\lib                 %DESTDIR%\lib
             xcopy /I /E /Y %JENKINS_WS%\panda3d-kphys-winx64\dist\panda3d-kphys\lib     %DESTDIR%\lib
             xcopy /I /E /Y %JENKINS_WS%\panda3d-krender-winx64\dist\panda3d-krender\lib %DESTDIR%\lib
+            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\include                     %DESTDIR%\include
+            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\lib                         %DESTDIR%\lib
             xcopy /I /E /Y discord\c                                                    %DESTDIR%\include
             copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\lib
 
@@ -104,4 +104,16 @@
             %PIP% install --no-input --no-color oauth2==1.9.0.post1
             %PIP% install --no-input --no-color py-ubjson==0.16.1
             %PIP% install --no-input --no-color git+https://github.com/kitsune-ONE-team/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
-            %PIP% install --no-input --no-color git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git@2.0.0
+            %PIP% install --no-input --no-color git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git@d3301a7a4a826f7c2225ccf204b7b32eb719b49b
+
+- project:
+    name: sdk-lynx64
+    jobs:
+        - 'sdk-lynx64':
+            python_version: '3.10'
+
+- project:
+    name: sdk-winx64
+    jobs:
+        - 'sdk-winx64':
+            python_version: '3.10'
