@@ -1,17 +1,14 @@
 - job-template:
-    name: 'bullet-{arch}'
-    display-name: 'bullet-{arch}'
+    name: bullet-lynx64
+    display-name: bullet-lynx64
     project-type: freestyle
     description: 'Bullet Real-Time Physics Simulation'
-    node: '{node}'
+    node: linux
     build-discarder:
         daysToKeep: -1
         numToKeep: 2
         artifactDaysToKeep: -1
         artifactNumToKeep: -1
-    properties:
-        - inject:
-            script-content: '{inject}'
     scm:
         - git:
             url: https://github.com/bulletphysics/bullet3.git
@@ -22,7 +19,7 @@
         - cmake:
             source-dir: .
             working-dir: build
-            generator: '{cmake_generator}'
+            generator: Unix Makefiles
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX={cmake_install_prefix}
@@ -48,27 +45,9 @@
                 - use-cmake: false
                   arguments: 'install DESTDIR="{destdir}"'
 
-- project:
-    name: bullet
-    jobs:
-        - 'bullet-{arch}':
-            arch: lynx64
-            node: linux
-            cmake_generator: Unix Makefiles
-            cmake_install_prefix: /bullet
-            destdir: ../dist/
-            inject:
-        # - 'bullet-{arch}':
-        #     arch: winx64
-        #     node: windows
-        #     cmake_generator: NMake Makefiles
-        #     cmake_install_prefix: '\bullet'
-        #     destdir: '..\dist\'
-        #     inject: call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
-
-- job:
-    name: 'bullet-winx64'
-    display-name: 'bullet-winx64'
+- job-template:
+    name: bullet-winx64
+    display-name: bullet-winx64
     project-type: freestyle
     description: 'Bullet Real-Time Physics Simulation'
     node: windows
@@ -94,7 +73,7 @@
             cd build
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
-                -DCMAKE_INSTALL_PREFIX=\bullet ^
+                -DCMAKE_INSTALL_PREFIX={cmake_install_prefix} ^
                 -DBUILD_BULLET2_DEMOS=OFF ^
                 -DBUILD_BULLET3_DEMOS=OFF ^
                 -DBUILD_CPU_DEMOS=OFF ^
@@ -118,9 +97,23 @@
             )
 
             nmake
-            nmake install DESTDIR=..\dist\
+            nmake install DESTDIR={destdir}
             cd ..
 
             if "%ERRORLEVEL%" == "1" (
                 exit /B 1
             )
+
+- project:
+    name: bullet-lynx64
+    jobs:
+        - bullet-lynx64:
+            cmake_install_prefix: /bullet
+            destdir: ../dist/
+
+- project:
+    name: bullet-winx64
+    jobs:
+        - bullet-winx64:
+            cmake_install_prefix: \bullet
+            destdir: ..\dist\
