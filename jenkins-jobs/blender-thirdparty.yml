@@ -11,7 +11,7 @@
         artifactNumToKeep: -1
     scm:
         - svn:
-            url: 'https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/{folder}'
+            url: 'https://svn.blender.org/svnroot/bf-blender/tags/blender-4.0-release/lib/{folder}'
             wipe-workspace: false
             timeout: 60
 

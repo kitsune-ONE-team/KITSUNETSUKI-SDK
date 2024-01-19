@@ -13,7 +13,7 @@
         - git:
             url: https://projects.blender.org/blender/blender.git
             branches:
-              - refs/tags/v3.6.0
+              - refs/tags/v4.0.2
             wipe-workspace: false
             timeout: 60
     builders:
@@ -80,7 +80,7 @@
         - git:
             url: https://projects.blender.org/blender/blender.git
             branches:
-              - refs/tags/v3.6.0
+              - refs/tags/v4.0.2
             wipe-workspace: false
             timeout: 60
     builders:

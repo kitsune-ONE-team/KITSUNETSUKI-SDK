@@ -10,6 +10,8 @@ podman run \
        --tty --interactive \
        --name sdk_builder \
        --volume $(realpath ${DIR}/jenkins):/root/jenkins:z \
+       --volume $(realpath ${DIR}/../jenkins-jobs):/root/jenkins-jobs:z \
+       --volume ${HOME}/.config/jenkins_jobs/:/root/.config/jenkins_jobs:z \
        --publish 0.0.0.0:8080:8080 \
        docker.io/yonnji/sdk \
        run-jenkins
