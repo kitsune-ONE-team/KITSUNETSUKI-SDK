@@ -62,10 +62,10 @@
     builders:
         - batch: |
             set DESTDIR=dist\sdk
-            set JENKINS_WS=D:\Jenkins\workspace
+            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
             set PIP=%DESTDIR%\bin\python -m pip
-            set ZIP=D:\7-Zip\7z
-            set PATH=%PATH%;D:\Git\bin
+            set ZIP=Z:\7-Zip\7z
+            set PATH=%PATH%;Z:\Git\bin
 
             if not exist sdk (
                 %GIT% clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk

@@ -60,6 +60,8 @@
             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
             @echo on
 
+            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
+
             if not exist build (
                 mkdir build
             )
@@ -67,15 +69,15 @@
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
                 -DCMAKE_INSTALL_PREFIX=\panda3d-{module}\lib\site-packages ^
-                -DBULLET_INCLUDE_DIR=D:\Jenkins\workspace\bullet-winx64\dist\bullet\include ^
-                -DBULLET_LIBRARY_DIR=D:\Jenkins\workspace\bullet-winx64\dist\bullet\lib ^
+                -DBULLET_INCLUDE_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\include ^
+                -DBULLET_LIBRARY_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\lib ^
                 -DINSTALL_PY=ON ^
-                -DPANDA_BINARY_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\bin ^
-                -DPANDA_INCLUDE_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\include ^
-                -DPANDA_LIBRARY_DIR=D:\Jenkins\workspace\panda3d-winx64\dist\panda3d\lib ^
-                -DPYTHON_INCLUDE_DIR=D:\Jenkins\workspace\python-winx64\dist\python\include ^
-                -DPYTHON_EXECUTABLE=D:\Jenkins\workspace\python-winx64\dist\python\bin\python ^
-                -DPYTHON_LIBRARY=D:\Jenkins\workspace\python-winx64\dist\python\libs\python{pythonversion}.lib ^
+                -DPANDA_BINARY_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\bin ^
+                -DPANDA_INCLUDE_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\include ^
+                -DPANDA_LIBRARY_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\lib ^
+                -DPYTHON_INCLUDE_DIR=%JENKINS_WS%\python-winx64\dist\python\include ^
+                -DPYTHON_EXECUTABLE=%JENKINS_WS%\python-winx64\dist\python\bin\python ^
+                -DPYTHON_LIBRARY=%JENKINS_WS%\python-winx64\dist\python\libs\python{pythonversion}.lib ^
                 ..
 
             if "%ERRORLEVEL%" == "1" (
@@ -95,12 +97,12 @@
     jobs:
         - 'panda3d-{module}-lynx64':
             module: kphys
-            version: '0.5.18'
+            version: '0.6.0'
             desc: Physics extensions for Panda3D
             python_version: '3.10'
         - 'panda3d-{module}-lynx64':
             module: krender
-            version: '0.0.23'
+            version: '0.0.24'
             desc: Custom Deferred Render Pipeline for Panda3D
             python_version: '3.10'
 
@@ -109,11 +111,11 @@
     jobs:
         - 'panda3d-{module}-winx64':
             module: kphys
-            version: '0.5.18'
+            version: '0.6.0'
             desc: Physics extensions for Panda3D
             pythonversion: '310'
         - 'panda3d-{module}-winx64':
             module: krender
-            version: '0.0.23'
+            version: '0.0.24'
             desc: Custom Deferred Render Pipeline for Panda3D
             pythonversion: '310'

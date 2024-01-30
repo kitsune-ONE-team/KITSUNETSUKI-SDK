@@ -148,9 +148,3 @@
     jobs:
         - 'blender-lynx64':
             python_version: '3.10'
-
-- project:
-    name: blender-winx64
-    jobs:
-        - 'blender-winx64':
-            python_version: '3.10'

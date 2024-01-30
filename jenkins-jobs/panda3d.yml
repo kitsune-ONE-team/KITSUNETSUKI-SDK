@@ -135,13 +135,13 @@
             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
             @echo on
 
-            set JENKINS_WS=D:\Jenkins\workspace
+            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
             set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-winx64
             set P3DTHIRDPARTY=%JENKINS_WS%\panda3d-winx64\panda3d-1.10.13\thirdparty
             set PYTHON=%JENKINS_WS%\python-winx64\dist\python\bin\python
-            set PATCH=D:\msys2-patch\bin\patch
-            set GIT=D:\Git\bin\git
-            set ZIP=D:\7-Zip\7z
+            set PATCH=Z:\msys2-patch\bin\patch
+            set GIT=Z:\Git\bin\git
+            set ZIP=Z:\7-Zip\7z
             set BISON=%P3DTHIRDPARTY%\win-util\bison
 
             if not exist panda3d-1.10.13 (
@@ -168,8 +168,8 @@
             %PYTHON% makepanda\makepanda.py ^
                 --brotli-incdir %THIRDPARTY%\brotli\include ^
                 --brotli-libdir %THIRDPARTY%\brotli\lib ^
-                --bullet-incdir D:\Jenkins\workspace\bullet-winx64\dist\bullet\include ^
-                --bullet-libdir D:\Jenkins\workspace\bullet-winx64\dist\bullet\lib ^
+                --bullet-incdir %JENKINS_WS%\bullet-winx64\dist\bullet\include ^
+                --bullet-libdir %JENKINS_WS%\bullet-winx64\dist\bullet\lib ^
                 --freetype-incdir %THIRDPARTY%\freetype\include ^
                 --freetype-libdir %THIRDPARTY%\freetype\lib ^
                 --harfbuzz-incdir %THIRDPARTY%\harfbuzz\include ^
