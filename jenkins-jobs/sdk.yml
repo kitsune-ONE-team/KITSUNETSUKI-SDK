@@ -64,6 +64,7 @@
             set DESTDIR=dist\sdk
             set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
             set PIP=%DESTDIR%\bin\python -m pip
+            set GIT=Z:\Git\bin\git
             set ZIP=Z:\7-Zip\7z
             set PATH=%PATH%;Z:\Git\bin
 
@@ -97,10 +98,11 @@
             xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\lib                 %DESTDIR%\lib
             xcopy /I /E /Y %JENKINS_WS%\panda3d-kphys-winx64\dist\panda3d-kphys\lib     %DESTDIR%\lib
             xcopy /I /E /Y %JENKINS_WS%\panda3d-krender-winx64\dist\panda3d-krender\lib %DESTDIR%\lib
+            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\bin                         %DESTDIR%\bin
             xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\include                     %DESTDIR%\include
             xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\lib                         %DESTDIR%\lib
             xcopy /I /E /Y discord\c                                                    %DESTDIR%\include
-            copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\lib
+            copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\bin
 
             set PYTHONHOME=%cd%\%DESTDIR%
             %PIP% install -r sdk\sdk\requirements.txt

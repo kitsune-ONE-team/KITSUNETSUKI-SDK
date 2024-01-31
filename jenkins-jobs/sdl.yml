@@ -25,6 +25,8 @@
                 -DCMAKE_INSTALL_PREFIX=/sdl
                 -DCMAKE_C_FLAGS=-fPIC
                 -DCMAKE_CXX_FLAGS=-fPIC
+                -DSDL_STATIC=YES
+                -DSDL_STATIC_PIC=YES
             build-tool-invocations:
                 - use-cmake: false
                   arguments: ''
@@ -60,8 +62,7 @@
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
                 -DCMAKE_INSTALL_PREFIX=/sdl ^
-                -DCMAKE_C_FLAGS=-fPIC ^
-                -DCMAKE_CXX_FLAGS=-fPIC ^
+                -DSDL_SHARED=YES ^
                 ..
 
             if "%ERRORLEVEL%" == "1" (
