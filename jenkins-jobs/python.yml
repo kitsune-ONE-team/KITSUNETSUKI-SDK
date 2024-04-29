@@ -29,8 +29,8 @@
                 --prefix=/python \
                 --enable-shared \
                 --enable-optimizations
-            make
-            make install DESTDIR=../dist
+            make -j 16
+            make install DESTDIR=../dist -j 16
             cd ..
 
             patchelf --set-rpath \$ORIGIN/../lib dist/python/bin/python{python_version}

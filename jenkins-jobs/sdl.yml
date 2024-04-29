@@ -23,15 +23,16 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/sdl
+                -DMULTITHREADED_BUILD=16
                 -DCMAKE_C_FLAGS=-fPIC
                 -DCMAKE_CXX_FLAGS=-fPIC
                 -DSDL_STATIC=YES
                 -DSDL_STATIC_PIC=YES
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/"'
+                  arguments: 'install DESTDIR="../dist/" -j 16'
 
 - job-template:
     name: 'sdl-winx64'
@@ -61,6 +62,7 @@
             cd build
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
+                -DMULTITHREADED_BUILD=16 ^
                 -DCMAKE_INSTALL_PREFIX=/sdl ^
                 -DSDL_SHARED=YES ^
                 ..
@@ -69,6 +71,7 @@
                 exit /B 1
             )
 
+            set CL=/MP
             nmake
             nmake install DESTDIR=..\dist\
             cd ..
@@ -81,10 +84,10 @@
     name: sdl-lynx64
     jobs:
         - 'sdl-lynx64':
-            version: '2.28.2'
+            version: '2.30.2'
 
 - project:
     name: sdl-winx64
     jobs:
         - 'sdl-winx64':
-            version: '2.28.2'
+            version: '2.30.2'

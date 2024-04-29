@@ -24,6 +24,7 @@
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/realsense
                 -DPYTHON_INSTALL_DIR=/realsense/lib/python{python_version}/site-packages
+                -DMULTITHREADED_BUILD=16
                 -DBUILD_EXAMPLES=OFF
                 -DBUILD_GLSL_EXTENSIONS=OFF
                 -DBUILD_LEGACY_LIVE_TEST=OFF
@@ -38,13 +39,13 @@
                 -DPYTHON_LIBRARY=/root/jenkins/workspace/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/"'
+                  arguments: 'install DESTDIR="../dist/" -j 16'
 
 - project:
     name: realsense-lynx64
     jobs:
         - 'realsense-lynx64':
-            version: '2.54.2'
+            version: '2.55.1'
             python_version: '3.10'

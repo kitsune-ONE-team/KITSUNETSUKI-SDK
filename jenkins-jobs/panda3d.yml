@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/panda3d/panda3d.git
             branches:
-              - refs/tags/v1.10.13
+              - refs/tags/v1.10.14
             wipe-workspace: false
             timeout: 60
     builders:
@@ -127,7 +127,7 @@
         - git:
             url: https://github.com/panda3d/panda3d.git
             branches:
-              - refs/tags/v1.10.13
+              - refs/tags/v1.10.14
             wipe-workspace: false
             timeout: 60
     builders:
@@ -137,16 +137,16 @@
 
             set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
             set THIRDPARTY=%JENKINS_WS%\blender-thirdparty-winx64
-            set P3DTHIRDPARTY=%JENKINS_WS%\panda3d-winx64\panda3d-1.10.13\thirdparty
+            set P3DTHIRDPARTY=%JENKINS_WS%\panda3d-winx64\panda3d-1.10.14\thirdparty
             set PYTHON=%JENKINS_WS%\python-winx64\dist\python\bin\python
             set PATCH=Z:\msys2-patch\bin\patch
             set GIT=Z:\Git\bin\git
             set ZIP=Z:\7-Zip\7z
             set BISON=%P3DTHIRDPARTY%\win-util\bison
 
-            if not exist panda3d-1.10.13 (
-                curl -O https://www.panda3d.org/download/panda3d-1.10.13/panda3d-1.10.13-tools-win64.zip
-                %ZIP% x panda3d-1.10.13-tools-win64.zip
+            if not exist panda3d-1.10.14 (
+                curl -O https://www.panda3d.org/download/panda3d-1.10.14/panda3d-1.10.14-tools-win64.zip
+                %ZIP% x panda3d-1.10.14-tools-win64.zip
             )
 
             if not exist sdk (

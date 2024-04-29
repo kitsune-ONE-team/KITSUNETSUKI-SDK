@@ -13,7 +13,7 @@
         - git:
             url: https://projects.blender.org/blender/blender.git
             branches:
-              - refs/tags/v4.0.2
+              - refs/tags/v4.1.1
             wipe-workspace: false
             timeout: 60
     builders:
@@ -25,6 +25,7 @@
             cmake -G "Unix Makefiles" \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/blender/lib/python{python_version}/site-packages \
+                -DMULTITHREADED_BUILD=16 \
                 -DLIBDIR=/root/jenkins/workspace/blender-thirdparty-lynx64 \
                 -DPYTHON_VERSION={python_version} \
                 -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version} \
@@ -61,8 +62,8 @@
                 -DWITH_X11_XINPUT=ON \
                 ..
 
-            make
-            make install DESTDIR=../dist/
+            make -j 16
+            make install DESTDIR=../dist/ -j 16
             cd ..
 
 - job-template:
@@ -100,6 +101,7 @@
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
                 -DCMAKE_INSTALL_PREFIX=\blender\lib\site-packages ^
+                -DMULTITHREADED_BUILD=16 ^
                 -DLIBDIR=D:/Jenkins/workspace/blender-thirdparty-winx64 ^
                 -DWITH_AUDASPACE=ON ^
                 -DWITH_CODEC_AVI=ON ^
@@ -135,6 +137,7 @@
                 exit /B 1
             )
 
+            set CL=/MP
             nmake
             nmake install DESTDIR=..\dist\
             cd ..

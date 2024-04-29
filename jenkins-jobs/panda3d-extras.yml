@@ -23,15 +23,15 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/panda3d-{module}/lib/python{python_version}/site-packages
-                -DBULLET_INCLUDE_DIR=/root/jenkins/workspace/bullet-lynx64/dist/bullet/include
-                -DBULLET_LIBRARY_DIR=/root/jenkins/workspace/bullet-lynx64/dist/bullet/lib
+                -DBULLET_INCLUDE_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/include
+                -DBULLET_LIBRARY_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/lib
                 -DINSTALL_PY=ON
-                -DPANDA_BINARY_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/bin
-                -DPANDA_INCLUDE_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/include
-                -DPANDA_LIBRARY_DIR=/root/jenkins/workspace/panda3d-lynx64/dist/panda3d/lib
-                -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version}
-                -DPYTHON_EXECUTABLE=/root/jenkins/workspace/python-lynx64/dist/python/bin/python{python_version}
-                -DPYTHON_LIBRARY=/root/jenkins/workspace/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
+                -DPANDA_BINARY_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/bin
+                -DPANDA_INCLUDE_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/include
+                -DPANDA_LIBRARY_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/lib
+                -DPYTHON_INCLUDE_DIR={jenkins_ws}/python-lynx64/dist/python/include/python{python_version}
+                -DPYTHON_EXECUTABLE={jenkins_ws}/python-lynx64/dist/python/bin/python{python_version}
+                -DPYTHON_LIBRARY={jenkins_ws}/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
             build-tool-invocations:
                 - use-cmake: false
                   arguments: ''
@@ -97,21 +97,23 @@
     jobs:
         - 'panda3d-{module}-lynx64':
             module: kphys
-            version: '0.6.0'
+            version: '0.6.2'
             desc: Physics extensions for Panda3D
             python_version: '3.10'
+            jenkins_ws: '/root/jenkins/workspace'
         - 'panda3d-{module}-lynx64':
             module: krender
             version: '0.0.24'
             desc: Custom Deferred Render Pipeline for Panda3D
             python_version: '3.10'
+            jenkins_ws: '/root/jenkins/workspace'
 
 - project:
     name: panda3d-extras-winx64
     jobs:
         - 'panda3d-{module}-winx64':
             module: kphys
-            version: '0.6.0'
+            version: '0.6.2'
             desc: Physics extensions for Panda3D
             pythonversion: '310'
         - 'panda3d-{module}-winx64':

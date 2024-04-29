@@ -23,10 +23,11 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/ogg
+                -DMULTITHREADED_BUILD=16
                 -DCMAKE_C_FLAGS=-fPIC
                 -DCMAKE_CXX_FLAGS=-fPIC
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/"'
+                  arguments: 'install DESTDIR="../dist/" -j 16'

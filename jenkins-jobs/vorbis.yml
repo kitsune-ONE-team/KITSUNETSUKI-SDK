@@ -23,12 +23,13 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/ogg
+                -DMULTITHREADED_BUILD=16
                 -DCMAKE_C_FLAGS=-fPIC
                 -DCMAKE_CXX_FLAGS=-fPIC
                 -DOGG_LIBRARY=/root/jenkins/workspace/ogg-lynx64/dist/ogg/lib/libogg.a
                 -DOGG_INCLUDE_DIR=/root/jenkins/workspace/ogg-lynx64/dist/ogg/include
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="/root/jenkins/workspace/ogg-lynx64/dist/"'
+                  arguments: 'install DESTDIR="/root/jenkins/workspace/ogg-lynx64/dist/" -j 16'

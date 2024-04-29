@@ -23,6 +23,7 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX={cmake_install_prefix}
+                -DMULTITHREADED_BUILD=16
                 -DBUILD_BULLET2_DEMOS=OFF
                 -DBUILD_BULLET3_DEMOS=OFF
                 -DBUILD_CPU_DEMOS=OFF
@@ -41,9 +42,9 @@
                 -DUSE_GRAPHICAL_BENCHMARK=OFF
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="{destdir}"'
+                  arguments: 'install DESTDIR="{destdir}" -j 16'
 
 - job-template:
     name: bullet-winx64
@@ -74,6 +75,7 @@
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
                 -DCMAKE_INSTALL_PREFIX={cmake_install_prefix} ^
+                -DMULTITHREADED_BUILD=16 ^
                 -DBUILD_BULLET2_DEMOS=OFF ^
                 -DBUILD_BULLET3_DEMOS=OFF ^
                 -DBUILD_CPU_DEMOS=OFF ^
@@ -96,6 +98,7 @@
                 exit /B 1
             )
 
+            set CL=/MP
             nmake
             nmake install DESTDIR={destdir}
             cd ..
