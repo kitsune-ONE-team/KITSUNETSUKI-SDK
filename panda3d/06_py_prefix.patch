@@ -6,7 +6,7 @@ index ad75ae6f1d..38a7f16a3c 100644
      abiflags = getattr(sys, 'abiflags', '')
  
      if GetTarget() == 'windows':
-+        SDK["PYTHONVERSION"] = "python3.10"
++        SDK["PYTHONVERSION"] = "python3.11"
 +        SDK["PYTHONEXEC"] = os.path.realpath(sys.executable)
 +        SDK["PYTHON"] = os.path.dirname(os.path.dirname(SDK["PYTHONEXEC"]))
 +

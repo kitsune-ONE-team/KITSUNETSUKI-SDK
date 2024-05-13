@@ -89,7 +89,7 @@
             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
             @echo on
 
-            set PYTHON=D:\Jenkins\workspace\blender-thirdparty-winx64\python\310\bin\python
+            set PYTHON=D:\Jenkins\workspace\blender-thirdparty-winx64\python\311\bin\python
             set GIT=D:\Git\bin\git.exe
             set SVN=D:\Svn\bin\svn.exe
             %PYTHON% -B build_files\utils\make_update.py --git-command "%GIT%" --svn-command "%SVN%" --no-libraries
@@ -150,4 +150,4 @@
     name: blender-lynx64
     jobs:
         - 'blender-lynx64':
-            python_version: '3.10'
+            python_version: '3.11'

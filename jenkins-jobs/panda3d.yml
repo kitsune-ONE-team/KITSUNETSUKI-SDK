@@ -259,10 +259,10 @@
     name: panda3d-lynx64
     jobs:
         - 'panda3d-lynx64':
-            python_version: '3.10'
+            python_version: '3.11'
 
 - project:
     name: panda3d-winx64
     jobs:
         - 'panda3d-winx64':
-            python_version: '3.10'
+            python_version: '3.11'
