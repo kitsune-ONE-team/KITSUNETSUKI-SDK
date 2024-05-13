@@ -59,7 +59,7 @@
             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
             @echo on
 
-            set PATH=%PATH%;D:\Git\bin
+            set PATH=%PATH%;Z:\Git\bin
             echo /p:PlatformToolset=v143 > PCbuild\msbuild.rsp
             call PCBuild\build.bat
 
