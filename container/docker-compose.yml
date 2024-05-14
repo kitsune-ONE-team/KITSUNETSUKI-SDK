@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  builder:
+    image: docker.io/yonnji/sdk
+    ports:
+      - 8080:8080
+    volumes:
+      - ./jenkins:/root/jenkins:z
+      - ../jenkins-jobs:/root/jenkins-jobs:z
+      - ~/.config/jenkins_jobs/:/root/.config/jenkins_jobs:z
+    command: run-jenkins

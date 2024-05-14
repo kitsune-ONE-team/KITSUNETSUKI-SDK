@@ -66,7 +66,7 @@
         artifactNumToKeep: -1
     builders:
         - batch: |
-            set JENKINS_WS=D:\Jenkins\workspace
+            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
 
             if exist %JENKINS_WS%\bullet-winx64 (
                 rd /S /Q %JENKINS_WS%\bullet-winx64\dist
