@@ -35,6 +35,7 @@
             patch -p1 < sdk/panda3d/07_rgba.patch
             patch -p1 < sdk/panda3d/09_rp_light.patch
             patch -p1 < sdk/panda3d/10_libp3rplight.patch
+            patch -p1 < sdk/panda3d/11_texture.patch
             cp -fv sdk/panda3d/icon.h panda/src/x11display/
 
             ${{PYTHON}} makepanda/makepanda.py \
@@ -164,6 +165,7 @@
             %PATCH% -p1 < sdk\panda3d\07_rgba.patch
             %PATCH% -p1 < sdk\panda3d\09_rp_light.patch
             %PATCH% -p1 < sdk\panda3d\10_libp3rplight.patch
+            %PATCH% -p1 < sdk\panda3d\11_texture.patch
 
             %PYTHON% makepanda\makepanda.py ^
                 --brotli-incdir %THIRDPARTY%\brotli\include ^
