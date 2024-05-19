@@ -103,7 +103,7 @@
             jenkins_ws: '/root/jenkins/workspace'
         - 'panda3d-{module}-lynx64':
             module: krender
-            version: '0.0.24'
+            version: '0.1.0'
             desc: Custom Deferred Render Pipeline for Panda3D
             python_version: '3.11'
             jenkins_ws: '/root/jenkins/workspace'
@@ -118,6 +118,6 @@
             pythonversion: '311'
         - 'panda3d-{module}-winx64':
             module: krender
-            version: '0.0.24'
+            version: '0.1.0'
             desc: Custom Deferred Render Pipeline for Panda3D
             pythonversion: '311'
