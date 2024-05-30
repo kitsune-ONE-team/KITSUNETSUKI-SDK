@@ -25,7 +25,7 @@
             cmake -G "Unix Makefiles" \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/blender/lib/python{python_version}/site-packages \
-                -DMULTITHREADED_BUILD=16 \
+                -DMULTITHREADED_BUILD=4 \
                 -DLIBDIR=/root/jenkins/workspace/blender-thirdparty-lynx64 \
                 -DPYTHON_VERSION={python_version} \
                 -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version} \
@@ -62,8 +62,8 @@
                 -DWITH_X11_XINPUT=ON \
                 ..
 
-            make -j 16
-            make install DESTDIR=../dist/ -j 16
+            make -j 4
+            make install DESTDIR=../dist/ -j 4
             cd ..
 
 - job-template:
