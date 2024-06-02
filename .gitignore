@@ -1,5 +1,4 @@
 *.pyc
 .venv
-/container/itch/*
-/container/jenkins/*
+/jenkins/*
 __pycache__

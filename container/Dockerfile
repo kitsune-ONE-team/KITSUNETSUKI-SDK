@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y
 RUN apt install -y \
-    git git-lfs subversion kmod sudo wget imagemagick ffmpeg p7zip-full openjdk-11-jre
+    git git-lfs subversion kmod sudo wget imagemagick ffmpeg p7zip-full openjdk-21-jre
 RUN apt install -y \
     build-essential bison cmake python3-pip patchelf cxxtest gettext \
     linux-libc-dev libusb-1.0-0-dev \
@@ -22,4 +22,4 @@ RUN apt clean && \
     ln -sf /home /var/home
 RUN pip3 install jenkins_job_builder==5.0.4
 RUN wget -q -O /opt/jenkins.war https://updates.jenkins.io/download/war/2.459/jenkins.war
-COPY ./run-jenkins /usr/local/bin/run-jenkins
+WORKDIR /root

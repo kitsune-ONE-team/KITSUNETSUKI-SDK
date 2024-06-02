@@ -97,7 +97,7 @@
     jobs:
         - 'panda3d-{module}-lynx64':
             module: kphys
-            version: '0.6.4'
+            version: '0.6.5'
             desc: Physics extensions for Panda3D
             python_version: '3.11'
             jenkins_ws: '/root/jenkins/workspace'
@@ -113,7 +113,7 @@
     jobs:
         - 'panda3d-{module}-winx64':
             module: kphys
-            version: '0.6.4'
+            version: '0.6.5'
             desc: Physics extensions for Panda3D
             pythonversion: '311'
         - 'panda3d-{module}-winx64':
