@@ -23,6 +23,7 @@
             build-type: Release
             other-arguments: |
                 -DCMAKE_INSTALL_PREFIX=/panda3d-{module}/lib/python{python_version}/site-packages
+                -DMULTITHREADED_BUILD=16
                 -DBULLET_INCLUDE_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/include
                 -DBULLET_LIBRARY_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/lib
                 -DINSTALL_PY=ON
@@ -34,9 +35,9 @@
                 -DPYTHON_LIBRARY={jenkins_ws}/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: ''
+                  arguments: '-j 16'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/"'
+                  arguments: 'install DESTDIR="../dist/" -j 16'
 
 - job-template:
     name: 'panda3d-{module}-winx64'
@@ -68,6 +69,7 @@
             cd build
             cmake -G "NMake Makefiles" ^
                 -DCMAKE_BUILD_TYPE=Release ^
+                -DMULTITHREADED_BUILD=16 ^
                 -DCMAKE_INSTALL_PREFIX=\panda3d-{module}\lib\site-packages ^
                 -DBULLET_INCLUDE_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\include ^
                 -DBULLET_LIBRARY_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\lib ^
@@ -84,6 +86,7 @@
                 exit /B 1
             )
 
+            set CL=/MP
             nmake
             nmake install DESTDIR=..\dist\
             cd ..

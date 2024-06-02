@@ -34,9 +34,9 @@
                 -DBUILD_WITH_TM2=OFF
                 -DFORCE_RSUSB_BACKEND=true
                 -DUSE_EXTERNAL_USB=OFF
-                -DPYTHON_EXECUTABLE=/root/jenkins/workspace/python-lynx64/dist/python/bin/python{python_version}
-                -DPYTHON_INCLUDE_DIR=/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version}
-                -DPYTHON_LIBRARY=/root/jenkins/workspace/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
+                -DPYTHON_EXECUTABLE={jenkins_ws}/python-lynx64/dist/python/bin/python{python_version}
+                -DPYTHON_INCLUDE_DIR={jenkins_ws}/python-lynx64/dist/python/include/python{python_version}
+                -DPYTHON_LIBRARY={jenkins_ws}/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
             build-tool-invocations:
                 - use-cmake: false
                   arguments: '-j 16'
@@ -49,3 +49,4 @@
         - 'realsense-lynx64':
             version: '2.55.1'
             python_version: '3.11'
+            jenkins_ws: '/root/jenkins/workspace'
