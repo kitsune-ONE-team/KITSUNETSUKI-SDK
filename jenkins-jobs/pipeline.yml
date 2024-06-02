@@ -11,46 +11,46 @@
         artifactNumToKeep: -1
     builders:
         - shell: |
-            JENKINS_WS=${JENKINS_HOME}/workspace
+            JENKINS_WS=${{JENKINS_HOME}}/workspace
 
-            if [ -d ${JENKINS_WS}/blender-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/blender-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/blender-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/blender-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/bullet-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/bullet-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/bullet-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/bullet-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/ogg-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/ogg-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/ogg-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/ogg-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/vorbis-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/vorbis-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/vorbis-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/vorbis-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/sdl-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/sdl-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/sdl-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/sdl-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/python-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/python-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/python-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/python-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/panda3d-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/panda3d-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/panda3d-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/panda3d-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/panda3d-kphys-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/panda3d-kphys-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/panda3d-kphys-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/panda3d-kphys-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/panda3d-krender-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/panda3d-krender-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/panda3d-krender-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/panda3d-krender-lynx64/dist
             fi
 
-            if [ -d ${JENKINS_WS}/sdk-lynx64 ]; then
-                rm -Rf ${JENKINS_WS}/sdk-lynx64/dist
+            if [ -d ${{JENKINS_WS}}/sdk-lynx64 ]; then
+                rm -Rf ${{JENKINS_WS}}/sdk-lynx64/dist
             fi
 
 - job:
@@ -108,17 +108,22 @@
         artifactDaysToKeep: -1
         artifactNumToKeep: -1
     dsl: |
-        stage('dist-clean')      { build job: 'dist-clean-lynx64' }
-        stage('bullet')          { build job: 'bullet-lynx64' }
-        stage('ogg')             { build job: 'ogg-lynx64' }
-        stage('vorbis')          { build job: 'vorbis-lynx64' }
-        stage('sdl')             { build job: 'sdl-lynx64' }
-        stage('python')          { build job: 'python-lynx64' }
-        stage('blender')         { build job: 'blender-lynx64' }
-        stage('panda3d')         { build job: 'panda3d-lynx64' }
-        stage('panda3d-kphys')   { build job: 'panda3d-kphys-lynx64' }
-        stage('panda3d-krender') { build job: 'panda3d-krender-lynx64' }
-        stage('sdk')             { build job: 'sdk-lynx64' }
+      pipeline {{
+          agent any
+          stages {{
+              stage('dist-clean')      {{ build job: 'dist-clean-lynx64' }}
+              stage('bullet')          {{ build job: 'bullet-lynx64' }}
+              stage('ogg')             {{ build job: 'ogg-lynx64' }}
+              stage('vorbis')          {{ build job: 'vorbis-lynx64' }}
+              stage('sdl')             {{ build job: 'sdl-lynx64' }}
+              stage('python')          {{ build job: 'python-lynx64' }}
+              stage('blender')         {{ build job: 'blender-lynx64' }}
+              stage('panda3d')         {{ build job: 'panda3d-lynx64' }}
+              stage('panda3d-kphys')   {{ build job: 'panda3d-kphys-lynx64' }}
+              stage('panda3d-krender') {{ build job: 'panda3d-krender-lynx64' }}
+              stage('sdk')             {{ build job: 'sdk-lynx64' }}
+          }}
+      }}
 
 - job:
     name: pipeline-winx64
@@ -132,11 +137,16 @@
         artifactDaysToKeep: -1
         artifactNumToKeep: -1
     dsl: |
-        stage('dist-clean')      { build job: 'dist-clean-winx64' }
-        stage('bullet')          { build job: 'bullet-winx64' }
-        stage('sdl')             { build job: 'sdl-winx64' }
-        stage('python')          { build job: 'python-winx64' }
-        stage('panda3d')         { build job: 'panda3d-winx64' }
-        stage('panda3d-kphys')   { build job: 'panda3d-kphys-winx64' }
-        stage('panda3d-krender') { build job: 'panda3d-krender-winx64' }
-        stage('sdk')             { build job: 'sdk-winx64' }
+      pipeline {{
+          agent any
+          stages {{
+              stage('dist-clean')      {{ build job: 'dist-clean-winx64' }}
+              stage('bullet')          {{ build job: 'bullet-winx64' }}
+              stage('sdl')             {{ build job: 'sdl-winx64' }}
+              stage('python')          {{ build job: 'python-winx64' }}
+              stage('panda3d')         {{ build job: 'panda3d-winx64' }}
+              stage('panda3d-kphys')   {{ build job: 'panda3d-kphys-winx64' }}
+              stage('panda3d-krender') {{ build job: 'panda3d-krender-winx64' }}
+              stage('sdk')             {{ build job: 'sdk-winx64' }}
+          }}
+      }}

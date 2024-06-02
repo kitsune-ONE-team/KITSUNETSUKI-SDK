@@ -20,6 +20,6 @@ RUN apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone && \
     ln -sf /home /var/home
-RUN pip3 install jenkins_job_builder==5.0.4
+RUN pip3 install jenkins_job_builder==6.3.0
 RUN wget -q -O /opt/jenkins.war https://updates.jenkins.io/download/war/2.459/jenkins.war
 WORKDIR /root
