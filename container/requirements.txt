@@ -1,0 +1,2 @@
+jenkins_job_builder==6.3.0
+setuptools==70.1.0

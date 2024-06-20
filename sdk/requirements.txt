@@ -9,4 +9,3 @@ oauth2==1.9.0.post1
 pillow==10.3.0
 py-ubjson==0.16.1
 git+https://github.com/Moguri/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
-git+https://github.com/kitsune-ONE-team/KITSUNETSUKI-Asset-Tools.git@d3301a7a4a826f7c2225ccf204b7b32eb719b49b
