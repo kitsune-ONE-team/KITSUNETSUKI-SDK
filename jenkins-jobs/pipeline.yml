@@ -164,6 +164,7 @@
           stages {{
               stage('dist-clean') {{
                   steps {{ build job: 'dist-clean-winx64' }}
+              }}
               stage('bullet') {{
                   steps {{ build job: 'bullet-winx64' }}
               }}

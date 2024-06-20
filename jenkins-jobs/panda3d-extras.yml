@@ -58,7 +58,7 @@
             wipe-workspace: false
     builders:
         - batch: |
-            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.20348.0
+            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.22000.0
             @echo on
 
             set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
