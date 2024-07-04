@@ -101,6 +101,7 @@
             xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\bin                         %DESTDIR%\bin
             xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\include                     %DESTDIR%\include
             xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\lib                         %DESTDIR%\lib
+            copy /V /Y     %JENKINS_WS%\blender-thirdparty-winx64\openal\lib\*.dll      %DESTDIR%\bin
             xcopy /I /E /Y discord\c                                                    %DESTDIR%\include
             copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\bin
 
