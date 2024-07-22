@@ -84,10 +84,10 @@
     name: sdl-lynx64
     jobs:
         - 'sdl-lynx64':
-            version: '2.30.2'
+            version: '2.30.5'
 
 - project:
     name: sdl-winx64
     jobs:
         - 'sdl-winx64':
-            version: '2.30.2'
+            version: '2.30.5'

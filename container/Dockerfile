@@ -15,7 +15,8 @@ RUN apt install -y \
     g++-mingw-w64 libz-mingw-w64-dev
 RUN apt install -y \
     mesa-common-dev mesa-utils libgl1-mesa-dev libglu1-mesa-dev \
-    libxxf86dga-dev libxxf86vm-dev libxrender-dev libxext-dev libgtk2.0-dev
+    libxxf86dga-dev libxxf86vm-dev libxrender-dev libxext-dev libgtk2.0-dev \
+    libxkbcommon-x11-dev libgbm-dev libwayland-dev
 RUN apt clean && \
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone && \
