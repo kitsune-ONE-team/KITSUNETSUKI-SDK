@@ -1,0 +1,20 @@
+diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
+index 1cecc7dbe8..4169a0f9bb 100755
+--- a/makepanda/makepanda.py
++++ b/makepanda/makepanda.py
+@@ -3491,6 +3491,7 @@ if not PkgSkip("PANDATOOL"):
+ if not PkgSkip("CONTRIB"):
+     CopyAllHeaders('contrib/src/contribbase')
+     CopyAllHeaders('contrib/src/ai')
++    CopyAllHeaders('contrib/src/rplight')
+ 
+ ########################################################################
+ #
+@@ -6260,6 +6261,7 @@ if not PkgSkip("CONTRIB"):
+ if not PkgSkip("CONTRIB") and not PkgSkip("PYTHON"):
+     OPTS=['DIR:contrib/src/rplight', 'BUILDING:RPLIGHT']
+     TargetAdd('p3rplight_composite1.obj', opts=OPTS, input='p3rplight_composite1.cxx')
++    TargetAdd('libp3rplight.lib', input='p3rplight_composite1.obj')
+ 
+     IGATEFILES=GetDirectoryContents('contrib/src/rplight', ["*.h", "*_composite*.cxx"])
+     TargetAdd('libp3rplight.in', opts=OPTS, input=IGATEFILES)
