@@ -14,6 +14,9 @@
             DESTDIR=dist/sdk
             JENKINS_WS=${{JENKINS_HOME}}/workspace
             PIP="${{DESTDIR}}/bin/python{python_version} -m pip"
+            # PKG_CONFIG_PATH=/root/jenkins/workspace/python-lynx64/dist/python/lib/pkgconfig
+            # CFLAGS=-I/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version}
+            # LDFLAGS=-L/root/jenkins/workspace/python-lynx64/dist/python/lib
 
             if [ ! -d sdk ]; then
                 git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
@@ -32,20 +35,21 @@
             mkdir -p ${{DESTDIR}}/include/SDL2
             mkdir -p ${{DESTDIR}}/lib
             cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/bin                              ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/include/python{python_version}/* ${{DESTDIR}}/include/
-            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/lib/*                            ${{DESTDIR}}/lib/
+            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/include/python{python_version}   ${{DESTDIR}}/include/
+            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/lib                              ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/bin                            ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/etc                            ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/include                        ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/lib                            ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-kphys-lynx64/dist/panda3d-kphys/lib                ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/panda3d-krender-lynx64/dist/panda3d-krender/lib            ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/blender-lynx64/dist/blender/lib                            ${{DESTDIR}}/
+            #cp -Rfv ${{JENKINS_WS}}/blender-lynx64/dist/blender/lib                            ${{DESTDIR}}/
             cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/include/SDL2                           ${{DESTDIR}}/include
             cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/lib                                    ${{DESTDIR}}/
             cp -Rfv discord/c/*                                                                ${{DESTDIR}}/include/
             cp -fv discord/lib/x86_64/discord_game_sdk.so                                      ${{DESTDIR}}/lib/libdiscord_game_sdk.so
 
+            PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -U pip wheel
             PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -r sdk/sdk/requirements.txt
 
 - job-template:
@@ -106,16 +110,17 @@
             copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\bin
 
             set PYTHONHOME=%cd%\%DESTDIR%
+            %PIP% install -U pip wheel
             %PIP% install -r sdk\sdk\requirements.txt
 
 - project:
     name: sdk-lynx64
     jobs:
         - 'sdk-lynx64':
-            python_version: '3.11'
+            python_version: '3.13t'
 
 - project:
     name: sdk-winx64
     jobs:
         - 'sdk-winx64':
-            python_version: '3.11'
+            python_version: '3.13t'
