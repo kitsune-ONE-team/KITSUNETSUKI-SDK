@@ -6,6 +6,6 @@ jsonschema==3.2.0
 # numpy==1.26.4
 nvidia-ml-py==12.555.43
 oauth2==1.9.0.post1
-pillow==10.3.0
+pillow==10.4.0
 py-ubjson==0.16.1
 git+https://github.com/Moguri/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
