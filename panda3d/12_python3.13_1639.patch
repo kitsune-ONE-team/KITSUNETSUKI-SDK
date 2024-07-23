@@ -1,0 +1,735 @@
+From 1facee58555bc43d7c8f03bfd7c78ada64d3a398 Mon Sep 17 00:00:00 2001
+From: pmp-p <mail.peny@free.fr>
+Date: Tue, 26 Mar 2024 18:23:47 +0100
+Subject: [PATCH 1/3] wasi
+
+---
+ cmake-builds.sh                         | 214 ++++++++++++++++++++++++
+ panda/src/audiotraits/CMakeLists.txt    |   2 +-
+ panda/src/express/virtualFileSystem.cxx |   4 +-
+ panda/src/testbed/pview.cxx             |  12 +-
+ pandatool/src/assimp/assimpLoader.cxx   |   6 +
+ 5 files changed, 234 insertions(+), 4 deletions(-)
+ create mode 100755 cmake-builds.sh
+
+diff --git a/cmake-builds.sh b/cmake-builds.sh
+new file mode 100755
+index 00000000000..543ab485de7
+--- /dev/null
++++ b/cmake-builds.sh
+@@ -0,0 +1,214 @@
++#!/bin/bash
++
++
++export PYBUILD=${PYBUILD:-3.12}
++export SDKROOT=${SDKROOT:-/opt/python-wasm-sdk}
++
++export BUILD_DIR=$(pwd)
++export SRC_DIR=$(realpath $(dirname $0))
++
++echo SRC_DIR=$SRC_DIR
++
++if ${CI:-false}
++then
++    pushd ${SRC_DIR}
++    # panda drafts
++    wget -O- https://patch-diff.githubusercontent.com/raw/panda3d/panda3d/pull/1611.diff | patch -p1
++    wget -O- https://patch-diff.githubusercontent.com/raw/panda3d/panda3d/pull/1612.diff | patch -p1
++
++    # wasi drafts
++    wget -O- https://patch-diff.githubusercontent.com/raw/pmp-p/panda3d/pull/10.diff | patch -p1
++    wget -O- https://patch-diff.githubusercontent.com/raw/pmp-p/panda3d/pull/13.diff | patch -p1
++    popd
++fi
++
++
++if echo $@|grep -q host
++then
++    NATIVE=true
++    ARCH=$(arch)
++    echo "building  ${SRC_DIR} for host ${ARCH}"
++
++    CC=clang CXX=clang++ ${SDKROOT}/devices/x86_64/usr/bin/cmake -S ${SRC_DIR} \
++     -DCMAKE_BUILD_TYPE=Debug -DHAVE_AUDIO=YES -DHAVE_THREADS=NO \
++     -DHAVE_OPENSSL=NO \
++ -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
++     -DHAVE_ZLIB=YES -DHAVE_PNG=YES  \
++     -DHAVE_TIFF=NO -DHAVE_JPEG=YES \
++ -DHAVE_AUDIO=YES \
++ -DHAVE_ASSIMP=NO -DHAVE_BULLET=NO \
++ -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
++     -DHAVE_HARFBUZZ=YES -DHAVE_FREETYPE=YES \
++ -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 -DHAVE_X11=0 \
++ -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=0 \
++    \
++     -DCMAKE_INSTALL_PREFIX=${SDKROOT}/devices/$(arch)/usr \
++    -DHAVE_PYTHON=0 \
++  -DHAVE_OPUS=NO -DHAVE_VORBIS=NO -DHAVE_OPENEXR=NO -DHAVE_FFMPEG=NO -DHAVE_OPENAL=NO  -DHAVE_EIGEN=NO \
++  -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO
++
++
++    make && make install
++
++
++#     -DHAVE_EGL=NO -DHAVE_GL=YES -DHAVE_GLX=YES -DHAVE_X11=YES -DHAVE_GLES1=NO -DHAVE_GLES2=YES -DBUILD_SHARED_LIBS=YES \
++#     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/$(arch)/usr \
++#     -DWANT_PYTHON_VERSION=${PYBUILD}
++#
++
++
++# https://cmake.org/cmake/help/v3.13/module/FindPython.html
++#     -DPython_VERSION=3.12 -DPython_VERSION_MAJOR=3 -DPython_VERSION_MINOR=12 -DPython_VERSION_PATCH=1 \
++#        -DPython3_EXECUTABLE:FILEPATH=${SDKROOT}/devices/$(arch)/usr/bin/python${PYBUILD} \
++#        -DPython3_INCLUDE_DIR=${SDKROOT}/devices/$(arch)/usr/include/python${PYBUILD} \
++#        -DPython_LIBRARIES=${SDKROOT}/devices/$(arch)/usr/lib \
++#        -DPython3_FOUND=TRUE \
++#        -DPython3_Development_FOUND=TRUE \
++#        -DPython3_Development.Module_FOUND=TRUE \
++#        -DPython3_Development.Embed_FOUND=TRUE \
++#    \
++# -DHAVE_SDL2=1
++else
++    NATIVE=false
++
++fi
++
++if $NATIVE
++then
++    echo
++else
++
++if echo $EMSDK|grep -q emsdk
++then
++    echo building with emsdk
++    ARCH=emsdk
++    EMCC_CFLAGS="-sNODERAWFS" emcmake ${SDKROOT}/devices/x86_64/usr/bin/cmake ${SRC_DIR} \
++     -DCMAKE_BUILD_TYPE=Release \
++     -DHAVE_THREADS=NO \
++     -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_X11=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO \
++     -DHAVE_OPENSSL=NO \
++ -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
++ -DHAVE_AUDIO=YES \
++ -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
++     -DHAVE_ZLIB=1 -DHAVE_PNG=NO  \
++     -DHAVE_TIFF=NO -DHAVE_JPEG=NO \
++     -DHAVE_HARFBUZZ=1 -DHAVE_FREETYPE=1 \
++ -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 \
++    \
++     -DHAVE_PYTHON=NO \
++    \
++     -DCMAKE_INSTALL_PREFIX=${PREFIX}
++
++#    -DTHIRDPARTY_DIRECTORY=${PREFIX} \
++
++else
++    . ${SDKROOT}/wasisdk/wasisdk_env.sh
++
++    mkdir -p wasmbin
++    cat > wasmbin/interrogate << END
++    #!/bin/bash
++    # cd /
++    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/interrogate \$@
++END
++
++    cat > wasmbin/interrogate_module << END
++    #!/bin/bash
++    # cd /
++    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/interrogate_module \$@
++END
++
++    cat > wasmbin/pzip << END
++    #!/bin/bash
++    # cd /
++    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/pzip \$@
++END
++
++
++    chmod +x $(pwd)/wasmbin/*
++
++    # HAVE_EGG
++
++    echo "
++
++==============================================================
++    WASI_SDK_PREFIX=$WASI_SDK_PREFIX
++    WASI_SYSROOT=$WASI_SYSROOT
++    CMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE
++
++==============================================================
++
++
++"
++    ARCH=wasisdk
++    CC=wasi-c CXX=wasi-c++ ${SDKROOT}/devices/x86_64/usr/bin/cmake ${SRC_DIR} \
++     -DCMAKE_BUILD_TYPE=Release \
++     -DHAVE_THREADS=NO \
++     -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_X11=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO \
++     -DHAVE_OPENSSL=NO \
++ -DHAVE_AUDIO=1 -DHAVE_PYTHON=0\
++ -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
++     -DHAVE_HARFBUZZ=NO -DHAVE_FREETYPE=NO \
++     -DPHAVE_IOSTREAM=1 -DHAVE_TINYDISPLAY=1 -DHAVE_TIFF=NO  \
++    \
++    -DCMAKE_SYSTEM_NAME=WASI \
++     -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
++     -DHAVE_PYTHON=NO -DZLIB_ROOT=${WASI_SYSROOT} \
++    \
++     -DHOST_PATH_PZIP=/opt/python-wasm-sdk/build/panda3d-host/bin/pzip \
++     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
++
++
++
++
++#     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/wasisdk/usr \
++#     -DWANT_PYTHON_VERSION=${PYBUILD}
++#      -DHAVE_ZLIB=0 -DHAVE_PNG=NO -DHAVE_JPEG=NO \
++# not enough
++#  -DCMAKE_TOOLCHAIN_FILE=/opt/python-wasm-sdk/wasisdk/upstream/share/cmake/wasi-sdk.cmake
++#     -DTHIRDPARTY_DIRECTORY=${PREFIX} \
++
++    #\
++    # -DHAVE_PYTHON=1 \
++    # -DHOST_PATH_INTERROGATE=$(pwd)/wasmbin/interrogate \
++    # -DHOST_PATH_INTERROGATE_MODULE=$(pwd)/wasmbin \
++    #    -DPython3_EXECUTABLE:FILEPATH=${SDKROOT}/python3-wasi \
++    #    -DPython3_INCLUDE_DIR=${SDKROOT}/devices/wasisdk/usr/include/python${PYBUILD} \
++    #    -DPython3_LIBRARY=${SDKROOT}/devices/wasisdk/usr/lib \
++    #    -DPython3_FOUND=TRUE \
++    #    -DPython3_Development_FOUND=TRUE \
++    #    -DPython3_Development.Module_FOUND=TRUE \
++    #    -DPython3_Development.Embed_FOUND=TRUE \
++    #\
++
++# -DHOST_PATH_PZIP=${HOST}/bin/pzip
++
++
++fi
++fi
++make && make install
++
++cp -vf ${SRC_DIR}/panda/src/event/asyncTaskManager.h ${SRC_DIR}/panda/src/tinydisplay/config_tinydisplay.? ${SDKROOT}/devices/${ARCH}/usr/include/panda3d/
++
++if $CI
++then
++    [ -f /tmp/out.bmp ] && rm /tmp/out.bmp
++    if $NATIVE
++    then
++        $(pwd)/bin/pview -c -L -s ${BUILD_DIR}/out.bmp
++    else
++        ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/pview.wasi -c -L -s /tmp/out.bmp
++    fi
++
++    if md5sum /tmp/out.bmp | grep -q "a0345fc5e8b77b9715df69e271e22c64"
++    then
++        echo "test ok"
++        exit 0
++    else
++        echo "error screen output checksum does not match"
++        exit 5
++    fi
++else
++    echo not running test
++    exit 0
++fi
++
+diff --git a/panda/src/audiotraits/CMakeLists.txt b/panda/src/audiotraits/CMakeLists.txt
+index cd58f3277dc..bd6f4f38de7 100644
+--- a/panda/src/audiotraits/CMakeLists.txt
++++ b/panda/src/audiotraits/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ if(NOT HAVE_AUDIO)
+   return()
+ elseif(NOT HAVE_FMODEX AND NOT HAVE_OPENAL)
+-  message(SEND_ERROR
++  message(WARNING
+     "You must have an audio backend for audio support! Turn off HAVE_AUDIO to ignore this.")
+ endif()
+ 
+diff --git a/panda/src/express/virtualFileSystem.cxx b/panda/src/express/virtualFileSystem.cxx
+index 37c220f4ca3..f0f26a4113b 100644
+--- a/panda/src/express/virtualFileSystem.cxx
++++ b/panda/src/express/virtualFileSystem.cxx
+@@ -28,7 +28,7 @@
+ #include "executionEnvironment.h"
+ #include "pset.h"
+ 
+-#ifdef __EMSCRIPTEN__
++#if defined(VFS_HTTP)
+ #include "virtualFileMountHTTP.h"
+ #endif
+ 
+@@ -857,7 +857,7 @@ get_global_ptr() {
+     _global_ptr = new VirtualFileSystem;
+ 
+     // Set up the default mounts.  First, there is always the root mount.
+-#ifdef __EMSCRIPTEN__
++#if defined(VFS_HTTP)
+     // Unless we're running in node.js, we don't have a filesystem, and instead
+     // mount the current server root as our filesystem root.
+     bool is_node = (bool)EM_ASM_INT(return (typeof process === 'object' && typeof process.versions === 'object' && typeof process.versions.node === 'string'));
+diff --git a/panda/src/testbed/pview.cxx b/panda/src/testbed/pview.cxx
+index e656af4b45f..cb3b2af1847 100644
+--- a/panda/src/testbed/pview.cxx
++++ b/panda/src/testbed/pview.cxx
+@@ -28,6 +28,7 @@
+ #include "asyncTaskManager.h"
+ #include "asyncTask.h"
+ #include "boundingSphere.h"
++#include "load_prc_file.h"
+ 
+ using std::cerr;
+ using std::endl;
+@@ -199,6 +200,9 @@ help() {
+     "      Ignore bundle/group names.  Normally, the <group> name must match\n"
+     "      the <bundle> name, or the animation will not be used.\n\n"
+ 
++    "  -o\n"
++    "      Do not open window (window-type offscreen)\n\n"
++
+     "  -s filename\n"
+     "      After displaying the models, immediately take a screenshot and\n"
+     "      exit.\n\n"
+@@ -339,6 +343,7 @@ class AdjustCameraClipPlanesTask : public AsyncTask {
+ int
+ main(int argc, char **argv) {
+   preprocess_argv(argc, argv);
++
+   framework.open_framework(argc, argv);
+   framework.set_window_title("Panda Viewer");
+ 
+@@ -355,7 +360,7 @@ main(int argc, char **argv) {
+ 
+   extern char *optarg;
+   extern int optind;
+-  static const char *optflags = "acls:DVhiLP:S";
++  static const char *optflags = "aclos:DVhiLP:S";
+   int flag = getopt(argc, argv, optflags);
+ 
+   while (flag != EOF) {
+@@ -377,6 +382,11 @@ main(int argc, char **argv) {
+       hierarchy_match_flags |= PartGroup::HMF_ok_wrong_root_name;
+       break;
+ 
++    case 'o':
++        nout << "off type window set" << endl;
++      load_prc_file_data("", "window-type offscreen");
++      break;
++
+     case 's':
+       auto_screenshot = true;
+       screenshotfn = optarg;
+diff --git a/pandatool/src/assimp/assimpLoader.cxx b/pandatool/src/assimp/assimpLoader.cxx
+index 80b94a7ca3d..d1a574b0a05 100644
+--- a/pandatool/src/assimp/assimpLoader.cxx
++++ b/pandatool/src/assimp/assimpLoader.cxx
+@@ -1177,7 +1177,11 @@ load_node(const aiNode &node, PandaNode *parent, bool under_joint) {
+       //case AI_BOOL:
+       //  value = (*static_cast<bool *>(entry.mData)) ? "1" : "";
+       //  break;
++#if defined(AI_INT32)
+       case AI_INT32:
++#else
++      case AI_INT:
++#endif
+         value = format_string(*static_cast<int32_t *>(entry.mData));
+         break;
+       case AI_UINT64:
+@@ -1186,9 +1190,11 @@ load_node(const aiNode &node, PandaNode *parent, bool under_joint) {
+       case AI_FLOAT:
+         value = format_string(*static_cast<float *>(entry.mData));
+         break;
++#if defined(AI_DOUBLE)
+       case AI_DOUBLE:
+         value = format_string(*static_cast<double *>(entry.mData));
+         break;
++#endif
+       case AI_AISTRING:
+         {
+           const aiString *str = static_cast<const aiString *>(entry.mData);
+
+From 3f7219df833af9a97abb57ab1c4cc908109f4be2 Mon Sep 17 00:00:00 2001
+From: pmp-p <mail.peny@free.fr>
+Date: Tue, 26 Mar 2024 21:47:53 +0100
+Subject: [PATCH 2/3] 3.13a5
+
+---
+ cmake-builds.sh                         | 22 ++++++++++++++--------
+ dtool/src/interrogatedb/py_compat.h     |  9 +++++++++
+ panda/src/pgraph/renderState_ext.cxx    |  4 ++++
+ panda/src/putil/bitArray_ext.cxx        |  6 ++++--
+ panda/src/putil/doubleBitMask_ext.I     |  2 +-
+ pandatool/src/deploy-stub/deploy-stub.c |  2 ++
+ 6 files changed, 34 insertions(+), 11 deletions(-)
+
+diff --git a/cmake-builds.sh b/cmake-builds.sh
+index 543ab485de7..0572c99f26a 100755
+--- a/cmake-builds.sh
++++ b/cmake-builds.sh
+@@ -29,6 +29,15 @@ then
+     ARCH=$(arch)
+     echo "building  ${SRC_DIR} for host ${ARCH}"
+ 
++    if echo $@|grep -q hostx
++    then
++        P3DX="-DHAVE_EGL=NO -DHAVE_GL=YES -DHAVE_GLX=YES -DHAVE_X11=YES -DHAVE_GLES1=NO -DHAVE_GLES2=YES -DBUILD_SHARED_LIBS=YES \
++     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/$(arch)/usr \
++     -DWANT_PYTHON_VERSION=${PYBUILD}"
++    else
++        P3DX="-DHAVE_GL=NO -DHAVE_X11=0 -DHAVE_GLX=NO -DHAVE_GLES1=NO -DHAVE_GLES2=0"
++    fi
++
+     CC=clang CXX=clang++ ${SDKROOT}/devices/x86_64/usr/bin/cmake -S ${SRC_DIR} \
+      -DCMAKE_BUILD_TYPE=Debug -DHAVE_AUDIO=YES -DHAVE_THREADS=NO \
+      -DHAVE_OPENSSL=NO \
+@@ -39,22 +48,19 @@ then
+  -DHAVE_ASSIMP=NO -DHAVE_BULLET=NO \
+  -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
+      -DHAVE_HARFBUZZ=YES -DHAVE_FREETYPE=YES \
+- -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 -DHAVE_X11=0 \
++ -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 \
+  -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=0 \
+-    \
+      -DCMAKE_INSTALL_PREFIX=${SDKROOT}/devices/$(arch)/usr \
+     -DHAVE_PYTHON=0 \
+-  -DHAVE_OPUS=NO -DHAVE_VORBIS=NO -DHAVE_OPENEXR=NO -DHAVE_FFMPEG=NO -DHAVE_OPENAL=NO  -DHAVE_EIGEN=NO \
+-  -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO
++  -DHAVE_OPUS=NO -DHAVE_VORBIS=NO -DHAVE_OPENEXR=NO -DHAVE_FFMPEG=NO -DHAVE_OPENAL=1  -DHAVE_EIGEN=NO \
++  -DHAVE_EGL=NO \
++    $P3DX
++
+ 
+ 
+     make && make install
+ 
+ 
+-#     -DHAVE_EGL=NO -DHAVE_GL=YES -DHAVE_GLX=YES -DHAVE_X11=YES -DHAVE_GLES1=NO -DHAVE_GLES2=YES -DBUILD_SHARED_LIBS=YES \
+-#     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/$(arch)/usr \
+-#     -DWANT_PYTHON_VERSION=${PYBUILD}
+-#
+ 
+ 
+ # https://cmake.org/cmake/help/v3.13/module/FindPython.html
+diff --git a/dtool/src/interrogatedb/py_compat.h b/dtool/src/interrogatedb/py_compat.h
+index 0344bcd1492..e5c8b3960bf 100644
+--- a/dtool/src/interrogatedb/py_compat.h
++++ b/dtool/src/interrogatedb/py_compat.h
+@@ -275,6 +275,15 @@ INLINE bool PyLong_IsNonNegative(PyObject *value) {
+ }
+ #endif
+ 
++/* Python 3.13 */
++
++#if PY_VERSION_HEX >= 0x030d0000  // 3.13
++#define Py_BUILD_CORE
++#include "internal/pycore_unicodeobject.h"
++extern "C" PyObject * _PyLong_Lshift(PyObject *, size_t);
++extern "C" size_t _PyLong_NumBits(PyObject *v);
++#endif
++
+ /* Other Python implementations */
+ 
+ #endif  // HAVE_PYTHON
+diff --git a/panda/src/pgraph/renderState_ext.cxx b/panda/src/pgraph/renderState_ext.cxx
+index 6cfe05965e0..bc128bc7207 100644
+--- a/panda/src/pgraph/renderState_ext.cxx
++++ b/panda/src/pgraph/renderState_ext.cxx
+@@ -56,7 +56,11 @@ make(PyObject *args, PyObject *kwds) {
+ 
+   int override = 0;
+   if (py_override != nullptr) {
++#if PY_VERSION_HEX >= 0x030d0000  // 3.13
++    override = PyLong_AsInt(py_override);
++#else
+     override = _PyLong_AsInt(py_override);
++#endif
+     if (override == -1 && PyErr_Occurred()) {
+       return nullptr;
+     }
+diff --git a/panda/src/putil/bitArray_ext.cxx b/panda/src/putil/bitArray_ext.cxx
+index 2a489510407..aab4dcbe4d3 100644
+--- a/panda/src/putil/bitArray_ext.cxx
++++ b/panda/src/putil/bitArray_ext.cxx
+@@ -14,7 +14,9 @@
+ #include "bitArray_ext.h"
+ 
+ #ifdef HAVE_PYTHON
+-
++#ifndef CPPPARSER
++#include "longobject.h"
++#endif
+ /**
+  * Creates a BitArray from a Python long object.
+  */
+@@ -32,7 +34,7 @@ __init__(PyObject *init_value) {
+     _PyLong_AsByteArray((PyLongObject *)init_value,
+       (unsigned char *)&_this->_array[0],
+       num_words * sizeof(BitArray::WordType),
+-      1, 0);
++      1, 0, 0);
+   }
+ }
+ 
+diff --git a/panda/src/putil/doubleBitMask_ext.I b/panda/src/putil/doubleBitMask_ext.I
+index a40b91355d5..971112b11e7 100644
+--- a/panda/src/putil/doubleBitMask_ext.I
++++ b/panda/src/putil/doubleBitMask_ext.I
+@@ -31,7 +31,7 @@ __init__(PyObject *init_value) {
+   if (n > 0) {
+     size_t num_bytes = (n + 7) / 8;
+     unsigned char *bytes = (unsigned char *)alloca(num_bytes);
+-    _PyLong_AsByteArray((PyLongObject *)init_value, bytes, num_bytes, 1, 0);
++    _PyLong_AsByteArray((PyLongObject *)init_value, bytes, num_bytes, 1, 0, 0);
+ 
+     for (size_t i = 0; i < num_bytes; ++i) {
+       this->_this->store(bytes[i], i * 8, 8);
+diff --git a/pandatool/src/deploy-stub/deploy-stub.c b/pandatool/src/deploy-stub/deploy-stub.c
+index 7e0b22464da..1abf8c69d08 100644
+--- a/pandatool/src/deploy-stub/deploy-stub.c
++++ b/pandatool/src/deploy-stub/deploy-stub.c
+@@ -712,7 +712,9 @@ int main(int argc, char *argv[]) {
+       new_moddef->code = moddef->code;
+       new_moddef->size = moddef->size < 0 ? -(moddef->size) : moddef->size;
+       new_moddef->is_package = moddef->size < 0;
++#if PY_VERSION_HEX < 0x030d0000  // 3.13
+       new_moddef->get_code = NULL;
++#endif
+       new_moddef++;
+     }
+ #endif
+
+From 1de4444abdb0a2a972f9c5576896e2bc7b372ca5 Mon Sep 17 00:00:00 2001
+From: pmp-p <mail.peny@free.fr>
+Date: Tue, 26 Mar 2024 21:53:57 +0100
+Subject: [PATCH 3/3] remove build file
+
+---
+ cmake-builds.sh | 220 ------------------------------------------------
+ 1 file changed, 220 deletions(-)
+ delete mode 100755 cmake-builds.sh
+
+diff --git a/cmake-builds.sh b/cmake-builds.sh
+deleted file mode 100755
+index 0572c99f26a..00000000000
+--- a/cmake-builds.sh
++++ /dev/null
+@@ -1,220 +0,0 @@
+-#!/bin/bash
+-
+-
+-export PYBUILD=${PYBUILD:-3.12}
+-export SDKROOT=${SDKROOT:-/opt/python-wasm-sdk}
+-
+-export BUILD_DIR=$(pwd)
+-export SRC_DIR=$(realpath $(dirname $0))
+-
+-echo SRC_DIR=$SRC_DIR
+-
+-if ${CI:-false}
+-then
+-    pushd ${SRC_DIR}
+-    # panda drafts
+-    wget -O- https://patch-diff.githubusercontent.com/raw/panda3d/panda3d/pull/1611.diff | patch -p1
+-    wget -O- https://patch-diff.githubusercontent.com/raw/panda3d/panda3d/pull/1612.diff | patch -p1
+-
+-    # wasi drafts
+-    wget -O- https://patch-diff.githubusercontent.com/raw/pmp-p/panda3d/pull/10.diff | patch -p1
+-    wget -O- https://patch-diff.githubusercontent.com/raw/pmp-p/panda3d/pull/13.diff | patch -p1
+-    popd
+-fi
+-
+-
+-if echo $@|grep -q host
+-then
+-    NATIVE=true
+-    ARCH=$(arch)
+-    echo "building  ${SRC_DIR} for host ${ARCH}"
+-
+-    if echo $@|grep -q hostx
+-    then
+-        P3DX="-DHAVE_EGL=NO -DHAVE_GL=YES -DHAVE_GLX=YES -DHAVE_X11=YES -DHAVE_GLES1=NO -DHAVE_GLES2=YES -DBUILD_SHARED_LIBS=YES \
+-     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/$(arch)/usr \
+-     -DWANT_PYTHON_VERSION=${PYBUILD}"
+-    else
+-        P3DX="-DHAVE_GL=NO -DHAVE_X11=0 -DHAVE_GLX=NO -DHAVE_GLES1=NO -DHAVE_GLES2=0"
+-    fi
+-
+-    CC=clang CXX=clang++ ${SDKROOT}/devices/x86_64/usr/bin/cmake -S ${SRC_DIR} \
+-     -DCMAKE_BUILD_TYPE=Debug -DHAVE_AUDIO=YES -DHAVE_THREADS=NO \
+-     -DHAVE_OPENSSL=NO \
+- -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
+-     -DHAVE_ZLIB=YES -DHAVE_PNG=YES  \
+-     -DHAVE_TIFF=NO -DHAVE_JPEG=YES \
+- -DHAVE_AUDIO=YES \
+- -DHAVE_ASSIMP=NO -DHAVE_BULLET=NO \
+- -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
+-     -DHAVE_HARFBUZZ=YES -DHAVE_FREETYPE=YES \
+- -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 \
+- -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=0 \
+-     -DCMAKE_INSTALL_PREFIX=${SDKROOT}/devices/$(arch)/usr \
+-    -DHAVE_PYTHON=0 \
+-  -DHAVE_OPUS=NO -DHAVE_VORBIS=NO -DHAVE_OPENEXR=NO -DHAVE_FFMPEG=NO -DHAVE_OPENAL=1  -DHAVE_EIGEN=NO \
+-  -DHAVE_EGL=NO \
+-    $P3DX
+-
+-
+-
+-    make && make install
+-
+-
+-
+-
+-# https://cmake.org/cmake/help/v3.13/module/FindPython.html
+-#     -DPython_VERSION=3.12 -DPython_VERSION_MAJOR=3 -DPython_VERSION_MINOR=12 -DPython_VERSION_PATCH=1 \
+-#        -DPython3_EXECUTABLE:FILEPATH=${SDKROOT}/devices/$(arch)/usr/bin/python${PYBUILD} \
+-#        -DPython3_INCLUDE_DIR=${SDKROOT}/devices/$(arch)/usr/include/python${PYBUILD} \
+-#        -DPython_LIBRARIES=${SDKROOT}/devices/$(arch)/usr/lib \
+-#        -DPython3_FOUND=TRUE \
+-#        -DPython3_Development_FOUND=TRUE \
+-#        -DPython3_Development.Module_FOUND=TRUE \
+-#        -DPython3_Development.Embed_FOUND=TRUE \
+-#    \
+-# -DHAVE_SDL2=1
+-else
+-    NATIVE=false
+-
+-fi
+-
+-if $NATIVE
+-then
+-    echo
+-else
+-
+-if echo $EMSDK|grep -q emsdk
+-then
+-    echo building with emsdk
+-    ARCH=emsdk
+-    EMCC_CFLAGS="-sNODERAWFS" emcmake ${SDKROOT}/devices/x86_64/usr/bin/cmake ${SRC_DIR} \
+-     -DCMAKE_BUILD_TYPE=Release \
+-     -DHAVE_THREADS=NO \
+-     -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_X11=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO \
+-     -DHAVE_OPENSSL=NO \
+- -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
+- -DHAVE_AUDIO=YES \
+- -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
+-     -DHAVE_ZLIB=1 -DHAVE_PNG=NO  \
+-     -DHAVE_TIFF=NO -DHAVE_JPEG=NO \
+-     -DHAVE_HARFBUZZ=1 -DHAVE_FREETYPE=1 \
+- -DHAVE_IOS_TYPEDEFS=1 -DHAVE_TINYDISPLAY=1 \
+-    \
+-     -DHAVE_PYTHON=NO \
+-    \
+-     -DCMAKE_INSTALL_PREFIX=${PREFIX}
+-
+-#    -DTHIRDPARTY_DIRECTORY=${PREFIX} \
+-
+-else
+-    . ${SDKROOT}/wasisdk/wasisdk_env.sh
+-
+-    mkdir -p wasmbin
+-    cat > wasmbin/interrogate << END
+-    #!/bin/bash
+-    # cd /
+-    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/interrogate \$@
+-END
+-
+-    cat > wasmbin/interrogate_module << END
+-    #!/bin/bash
+-    # cd /
+-    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/interrogate_module \$@
+-END
+-
+-    cat > wasmbin/pzip << END
+-    #!/bin/bash
+-    # cd /
+-    ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/pzip \$@
+-END
+-
+-
+-    chmod +x $(pwd)/wasmbin/*
+-
+-    # HAVE_EGG
+-
+-    echo "
+-
+-==============================================================
+-    WASI_SDK_PREFIX=$WASI_SDK_PREFIX
+-    WASI_SYSROOT=$WASI_SYSROOT
+-    CMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE
+-
+-==============================================================
+-
+-
+-"
+-    ARCH=wasisdk
+-    CC=wasi-c CXX=wasi-c++ ${SDKROOT}/devices/x86_64/usr/bin/cmake ${SRC_DIR} \
+-     -DCMAKE_BUILD_TYPE=Release \
+-     -DHAVE_THREADS=NO \
+-     -DHAVE_EGL=NO -DHAVE_GL=NO -DHAVE_GLX=NO -DHAVE_X11=NO -DHAVE_GLES1=NO -DHAVE_GLES2=NO \
+-     -DHAVE_OPENSSL=NO \
+- -DHAVE_AUDIO=1 -DHAVE_PYTHON=0\
+- -DHAVE_OPUS=NO -DHAVE_FFTW=NO -DHAVE_FFMPEG=NO \
+-     -DHAVE_HARFBUZZ=NO -DHAVE_FREETYPE=NO \
+-     -DPHAVE_IOSTREAM=1 -DHAVE_TINYDISPLAY=1 -DHAVE_TIFF=NO  \
+-    \
+-    -DCMAKE_SYSTEM_NAME=WASI \
+-     -DHAVE_NET=NO -DWANT_NATIVE_NET=NO -DDO_PSTATS=NO \
+-     -DHAVE_PYTHON=NO -DZLIB_ROOT=${WASI_SYSROOT} \
+-    \
+-     -DHOST_PATH_PZIP=/opt/python-wasm-sdk/build/panda3d-host/bin/pzip \
+-     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+-
+-
+-
+-
+-#     -DHAVE_PYTHON=1 -DPython_ROOT_DIR=${SDKROOT}/devices/wasisdk/usr \
+-#     -DWANT_PYTHON_VERSION=${PYBUILD}
+-#      -DHAVE_ZLIB=0 -DHAVE_PNG=NO -DHAVE_JPEG=NO \
+-# not enough
+-#  -DCMAKE_TOOLCHAIN_FILE=/opt/python-wasm-sdk/wasisdk/upstream/share/cmake/wasi-sdk.cmake
+-#     -DTHIRDPARTY_DIRECTORY=${PREFIX} \
+-
+-    #\
+-    # -DHAVE_PYTHON=1 \
+-    # -DHOST_PATH_INTERROGATE=$(pwd)/wasmbin/interrogate \
+-    # -DHOST_PATH_INTERROGATE_MODULE=$(pwd)/wasmbin \
+-    #    -DPython3_EXECUTABLE:FILEPATH=${SDKROOT}/python3-wasi \
+-    #    -DPython3_INCLUDE_DIR=${SDKROOT}/devices/wasisdk/usr/include/python${PYBUILD} \
+-    #    -DPython3_LIBRARY=${SDKROOT}/devices/wasisdk/usr/lib \
+-    #    -DPython3_FOUND=TRUE \
+-    #    -DPython3_Development_FOUND=TRUE \
+-    #    -DPython3_Development.Module_FOUND=TRUE \
+-    #    -DPython3_Development.Embed_FOUND=TRUE \
+-    #\
+-
+-# -DHOST_PATH_PZIP=${HOST}/bin/pzip
+-
+-
+-fi
+-fi
+-make && make install
+-
+-cp -vf ${SRC_DIR}/panda/src/event/asyncTaskManager.h ${SRC_DIR}/panda/src/tinydisplay/config_tinydisplay.? ${SDKROOT}/devices/${ARCH}/usr/include/panda3d/
+-
+-if $CI
+-then
+-    [ -f /tmp/out.bmp ] && rm /tmp/out.bmp
+-    if $NATIVE
+-    then
+-        $(pwd)/bin/pview -c -L -s ${BUILD_DIR}/out.bmp
+-    else
+-        ${SDKROOT}/wasisdk/bin/wasi-run $(pwd)/bin/pview.wasi -c -L -s /tmp/out.bmp
+-    fi
+-
+-    if md5sum /tmp/out.bmp | grep -q "a0345fc5e8b77b9715df69e271e22c64"
+-    then
+-        echo "test ok"
+-        exit 0
+-    else
+-        echo "error screen output checksum does not match"
+-        exit 5
+-    fi
+-else
+-    echo not running test
+-    exit 0
+-fi
+-
