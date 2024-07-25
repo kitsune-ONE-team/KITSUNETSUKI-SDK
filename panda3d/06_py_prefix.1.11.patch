@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index 55cb8dfa2f..94c7b5ede9 100644
+index 55cb8dfa2f..7e18ec4e1c 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
 @@ -2155,7 +2155,7 @@ def SdkLocatePython(prefer_thirdparty_python=False):
@@ -11,3 +11,14 @@ index 55cb8dfa2f..94c7b5ede9 100644
  
          if (GetOptimize() <= 2):
              SDK["PYTHONEXEC"] += "_d.exe"
+@@ -2171,7 +2171,9 @@ def SdkLocatePython(prefer_thirdparty_python=False):
+                       glob.glob(SDK["PYTHON"] + "/python[0-9][0-9][0-9]_d.dll")
+         else:
+             py_dlls = glob.glob(SDK["PYTHON"] + "/python[0-9][0-9].dll") + \
+-                      glob.glob(SDK["PYTHON"] + "/python[0-9][0-9][0-9].dll")
++                      glob.glob(SDK["PYTHON"] + "/python[0-9][0-9][0-9].dll") + \
++                      glob.glob(SDK["PYTHON"] + "/python[0-9][0-9]t.dll") + \
++                      glob.glob(SDK["PYTHON"] + "/python[0-9][0-9][0-9]t.dll")
+ 
+         if len(py_dlls) == 0:
+             exit("Could not find the Python dll in %s." % (SDK["PYTHON"]))
