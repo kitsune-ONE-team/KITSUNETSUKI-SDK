@@ -1,0 +1,13 @@
+diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
+index 55cb8dfa2f..94c7b5ede9 100644
+--- a/makepanda/makepandacore.py
++++ b/makepanda/makepandacore.py
+@@ -2155,7 +2155,7 @@ def SdkLocatePython(prefer_thirdparty_python=False):
+ 
+         sdkdir = sdkdir.replace('\\', '/')
+         SDK["PYTHON"] = sdkdir
+-        SDK["PYTHONEXEC"] = SDK["PYTHON"] + "/python"
++        SDK["PYTHONEXEC"] = os.path.realpath(sys.executable)
+ 
+         if (GetOptimize() <= 2):
+             SDK["PYTHONEXEC"] += "_d.exe"
