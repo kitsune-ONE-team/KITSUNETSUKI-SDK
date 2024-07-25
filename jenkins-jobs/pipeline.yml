@@ -13,10 +13,6 @@
         - shell: |
             JENKINS_WS=${{JENKINS_HOME}}/workspace
 
-            if [ -d ${{JENKINS_WS}}/blender-lynx64 ]; then
-                rm -Rf ${{JENKINS_WS}}/blender-lynx64/dist
-            fi
-
             if [ -d ${{JENKINS_WS}}/bullet-lynx64 ]; then
                 rm -Rf ${{JENKINS_WS}}/bullet-lynx64/dist
             fi
@@ -128,9 +124,6 @@
               }}
               stage('python') {{
                   steps {{ build job: 'python-lynx64' }}
-              }}
-              stage('blender') {{
-                  steps {{ build job: 'blender-lynx64' }}
               }}
               stage('panda3d') {{
                   steps {{ build job: 'panda3d-lynx64' }}
