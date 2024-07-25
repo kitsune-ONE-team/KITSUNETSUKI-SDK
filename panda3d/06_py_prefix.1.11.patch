@@ -7,7 +7,7 @@ index 55cb8dfa2f..94c7b5ede9 100644
          sdkdir = sdkdir.replace('\\', '/')
          SDK["PYTHON"] = sdkdir
 -        SDK["PYTHONEXEC"] = SDK["PYTHON"] + "/python"
-+        SDK["PYTHONEXEC"] = os.path.realpath(sys.executable)
++        SDK["PYTHONEXEC"] = os.path.realpath(sys.executable).rstrip('.exe')
  
          if (GetOptimize() <= 2):
              SDK["PYTHONEXEC"] += "_d.exe"
