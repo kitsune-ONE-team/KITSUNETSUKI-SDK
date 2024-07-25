@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
-index 55cb8dfa2f..bcba53df7d 100644
+index 55cb8dfa2f..77a21f86a0 100644
 --- a/makepanda/makepandacore.py
 +++ b/makepanda/makepandacore.py
 @@ -2155,7 +2155,7 @@ def SdkLocatePython(prefer_thirdparty_python=False):
@@ -26,3 +26,12 @@ index 55cb8dfa2f..bcba53df7d 100644
  
          if len(py_dlls) == 0:
              exit("Could not find the Python dll in %s." % (SDK["PYTHON"]))
+@@ -2182,7 +2188,7 @@ def SdkLocatePython(prefer_thirdparty_python=False):
+         py_dllver = py_dll.strip(".DHLNOPTY_dhlnopty")
+         ver = py_dllver[0] + '.' + py_dllver[1:]
+ 
+-        SDK["PYTHONVERSION"] = "python" + ver
++        SDK["PYTHONVERSION"] = py_dll.rpartition('/')[-1].rstrip('.dll')
+         os.environ["PYTHONHOME"] = SDK["PYTHON"]
+ 
+         running_ver = '%d.%d' % sys.version_info[:2]
