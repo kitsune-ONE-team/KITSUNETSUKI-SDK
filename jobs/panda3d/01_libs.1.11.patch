@@ -1,5 +1,5 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 1cecc7dbe8..905976e702 100755
+index 1cecc7dbe8..eb8593cf55 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
 @@ -758,11 +758,7 @@ if (COMPILER == "MSVC"):
@@ -15,7 +15,7 @@ index 1cecc7dbe8..905976e702 100755
      if (PkgSkip("OPUS")==0):
          IncDirectory("OPUS", GetThirdpartyDir() + "opus/include/opus")
          for lib in ('ogg', 'opus', 'opusfile'):
-@@ -807,13 +803,11 @@ if (COMPILER == "MSVC"):
+@@ -807,13 +803,13 @@ if (COMPILER == "MSVC"):
              LibName("SPEEDTREE",  "glu32.lib")
          IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
      if (PkgSkip("BULLET")==0):
@@ -28,13 +28,15 @@ index 1cecc7dbe8..905976e702 100755
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
 +        SmartPkgEnable("BULLET", None, (
 +            "BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath",
++            "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics",
++            "Bullet3Geometry", "Bullet3OpenCL_clew",
 +        ), (
 +            "bullet", "bullet/btBulletDynamicsCommon.h",
 +        ))
  
  if (COMPILER=="GCC"):
      if GetTarget() != "darwin":
-@@ -980,12 +974,6 @@ if (COMPILER=="GCC"):
+@@ -980,12 +976,6 @@ if (COMPILER=="GCC"):
              LibName("OPENEXR", "-Wl,--exclude-libs,libOpenEXRCore.a")
              LibName("OPENEXR", "-Wl,--exclude-libs,libOpenEXRUtil.a")
  
