@@ -11,7 +11,7 @@ index 1cecc7dbe8..a4214b3b72 100755
 -            if not os.path.isfile(path):
 -                path = GetThirdpartyDir() + "vorbis/lib/{0}.lib".format(lib)
 -            LibName("VORBIS", path)
-+        SmartPkgEnable("VORBIS", None, ("vorbisfile_static", "vorbis_static", "ogg_static"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
++        SmartPkgEnable("VORBIS", None, ("vorbisfile", "vorbis", "ogg"), ("ogg/ogg.h", "vorbis/vorbisfile.h"))
      if (PkgSkip("OPUS")==0):
          IncDirectory("OPUS", GetThirdpartyDir() + "opus/include/opus")
          for lib in ('ogg', 'opus', 'opusfile'):
