@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:2.469-jdk21
+    ports:
+      - '8080:8080'
+    volumes:
+      - ../jenkins:/var/jenkins_home:z
+    networks:
+      - sdk
+
+  agent:
+    build:
+      context: .
+    ports:
+      - '8022:22'
+    networks:
+      - sdk
+    volumes:
+      - ../build:/app/build:z
+      - ../jenkins-agent:/app/jenkins:z
+      - ../opt:/app/opt:z
+      - ./jobs:/app/jobs:z
+      - ~/.config/jenkins_jobs:/root/.config/jenkins_jobs:z
+      - ~/Dev/Panda3D:/root/Dev/Panda3D:z
+      - ~/Games/Steam/steamapps/common/Blender:/root/Blender:z
+    environment:
+      PATH: '$PATH:/app/.venv/bin'
+    command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
+
+networks:
+  sdk:
+    driver: bridge
