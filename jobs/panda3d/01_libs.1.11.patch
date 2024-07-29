@@ -1,88 +1,8 @@
 diff --git a/makepanda/makepanda.py b/makepanda/makepanda.py
-index 1cecc7dbe8..dbe2fc7de8 100755
+index 1cecc7dbe8..a4214b3b72 100755
 --- a/makepanda/makepanda.py
 +++ b/makepanda/makepanda.py
-@@ -87,7 +87,7 @@ PkgListSet(["PYTHON", "DIRECT",                        # Python support
-   "SPEEDTREE",                                         # SpeedTree
-   "ZLIB", "PNG", "JPEG", "TIFF", "OPENEXR", "SQUISH",  # 2D Formats support
-   ] + MAYAVERSIONS + MAXVERSIONS + [ "FCOLLADA", "ASSIMP", "EGG", # 3D Formats support
--  "FREETYPE", "HARFBUZZ",                              # Text rendering
-+  "FREETYPE", "HARFBUZZ", "BROTLI",                    # Text rendering
-   "VRPN", "OPENSSL",                                   # Transport
-   "FFTW",                                              # Algorithm helpers
-   "ARTOOLKIT", "OPENCV", "DIRECTCAM", "VISION",        # Augmented Reality
-@@ -651,27 +651,9 @@ if (COMPILER == "MSVC"):
-     if (PkgSkip("DIRECTCAM")==0): LibName("DIRECTCAM", "odbccp32.lib")
-     if (PkgSkip("MIMALLOC")==0): LibName("MIMALLOC", GetThirdpartyDir() + "mimalloc/lib/mimalloc-static.lib")
-     if (PkgSkip("OPENSSL")==0):
--        if os.path.isfile(GetThirdpartyDir() + "openssl/lib/libpandassl.lib"):
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandassl.lib")
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libpandaeay.lib")
--        elif os.path.isfile(GetThirdpartyDir() + "openssl/lib/ssleay32.lib"):
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libeay32.lib")
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/ssleay32.lib")
--        else:
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libssl.lib")
--            LibName("OPENSSL", GetThirdpartyDir() + "openssl/lib/libcrypto.lib")
--            LibName("OPENSSL", "crypt32.lib")
--            LibName("OPENSSL", "ws2_32.lib")
-+        SmartPkgEnable("OPENSSL", None, ("libeay32", "ssleay32"), ("openssl/ssl.h", "openssl/crypto.h"))
-     if (PkgSkip("PNG")==0):
--        if os.path.isfile(GetThirdpartyDir() + "png/lib/libpng16_static.lib"):
--            LibName("PNG", GetThirdpartyDir() + "png/lib/libpng16_static.lib")
--        else:
--            LibName("PNG", GetThirdpartyDir() + "png/lib/libpng_static.lib")
--    if (PkgSkip("TIFF")==0):
--        if os.path.isfile(GetThirdpartyDir() + "tiff/lib/libtiff.lib"):
--            LibName("TIFF", GetThirdpartyDir() + "tiff/lib/libtiff.lib")
--        else:
--            LibName("TIFF", GetThirdpartyDir() + "tiff/lib/tiff.lib")
-+        SmartPkgEnable("PNG", None, ("png"), "png.h")
-     if (PkgSkip("OPENEXR")==0):
-         if os.path.isfile(GetThirdpartyDir() + "openexr/lib/OpenEXRCore-3_1.lib"):
-             LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/OpenEXR-3_1.lib")
-@@ -708,17 +690,23 @@ if (COMPILER == "MSVC"):
-                 LibName("OPENEXR", GetThirdpartyDir() + "openexr/lib/Half" + suffix + ".lib")
-         IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/OpenEXR")
-         IncDirectory("OPENEXR", GetThirdpartyDir() + "openexr/include/Imath")
--    if (PkgSkip("JPEG")==0):     LibName("JPEG",     GetThirdpartyDir() + "jpeg/lib/jpeg-static.lib")
--    if (PkgSkip("ZLIB")==0):     LibName("ZLIB",     GetThirdpartyDir() + "zlib/lib/zlibstatic.lib")
-+    if (PkgSkip("JPEG")==0):
-+        SmartPkgEnable("JPEG", None, ("jpeg"), "jpeglib.h")
-+    if (PkgSkip("TIFF")==0):
-+        SmartPkgEnable("TIFF", None, ("tiff"), "tiff.h")
-+    if (PkgSkip("ZLIB")==0):
-+        SmartPkgEnable("ZLIB", None, ("libz_st"), "zlib.h")
-     if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/vrpn.lib")
-     if (PkgSkip("VRPN")==0):     LibName("VRPN",     GetThirdpartyDir() + "vrpn/lib/quat.lib")
-     if (PkgSkip("NVIDIACG")==0): LibName("CGGL",     GetThirdpartyDir() + "nvidiacg/lib/cgGL.lib")
-     if (PkgSkip("NVIDIACG")==0): LibName("CGDX9",    GetThirdpartyDir() + "nvidiacg/lib/cgD3D9.lib")
-     if (PkgSkip("NVIDIACG")==0): LibName("NVIDIACG", GetThirdpartyDir() + "nvidiacg/lib/cg.lib")
--    if (PkgSkip("FREETYPE")==0): LibName("FREETYPE", GetThirdpartyDir() + "freetype/lib/freetype.lib")
-+    if (PkgSkip("FREETYPE")==0):
-+        SmartPkgEnable("FREETYPE", None, ("freetype2ST"), ("freetype2", "freetype2/freetype/freetype.h"))
-     if (PkgSkip("HARFBUZZ")==0):
--        LibName("HARFBUZZ", GetThirdpartyDir() + "harfbuzz/lib/harfbuzz.lib")
--        IncDirectory("HARFBUZZ", GetThirdpartyDir() + "harfbuzz/include/harfbuzz")
-+        SmartPkgEnable("HARFBUZZ", None, ("harfbuzz"), ("harfbuzz", "harfbuzz/hb-ft.h"))
-+    if (PkgSkip("BROTLI")==0):
-+        SmartPkgEnable("BROTLI", None, ("brotlidec-static", "brotlicommon-static"), ("brotli", "brotli/types.h"))
-     if (PkgSkip("FFTW")==0):     LibName("FFTW",     GetThirdpartyDir() + "fftw/lib/fftw3.lib")
-     if (PkgSkip("ARTOOLKIT")==0):LibName("ARTOOLKIT",GetThirdpartyDir() + "artoolkit/lib/libAR.lib")
-     if (PkgSkip("OPENCV")==0):   LibName("OPENCV",   GetThirdpartyDir() + "opencv/lib/cv.lib")
-@@ -745,10 +733,7 @@ if (COMPILER == "MSVC"):
-         else:
-             LibName("SQUISH",   GetThirdpartyDir() + "squish/lib/squish.lib")
-     if (PkgSkip("OPENAL")==0):
--        LibName("OPENAL", GetThirdpartyDir() + "openal/lib/OpenAL32.lib")
--        if not os.path.isfile(GetThirdpartyDir() + "openal/bin/OpenAL32.dll"):
--            # Link OpenAL Soft statically.
--            DefSymbol("OPENAL", "AL_LIBTYPE_STATIC")
-+        SmartPkgEnable("OPENAL", None, ("openal32"), "AL/al.h")
-     if (PkgSkip("ODE")==0):
-         LibName("ODE",      GetThirdpartyDir() + "ode/lib/ode_single.lib")
-         DefSymbol("ODE",    "dSINGLE", "")
-@@ -758,11 +743,7 @@ if (COMPILER == "MSVC"):
+@@ -758,11 +758,7 @@ if (COMPILER == "MSVC"):
          else:
              LibName("FMODEX",   GetThirdpartyDir() + "fmodex/lib/fmodex_vc.lib")
      if (PkgSkip("VORBIS")==0):
@@ -95,7 +15,7 @@ index 1cecc7dbe8..dbe2fc7de8 100755
      if (PkgSkip("OPUS")==0):
          IncDirectory("OPUS", GetThirdpartyDir() + "opus/include/opus")
          for lib in ('ogg', 'opus', 'opusfile'):
-@@ -807,13 +788,7 @@ if (COMPILER == "MSVC"):
+@@ -807,13 +803,13 @@ if (COMPILER == "MSVC"):
              LibName("SPEEDTREE",  "glu32.lib")
          IncDirectory("SPEEDTREE", SDK["SPEEDTREE"] + "/Include")
      if (PkgSkip("BULLET")==0):
@@ -106,19 +26,17 @@ index 1cecc7dbe8..dbe2fc7de8 100755
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletCollision" + suffix)
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletDynamics" + suffix)
 -        LibName("BULLET", GetThirdpartyDir() + "bullet/lib/BulletSoftBody" + suffix)
-+        SmartPkgEnable("BULLET", None, ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath", "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics", "Bullet3Geometry", "Bullet3OpenCL_clew"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
++        SmartPkgEnable("BULLET", None, (
++            "BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath",
++            "Bullet3Common", "Bullet3Collision", "Bullet3Dynamics",
++            "Bullet3Geometry", "Bullet3OpenCL_clew",
++        ), (
++            "bullet", "bullet/btBulletDynamicsCommon.h",
++        ))
  
  if (COMPILER=="GCC"):
      if GetTarget() != "darwin":
-@@ -887,6 +862,7 @@ if (COMPILER=="GCC"):
-         SmartPkgEnable("BULLET",   "bullet", ("BulletSoftBody", "BulletDynamics", "BulletCollision", "LinearMath"), ("bullet", "bullet/btBulletDynamicsCommon.h"))
-         SmartPkgEnable("FREETYPE", "freetype2", ("freetype"), ("freetype2", "freetype2/freetype/freetype.h"))
-         SmartPkgEnable("HARFBUZZ", "harfbuzz",  ("harfbuzz"), ("harfbuzz", "harfbuzz/hb-ft.h"))
-+        SmartPkgEnable("BROTLI",    "brotli",   ("brotlienc-static", "brotlidec-static", "brotlicommon-static"), ("brotli", "brotli/types.h"))
-         SmartPkgEnable("PNG",      "libpng",    ("png"), "png.h", tool = "libpng-config")
-         SmartPkgEnable("GL",       "gl",        ("GL"), ("GL/gl.h"), framework = "OpenGL")
-         SmartPkgEnable("GLES",     "glesv1_cm", ("GLESv1_CM"), ("GLES/gl.h"), framework = "OpenGLES")
-@@ -980,12 +956,6 @@ if (COMPILER=="GCC"):
+@@ -980,12 +976,6 @@ if (COMPILER=="GCC"):
              LibName("OPENEXR", "-Wl,--exclude-libs,libOpenEXRCore.a")
              LibName("OPENEXR", "-Wl,--exclude-libs,libOpenEXRUtil.a")
  
@@ -131,77 +49,6 @@ index 1cecc7dbe8..dbe2fc7de8 100755
          if not PkgSkip("OPUS"):
              LibName("OPUS", "-Wl,--exclude-libs,libogg.a")
              LibName("OPUS", "-Wl,--exclude-libs,libopus.a")
-@@ -4082,10 +4052,10 @@ TargetAdd('libp3char.in', opts=['IMOD:panda3d.core', 'ILIB:libp3char', 'SRCDIR:p
- #
- 
- if not PkgSkip("FREETYPE"):
--    OPTS=['DIR:panda/src/pnmtext', 'BUILDING:PANDA', 'FREETYPE']
-+    OPTS=['DIR:panda/src/pnmtext', 'BUILDING:PANDA', 'FREETYPE', 'BROTLI']
-     TargetAdd('p3pnmtext_composite1.obj', opts=OPTS, input='p3pnmtext_composite1.cxx')
- 
--    OPTS=['DIR:panda/src/pnmtext', 'FREETYPE']
-+    OPTS=['DIR:panda/src/pnmtext', 'FREETYPE', 'BROTLI']
-     IGATEFILES=GetDirectoryContents('panda/src/pnmtext', ["*.h", "*_composite*.cxx"])
-     TargetAdd('libp3pnmtext.in', opts=OPTS, input=IGATEFILES)
-     TargetAdd('libp3pnmtext.in', opts=['IMOD:panda3d.core', 'ILIB:libp3pnmtext', 'SRCDIR:panda/src/pnmtext'])
-@@ -4097,11 +4067,11 @@ if not PkgSkip("FREETYPE"):
- if not PkgSkip("HARFBUZZ"):
-     DefSymbol("HARFBUZZ", "HAVE_HARFBUZZ")
- 
--OPTS=['DIR:panda/src/text', 'BUILDING:PANDA', 'ZLIB', 'FREETYPE', 'HARFBUZZ']
-+OPTS=['DIR:panda/src/text', 'BUILDING:PANDA', 'ZLIB', 'FREETYPE', 'HARFBUZZ', 'BROTLI']
- TargetAdd('p3text_composite1.obj', opts=OPTS, input='p3text_composite1.cxx')
- TargetAdd('p3text_composite2.obj', opts=OPTS, input='p3text_composite2.cxx')
- 
--OPTS=['DIR:panda/src/text', 'ZLIB', 'FREETYPE']
-+OPTS=['DIR:panda/src/text', 'ZLIB', 'FREETYPE', 'BROTLI']
- IGATEFILES=GetDirectoryContents('panda/src/text', ["*.h", "*_composite*.cxx"])
- TargetAdd('libp3text.in', opts=OPTS, input=IGATEFILES)
- TargetAdd('libp3text.in', opts=['IMOD:panda3d.core', 'ILIB:libp3text', 'SRCDIR:panda/src/text'])
-@@ -4211,7 +4181,7 @@ TargetAdd('libp3recorder.in', opts=['IMOD:panda3d.core', 'ILIB:libp3recorder', '
- #
- 
- OPTS=['DIR:panda/metalibs/panda', 'BUILDING:PANDA', 'JPEG', 'PNG', 'HARFBUZZ',
--    'TIFF', 'OPENEXR', 'ZLIB', 'FREETYPE', 'FFTW', 'ADVAPI', 'WINSOCK2',
-+    'TIFF', 'OPENEXR', 'ZLIB', 'FREETYPE', 'BROTLI', 'FFTW', 'ADVAPI', 'WINSOCK2',
-     'SQUISH', 'NVIDIACG', 'VORBIS', 'OPUS', 'WINUSER', 'WINMM', 'WINGDI', 'IPHLPAPI',
-     'SETUPAPI', 'INOTIFY', 'IOKIT']
- 
-@@ -4290,6 +4260,7 @@ if PkgSkip("FREETYPE")==0:
-     TargetAdd('libpanda.dll', input="p3pnmtext_composite1.obj")
- 
- TargetAdd('libpanda.dll', dep='dtool_have_freetype.dat')
-+TargetAdd('libpanda.dll', dep='dtool_have_brotli.dat')
- TargetAdd('libpanda.dll', opts=OPTS)
- 
- PyTargetAdd('core_module.obj', input='libp3dtoolbase.in')
-@@ -5563,7 +5534,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
- #
- 
- if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
--    OPTS=['DIR:pandatool/src/egg-mkfont', 'DIR:pandatool/src/palettizer', 'FREETYPE']
-+    OPTS=['DIR:pandatool/src/egg-mkfont', 'DIR:pandatool/src/palettizer', 'FREETYPE', 'BROTLI']
-     TargetAdd('egg-mkfont_eggMakeFont.obj', opts=OPTS, input='eggMakeFont.cxx')
-     TargetAdd('egg-mkfont_rangeDescription.obj', opts=OPTS, input='rangeDescription.cxx')
-     TargetAdd('egg-mkfont_rangeIterator.obj', opts=OPTS, input='rangeIterator.cxx')
-@@ -5572,7 +5543,7 @@ if not PkgSkip("FREETYPE") and not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
-     TargetAdd('egg-mkfont.exe', input='egg-mkfont_rangeIterator.obj')
-     TargetAdd('egg-mkfont.exe', input='libp3palettizer.lib')
-     TargetAdd('egg-mkfont.exe', input=COMMON_EGG2X_LIBS)
--    TargetAdd('egg-mkfont.exe', opts=['ADVAPI', 'FREETYPE'])
-+    TargetAdd('egg-mkfont.exe', opts=['ADVAPI', 'FREETYPE', 'BROTLI'])
- 
- #
- # DIRECTORY: pandatool/src/eggcharbase/
-@@ -5599,7 +5570,7 @@ if not PkgSkip("PANDATOOL") and not PkgSkip("EGG"):
-     TargetAdd('egg-optchar.exe', input='egg-optchar_vertexMembership.obj')
-     TargetAdd('egg-optchar.exe', input='libp3eggcharbase.lib')
-     TargetAdd('egg-optchar.exe', input=COMMON_EGG2X_LIBS)
--    TargetAdd('egg-optchar.exe', opts=['ADVAPI', 'FREETYPE'])
-+    TargetAdd('egg-optchar.exe', opts=['ADVAPI', 'FREETYPE', 'BROTLI'])
- 
- #
- # DIRECTORY: pandatool/src/egg-palettize/
 diff --git a/makepanda/makepandacore.py b/makepanda/makepandacore.py
 index 55cb8dfa2f..31d48c0d28 100644
 --- a/makepanda/makepandacore.py
