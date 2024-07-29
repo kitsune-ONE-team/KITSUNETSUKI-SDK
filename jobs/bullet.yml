@@ -1,0 +1,66 @@
+- job-template:
+    name: 'bullet-{arch}'
+    display-name: 'bullet-{arch}'
+    project-type: freestyle
+    description: 'Bullet Real-Time Physics Simulation'
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/bulletphysics/bullet3.git
+            branches:
+              - refs/tags/3.17
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DBUILD_BULLET2_DEMOS=OFF
+                -DBUILD_BULLET3_DEMOS=OFF
+                -DBUILD_CPU_DEMOS=OFF
+                -DBUILD_EGL=OFF
+                -DBUILD_EGL=OFF
+                -DBUILD_ENET=ON
+                -DBUILD_EXTRAS=ON
+                -DBUILD_OPENGL3_DEMOS=OFF
+                -DBUILD_PYBULLET=OFF
+                -DBUILD_SHARED_LIBS=OFF
+                -DBUILD_UNIT_TESTS=OFF
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DINSTALL_LIBS=ON
+                -DMULTITHREADED_BUILD=16
+                -DUSE_DOUBLE_PRECISION=OFF
+                -DUSE_GLUT=OFF
+                -DUSE_GRAPHICAL_BENCHMARK=OFF
+                -DUSE_MSVC_RUNTIME_LIBRARY_DLL=ON
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: bullet
+    jobs:
+        - 'bullet-{arch}':
+            arch: lynx64
+            build: /app/build/bullet
+            generator: 'Unix Makefiles'
+            install: /app/opt/bullet
+            make: '-j 16'
+            node: linux
+        - 'bullet-{arch}':
+            arch: winx64
+            build: 'C:\build\bullet'
+            generator: NMake Makefiles
+            install: 'C:\opt\bullet'
+            make: ''
+            node: windows

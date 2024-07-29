@@ -1,0 +1,82 @@
+- job-template:
+    name: python-lynx64
+    display-name: python-lynx64
+    project-type: freestyle
+    description: The Python programming language.
+    node: linux
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/python/cpython.git
+            branches:
+              - refs/tags/{git_tag}
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - shell: |
+            CWD=$(pwd)
+            mkdir -p {build}
+            cd {build}
+            ${{CWD}}/configure \
+                --prefix={install} \
+                --enable-shared \
+                --enable-optimizations \
+                --disable-gil
+            make -j 16
+            make install -j 16
+            patchelf --set-rpath \$ORIGIN/../lib {install}/bin/python{python_version}
+
+- job-template:
+    name: python-winx64
+    display-name: python-winx64
+    project-type: freestyle
+    description: The Python programming language.
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/python/cpython.git
+            branches:
+              - refs/tags/{git_tag}
+            wipe-workspace: false
+            timeout: 60
+    builders:
+        - batch: |
+            set PATH=%PATH%;Z:\Git\bin
+            echo /p:PlatformToolset=v143 > PCbuild\msbuild.rsp
+            echo /p:OutDir={build}\ >> PCbuild\msbuild.rsp
+            call PCBuild\build.bat --disable-gil
+
+            mkdir {install}\DLLs
+            mkdir {install}\bin
+            mkdir {install}\libs
+            copy /V /Y {build}\*.pyd      {install}\DLLs
+            copy /V /Y {build}\*.exe      {install}\bin
+            copy /V /Y {build}\*.dll      {install}\bin
+            copy /V /Y {build}\*.lib      {install}\libs
+            xcopy /I /E /Y Include        {install}\include
+            xcopy /I /E /Y Lib            {install}\lib
+            copy /V /Y {build}\pyconfig.h {install}\include
+            {install}\bin\python{python_version} -m ensurepip -v
+
+- project:
+    name: python
+    jobs:
+        - 'python-lynx64':
+            build: /app/build/python
+            git_tag: 'v3.13.0b4'
+            install: /app/opt/python
+            python_version: '3.13t'
+        - 'python-winx64':
+            build: 'C:\build\python'
+            git_tag: 'v3.13.0b4'
+            install: 'C:\opt\python'
+            python_version: '3.13t'

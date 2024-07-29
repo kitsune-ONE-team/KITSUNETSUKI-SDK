@@ -1,0 +1,29 @@
+diff --git a/dtool/Package.cmake b/dtool/Package.cmake
+index 42758c2702..a05021e2c6 100644
+--- a/dtool/Package.cmake
++++ b/dtool/Package.cmake
+@@ -33,11 +33,11 @@ if(THIRDPARTY_DIRECTORY)
+ 
+   elseif(WIN32)
+     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+-      set(_package_dir "${THIRDPARTY_DIRECTORY}/win-libs-vc14-x64")
++      set(_package_dir "${THIRDPARTY_DIRECTORY}\\win-libs-vc14-x64")
+ 
+       file(GLOB _python_dirs "${THIRDPARTY_DIRECTORY}/win-python*-x64")
+     else()
+-      set(_package_dir "${THIRDPARTY_DIRECTORY}/win-libs-vc14")
++      set(_package_dir "${THIRDPARTY_DIRECTORY}\\win-libs-vc14")
+ 
+       file(GLOB _python_dirs "${THIRDPARTY_DIRECTORY}/win-python*")
+     endif()
+@@ -47,8 +47,8 @@ if(THIRDPARTY_DIRECTORY)
+       set(Python_ROOT "${_python_dirs}")
+     endif()
+ 
+-    set(BISON_ROOT "${THIRDPARTY_DIRECTORY}/win-util")
+-    set(FLEX_ROOT "${THIRDPARTY_DIRECTORY}/win-util")
++    set(BISON_ROOT "${THIRDPARTY_DIRECTORY}\\win-util")
++    set(FLEX_ROOT "${THIRDPARTY_DIRECTORY}\\win-util")
+ 
+   elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+     if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")

@@ -102,13 +102,13 @@
             module: kphys
             version: '0.6.10'
             desc: Physics extensions for Panda3D
-            python_version: '3.11'
+            python_version: '3.13t'
             jenkins_ws: '/root/jenkins/workspace'
         - 'panda3d-{module}-lynx64':
             module: krender
             version: '0.1.2'
             desc: Custom Deferred Render Pipeline for Panda3D
-            python_version: '3.11'
+            python_version: '3.13t'
             jenkins_ws: '/root/jenkins/workspace'
 
 - project:

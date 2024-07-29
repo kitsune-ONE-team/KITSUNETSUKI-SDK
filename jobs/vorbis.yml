@@ -1,0 +1,57 @@
+- job-template:
+    name: 'vorbis-{arch}'
+    display-name: 'vorbis-{arch}'
+    project-type: freestyle
+    description: Reference implementation of the Ogg Vorbis audio format.
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/xiph/vorbis.git
+            branches:
+              - refs/tags/v1.3.7
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DMULTITHREADED_BUILD=16
+                -DOGG_INCLUDE_DIR={ogg_include}
+                -DOGG_LIBRARY={ogg_library}
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: vorbis
+    jobs:
+        - 'vorbis-{arch}':
+            arch: lynx64
+            build: /app/build/vorbis
+            generator: 'Unix Makefiles'
+            install: /app/opt/vorbis
+            make: '-j 16'
+            node: linux
+            ogg_include: /app/opt/vorbis/include
+            ogg_library: /app/opt/vorbis/lib/libogg.a
+        - 'vorbis-{arch}':
+            arch: winx64
+            build: 'C:\build\vorbis'
+            generator: NMake Makefiles
+            install: 'C:\opt\vorbis'
+            make: ''
+            node: windows
+            ogg_include: 'C:\opt\vorbis\include'
+            ogg_library: 'C:\opt\ogg\lib\ogg.lib'

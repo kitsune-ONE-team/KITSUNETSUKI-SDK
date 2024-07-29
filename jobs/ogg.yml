@@ -1,0 +1,51 @@
+- job-template:
+    name: 'ogg-{arch}'
+    display-name: 'ogg-{arch}'
+    project-type: freestyle
+    description: Reference implementation of the Ogg media container.
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/xiph/ogg.git
+            branches:
+              - refs/tags/v1.3.5
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DMULTITHREADED_BUILD=16
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: ogg
+    jobs:
+        - 'ogg-{arch}':
+            arch: lynx64
+            build: /app/build/ogg
+            generator: 'Unix Makefiles'
+            install: /app/opt/vorbis
+            make: '-j 16'
+            node: linux
+        - 'ogg-{arch}':
+            arch: winx64
+            build: 'C:\build\ogg'
+            generator: NMake Makefiles
+            install: 'C:\opt\vorbis'
+            make: ''
+            node: windows

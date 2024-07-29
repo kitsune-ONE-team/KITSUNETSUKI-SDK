@@ -49,8 +49,7 @@
             cp -Rfv discord/c/*                                                                ${{DESTDIR}}/include/
             cp -fv discord/lib/x86_64/discord_game_sdk.so                                      ${{DESTDIR}}/lib/libdiscord_game_sdk.so
 
-            PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -U pip wheel
-            PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -r sdk/sdk/requirements.txt
+            PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -C "--build-option=--py-limited-api ''" -r sdk/sdk/requirements.txt
 
 - job-template:
     name: sdk-winx64
@@ -110,8 +109,7 @@
             copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\bin
 
             set PYTHONHOME=%cd%\%DESTDIR%
-            %PIP% install -U pip wheel
-            %PIP% install -r sdk\sdk\requirements.txt
+            %PIP% install -C "--build-option=--py-limited-api ''" -r sdk\sdk\requirements.txt
 
 - project:
     name: sdk-lynx64

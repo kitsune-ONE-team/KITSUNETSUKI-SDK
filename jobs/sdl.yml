@@ -1,0 +1,54 @@
+- job-template:
+    name: 'sdl-{arch}'
+    display-name: 'sdl-{arch}'
+    project-type: freestyle
+    description: Simple Directmedia Layer
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/libsdl-org/SDL.git
+            branches:
+              - refs/tags/release-2.30.5
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DMULTITHREADED_BUILD=16
+                -DSDL_SHARED=YES
+                -DSDL_STATIC=YES
+                -DSDL_STATIC_PIC=YES
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: sdl
+    jobs:
+        - 'sdl-{arch}':
+            arch: lynx64
+            build: /app/build/sdl
+            generator: 'Unix Makefiles'
+            install: /app/opt/sdl
+            make: '-j 16'
+            node: linux
+        - 'sdl-{arch}':
+            arch: winx64
+            build: 'C:\build\sdl'
+            generator: NMake Makefiles
+            install: 'C:\opt\sdl'
+            make: ''
+            node: windows

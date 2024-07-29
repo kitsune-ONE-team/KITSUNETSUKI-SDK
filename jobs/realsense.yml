@@ -48,5 +48,5 @@
     jobs:
         - 'realsense-lynx64':
             version: '2.55.1'
-            python_version: '3.11'
+            python_version: '3.13t'
             jenkins_ws: '/root/jenkins/workspace'
