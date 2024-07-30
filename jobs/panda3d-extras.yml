@@ -1,9 +1,9 @@
 - job-template:
-    name: 'panda3d-{module}-lynx64'
-    display-name: 'panda3d-{module}-lynx64'
+    name: 'panda3d-{module}-{arch}'
+    display-name: 'panda3d-{module}-{arch}'
     project-type: freestyle
     description: '{desc}'
-    node: linux
+    node: '{node}'
     build-discarder:
         daysToKeep: -1
         numToKeep: 2
@@ -18,109 +18,87 @@
     builders:
         - cmake:
             source-dir: .
-            working-dir: build
-            generator: Unix Makefiles
+            working-dir: '{build}'
+            generator: '{generator}'
             build-type: Release
             other-arguments: |
-                -DCMAKE_INSTALL_PREFIX=/panda3d-{module}/lib/python{python_version}/site-packages
+                -DCMAKE_INSTALL_PREFIX={install}
                 -DMULTITHREADED_BUILD=16
-                -DBULLET_INCLUDE_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/include
-                -DBULLET_LIBRARY_DIR={jenkins_ws}/bullet-lynx64/dist/bullet/lib
+                -DBULLET_INCLUDE_DIR={bullet_dir}include
+                -DBULLET_LIBRARY_DIR={bullet_dir}lib
                 -DINSTALL_PY=ON
-                -DPANDA_BINARY_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/bin
-                -DPANDA_INCLUDE_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/include
-                -DPANDA_LIBRARY_DIR={jenkins_ws}/panda3d-lynx64/dist/panda3d/lib
-                -DPYTHON_INCLUDE_DIR={jenkins_ws}/python-lynx64/dist/python/include/python{python_version}
-                -DPYTHON_EXECUTABLE={jenkins_ws}/python-lynx64/dist/python/bin/python{python_version}
-                -DPYTHON_LIBRARY={jenkins_ws}/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
+                -DPANDA_BINARY_DIR={panda3d_dir}bin
+                -DPANDA_INCLUDE_DIR={panda3d_dir}include
+                -DPANDA_LIBRARY_DIR={panda3d_dir}lib
+                -DPYTHON_INCLUDE_DIR={python_include}
+                -DPYTHON_EXECUTABLE={python_executable}
+                -DPYTHON_LIBRARY={python_library}
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: '-j 16'
+                  arguments: '{make}'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/" -j 16'
-
-- job-template:
-    name: 'panda3d-{module}-winx64'
-    display-name: 'panda3d-{module}-winx64'
-    project-type: freestyle
-    description: '{desc}'
-    node: windows
-    build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
-    scm:
-        - git:
-            url: https://github.com/kitsune-ONE-team/panda3d-{module}.git
-            branches:
-              - refs/tags/{version}
-            wipe-workspace: false
-    builders:
-        - batch: |
-            call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.22000.0
-            @echo on
-
-            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
-
-            if not exist build (
-                mkdir build
-            )
-            cd build
-            cmake -G "NMake Makefiles" ^
-                -DCMAKE_BUILD_TYPE=Release ^
-                -DMULTITHREADED_BUILD=16 ^
-                -DCMAKE_INSTALL_PREFIX=\panda3d-{module}\lib\site-packages ^
-                -DBULLET_INCLUDE_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\include ^
-                -DBULLET_LIBRARY_DIR=%JENKINS_WS%\bullet-winx64\dist\bullet\lib ^
-                -DINSTALL_PY=ON ^
-                -DPANDA_BINARY_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\bin ^
-                -DPANDA_INCLUDE_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\include ^
-                -DPANDA_LIBRARY_DIR=%JENKINS_WS%\panda3d-winx64\dist\panda3d\lib ^
-                -DPYTHON_INCLUDE_DIR=%JENKINS_WS%\python-winx64\dist\python\include ^
-                -DPYTHON_EXECUTABLE=%JENKINS_WS%\python-winx64\dist\python\bin\python ^
-                -DPYTHON_LIBRARY=%JENKINS_WS%\python-winx64\dist\python\libs\python{pythonversion}.lib ^
-                ..
-
-            if "%ERRORLEVEL%" == "1" (
-                exit /B 1
-            )
-
-            set CL=/MP
-            nmake
-            nmake install DESTDIR=..\dist\
-            cd ..
-
-            if "%ERRORLEVEL%" == "1" (
-                exit /B 1
-            )
+                  arguments: 'install {make}'
 
 - project:
-    name: panda3d-extras-lynx64
+    name: panda3d-extras
     jobs:
-        - 'panda3d-{module}-lynx64':
-            module: kphys
-            version: '0.6.10'
+        - 'panda3d-{module}-{arch}':
+            arch: lynx64
+            build: /app/build/panda3d-kphys
+            bullet_dir: /app/opt/bullet/
             desc: Physics extensions for Panda3D
-            python_version: '3.13t'
-            jenkins_ws: '/root/jenkins/workspace'
-        - 'panda3d-{module}-lynx64':
-            module: krender
-            version: '0.1.2'
-            desc: Custom Deferred Render Pipeline for Panda3D
-            python_version: '3.13t'
-            jenkins_ws: '/root/jenkins/workspace'
-
-- project:
-    name: panda3d-extras-winx64
-    jobs:
-        - 'panda3d-{module}-winx64':
+            generator: Unix Makefiles
+            install: /app/opt/panda3d-kphys/lib/python3.13t/site-packages
+            make: '-j 16'
             module: kphys
+            node: linux
+            panda3d_dir: /app/opt/panda3d/
+            python_executable: /app/opt/python/bin/python3.13t
+            python_include: /app/opt/python/include/python3.13t
+            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             version: '0.6.10'
+        - 'panda3d-{module}-{arch}':
+            arch: winx64
+            build: 'C:\\build\\panda3d-kphys'
+            bullet_dir: 'C:\\opt\\bullet\\'
             desc: Physics extensions for Panda3D
-            pythonversion: '311'
-        - 'panda3d-{module}-winx64':
-            module: krender
-            version: '0.1.2'
+            generator: NMake Makefiles
+            install: 'C:\\opt\\panda3d-kphys\\lib\site-packages'
+            make: ''
+            module: kphys
+            node: windows
+            panda3d_dir: 'C:\\opt\\panda3d\\'
+            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
+            python_include: 'C:\\opt\\python\\include'
+            python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            version: '0.6.10'
+        - 'panda3d-{module}-{arch}':
+            arch: lynx64
+            build: /app/build/panda3d-krender
+            bullet_dir: /app/opt/bullet/
             desc: Custom Deferred Render Pipeline for Panda3D
-            pythonversion: '311'
+            generator: Unix Makefiles
+            install: /app/opt/panda3d-krender/lib/python3.13t/site-packages
+            make: '-j 16'
+            module: krender
+            node: linux
+            panda3d_dir: /app/opt/panda3d/
+            python_executable: /app/opt/python/bin/python3.13t
+            python_include: /app/opt/python/include/python3.13t
+            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+            version: '0.1.2'
+        - 'panda3d-{module}-{arch}':
+            arch: winx64
+            build: 'C:\\build\\panda3d-krender'
+            bullet_dir: 'C:\\opt\\bullet\\'
+            desc: Custom Deferred Render Pipeline for Panda3D
+            generator: NMake Makefiles
+            install: 'C:\\opt\\panda3d-krender\\lib\site-packages'
+            make: ''
+            module: krender
+            node: windows
+            panda3d_dir: 'C:\\opt\\panda3d\\'
+            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
+            python_include: 'C:\\opt\\python\\include'
+            python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            version: '0.1.2'

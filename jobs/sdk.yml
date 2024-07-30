@@ -5,51 +5,42 @@
     description: KITSUNETSUKI SDK
     node: linux
     build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
+      daysToKeep: -1
+      numToKeep: 2
+      artifactDaysToKeep: -1
+      artifactNumToKeep: -1
     builders:
-        - shell: |
-            DESTDIR=dist/sdk
-            JENKINS_WS=${{JENKINS_HOME}}/workspace
-            PIP="${{DESTDIR}}/bin/python{python_version} -m pip"
-            # PKG_CONFIG_PATH=/root/jenkins/workspace/python-lynx64/dist/python/lib/pkgconfig
-            # CFLAGS=-I/root/jenkins/workspace/python-lynx64/dist/python/include/python{python_version}
-            # LDFLAGS=-L/root/jenkins/workspace/python-lynx64/dist/python/lib
+      - shell: |
+          mkdir -p {build}
+          cd {build}
 
-            if [ ! -d sdk ]; then
-                git clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
-            else
-                cd sdk
-                git pull
-                cd ..
-            fi
+          if [ ! -f discord.zip ]; then
+              wget -O discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
+              7z x -odiscord discord.zip
+          fi
 
-            if [ ! -f discord.zip ]; then
-                wget -O discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
-                7z x -odiscord discord.zip
-            fi
+          mkdir -p {install}/include
+          mkdir -p {install}/lib
+          cp -Rfv /app/opt/python/bin                            {install}/
+          cp -Rfv /app/opt/python/include/python{python_version} {install}/include/
+          cp -Rfv /app/opt/python/lib                            {install}/
+          cp -Rfv /app/opt/panda3d/bin                           {install}/
+          cp -Rfv /app/opt/panda3d/etc                           {install}/
+          cp -Rfv /app/opt/panda3d/include                       {install}/
+          cp -Rfv /app/opt/panda3d/lib                           {install}/
+          cp -Rfv /app/opt/panda3d-kphys/lib                     {install}/
+          cp -Rfv /app/opt/panda3d-krender/lib                   {install}/
+          cp -Rfv /app/opt/sdl/include                           {install}/
+          cp -Rfv /app/opt/sdl/lib                               {install}/
+          cp -Rfv discord/c/*                                    {install}/include/
+          cp -fv discord/lib/x86_64/discord_game_sdk.so          {install}/lib/libdiscord_game_sdk.so
 
-            mkdir -p ${{DESTDIR}}/include
-            mkdir -p ${{DESTDIR}}/include/SDL2
-            mkdir -p ${{DESTDIR}}/lib
-            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/bin                              ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/include/python{python_version}   ${{DESTDIR}}/include/
-            cp -Rfv ${{JENKINS_WS}}/python-lynx64/dist/python/lib                              ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/bin                            ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/etc                            ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/include                        ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-lynx64/dist/panda3d/lib                            ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-kphys-lynx64/dist/panda3d-kphys/lib                ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/panda3d-krender-lynx64/dist/panda3d-krender/lib            ${{DESTDIR}}/
-            #cp -Rfv ${{JENKINS_WS}}/blender-lynx64/dist/blender/lib                            ${{DESTDIR}}/
-            cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/include/SDL2                           ${{DESTDIR}}/include
-            cp -Rfv ${{JENKINS_WS}}/sdl-lynx64/dist/sdl/lib                                    ${{DESTDIR}}/
-            cp -Rfv discord/c/*                                                                ${{DESTDIR}}/include/
-            cp -fv discord/lib/x86_64/discord_game_sdk.so                                      ${{DESTDIR}}/lib/libdiscord_game_sdk.so
-
-            PYTHONHOME=$(pwd)/${{DESTDIR}} ${{PIP}} install -C "--build-option=--py-limited-api ''" -r sdk/sdk/requirements.txt
+          PYTHONHOME={install} {install}/bin/python3.13t -m \
+              pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
+          PYTHONHOME={install} {install}/bin/python3.13t -m \
+              pip install \
+              -C "--build-option=--py-limited-api ''" \
+              -r /app/jobs/sdk/requirements.txt
 
 - job-template:
     name: sdk-winx64
@@ -58,67 +49,64 @@
     description: KITSUNETSUKI SDK
     node: windows
     build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
+      daysToKeep: -1
+      numToKeep: 2
+      artifactDaysToKeep: -1
+      artifactNumToKeep: -1
     builders:
-        - batch: |
-            set DESTDIR=dist\sdk
-            set JENKINS_WS=%HOME%\Jenkins\Jenkins\workspace
-            set PIP=%DESTDIR%\bin\python -m pip
-            set GIT=Z:\Git\bin\git
-            set ZIP=Z:\7-Zip\7z
-            set PATH=%PATH%;Z:\Git\bin
+      - batch: |
+          mkdir -p {build}
+          cd {build}
 
-            if not exist sdk (
-                %GIT% clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
-            ) else (
-                cd sdk
-                %GIT% pull
-                cd ..
-            )
+          set GIT=Z:\Git\bin\git
+          set ZIP=Z:\7-Zip\7z
+          set PATH=%PATH%;Z:\Git\bin
 
-            if not exist discord.zip (
-                curl -o discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
-                %ZIP% x -odiscord discord.zip
-            )
+          if not exist discord.zip (
+              curl -o discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
+              %ZIP% x -odiscord discord.zip
+          )
 
-            if not exist %DESTDIR% (
-                mkdir %DESTDIR%
-                mkdir %DESTDIR%\include
-                mkdir %DESTDIR%\include\SDL2
-                mkdir %DESTDIR%\lib
-            )
-            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\DLLs                  %DESTDIR%\DLLs
-            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\bin                   %DESTDIR%\bin
-            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\lib                   %DESTDIR%\lib
-            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\libs                  %DESTDIR%\libs
-            xcopy /I /E /Y %JENKINS_WS%\python-winx64\dist\python\include               %DESTDIR%\include
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\bin                 %DESTDIR%\bin
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\etc                 %DESTDIR%\etc
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\include             %DESTDIR%\include
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-winx64\dist\panda3d\lib                 %DESTDIR%\lib
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-kphys-winx64\dist\panda3d-kphys\lib     %DESTDIR%\lib
-            xcopy /I /E /Y %JENKINS_WS%\panda3d-krender-winx64\dist\panda3d-krender\lib %DESTDIR%\lib
-            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\bin                         %DESTDIR%\bin
-            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\include                     %DESTDIR%\include
-            xcopy /I /E /Y %JENKINS_WS%\sdl-winx64\dist\sdl\lib                         %DESTDIR%\lib
-            copy /V /Y     %JENKINS_WS%\blender-thirdparty-winx64\openal\lib\*.dll      %DESTDIR%\bin
-            xcopy /I /E /Y discord\c                                                    %DESTDIR%\include
-            copy /V /Y     discord\lib\x86_64\*.dll                                     %DESTDIR%\bin
+          mkdir {install}
+          mkdir {install}\include
+          mkdir {install}\lib
+          xcopy /I /E /Y C:\opt\python\DLLs           {install}\DLLs
+          xcopy /I /E /Y C:\opt\python\bin            {install}\bin
+          xcopy /I /E /Y C:\opt\python\lib            {install}\lib
+          xcopy /I /E /Y C:\opt\python\libs           {install}\libs
+          xcopy /I /E /Y C:\opt\python\include        {install}\include
+          xcopy /I /E /Y C:\opt\panda3d\bin           {install}\bin
+          xcopy /I /E /Y C:\opt\panda3d\etc           {install}\etc
+          xcopy /I /E /Y C:\opt\panda3d\include       {install}\include
+          xcopy /I /E /Y C:\opt\panda3d\lib           {install}\lib
+          xcopy /I /E /Y C:\opt\panda3d-kphys\lib     {install}\lib
+          xcopy /I /E /Y C:\opt\panda3d-krender\lib   {install}\lib
+          xcopy /I /E /Y C:\opt\sdl\bin               {install}\bin
+          xcopy /I /E /Y C:\opt\sdl\include           {install}\include
+          xcopy /I /E /Y C:\opt\sdl\lib               {install}\lib
+          xcopy /I /E /Y discord\c                {install}\include
+          copy /V /Y     discord\lib\x86_64\*.dll {install}\bin
 
-            set PYTHONHOME=%cd%\%DESTDIR%
-            %PIP% install -C "--build-option=--py-limited-api ''" -r sdk\sdk\requirements.txt
+          set PYTHONHOME={install}
+          {install}\bin\python3.13t -m ^
+              pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
+          {install}\bin\python3.13t -m ^
+              pip install ^
+              -C "--build-option=--py-limited-api ''" ^
+              -r C:\jenkins\workspace\panda3d-winx64\build\sdk\jobs\sdk\requirements.txt
 
 - project:
     name: sdk-lynx64
     jobs:
-        - 'sdk-lynx64':
-            python_version: '3.13t'
+      - 'sdk-lynx64':
+          build: /app/build/sdk
+          install: /app/opt/sdk
+          python_version: '3.13t'
 
 - project:
     name: sdk-winx64
     jobs:
-        - 'sdk-winx64':
-            python_version: '3.13t'
+      - 'sdk-winx64':
+          build: 'C:\build\sdk'
+          install: 'C:\opt\sdk'
+          python_version: '3.13t'

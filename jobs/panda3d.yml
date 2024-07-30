@@ -36,7 +36,6 @@
                 --python-incdir /app/opt/python/include \
                 --python-libdir /app/opt/python/lib \
                 --threads=16 \
-                --use-brotli \
                 --use-bullet \
                 --use-contrib \
                 --use-deploytools \
@@ -109,18 +108,13 @@
         - batch: |
             @echo on
             set CWD=%cd%
-            set MAKEPANDA_THIRDPARTY={build}\panda3d-1.10.14\thirdparty
             set PATCH=Z:\Git\usr\bin\patch
             set GIT=Z:\Git\bin\git
             set ZIP=Z:\7-Zip\7z
-            set BISON=%MAKEPANDA_THIRDPARTY%\win-util\bison
+            set MAKEPANDA_THIRDPARTY={build}/panda3d-1.10.14/thirdparty
 
+            mkdir {build}
             cd {build}
-
-            if not exist panda3d-1.10.14 (
-                curl -O https://www.panda3d.org/download/panda3d-1.10.14/panda3d-1.10.14-tools-win64.zip
-                %ZIP% x panda3d-1.10.14-tools-win64.zip
-            )
 
             if not exist sdk (
                 %GIT% clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
@@ -130,30 +124,33 @@
                 cd ..
             )
 
+            if not exist panda3d-1.10.14 (
+                curl -O https://www.panda3d.org/download/panda3d-1.10.14/panda3d-1.10.14-tools-win64.zip
+                %ZIP% x panda3d-1.10.14-tools-win64.zip
+                rd /S /Q panda3d-1.10.14\thirdparty\win-libs-vc14-x64\bullet
+            )
+
             cd %CWD%
 
-            %PATCH% -p1 < {build}\jobs\panda3d\01_libs.1.11.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\02_bullet_char.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\05_py_noinst.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\06_py_prefix.1.11.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\07_rgba.1.11.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\09_rp_light.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\10_libp3rplight.1.11.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\11_texture.patch
-            %PATCH% -p1 < {build}\jobs\panda3d\12_python3.13_1639.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\01_libs.1.11.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\02_bullet_char.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\05_py_noinst.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\06_py_prefix.1.11.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\07_rgba.1.11.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\09_rp_light.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\10_libp3rplight.1.11.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\11_texture.patch
+            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\12_python3.13_1639.patch
 
-            C:\python\bin\python{python_version} makepanda\makepanda.py ^
-                --bullet-incdir C:\bullet\include ^
-                --bullet-libdir C:\bullet\lib ^
+            C:\opt\python\bin\python{python_version} makepanda\makepanda.py ^
+                --bullet-incdir C:\opt\bullet\include ^
+                --bullet-libdir C:\opt\bullet\lib ^
                 --msvc-version=14.3 ^
                 --nothing ^
-                --openssl-incdir %MAKEPANDA_THIRDPARTY%\win-libs-vc14-x64\openssl\include ^
-                --openssl-libdir %MAKEPANDA_THIRDPARTY%\win-libs-vc14-x64\openssl\lib ^
                 --outputdir {build} ^
-                --python-incdir C:\python\include ^
-                --python-libdir C:\python\libs ^
+                --python-incdir C:\opt\python\include ^
+                --python-libdir C:\opt\python\libs ^
                 --threads=16 ^
-                --use-brotli ^
                 --use-bullet ^
                 --use-contrib ^
                 --use-deploytools ^
@@ -177,8 +174,8 @@
                 --use-vorbis ^
                 --use-zlib ^
                 --verbose ^
-                --vorbis-incdir C:\vorbis\include ^
-                --vorbis-libdir C:\vorbis\lib ^
+                --vorbis-incdir C:\opt\vorbis\include ^
+                --vorbis-libdir C:\opt\vorbis\lib ^
                 --windows-sdk=10
 
             if "%ERRORLEVEL%" == "1" (
@@ -195,15 +192,15 @@
             mkdir {install}\share\panda3d
             mkdir {install}\lib\site-packages
 
-            xcopy /I /E /Y build\bin               {install}\bin
-            xcopy /I /E /Y build\etc               {install}\etc
-            xcopy /I /E /Y build\lib               {install}\lib
-            xcopy /I /E /Y build\include           {install}\include\panda3d
-            xcopy /I /E /Y build\models            {install}\share\panda3d\models
-            xcopy /I /E /Y build\direct            {install}\lib\site-packages\direct
-            xcopy /I /E /Y build\panda3d           {install}\lib\site-packages\panda3d
-            xcopy /I /E /Y build\panda3d.dist-info {install}\lib\site-packages\panda3d.dist-info
-            xcopy /I /E /Y build\pandac            {install}\lib\site-packages\pandac
+            xcopy /I /E /Y {build}\bin               {install}\bin
+            xcopy /I /E /Y {build}\etc               {install}\etc
+            xcopy /I /E /Y {build}\lib               {install}\lib
+            xcopy /I /E /Y {build}\include           {install}\include\panda3d
+            xcopy /I /E /Y {build}\models            {install}\share\panda3d\models
+            xcopy /I /E /Y {build}\direct            {install}\lib\site-packages\direct
+            xcopy /I /E /Y {build}\panda3d           {install}\lib\site-packages\panda3d
+            xcopy /I /E /Y {build}\panda3d.dist-info {install}\lib\site-packages\panda3d.dist-info
+            xcopy /I /E /Y {build}\pandac            {install}\lib\site-packages\pandac
 
 - project:
     name: panda3d-lynx64
@@ -218,5 +215,5 @@
     jobs:
         - 'panda3d-winx64':
             python_version: '3.13t'
-            build: 'C:\build\panda3d'
+            build: build
             install: 'C:\opt\panda3d'

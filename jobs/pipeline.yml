@@ -27,6 +27,7 @@
     builders:
         - batch: |
             rd /S /Q C:\{path}
+            rd /S /Q C:\jenkins\workspace\panda3d-winx64\build
 
 - project:
     name: clean-build
