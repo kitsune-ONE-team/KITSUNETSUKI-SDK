@@ -29,6 +29,62 @@
             rd /S /Q C:\{path}
             rd /S /Q C:\jenkins\workspace\panda3d-winx64\build
 
+- job-template:
+    name: 'pipeline-{arch}'
+    display-name: 'pipeline-{arch}'
+    project-type: pipeline
+    description: KITSUNETSUKI SDK pipeline
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    dsl: |
+      pipeline {{
+          agent any
+          stages {{
+              stage('clean-opt') {{
+                  steps {{ build job: 'clean-opt-{arch}' }}
+              }}
+              stage('ogg') {{
+                  steps {{ build job: 'ogg-{arch}' }}
+              }}
+              stage('vorbis') {{
+                  steps {{ build job: 'vorbis-{arch}' }}
+              }}
+              stage('panda3d-reqs') {{
+                  parallel {{
+                      stage('bullet') {{
+                          steps {{ build job: 'bullet-{arch}' }}
+                      }}
+                      stage('sdl') {{
+                          steps {{ build job: 'sdl-{arch}' }}
+                      }}
+                      stage('python') {{
+                          steps {{ build job: 'python-{arch}' }}
+                      }}
+                  }}
+              }}
+              stage('panda3d') {{
+                  steps {{ build job: 'panda3d-{arch}' }}
+              }}
+              stage('panda3d-plugins') {{
+                  parallel {{
+                      stage('panda3d-kphys') {{
+                          steps {{ build job: 'panda3d-kphys-{arch}' }}
+                      }}
+                      stage('panda3d-krender') {{
+                          steps {{ build job: 'panda3d-krender-{arch}' }}
+                      }}
+                  }}
+              }}
+              stage('sdk') {{
+                  steps {{ build job: 'sdk-{arch}' }}
+              }}
+          }}
+      }}
+
 - project:
     name: clean-build
     jobs:
@@ -45,92 +101,12 @@
         - 'clean-{path}-winx64':
             path: opt
 
-- job:
-    name: pipeline-lynx64
-    display-name: pipeline-lynx64
-    project-type: pipeline
-    description: KITSUNETSUKI SDK pipeline
-    node: windows
-    build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
-    dsl: |
-      pipeline {{
-          agent any
-          stages {{
-              stage('clean-opt') {{
-                  steps {{ build job: 'clean-opt-lynx64' }}
-              }}
-              stage('bullet') {{
-                  steps {{ build job: 'bullet-lynx64' }}
-              }}
-              stage('ogg') {{
-                  steps {{ build job: 'ogg-lynx64' }}
-              }}
-              stage('vorbis') {{
-                  steps {{ build job: 'vorbis-lynx64' }}
-              }}
-              stage('sdl') {{
-                  steps {{ build job: 'sdl-lynx64' }}
-              }}
-              stage('python') {{
-                  steps {{ build job: 'python-lynx64' }}
-              }}
-              stage('panda3d') {{
-                  steps {{ build job: 'panda3d-lynx64' }}
-              }}
-              stage('panda3d-kphys') {{
-                  steps {{ build job: 'panda3d-kphys-lynx64' }}
-              }}
-              stage('panda3d-krender') {{
-                  steps {{ build job: 'panda3d-krender-lynx64' }}
-              }}
-              stage('sdk') {{
-                  steps {{ build job: 'sdk-lynx64' }}
-              }}
-          }}
-      }}
-
-- job:
-    name: pipeline-winx64
-    display-name: pipeline-winx64
-    project-type: pipeline
-    description: KITSUNETSUKI SDK pipeline
-    node: windows
-    build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
-    dsl: |
-      pipeline {{
-          agent any
-          stages {{
-              stage('clean-opt') {{
-                  steps {{ build job: 'clean-opt-winx64' }}
-              }}
-              stage('bullet') {{
-                  steps {{ build job: 'bullet-winx64' }}
-              }}
-              stage('sdl') {{
-                  steps {{ build job: 'sdl-winx64' }}
-              }}
-              stage('python') {{
-                  steps {{ build job: 'python-winx64' }}
-              }}
-              stage('panda3d') {{
-                  steps {{ build job: 'panda3d-winx64' }}
-              }}
-              stage('panda3d-kphys') {{
-                  steps {{ build job: 'panda3d-kphys-winx64' }}
-              }}
-              stage('panda3d-krender') {{
-                  steps {{ build job: 'panda3d-krender-winx64' }}
-              }}
-              stage('sdk') {{
-                  steps {{ build job: 'sdk-winx64' }}
-              }}
-          }}
-      }}
+- project:
+    name: pipeline
+    jobs:
+        - 'pipeline-{arch}':
+            arch: lynx64
+            node: linux
+        - 'pipeline-{arch}':
+            arch: winx64
+            node: windows

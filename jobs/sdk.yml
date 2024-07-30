@@ -35,11 +35,13 @@
           cp -Rfv discord/c/*                                    {install}/include/
           cp -fv discord/lib/x86_64/discord_game_sdk.so          {install}/lib/libdiscord_game_sdk.so
 
-          PYTHONHOME={install} {install}/bin/python3.13t -m \
-              pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
-          PYTHONHOME={install} {install}/bin/python3.13t -m \
+          export PYTHONHOME={install}
+          {install}/bin/python3.13t -m \
               pip install \
-              -C "--build-option=--py-limited-api ''" \
+              -C "--build-option=--py-limited-api \"\"" pycryptodome==3.20.0
+          {install}/bin/python3.13t -m \
+              pip install \
+              -C "--build-option=--py-limited-api \"\"" \
               -r /app/jobs/sdk/requirements.txt
 
 - job-template:
@@ -89,10 +91,11 @@
 
           set PYTHONHOME={install}
           {install}\bin\python3.13t -m ^
-              pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
+              pip install ^
+              -C "--build-option=--py-limited-api \"\""  pycryptodome==3.20.0
           {install}\bin\python3.13t -m ^
               pip install ^
-              -C "--build-option=--py-limited-api ''" ^
+              -C "--build-option=--py-limited-api \"\"" ^
               -r C:\jenkins\workspace\panda3d-winx64\build\sdk\jobs\sdk\requirements.txt
 
 - project:
