@@ -72,22 +72,22 @@
           mkdir {install}
           mkdir {install}\include
           mkdir {install}\lib
-          xcopy /I /E /Y C:\opt\python\DLLs           {install}\DLLs
-          xcopy /I /E /Y C:\opt\python\bin            {install}\bin
-          xcopy /I /E /Y C:\opt\python\lib            {install}\lib
-          xcopy /I /E /Y C:\opt\python\libs           {install}\libs
-          xcopy /I /E /Y C:\opt\python\include        {install}\include
-          xcopy /I /E /Y C:\opt\panda3d\bin           {install}\bin
-          xcopy /I /E /Y C:\opt\panda3d\etc           {install}\etc
-          xcopy /I /E /Y C:\opt\panda3d\include       {install}\include
-          xcopy /I /E /Y C:\opt\panda3d\lib           {install}\lib
-          xcopy /I /E /Y C:\opt\panda3d-kphys\lib     {install}\lib
-          xcopy /I /E /Y C:\opt\panda3d-krender\lib   {install}\lib
-          xcopy /I /E /Y C:\opt\sdl\bin               {install}\bin
-          xcopy /I /E /Y C:\opt\sdl\include           {install}\include
-          xcopy /I /E /Y C:\opt\sdl\lib               {install}\lib
-          xcopy /I /E /Y discord\c                {install}\include
-          copy /V /Y     discord\lib\x86_64\*.dll {install}\bin
+          xcopy /I /E /Y C:\opt\python\DLLs         {install}\DLLs
+          xcopy /I /E /Y C:\opt\python\bin          {install}\bin
+          xcopy /I /E /Y C:\opt\python\lib          {install}\lib
+          xcopy /I /E /Y C:\opt\python\libs         {install}\libs
+          xcopy /I /E /Y C:\opt\python\include      {install}\include
+          xcopy /I /E /Y C:\opt\panda3d\bin         {install}\bin
+          xcopy /I /E /Y C:\opt\panda3d\etc         {install}\etc
+          xcopy /I /E /Y C:\opt\panda3d\include     {install}\include
+          xcopy /I /E /Y C:\opt\panda3d\lib         {install}\lib
+          xcopy /I /E /Y C:\opt\panda3d-kphys\lib   {install}\lib
+          xcopy /I /E /Y C:\opt\panda3d-krender\lib {install}\lib
+          xcopy /I /E /Y C:\opt\sdl\bin             {install}\bin
+          xcopy /I /E /Y C:\opt\sdl\include         {install}\include
+          xcopy /I /E /Y C:\opt\sdl\lib             {install}\lib
+          xcopy /I /E /Y discord\c                  {install}\include
+          copy /V /Y     discord\lib\x86_64\*.dll   {install}\bin
 
           set PYTHONHOME={install}
           {install}\bin\python3.13t -m ^
@@ -97,6 +97,8 @@
               pip install ^
               -C "--build-option=--py-limited-api \"\"" ^
               -r C:\jenkins\workspace\panda3d-winx64\build\sdk\jobs\sdk\requirements.txt
+
+          xcopy /I /E /Y {install} Z:\sdk
 
 - project:
     name: sdk-lynx64
@@ -110,6 +112,6 @@
     name: sdk-winx64
     jobs:
       - 'sdk-winx64':
-          build: 'C:\build\sdk'
-          install: 'C:\opt\sdk'
+          build: 'C:\\build\\sdk'
+          install: 'C:\\opt\\sdk'
           python_version: '3.13t'

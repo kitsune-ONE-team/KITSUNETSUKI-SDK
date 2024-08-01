@@ -56,7 +56,7 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            version: '0.6.10'
+            version: '0.6.11'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
@@ -71,7 +71,7 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            version: '0.6.10'
+            version: '0.6.11'
         - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
@@ -86,7 +86,7 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            version: '0.1.2'
+            version: '0.2.0'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
@@ -101,4 +101,4 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            version: '0.1.2'
+            version: '0.2.0'

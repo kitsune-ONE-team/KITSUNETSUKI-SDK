@@ -1,5 +1,5 @@
 - job-template:
-    name: python-lynx64
+    name: python{variant}-lynx64
     display-name: python-lynx64
     project-type: freestyle
     description: The Python programming language.
@@ -31,7 +31,7 @@
             patchelf --set-rpath \$ORIGIN/../lib {install}/bin/python{python_version}
 
 - job-template:
-    name: python-winx64
+    name: python{variant}-winx64
     display-name: python-winx64
     project-type: freestyle
     description: The Python programming language.
@@ -75,8 +75,16 @@
             git_tag: 'v3.13.0b4'
             install: /app/opt/python
             python_version: '3.13t'
+            variant: ''
+        - 'pythonnt-lynx64':
+            build: /app/build/pythonnt
+            git_tag: 'v3.12'
+            install: /app/opt/pythonnt
+            python_version: '3.12'
+            variant: 'nt'
         - 'python-winx64':
             build: 'C:\build\python'
             git_tag: 'v3.13.0b4'
             install: 'C:\opt\python'
             python_version: '3.13t'
+            variant: ''

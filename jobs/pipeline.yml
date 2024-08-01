@@ -28,6 +28,7 @@
         - batch: |
             rd /S /Q C:\{path}
             rd /S /Q C:\jenkins\workspace\panda3d-winx64\build
+            rd /S /Q Z:\sdk
 
 - job-template:
     name: 'pipeline-{arch}'
