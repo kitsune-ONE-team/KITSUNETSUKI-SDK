@@ -18,13 +18,10 @@
     builders:
         - cmake:
             source-dir: .
-            working-dir: build
-            generator: Unix Makefiles
+            working-dir: '{build}'
+            generator: '{generator}'
             build-type: Release
             other-arguments: |
-                -DCMAKE_INSTALL_PREFIX=/realsense
-                -DPYTHON_INSTALL_DIR=/realsense/lib/python{python_version}/site-packages
-                -DMULTITHREADED_BUILD=16
                 -DBUILD_EXAMPLES=OFF
                 -DBUILD_GLSL_EXTENSIONS=OFF
                 -DBUILD_LEGACY_LIVE_TEST=OFF
@@ -32,21 +29,30 @@
                 -DBUILD_PYTHON_BINDINGS=ON
                 -DBUILD_UNIT_TESTS=OFF
                 -DBUILD_WITH_TM2=OFF
+                -DCMAKE_INSTALL_PREFIX={install}
                 -DFORCE_RSUSB_BACKEND=true
+                -DMULTITHREADED_BUILD=16
+                -DPYTHON_EXECUTABLE={python_executable}
+                -DPYTHON_INCLUDE_DIR={python_include}
+                -DPYTHON_INSTALL_DIR={install}
+                -DPYTHON_LIBRARY={python_library}
                 -DUSE_EXTERNAL_USB=OFF
-                -DPYTHON_EXECUTABLE={jenkins_ws}/python-lynx64/dist/python/bin/python{python_version}
-                -DPYTHON_INCLUDE_DIR={jenkins_ws}/python-lynx64/dist/python/include/python{python_version}
-                -DPYTHON_LIBRARY={jenkins_ws}/python-lynx64/dist/python/lib/libpython{python_version}.so.1.0
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: '-j 16'
+                  arguments: '{make}'
                 - use-cmake: false
-                  arguments: 'install DESTDIR="../dist/" -j 16'
+                  arguments: 'install {make}'
 
 - project:
     name: realsense-lynx64
     jobs:
         - 'realsense-lynx64':
+            build: /app/build/realsense
+            generator: Unix Makefiles
+            install: /app/opt/realsense/lib/python3.12/site-packages
+            make: '-j 16'
+            python_executable: /app/opt/pythonnt/bin/python3.12
+            python_include: /app/opt/pythonnt/include/python3.12
+            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            python_version: '3.12'
             version: '2.55.1'
-            python_version: '3.13t'
-            jenkins_ws: '/root/jenkins/workspace'
