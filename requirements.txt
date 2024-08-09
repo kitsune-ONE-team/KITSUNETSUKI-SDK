@@ -1,2 +1,2 @@
-jenkins_job_builder==6.3.0
-setuptools==70.1.0
+jenkins-job-builder==6.4.1
+setuptools==69.5.1

@@ -1,6 +1,5 @@
-# ~/.config/jenkins_jobs/jenkins_jobs.ini
 [jenkins]
 user=username
 password=apitoken
-url=http://jenkins:8080
+url=http://localhost:8080
 timeout=30

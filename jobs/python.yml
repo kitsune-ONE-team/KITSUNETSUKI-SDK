@@ -29,6 +29,8 @@
             make -j 16
             make install -j 16
             patchelf --set-rpath \$ORIGIN/../lib {install}/bin/python{python_version}
+            {install}/bin/python{python_version} -m ensurepip -v
+            {install}/bin/python{python_version} -m pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
 
 - job-template:
     name: 'python{variant}-winx64'
@@ -66,6 +68,7 @@
             xcopy /I /E /Y Lib            {install}\lib
             copy /V /Y {build}\pyconfig.h {install}\include
             {install}\bin\python{python_version} -m ensurepip -v
+            {install}\bin\python{python_version} -m pip install git+https://github.com/abravalheri/setuptools.git@issue-4420
 
 - project:
     name: python

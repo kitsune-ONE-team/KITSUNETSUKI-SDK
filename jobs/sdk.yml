@@ -9,15 +9,23 @@
       numToKeep: 2
       artifactDaysToKeep: -1
       artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+            branches:
+              - master
+            wipe-workspace: false
     builders:
       - shell: |
+          CWD=$(pwd)
           mkdir -p {build}
           cd {build}
 
-          if [ ! -f discord.zip ]; then
-              wget -O discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
+          if not exist discord.zip (
+              curl -o discord.zip \
+                  https://dl-game-sdk.discordapp.net/{discord_version}/discord_game_sdk.zip
               7z x -odiscord discord.zip
-          fi
+          )
 
           mkdir -p {install}/include
           mkdir -p {install}/lib
@@ -35,14 +43,13 @@
           cp -Rfv discord/c/*                                    {install}/include/
           cp -fv discord/lib/x86_64/discord_game_sdk.so          {install}/lib/libdiscord_game_sdk.so
 
-          export PYTHONHOME={install}
           {install}/bin/python3.13t -m \
               pip install \
               -C "--build-option=--py-limited-api \"\"" pycryptodome==3.20.0
           {install}/bin/python3.13t -m \
               pip install \
               -C "--build-option=--py-limited-api \"\"" \
-              -r /app/jobs/sdk/requirements.txt
+              -r ${{CWD}}/jobs/sdk/requirements.txt
 
 - job-template:
     name: sdk-winx64
@@ -55,9 +62,16 @@
       numToKeep: 2
       artifactDaysToKeep: -1
       artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git
+            branches:
+              - master
+            wipe-workspace: false
     builders:
       - batch: |
-          mkdir -p {build}
+          set CWD=%cd%
+          mkdir {build}
           cd {build}
 
           set GIT=Z:\Git\bin\git
@@ -65,7 +79,8 @@
           set PATH=%PATH%;Z:\Git\bin
 
           if not exist discord.zip (
-              curl -o discord.zip https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
+              curl -o discord.zip ^
+                  https://dl-game-sdk.discordapp.net/{discord_version}/discord_game_sdk.zip
               %ZIP% x -odiscord discord.zip
           )
 
@@ -96,7 +111,7 @@
           {install}\bin\python3.13t -m ^
               pip install ^
               -C "--build-option=--py-limited-api \"\"" ^
-              -r C:\jenkins\workspace\panda3d-winx64\build\sdk\jobs\sdk\requirements.txt
+              -r %CWD%\jobs\sdk\requirements.txt
 
           xcopy /I /E /Y {install} Z:\sdk
 
@@ -105,6 +120,7 @@
     jobs:
       - 'sdk-lynx64':
           build: /app/build/sdk
+          discord_version: '3.2.1'
           install: /app/opt/sdk
           python_version: '3.13t'
 
@@ -113,5 +129,6 @@
     jobs:
       - 'sdk-winx64':
           build: 'C:\\build\\sdk'
+          discord_version: '3.2.1'
           install: 'C:\\opt\\sdk'
           python_version: '3.13t'

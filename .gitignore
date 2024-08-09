@@ -1,4 +1,4 @@
 *.pyc
 .venv
-/jenkins/*
 __pycache__
+jenkins_jobs.ini

@@ -1,9 +1,9 @@
 - job-template:
-    name: panda3d-lynx64
-    display-name: panda3d-lynx64
+    name: 'panda3d-{arch}'
+    display-name: 'panda3d-{arch}'
     project-type: freestyle
     description: The Open Source Framework for 3D Rendering and Games
-    node: linux
+    node: '{node}'
     build-discarder:
         daysToKeep: -1
         numToKeep: 2
@@ -11,229 +11,158 @@
         artifactNumToKeep: -1
     scm:
         - git:
-            url: https://github.com/panda3d/panda3d.git
+            url: https://github.com/kitsune-ONE-team/panda3d.git
             branches:
-              - adb92428856853019583f398d27c5d34e44a9343
+              - 22ec791ae1f4f01f96b68f50a9c76a31283b5e0c
             wipe-workspace: false
             timeout: 60
     builders:
-        - shell: |
-            BL_THIRDPARTY=/app/jenkins/workspace/blender-thirdparty-lynx64
-
-            patch -p1 < /app/jobs/panda3d/01_libs.1.11.patch
-            patch -p1 < /app/jobs/panda3d/02_bullet_char.patch
-            patch -p1 < /app/jobs/panda3d/03_icon.1.11.patch
-            patch -p1 < /app/jobs/panda3d/07_rgba.1.11.patch
-            patch -p1 < /app/jobs/panda3d/09_rp_light.patch
-            patch -p1 < /app/jobs/panda3d/10_libp3rplight.1.11.patch
-            patch -p1 < /app/jobs/panda3d/11_texture.patch
-            patch -p1 < /app/jobs/panda3d/12_python3.13_1639.patch
-            cp -fv /app/jobs/panda3d/icon.h panda/src/x11display/
-
-
-            /app/opt/python/bin/python{python_version} makepanda/makepanda.py \
-                --brotli-incdir ${{BL_THIRDPARTY}}/brotli/include \
-                --brotli-libdir ${{BL_THIRDPARTY}}/brotli/lib \
-                --bullet-incdir /app/opt/bullet/include \
-                --bullet-libdir /app/opt/bullet/lib \
-                --freetype-incdir ${{BL_THIRDPARTY}}/freetype/include \
-                --freetype-libdir ${{BL_THIRDPARTY}}/freetype/lib \
-                --harfbuzz-incdir ${{BL_THIRDPARTY}}/harfbuzz/include \
-                --harfbuzz-libdir ${{BL_THIRDPARTY}}/harfbuzz/lib \
-                --jpeg-incdir ${{BL_THIRDPARTY}}/jpeg/include \
-                --jpeg-libdir ${{BL_THIRDPARTY}}/jpeg/lib \
-                --nothing \
-                --openal-incdir ${{BL_THIRDPARTY}}/openal/include \
-                --openal-libdir ${{BL_THIRDPARTY}}/openal/lib \
-                --outputdir {build} \
-                --png-incdir ${{BL_THIRDPARTY}}/png/include \
-                --png-libdir ${{BL_THIRDPARTY}}/png/lib \
-                --python-incdir /app/opt/python/include \
-                --python-libdir /app/opt/python/lib \
-                --threads=16 \
-                --tiff-incdir ${{BL_THIRDPARTY}}/tiff/include \
-                --tiff-libdir ${{BL_THIRDPARTY}}/tiff/lib \
-                --use-bullet \
-                --use-contrib \
-                --use-deploytools \
-                --use-direct \
-                --use-egg \
-                --use-freetype \
-                --use-gl \
-                --use-gtk3 \
-                --use-harfbuzz \
-                --use-jpeg \
-                --use-openal \
-                --use-openssl \
-                --use-pandafx \
-                --use-pandaparticlesystem \
-                --use-pandaphysics \
-                --use-pandatool \
-                --use-png \
-                --use-pview \
-                --use-python \
-                --use-skel \
-                --use-tiff \
-                --use-vorbis \
-                --use-x11 \
-                --use-xrender \
-                --use-zlib \
-                --verbose \
-                --vorbis-incdir /app/opt/vorbis/include \
-                --vorbis-libdir /app/opt/vorbis/lib \
-                --zlib-incdir ${{BL_THIRDPARTY}}/zlib/include \
-                --zlib-libdir ${{BL_THIRDPARTY}}/zlib/lib \
-                2>&1
-
-            mkdir -p {install}/bin
-            mkdir -p {install}/etc
-            mkdir -p {install}/lib
-            mkdir -p {install}/include
-            mkdir -p {install}/share/panda3d
-            mkdir -p {install}/lib/python{python_version}/site-packages/
-
-            cp -Rfv {build}/bin               {install}/
-            cp -Rfv {build}/etc               {install}/
-            cp -Rfv {build}/lib               {install}/
-            cp -Rfv {build}/include           {install}/include/panda3d/
-            cp -Rfv {build}/models            {install}/share/panda3d/
-            cp -Rfv {build}/direct            {install}/lib/python{python_version}/site-packages/
-            cp -Rfv {build}/panda3d           {install}/lib/python{python_version}/site-packages/
-            cp -Rfv {build}/panda3d.dist-info {install}/lib/python{python_version}/site-packages/
-            cp -Rfv {build}/pandac            {install}/lib/python{python_version}/site-packages/
-
-            patchelf --set-rpath \$ORIGIN          {install}/lib/*.so*
-            patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*
-            patchelf --set-rpath \$ORIGIN/../../.. {install}/lib/python{python_version}/site-packages/panda3d/*.so*
-
-- job-template:
-    name: panda3d-winx64
-    display-name: panda3d-winx64
-    project-type: freestyle
-    description: The Open Source Framework for 3D Rendering and Games
-    node: windows
-    build-discarder:
-        daysToKeep: -1
-        numToKeep: 2
-        artifactDaysToKeep: -1
-        artifactNumToKeep: -1
-    scm:
-        - git:
-            url: https://github.com/panda3d/panda3d.git
-            branches:
-              - adb92428856853019583f398d27c5d34e44a9343
-            wipe-workspace: false
-            timeout: 60
-    builders:
-        - batch: |
-            @echo on
-            set CWD=%cd%
-            set PATCH=Z:\Git\usr\bin\patch
-            set GIT=Z:\Git\bin\git
-            set ZIP=Z:\7-Zip\7z
-            set MAKEPANDA_THIRDPARTY={build}/panda3d-1.10.14/thirdparty
-
-            mkdir {build}
-            cd {build}
-
-            if not exist sdk (
-                %GIT% clone https://github.com/kitsune-ONE-team/KITSUNETSUKI-SDK.git sdk
-            ) else (
-                cd sdk
-                %GIT% pull
-                cd ..
-            )
-
-            if not exist panda3d-1.10.14 (
-                curl -O https://www.panda3d.org/download/panda3d-1.10.14/panda3d-1.10.14-tools-win64.zip
-                %ZIP% x panda3d-1.10.14-tools-win64.zip
-                rd /S /Q panda3d-1.10.14\thirdparty\win-libs-vc14-x64\bullet
-            )
-
-            cd %CWD%
-
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\01_libs.1.11.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\02_bullet_char.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\05_py_noinst.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\06_py_prefix.1.11.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\07_rgba.1.11.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\09_rp_light.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\10_libp3rplight.1.11.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\11_texture.patch
-            %PATCH% -p1 -i {build}\sdk\jobs\panda3d\12_python3.13_1639.patch
-
-            C:\opt\python\bin\python{python_version} makepanda\makepanda.py ^
-                --bullet-incdir C:\opt\bullet\include ^
-                --bullet-libdir C:\opt\bullet\lib ^
-                --msvc-version=14.3 ^
-                --nothing ^
-                --outputdir {build} ^
-                --python-incdir C:\opt\python\include ^
-                --python-libdir C:\opt\python\libs ^
-                --threads=16 ^
-                --use-bullet ^
-                --use-contrib ^
-                --use-deploytools ^
-                --use-direct ^
-                --use-egg ^
-                --use-freetype ^
-                --use-gl ^
-                --use-harfbuzz ^
-                --use-jpeg ^
-                --use-openal ^
-                --use-openssl ^
-                --use-pandafx ^
-                --use-pandaparticlesystem ^
-                --use-pandaphysics ^
-                --use-pandatool ^
-                --use-png ^
-                --use-pview ^
-                --use-python ^
-                --use-skel ^
-                --use-tiff ^
-                --use-vorbis ^
-                --use-zlib ^
-                --verbose ^
-                --vorbis-incdir C:\opt\vorbis\include ^
-                --vorbis-libdir C:\opt\vorbis\lib ^
-                --windows-sdk=10
-
-            if "%ERRORLEVEL%" == "1" (
-                exit /B 1
-            )
-
-            mkdir {install}
-            mkdir {install}\bin
-            mkdir {install}\etc
-            mkdir {install}\lib
-            mkdir {install}\include
-            mkdir {install}\include\panda3d
-            mkdir {install}\share
-            mkdir {install}\share\panda3d
-            mkdir {install}\lib\site-packages
-
-            xcopy /I /E /Y {build}\bin               {install}\bin
-            xcopy /I /E /Y {build}\etc               {install}\etc
-            xcopy /I /E /Y {build}\lib               {install}\lib
-            xcopy /I /E /Y {build}\include           {install}\include\panda3d
-            xcopy /I /E /Y {build}\models            {install}\share\panda3d\models
-            xcopy /I /E /Y {build}\direct            {install}\lib\site-packages\direct
-            xcopy /I /E /Y {build}\panda3d           {install}\lib\site-packages\panda3d
-            xcopy /I /E /Y {build}\panda3d.dist-info {install}\lib\site-packages\panda3d.dist-info
-            xcopy /I /E /Y {build}\pandac            {install}\lib\site-packages\pandac
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DBULLET_COLLISION_LIBRARY={bullet_library_collision}
+                -DBULLET_DYNAMICS_LIBRARY={bullet_library_dynamics}
+                -DBULLET_INCLUDE_DIR={bullet_include}
+                -DBULLET_MATH_LIBRARY={bullet_library_math}
+                -DBULLET_ROOT={bullet_root}
+                -DBULLET_SOFTBODY_LIBRARY={bullet_library_softbody}
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DHAVE_ARTOOLKIT=NO
+                -DHAVE_ASSIMP=NO
+                -DHAVE_BULLET=YES
+                -DHAVE_CG=NO
+                -DHAVE_CGD3D9=NO
+                -DHAVE_CGGL=NO
+                -DHAVE_DX9=NO
+                -DHAVE_EGL={have_gl}
+                -DHAVE_EIGEN=NO
+                -DHAVE_FCOLLADA=NO
+                -DHAVE_FFMPEG=NO
+                -DHAVE_FFTW=NO
+                -DHAVE_FMODEX=NO
+                -DHAVE_FREETYPE=YES
+                -DHAVE_GL=YES
+                -DHAVE_GLES1={have_gl}
+                -DHAVE_GLES2={have_gl}
+                -DHAVE_GTK3={have_gtk}
+                -DHAVE_HARFBUZZ=YES
+                -DHAVE_JPEG=YES
+                -DHAVE_ODE=NO
+                -DHAVE_OPENAL=YES
+                -DHAVE_OPENCV=NO
+                -DHAVE_OPENEXR=NO
+                -DHAVE_OPENSSL=YES
+                -DHAVE_OPUS=NO
+                -DHAVE_PNG=YES
+                -DHAVE_PYTHON=YES
+                -DHAVE_SPEEDTREE=NO
+                -DHAVE_SQUISH=NO
+                -DHAVE_SWRESAMPLE=NO
+                -DHAVE_SWSCALE=NO
+                -DHAVE_TIFF=NO
+                -DHAVE_VRPN=NO
+                -DHAVE_X11={have_x11}
+                -DHAVE_ZLIB=YES
+                -DMULTITHREADED_BUILD=16
+                -DOGG_INCLUDE_DIR={ogg_include}
+                -DOGG_LIBRARY={ogg_library}
+                -DOGG_ROOT={ogg_root}
+                -DOPENAL_INCLUDE_DIR={openal_include}
+                -DOPENAL_LIBRARY={openal_library}
+                -DOPENAL_ROOT={openal_root}
+                -DOpenAL_DIR={openal_cmake}
+                -DPYTHON_ARCH_INSTALL_DIR={install_python}
+                -DPYTHON_LIB_INSTALL_DIR={install_python}
+                -DPython_EXECUTABLE={python_executable}
+                -DPython_INCLUDE_DIR={python_include}
+                -DPython_LIBRARY={python_library}
+                -DPython_LIBRARY_RELEASE={python_library}
+                -DTHIRDPARTY_DIRECTORY={panda3d_thirdparty}
+                -DVORBIS_INCLUDE_DIR={vorbis_include}
+                -DVORBIS_vorbis_LIBRARY={vorbis_library}
+                -DVORBIS_vorbisfile_LIBRARY={vorbisfile_library}
+                -DWANT_PYTHON_VERSION={python_version_int}
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
 
 - project:
-    name: panda3d-lynx64
+    name: panda3d
     jobs:
-        - 'panda3d-lynx64':
-            python_version: '3.13t'
+        - 'panda3d-{arch}':
+            arch: lynx64
             build: /app/build/panda3d
+            bullet_include: /app/opt/bullet/include/bullet
+            bullet_library_collision: /app/opt/bullet/lib/libBulletCollision.a
+            bullet_library_dynamics: /app/opt/bullet/lib/libBulletDynamics.a
+            bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
+            bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
+            bullet_root: /app/opt/bullet
+            generator: Unix Makefiles
+            have_gl: YES
+            have_gtk: YES
+            have_x11: YES
             install: /app/opt/panda3d
-
-- project:
-    name: panda3d-winx64
-    jobs:
-        - 'panda3d-winx64':
+            install_python: /app/opt/panda3d/lib/python3.13t/site-packages
+            make: '-j 16'
+            node: linux
+            ogg_include: /app/opt/vorbis/include
+            ogg_library: /app/opt/vorbis/lib/libogg.a
+            ogg_root: /app/opt/vorbis
+            openal_cmake: /app/opt/openal/lib/cmake
+            openal_include: /app/opt/openal/include
+            openal_library: /app/opt/openal/lib/libopenal.a
+            openal_root: /app/opt/openal
+            panda3d_thirdparty: ''
+            python_executable: /app/opt/python/bin/python3.13t
+            python_include: /app/opt/python/include/python3.13t
+            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             python_version: '3.13t'
-            build: build
-            install: 'C:\opt\panda3d'
+            python_version_int: '3.13'
+            vorbis_include: /app/opt/vorbis/include
+            vorbis_library: /app/opt/vorbis/lib/libvorbis.a
+            vorbis_root: /app/opt/vorbis
+            vorbisfile_library: /app/opt/vorbis/lib/libvorbisfile.a
+            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_root: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib
+        - 'panda3d-{arch}':
+            arch: winx64
+            build: 'C:\\build\\panda3d'
+            bullet_include: 'C:\\opt\\bullet\\include\\bullet'
+            bullet_library_collision: 'C:\\opt\\bullet\\lib\\BulletCollision.lib'
+            bullet_library_dynamics: 'C:\\opt\\bullet\\lib\\BulletDynamics.lib'
+            bullet_library_math: 'C:\\opt\\bullet\\lib\\LinearMath.lib'
+            bullet_library_softbody: 'C:\\opt\\bullet\\lib\\BulletSoftBody.lib'
+            bullet_root: 'C:\\opt\\bullet'
+            generator: NMake Makefiles
+            have_gl: NO
+            have_gtk: NO
+            have_x11: NO
+            install: 'C:\\opt\\panda3d'
+            install_python: 'C:\\opt\\panda3d\\lib\\site-packages'
+            make: ''
+            node: windows
+            ogg_include: 'C:\\opt\\vorbis\\include'
+            ogg_library: 'C:\\opt\\vorbis\\lib\\ogg.lib'
+            ogg_root: 'C:\\opt\\vorbis'
+            openal_cmake: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\lib'
+            openal_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\include'
+            openal_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\libopenal.lib'
+            openal_root: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal'
+            panda3d_thirdparty: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty'
+            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
+            python_include: 'C:\\opt\\python\\include'
+            python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            python_version: '3.13t'
+            python_version_int: '3.13'
+            vorbis_include: 'C:\\opt\\vorbis\\include'
+            vorbis_library: 'C:\\opt\\vorbis\\lib\\vorbis.lib'
+            vorbis_root: 'C:\\opt\\vorbis'
+            vorbisfile_library: 'C:\\opt\\vorbis\\lib\\vorbisfile.lib'
+            zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
+            zlib_root: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib'

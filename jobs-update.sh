@@ -1,2 +1,2 @@
 #!/bin/sh
-podman-compose exec agent bash -c "cat /app/jobs/*.yml | /app/.venv/bin/jenkins-jobs update"
+cat jobs/*.yml | jenkins-jobs --conf jenkins_jobs.ini update
