@@ -1,0 +1,26 @@
+- job-template:
+    name: panda3d-thirdparty-winx64
+    display-name: panda3d-thirdparty-winx64
+    project-type: freestyle
+    description: Panda3D Third-Party libraries
+    node: windows
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    builders:
+      - batch: |
+          set ZIP=Z:\7-Zip\7z
+
+          if not exist panda3d-{version}-tools-win64.zip (
+              curl -o panda3d-{version}-tools-win64.zip ^
+                  https://www.panda3d.org/download/panda3d-{version}/panda3d-{version}-tools-win64.zip
+              %ZIP% x panda3d-{version}-tools-win64.zip
+          )
+
+- project:
+    name: panda3d-thirdparty-winx64
+    jobs:
+        - 'panda3d-thirdparty-winx64':
+            version: '1.10.14'
