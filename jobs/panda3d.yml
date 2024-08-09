@@ -18,6 +18,8 @@
             timeout: 60
     builders:
         - shell: |
+            BL_THIRDPARTY=/app/jenkins/workspace/blender-thirdparty-lynx64
+
             patch -p1 < /app/jobs/panda3d/01_libs.1.11.patch
             patch -p1 < /app/jobs/panda3d/02_bullet_char.patch
             patch -p1 < /app/jobs/panda3d/03_icon.1.11.patch
@@ -28,14 +30,29 @@
             patch -p1 < /app/jobs/panda3d/12_python3.13_1639.patch
             cp -fv /app/jobs/panda3d/icon.h panda/src/x11display/
 
+
             /app/opt/python/bin/python{python_version} makepanda/makepanda.py \
+                --brotli-incdir ${{BL_THIRDPARTY}}/brotli/include \
+                --brotli-libdir ${{BL_THIRDPARTY}}/brotli/lib \
                 --bullet-incdir /app/opt/bullet/include \
                 --bullet-libdir /app/opt/bullet/lib \
+                --freetype-incdir ${{BL_THIRDPARTY}}/freetype/include \
+                --freetype-libdir ${{BL_THIRDPARTY}}/freetype/lib \
+                --harfbuzz-incdir ${{BL_THIRDPARTY}}/harfbuzz/include \
+                --harfbuzz-libdir ${{BL_THIRDPARTY}}/harfbuzz/lib \
+                --jpeg-incdir ${{BL_THIRDPARTY}}/jpeg/include \
+                --jpeg-libdir ${{BL_THIRDPARTY}}/jpeg/lib \
                 --nothing \
+                --openal-incdir ${{BL_THIRDPARTY}}/openal/include \
+                --openal-libdir ${{BL_THIRDPARTY}}/openal/lib \
                 --outputdir {build} \
+                --png-incdir ${{BL_THIRDPARTY}}/png/include \
+                --png-libdir ${{BL_THIRDPARTY}}/png/lib \
                 --python-incdir /app/opt/python/include \
                 --python-libdir /app/opt/python/lib \
                 --threads=16 \
+                --tiff-incdir ${{BL_THIRDPARTY}}/tiff/include \
+                --tiff-libdir ${{BL_THIRDPARTY}}/tiff/lib \
                 --use-bullet \
                 --use-contrib \
                 --use-deploytools \
@@ -63,7 +80,10 @@
                 --use-zlib \
                 --verbose \
                 --vorbis-incdir /app/opt/vorbis/include \
-                --vorbis-libdir /app/opt/vorbis/lib
+                --vorbis-libdir /app/opt/vorbis/lib \
+                --zlib-incdir ${{BL_THIRDPARTY}}/zlib/include \
+                --zlib-libdir ${{BL_THIRDPARTY}}/zlib/lib \
+                2>&1
 
             mkdir -p {install}/bin
             mkdir -p {install}/etc

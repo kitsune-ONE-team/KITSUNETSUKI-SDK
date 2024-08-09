@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -y
 RUN apt install -y \
     bison cmake ffmpeg git git-lfs imagemagick kmod openjdk-21-jre openssh-server \
-    p7zip-full patchelf sudo wget unzip
+    p7zip-full patchelf subversion sudo wget
 RUN apt install -y \
     build-essential cxxtest gettext mesa-common-dev mesa-utils \
     python3-pip python3-venv uuid-dev
