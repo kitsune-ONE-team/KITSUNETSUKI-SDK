@@ -1,0 +1,53 @@
+- job-template:
+    name: 'freetype-{arch}'
+    display-name: 'freetype-{arch}'
+    project-type: freestyle
+    description: FreeType is a freely available software library to render fonts
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://gitlab.freedesktop.org/freetype/freetype.git
+            branches:
+              - refs/tags/VER-2-13-2
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DBUILD_SHARED_LIBS=OFF
+                -DBUILD_STATIC_LIBS=ON
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DMULTITHREADED_BUILD=16
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: freetype
+    jobs:
+        - 'freetype-{arch}':
+            arch: lynx64
+            build: /app/build/freetype
+            generator: 'Unix Makefiles'
+            install: /app/opt/freetype
+            make: '-j 16'
+            node: linux
+        - 'freetype-{arch}':
+            arch: winx64
+            build: 'C:\build\freetype'
+            generator: NMake Makefiles
+            install: 'C:\opt\freetype'
+            make: ''
+            node: windows
