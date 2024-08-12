@@ -27,8 +27,7 @@
     builders:
         - batch: |
             rd /S /Q C:\{path}
-            rd /S /Q C:\jenkins\workspace\panda3d-winx64\build
-            rd /S /Q Z:\sdk
+            rd /S /Q Z:\{path}
 
 - job-template:
     name: 'pipeline-{arch}'
@@ -64,9 +63,6 @@
                       }}
                       stage('freetypehb') {{
                           steps {{ build job: 'freetypehb-{arch}' }}
-                      }}
-                      stage('openal') {{
-                          steps {{ build job: 'openal-{arch}' }}
                       }}
                       stage('python') {{
                           steps {{ build job: 'python-{arch}' }}

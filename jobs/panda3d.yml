@@ -33,6 +33,7 @@
                 -DFREETYPE_INCLUDE_DIR_ft2build={freetype_include}
                 -DFREETYPE_LIBRARY_RELEASE={freetype_library}
                 -DFreetype_DIR={freetype_cmake}
+                -DFreetype_ROOT={freetype_root}
                 -DHARFBUZZ_INCLUDE_DIR={harfbuzz_include}
                 -DHARFBUZZ_LIBRARY={harfbuzz_library}
                 -DHAVE_ARTOOLKIT=NO
@@ -112,14 +113,13 @@
             bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
             bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
             bullet_root: /app/opt/bullet
-            freetype_cmake: /app/opt/freetype/lib/cmake
-            freetype_include: /app/opt/freetype/include/freetype2
-            freetype_library: /app/opt/freetype/lib/libfreetype.a
+            freetype_root: /app/opt/freetypehb
+            freetype_cmake: /app/opt/freetypehb/lib/cmake/freetype
+            freetype_include: /app/opt/freetypehb/include/freetype2
+            freetype_library: /app/opt/freetypehb/lib/libfreetype.a
             generator: Unix Makefiles
             harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
-            harfbuzz_include_extra: /app/jenkins/workspace/harfbuzz-lynx64/src
             harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
-            harfbuzz_library_extra: /app/opt/harfbuzz/lib/libharfbuzz-subset.a
             have_gl: YES
             have_gtk: NO
             have_x11: YES
@@ -132,10 +132,9 @@
             ogg_include: /app/opt/vorbis/include
             ogg_library: /app/opt/vorbis/lib/libogg.a
             ogg_root: /app/opt/vorbis
-            openal_cmake: /app/opt/openal/lib/cmake
-            openal_include: /app/opt/openal/include
-            openal_library: /app/opt/openal/lib/libopenal.a
-            openal_root: /app/opt/openal
+            openal_cmake: /app/jenkins/workspace/blender-thirdparty-lynx64/openal
+            openal_include: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/include
+            openal_library: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
             panda3d_thirdparty: ''
             png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
             png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
@@ -159,33 +158,31 @@
             bullet_library_math: 'C:\\opt\\bullet\\lib\\LinearMath.lib'
             bullet_library_softbody: 'C:\\opt\\bullet\\lib\\BulletSoftBody.lib'
             bullet_root: 'C:\\opt\\bullet'
-            freetype_cmake: 'C:\\opt\\freetype\\lib\\cmake'
-            freetype_include: 'C:\\opt\\freetype\\include\\freetype'
-            freetype_library: 'C:\\opt\\freetype\\lib\\freetype.lib'
+            freetype_root: 'C:\\opt\\freetypehb'
+            freetype_cmake: 'C:\\opt\\freetypehb\\lib\\cmake\\freetype'
+            freetype_include: 'C:\\opt\\freetypehb\\include\\freetype2'
+            freetype_library: 'C:\\opt\\freetypehb\\lib\\freetype.lib'
             generator: NMake Makefiles
             harfbuzz_include: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
-            harfbuzz_include_extra: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
             harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
-            harfbuzz_library_extra: 'C:\\opt\\harfbuzz\\lib\\harfbuzz-subset.lib'
             have_gl: NO
             have_gtk: NO
             have_x11: NO
             install: 'C:\\opt\\panda3d'
             install_python: 'C:\\opt\\panda3d\\lib\\site-packages'
             jpeg_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
-            jpeg_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\jpeg.lib'
+            jpeg_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
             make: ''
             node: windows
             ogg_include: 'C:\\opt\\vorbis\\include'
             ogg_library: 'C:\\opt\\vorbis\\lib\\ogg.lib'
             ogg_root: 'C:\\opt\\vorbis'
-            openal_cmake: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\lib'
-            openal_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\include'
-            openal_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal\\libopenal.lib'
-            openal_root: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\openal'
+            openal_cmake: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\lib\\cmake\\openal'
+            openal_include: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\include'
+            openal_library: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\lib\\OpenAL32.lib'
             panda3d_thirdparty: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty'
             png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
-            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\png.lib'
+            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
@@ -196,4 +193,4 @@
             vorbis_root: 'C:\\opt\\vorbis'
             vorbisfile_library: 'C:\\opt\\vorbis\\lib\\vorbisfile.lib'
             zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
-            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\zlib.lib'
+            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
