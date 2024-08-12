@@ -45,9 +45,6 @@
 
           {install}/bin/python3.13t -m \
               pip install \
-              -C "--build-option=--py-limited-api \"\"" pycryptodome==3.20.0
-          {install}/bin/python3.13t -m \
-              pip install \
               -C "--build-option=--py-limited-api \"\"" \
               -r ${{CWD}}/jobs/sdk/requirements.txt
 
@@ -105,9 +102,6 @@
           copy /V /Y     discord\lib\x86_64\*.dll   {install}\bin
 
           set PYTHONHOME={install}
-          {install}\bin\python3.13t -m ^
-              pip install ^
-              -C "--build-option=--py-limited-api \"\""  pycryptodome==3.20.0
           {install}\bin\python3.13t -m ^
               pip install ^
               -C "--build-option=--py-limited-api \"\"" ^

@@ -1,5 +1,6 @@
-git+https://github.com/Moguri/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
 git+https://github.com/abravalheri/setuptools.git@issue-4420
+git+https://github.com/Legrandin/pycryptodome.git@13a8461e068ebca99d21e0f2f71830504b25ac7e
+git+https://github.com/Moguri/panda3d-gltf.git@948d0e9fa16423ccbd902b904b9139d1f825a0fb
 git+https://github.com/cython/cython.git@10736826646c894b8b2c9cd3799ce7142707c8ed
 httplib2==0.20.2
 jinja2==3.1.4
@@ -7,4 +8,3 @@ jsonschema==3.2.0
 nvidia-ml-py==12.555.43
 oauthlib==3.2.2
 py-ubjson==0.16.1
-pycryptodome==3.20.0
