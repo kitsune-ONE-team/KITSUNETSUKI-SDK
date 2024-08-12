@@ -48,22 +48,34 @@
               stage('clean-opt') {{
                   steps {{ build job: 'clean-opt-{arch}' }}
               }}
+              stage('freetype') {{
+                  steps {{ build job: 'freetype-{arch}' }}
+              }}
+              stage('harfbuzz') {{
+                  steps {{ build job: 'harfbuzz-{arch}' }}
+              }}
               stage('ogg') {{
                   steps {{ build job: 'ogg-{arch}' }}
-              }}
-              stage('vorbis') {{
-                  steps {{ build job: 'vorbis-{arch}' }}
               }}
               stage('panda3d-reqs') {{
                   parallel {{
                       stage('bullet') {{
                           steps {{ build job: 'bullet-{arch}' }}
                       }}
-                      stage('sdl') {{
-                          steps {{ build job: 'sdl-{arch}' }}
+                      stage('freetypehb') {{
+                          steps {{ build job: 'freetypehb-{arch}' }}
+                      }}
+                      stage('openal') {{
+                          steps {{ build job: 'openal-{arch}' }}
                       }}
                       stage('python') {{
                           steps {{ build job: 'python-{arch}' }}
+                      }}
+                      stage('sdl') {{
+                          steps {{ build job: 'sdl-{arch}' }}
+                      }}
+                      stage('vorbis') {{
+                          steps {{ build job: 'vorbis-{arch}' }}
                       }}
                   }}
               }}

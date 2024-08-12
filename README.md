@@ -22,6 +22,10 @@ Jenkins Linux Agent configuration
 
 **SSH Password:** jenkins
 
+**Environment variables:**
+
+* ZLIB_CFLAGS=-I/app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+* ZLIB_LIBS=-L/app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib -lz
 
 Jenkins Windows Agent configuration
 -----------------------------------
@@ -42,4 +46,6 @@ Java could be downloaded from [https://jdk.java.net/java-se-ri/21]
 
 **Prefix Start Agent Command:** "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.22000.0 &&
 
-**Environment variables:** CL=/MP
+**Environment variables:**
+
+* CL=/MP
