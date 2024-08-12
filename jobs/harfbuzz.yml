@@ -1,0 +1,61 @@
+- job-template:
+    name: 'harfbuzz-{arch}'
+    display-name: 'harfbuzz-{arch}'
+    project-type: freestyle
+    description: HarfBuzz text shaping engine
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/harfbuzz/harfbuzz.git
+            branches:
+              - refs/tags/9.0.0
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DBUILD_SHARED_LIBS=OFF
+                -DBUILD_STATIC_LIBS=ON
+                -DCMAKE_CXX_FLAGS=-fPIC
+                -DCMAKE_C_FLAGS=-fPIC
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DFREETYPE_INCLUDE_DIR_freetype2={freetype_include}
+                -DFREETYPE_INCLUDE_DIR_ft2build={freetype_include}
+                -DFREETYPE_LIBRARY_RELEASE={freetype_library}
+                -DHB_HAVE_FREETYPE=ON
+                -DMULTITHREADED_BUILD=16
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: harfbuzz
+    jobs:
+        - 'harfbuzz-{arch}':
+            arch: lynx64
+            build: /app/build/harfbuzz
+            freetype_include: /app/opt/freetype/include/freetype2
+            freetype_library: /app/opt/freetype/lib/libfreetype.a
+            generator: 'Unix Makefiles'
+            install: /app/opt/harfbuzz
+            make: '-j 16'
+            node: linux
+        - 'harfbuzz-{arch}':
+            arch: winx64
+            build: 'C:\\build\\harfbuzz'
+            freetype_include: 'C:\\opt\\freetype\\include\\freetype'
+            freetype_library: 'C:\\opt\\freetype\\lib\\freetype.lib'
+            generator: NMake Makefiles
+            install: 'C:\\opt\\harfbuzz'
+            make: ''
+            node: windows
