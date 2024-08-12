@@ -13,21 +13,26 @@ services:
   agent:
     build:
       context: .
+      dockerfile: Dockerfile.agent
     ports:
       - '8022:22'
     networks:
       - sdk
     volumes:
-      - ../build:/app/build:z
-      - ../jenkins-agent:/app/jenkins:z
-      - ../opt:/app/opt:z
-      - ./jobs:/app/jobs:z
-      - ~/.config/jenkins_jobs:/root/.config/jenkins_jobs:z
+      - ../agent:/app:z
+    command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
+
+  sdk:
+    build:
+      context: .
+      dockerfile: Dockerfile.sdk
+    networks:
+      - sdk
+    volumes:
+      - ../agent:/app:z
       - ~/Dev/Panda3D:/root/Dev/Panda3D:z
       - ~/Games/Steam/steamapps/common/Blender:/root/Blender:z
       - ~/Public:/root/Public:z
-    environment:
-      PATH: '$PATH:/app/.venv/bin'
     command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
 
 networks:
