@@ -1,0 +1,7 @@
+FROM localhost/kitsunetsuki-sdk_agent
+
+RUN apt update -y
+RUN apt install -y \
+    imagemagick
+RUN apt clean
+WORKDIR /root

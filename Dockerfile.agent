@@ -1,0 +1,26 @@
+FROM docker.io/library/ubuntu:22.04 AS localhost/kitsunetsuki-sdk_agent
+
+# skips timezone settings
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update -y
+RUN apt install -y \
+    bison cmake curl git git-lfs kmod openjdk-21-jre openssh-server \
+    p7zip-full patchelf subversion sudo
+RUN apt install -y \
+    build-essential cxxtest gettext mesa-common-dev mesa-utils uuid-dev
+RUN apt install -y \
+    libbz2-dev liblzma-dev libreadline-dev \
+    libgl1-mesa-dev libglu1-mesa-dev \
+    libxext-dev libxrender-dev libxxf86dga-dev libxxf86vm-dev \
+    libdecor-0-dev libgbm-dev libwayland-dev libxkbcommon-x11-dev \
+    libcap2-bin libffi-dev libssl-dev libusb-1.0-0-dev libxi6 linux-libc-dev
+RUN apt install -y \
+    mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev \
+    g++-mingw-w64 libz-mingw-w64-dev
+RUN apt clean && \
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
+    echo UTC > /etc/timezone && \
+    echo PermitRootLogin yes >> /etc/ssh/sshd_config
+RUN echo root:jenkins | chpasswd
+WORKDIR /app
