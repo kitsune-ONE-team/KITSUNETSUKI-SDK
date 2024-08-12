@@ -87,13 +87,13 @@
             generator: NMake Makefiles
             harfbuzz_include: ''
             harfbuzz_library: ''
-            install: 'C:\opt\freetype'
+            install: 'C:\\opt\\freetype'
             make: ''
             node: windows
             png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
-            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\png.lib'
+            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
             zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
-            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\zlib.lib'
+            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
             variant: ''
             require_harfbuzz: OFF
             disable_harfbuzz: ON
@@ -101,15 +101,15 @@
             arch: winx64
             build: 'C:\\build\\freetypehb'
             generator: NMake Makefiles
-            harfbuzz_include: 'C:\\opt\\harfbuzz\\include'
-            harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.a'
-            install: 'C:\opt\freetypehb'
+            harfbuzz_include: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
+            harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
+            install: 'C:\\opt\\freetypehb'
             make: ''
             node: windows
             png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
-            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\png.lib'
+            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
             zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
-            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\zlib.lib'
+            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
             variant: hb
             require_harfbuzz: ON
             disable_harfbuzz: OFF

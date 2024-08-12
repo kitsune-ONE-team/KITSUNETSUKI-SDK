@@ -53,7 +53,7 @@
         - 'harfbuzz-{arch}':
             arch: winx64
             build: 'C:\\build\\harfbuzz'
-            freetype_include: 'C:\\opt\\freetype\\include\\freetype'
+            freetype_include: 'C:\\opt\\freetype\\include\\freetype2'
             freetype_library: 'C:\\opt\\freetype\\lib\\freetype.lib'
             generator: NMake Makefiles
             install: 'C:\\opt\\harfbuzz'
