@@ -30,6 +30,7 @@
                 -DPANDA_BINARY_DIR={panda3d_dir}bin
                 -DPANDA_INCLUDE_DIR={panda3d_dir}include
                 -DPANDA_LIBRARY_DIR={panda3d_dir}lib
+                -DINTERROGATE_INCLUDE_DIR={interrogate_include}
                 -DPYTHON_INCLUDE_DIR={python_include}
                 -DPYTHON_EXECUTABLE={python_executable}
                 -DPYTHON_LIBRARY={python_library}
@@ -56,7 +57,8 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            version: '0.6.11'
+            interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
+            version: '0.6.12'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
@@ -71,7 +73,8 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            version: '0.6.11'
+            interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
+            version: '0.6.12'
         - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
@@ -86,7 +89,8 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            version: '0.2.0'
+            interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
+            version: '0.2.1'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
@@ -101,4 +105,5 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            version: '0.2.0'
+            interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
+            version: '0.2.1'
