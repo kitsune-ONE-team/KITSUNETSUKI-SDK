@@ -58,7 +58,7 @@
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
-            version: '0.6.12'
+            version: '0.6.13'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
@@ -74,7 +74,7 @@
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
-            version: '0.6.12'
+            version: '0.6.13'
         - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
@@ -90,7 +90,7 @@
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
-            version: '0.2.5'
+            version: '0.2.6'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
@@ -106,4 +106,4 @@
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
-            version: '0.2.5'
+            version: '0.2.6'
