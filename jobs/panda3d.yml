@@ -80,7 +80,7 @@
                 -DINTERROGATE_C_INTERFACE=OFF
                 -DINTERROGATE_EXECUTABLE={interrogate_executable}
                 -DINTERROGATE_MODULE_EXECUTABLE={interrogate_module_executable}
-                -DINTERROGATE_PYTHON_INTERFACE=OFF
+                -DINTERROGATE_PYTHON_INTERFACE=ON
                 -DJPEG_INCLUDE_DIR={jpeg_include}
                 -DJPEG_LIBRARY_RELEASE={jpeg_library}
                 -DMULTITHREADED_BUILD=16
@@ -185,8 +185,8 @@
             have_x11: NO
             install: 'C:\\opt\\panda3d'
             install_python: 'C:\\opt\\panda3d\\lib\\site-packages'
-            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
-            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
+            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate.exe'
+            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module.exe'
             jpeg_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
             jpeg_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
             make: ''
