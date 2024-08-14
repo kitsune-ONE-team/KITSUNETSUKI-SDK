@@ -45,6 +45,28 @@
           cp -fv discord/lib/x86_64/discord_game_sdk.so {install}/lib/libdiscord_game_sdk.so
           cp -fv ${{CWD}}/jobs/sdk/METADATA {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info/
 
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*2egg
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*crypt
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*zip
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/bam*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/bin2c
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/deploy-stub
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/dxf*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/egg*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/flt*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/image*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/lwo*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/multify
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/p3dcparse
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/pfm*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/pts2bam
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/pview
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/text-stats
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/vrml*
+          patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/x-trans
+          patchelf --set-rpath \$ORIGIN          {install}/lib/*.so*
+          patchelf --set-rpath \$ORIGIN/../../.. {install}/lib/python{python_version}/site-packages/panda3d/*.so*
+
           {install}/bin/python{python_version} -m \
               pip install \
               -C "--build-option=--py-limited-api \"\"" \
