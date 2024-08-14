@@ -23,6 +23,7 @@
             build-type: Release
             other-arguments: |
                 -DBUILD_BULLET2_DEMOS=OFF
+                -DBUILD_BULLET3=ON
                 -DBUILD_BULLET3_DEMOS=OFF
                 -DBUILD_CPU_DEMOS=OFF
                 -DBUILD_EGL=OFF
