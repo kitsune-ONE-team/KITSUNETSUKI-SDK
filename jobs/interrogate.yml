@@ -1,6 +1,6 @@
 - job-template:
-    name: 'interrogate-{arch}'
-    display-name: 'interrogate-{arch}'
+    name: 'interrogate{variant}-{arch}'
+    display-name: 'interrogate{variant}-{arch}'
     project-type: freestyle
     description:  Python binding generator for Panda3D
     node: '{node}'
@@ -43,7 +43,7 @@
 - project:
     name: interrogate
     jobs:
-        - 'interrogate-{arch}':
+        - 'interrogate{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
             build: /app/build/interrogate
@@ -55,7 +55,21 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-        - 'interrogate-{arch}':
+            variant: ''
+        - 'interrogate{variant}-{arch}':
+            arch: lynx64
+            bison_executable: /usr/bin/bison
+            build: /app/build/interrogatent
+            flex_executable: /usr/bin/flex
+            generator: Unix Makefiles
+            install: /app/opt/interrogatent
+            make: '-j 16'
+            node: linux
+            python_executable: /app/opt/pythonnt/bin/python3.12
+            python_include: /app/opt/pythonnt/include/python3.12
+            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            variant: nt
+        - 'interrogate{variant}-{arch}':
             arch: winx64
             bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
             build: 'C:\\build\\interrogate'
@@ -67,3 +81,4 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            variant: ''

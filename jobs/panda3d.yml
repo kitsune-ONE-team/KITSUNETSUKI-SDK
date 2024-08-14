@@ -1,6 +1,6 @@
 - job-template:
-    name: 'panda3d-{arch}'
-    display-name: 'panda3d-{arch}'
+    name: 'panda3d{variant}-{arch}'
+    display-name: 'panda3d{variant}-{arch}'
     project-type: freestyle
     description: The Open Source Framework for 3D Rendering and Games
     node: '{node}'
@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/kitsune-ONE-team/panda3d.git
             branches:
-              - 2e6a9b523930b0ed96c2f5a939ae5e71c2349057
+              - f5f15876eec05dafd4accc8316761c04f48ee7e9
             wipe-workspace: false
             timeout: 60
     builders:
@@ -113,7 +113,7 @@
 - project:
     name: panda3d
     jobs:
-        - 'panda3d-{arch}':
+        - 'panda3d{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
             build: /app/build/panda3d
@@ -156,13 +156,64 @@
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             python_version: '3.13t'
             python_version_int: '3.13'
+            variant: ''
             vorbis_include: /app/opt/vorbis/include
             vorbis_library: /app/opt/vorbis/lib/libvorbis.a
             vorbis_root: /app/opt/vorbis
             vorbisfile_library: /app/opt/vorbis/lib/libvorbisfile.a
             zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
             zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
-        - 'panda3d-{arch}':
+        - 'panda3d{variant}-{arch}':
+            arch: lynx64
+            bison_executable: /usr/bin/bison
+            build: /app/build/panda3dnt
+            bullet_include: /app/opt/bullet/include/bullet
+            bullet_library_collision: /app/opt/bullet/lib/libBulletCollision.a
+            bullet_library_dynamics: /app/opt/bullet/lib/libBulletDynamics.a
+            bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
+            bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
+            bullet_root: /app/opt/bullet
+            flex_executable: /usr/bin/flex
+            freetype_cmake: /app/opt/freetypehb/lib/cmake/freetype
+            freetype_include: /app/opt/freetypehb/include/freetype2
+            freetype_library: /app/opt/freetypehb/lib/libfreetype.a
+            freetype_root: /app/opt/freetypehb
+            generator: Unix Makefiles
+            harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
+            harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
+            have_gl: YES
+            have_gtk: NO
+            have_x11: YES
+            install: /app/opt/panda3dnt
+            install_python: /app/opt/panda3dnt/lib/python3.12/site-packages
+            interrogate_executable: /app/opt/interrogatent/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogatent/bin/interrogate_module
+            jpeg_include: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
+            jpeg_library: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
+            make: '-j 16'
+            node: linux
+            ogg_include: /app/opt/vorbis/include
+            ogg_library: /app/opt/vorbis/lib/libogg.a
+            ogg_root: /app/opt/vorbis
+            openal_cmake: /app/jenkins/workspace/blender-thirdparty-lynx64/openal
+            openal_include: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/include
+            openal_library: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
+            panda3d_thirdparty: ''
+            png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
+            png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
+            python_executable: /app/opt/pythonnt/bin/python3.12
+            python_include: /app/opt/pythonnt/include/python3.12
+            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            python_version: '3.12'
+            python_version_int: '3.12'
+            variant: nt
+            vorbis_include: /app/opt/vorbis/include
+            vorbis_library: /app/opt/vorbis/lib/libvorbis.a
+            vorbis_root: /app/opt/vorbis
+            vorbisfile_library: /app/opt/vorbis/lib/libvorbisfile.a
+            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
+        - 'panda3d{variant}-{arch}':
             arch: winx64
             bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
             build: 'C:\\build\\panda3d'
@@ -205,6 +256,7 @@
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             python_version: '3.13t'
             python_version_int: '3.13'
+            variant: ''
             vorbis_include: 'C:\\opt\\vorbis\\include'
             vorbis_library: 'C:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'C:\\opt\\vorbis'
