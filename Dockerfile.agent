@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y
 RUN apt install -y \
-    bison cmake curl git git-lfs kmod openjdk-21-jre openssh-server \
+    bison cmake curl flex git git-lfs kmod openjdk-21-jre openssh-server \
     p7zip-full patchelf subversion sudo
 RUN apt install -y \
     build-essential cxxtest gettext mesa-common-dev mesa-utils uuid-dev
