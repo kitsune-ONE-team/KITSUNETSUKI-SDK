@@ -22,18 +22,20 @@
             generator: '{generator}'
             build-type: Release
             other-arguments: |
-                -DCMAKE_INSTALL_PREFIX={install}
-                -DMULTITHREADED_BUILD=16
                 -DBULLET_INCLUDE_DIR={bullet_dir}include
                 -DBULLET_LIBRARY_DIR={bullet_dir}lib
+                -DCMAKE_INSTALL_PREFIX={install}
                 -DINSTALL_PY=ON
-                -DPANDA_BINARY_DIR={panda3d_dir}bin
+                -DINTERROGATE_EXECUTABLE={interrogate_executable}
+                -DINTERROGATE_MODULE_EXECUTABLE={interrogate_module_executable}
+                -DINTERROGATE_SOURCE_DIR={interrogate_source}
+                -DMULTITHREADED_BUILD=16
                 -DPANDA_INCLUDE_DIR={panda3d_dir}include
                 -DPANDA_LIBRARY_DIR={panda3d_dir}lib
-                -DINTERROGATE_INCLUDE_DIR={interrogate_include}
-                -DPYTHON_INCLUDE_DIR={python_include}
                 -DPYTHON_EXECUTABLE={python_executable}
+                -DPYTHON_INCLUDE_DIR={python_include}
                 -DPYTHON_LIBRARY={python_library}
+                -DWITH_TESTS=ON
             build-tool-invocations:
                 - use-cmake: false
                   arguments: '{make}'
@@ -50,6 +52,9 @@
             desc: Physics extensions for Panda3D
             generator: Unix Makefiles
             install: /app/opt/panda3d-kphys/lib/python3.13t/site-packages
+            interrogate_executable: /app/opt/interrogate/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogate/bin/interrogate_module
+            interrogate_source: /app/jenkins/workspace/interrogate-lynx64
             make: '-j 16'
             module: kphys
             node: linux
@@ -57,8 +62,7 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
-            version: '0.6.13'
+            version: '0.6.15'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
@@ -66,6 +70,9 @@
             desc: Physics extensions for Panda3D
             generator: NMake Makefiles
             install: 'C:\\opt\\panda3d-kphys\\lib\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
+            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
             module: kphys
             node: windows
@@ -73,8 +80,7 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
-            version: '0.6.13'
+            version: '0.6.15'
         - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
@@ -82,6 +88,9 @@
             desc: Custom Deferred Render Pipeline for Panda3D
             generator: Unix Makefiles
             install: /app/opt/panda3d-krender/lib/python3.13t/site-packages
+            interrogate_executable: /app/opt/interrogate/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogate/bin/interrogate_module
+            interrogate_source: /app/jenkins/workspace/interrogate-lynx64
             make: '-j 16'
             module: krender
             node: linux
@@ -89,8 +98,7 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
-            interrogate_include: /app/jenkins/workspace/panda3d-lynx64/dtool/src
-            version: '0.2.6'
+            version: '0.2.8'
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
@@ -98,6 +106,9 @@
             desc: Custom Deferred Render Pipeline for Panda3D
             generator: NMake Makefiles
             install: 'C:\\opt\\panda3d-krender\\lib\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
+            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
             module: krender
             node: windows
@@ -105,5 +116,4 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
-            interrogate_include: 'C:\\jenkins\\workspace\\panda3d-winx64\\dtool\\src'
-            version: '0.2.6'
+            version: '0.2.8'

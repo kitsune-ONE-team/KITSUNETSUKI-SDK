@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/kitsune-ONE-team/panda3d.git
             branches:
-              - 22ec791ae1f4f01f96b68f50a9c76a31283b5e0c
+              - 2e6a9b523930b0ed96c2f5a939ae5e71c2349057
             wipe-workspace: false
             timeout: 60
     builders:
@@ -23,12 +23,15 @@
             generator: '{generator}'
             build-type: Release
             other-arguments: |
+                -DBISON_EXECUTABLE={bison_executable}
+                -DBUILD_INTERROGATE=OFF
                 -DBULLET_COLLISION_LIBRARY={bullet_library_collision}
                 -DBULLET_DYNAMICS_LIBRARY={bullet_library_dynamics}
                 -DBULLET_INCLUDE_DIR={bullet_include}
                 -DBULLET_MATH_LIBRARY={bullet_library_math}
                 -DBULLET_SOFTBODY_LIBRARY={bullet_library_softbody}
                 -DCMAKE_INSTALL_PREFIX={install}
+                -DFLEX_EXECUTABLE={flex_executable}
                 -DFREETYPE_INCLUDE_DIR_freetype2={freetype_include}
                 -DFREETYPE_INCLUDE_DIR_ft2build={freetype_include}
                 -DFREETYPE_LIBRARY_RELEASE={freetype_library}
@@ -38,6 +41,7 @@
                 -DHARFBUZZ_LIBRARY={harfbuzz_library}
                 -DHAVE_ARTOOLKIT=NO
                 -DHAVE_ASSIMP=NO
+                -DHAVE_BISON=YES
                 -DHAVE_BULLET=YES
                 -DHAVE_CG=NO
                 -DHAVE_CGD3D9=NO
@@ -48,6 +52,7 @@
                 -DHAVE_FCOLLADA=NO
                 -DHAVE_FFMPEG=NO
                 -DHAVE_FFTW=NO
+                -DHAVE_FLEX=YES
                 -DHAVE_FMODEX=NO
                 -DHAVE_FREETYPE=YES
                 -DHAVE_GL=YES
@@ -72,6 +77,10 @@
                 -DHAVE_VRPN=NO
                 -DHAVE_X11={have_x11}
                 -DHAVE_ZLIB=YES
+                -DINTERROGATE_C_INTERFACE=OFF
+                -DINTERROGATE_EXECUTABLE={interrogate_executable}
+                -DINTERROGATE_MODULE_EXECUTABLE={interrogate_module_executable}
+                -DINTERROGATE_PYTHON_INTERFACE=OFF
                 -DJPEG_INCLUDE_DIR={jpeg_include}
                 -DJPEG_LIBRARY_RELEASE={jpeg_library}
                 -DMULTITHREADED_BUILD=16
@@ -97,7 +106,7 @@
                 -DZLIB_LIBRARY_RELEASE={zlib_library}
             build-tool-invocations:
                 - use-cmake: false
-                  arguments: '{make} VERBOSE=1'
+                  arguments: '{make}'
                 - use-cmake: false
                   arguments: 'install {make}'
 
@@ -106,6 +115,7 @@
     jobs:
         - 'panda3d-{arch}':
             arch: lynx64
+            bison_executable: /usr/bin/bison
             build: /app/build/panda3d
             bullet_include: /app/opt/bullet/include/bullet
             bullet_library_collision: /app/opt/bullet/lib/libBulletCollision.a
@@ -113,10 +123,11 @@
             bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
             bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
             bullet_root: /app/opt/bullet
-            freetype_root: /app/opt/freetypehb
+            flex_executable: /usr/bin/flex
             freetype_cmake: /app/opt/freetypehb/lib/cmake/freetype
             freetype_include: /app/opt/freetypehb/include/freetype2
             freetype_library: /app/opt/freetypehb/lib/libfreetype.a
+            freetype_root: /app/opt/freetypehb
             generator: Unix Makefiles
             harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
             harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
@@ -125,6 +136,8 @@
             have_x11: YES
             install: /app/opt/panda3d
             install_python: /app/opt/panda3d/lib/python3.13t/site-packages
+            interrogate_executable: /app/opt/interrogate/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogate/bin/interrogate_module
             jpeg_include: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
             jpeg_library: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
             make: '-j 16'
@@ -151,6 +164,7 @@
             zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
         - 'panda3d-{arch}':
             arch: winx64
+            bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
             build: 'C:\\build\\panda3d'
             bullet_include: 'C:\\opt\\bullet\\include\\bullet'
             bullet_library_collision: 'C:\\opt\\bullet\\lib\\BulletCollision.lib'
@@ -158,10 +172,11 @@
             bullet_library_math: 'C:\\opt\\bullet\\lib\\LinearMath.lib'
             bullet_library_softbody: 'C:\\opt\\bullet\\lib\\BulletSoftBody.lib'
             bullet_root: 'C:\\opt\\bullet'
-            freetype_root: 'C:\\opt\\freetypehb'
+            flex_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
             freetype_cmake: 'C:\\opt\\freetypehb\\lib\\cmake\\freetype'
             freetype_include: 'C:\\opt\\freetypehb\\include\\freetype2'
             freetype_library: 'C:\\opt\\freetypehb\\lib\\freetype.lib'
+            freetype_root: 'C:\\opt\\freetypehb'
             generator: NMake Makefiles
             harfbuzz_include: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
             harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
@@ -170,6 +185,8 @@
             have_x11: NO
             install: 'C:\\opt\\panda3d'
             install_python: 'C:\\opt\\panda3d\\lib\\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
             jpeg_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
             jpeg_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
             make: ''
