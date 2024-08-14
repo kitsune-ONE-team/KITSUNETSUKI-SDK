@@ -1,0 +1,69 @@
+- job-template:
+    name: 'interrogate-{arch}'
+    display-name: 'interrogate-{arch}'
+    project-type: freestyle
+    description:  Python binding generator for Panda3D
+    node: '{node}'
+    build-discarder:
+        daysToKeep: -1
+        numToKeep: 2
+        artifactDaysToKeep: -1
+        artifactNumToKeep: -1
+    scm:
+        - git:
+            url: https://github.com/panda3d/interrogate.git
+            branches:
+              - e297384b30f1eae8ab839ec096fc3bb6bdb3edeb
+            wipe-workspace: false
+    builders:
+        - cmake:
+            source-dir: .
+            working-dir: '{build}'
+            generator: '{generator}'
+            build-type: Release
+            other-arguments: |
+                -DBISON_EXECUTABLE={bison_executable}
+                -DBUILD_SHARED_LIBS=OFF
+                -DCMAKE_INSTALL_PREFIX={install}
+                -DFLEX_EXECUTABLE={flex_executable}
+                -DHAVE_BISON=YES
+                -DHAVE_FLEX=YES
+                -DHAVE_PYTHON=NO
+                -DMULTITHREADED_BUILD=16
+                -DPython_EXECUTABLE={python_executable}
+                -DPython_INCLUDE_DIR={python_include}
+                -DPython_LIBRARY={python_library}
+                -DPython_LIBRARY_RELEASE={python_library}
+            build-tool-invocations:
+                - use-cmake: false
+                  arguments: '{make}'
+                - use-cmake: false
+                  arguments: 'install {make}'
+
+- project:
+    name: interrogate
+    jobs:
+        - 'interrogate-{arch}':
+            arch: lynx64
+            bison_executable: /usr/bin/bison
+            build: /app/build/interrogate
+            flex_executable: /usr/bin/flex
+            generator: Unix Makefiles
+            install: /app/opt/interrogate
+            make: '-j 16'
+            node: linux
+            python_executable: /app/opt/python/bin/python3.13t
+            python_include: /app/opt/python/include/python3.13t
+            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+        - 'interrogate-{arch}':
+            arch: winx64
+            bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
+            build: 'C:\\build\\interrogate'
+            flex_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
+            generator: NMake Makefiles
+            install: 'C:\\opt\\interrogate'
+            make: ''
+            node: windows
+            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
+            python_include: 'C:\\opt\\python\\include'
+            python_library: 'C:\\opt\\python\\libs\\python313t.lib'

@@ -75,6 +75,9 @@
                       }}
                   }}
               }}
+              stage('interrogate') {{
+                  steps {{ build job: 'interrogate-{arch}' }}
+              }}
               stage('panda3d') {{
                   steps {{ build job: 'panda3d-{arch}' }}
               }}
