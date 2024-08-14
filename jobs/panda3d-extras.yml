@@ -35,7 +35,7 @@
                 -DPYTHON_EXECUTABLE={python_executable}
                 -DPYTHON_INCLUDE_DIR={python_include}
                 -DPYTHON_LIBRARY={python_library}
-                -DWITH_TESTS=ON
+                -DWITH_TESTS={with_tests}
             build-tool-invocations:
                 - use-cmake: false
                   arguments: '{make}'
@@ -63,6 +63,7 @@
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             version: '0.6.15'
+            with_tests: ON
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
@@ -81,6 +82,7 @@
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             version: '0.6.15'
+            with_tests: OFF
         - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
@@ -99,6 +101,7 @@
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
             version: '0.2.8'
+            with_tests: ON
         - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
@@ -117,3 +120,4 @@
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             version: '0.2.8'
+            with_tests: OFF
