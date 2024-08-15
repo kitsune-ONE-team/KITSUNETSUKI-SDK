@@ -132,7 +132,7 @@
               -C "--build-option=--py-limited-api \"\"" ^
               -r %CWD%\jobs\sdk\requirements.txt
 
-          xcopy /I /E /Y {install} Z:\opt\sdk
+          xcopy /I /E /Y {install} {install_shared}
 
 - project:
     name: sdk-lynx64
@@ -165,6 +165,7 @@
           build: 'C:\\build\\sdk'
           discord_version: '3.2.1'
           install: 'C:\\opt\\sdk'
+          install_shared: 'Z:\\opt\\sdk'
           kphys_dir: 'C:\\opt\\panda3d-kphys'
           krender_dir: 'C:\\opt\\panda3d-krender'
           panda3d_dir: 'C:\\opt\\panda3d'
@@ -175,6 +176,7 @@
           build: 'C:\\build\\sdknt'
           discord_version: '3.2.1'
           install: 'C:\\opt\\sdknd'
+          install_shared: 'Z:\\opt\\sdknd'
           kphys_dir: 'C:\\opt\\panda3dnt-kphys'
           krender_dir: 'C:\\opt\\panda3dnt-krender'
           panda3d_dir: 'C:\\opt\\panda3dnt'
