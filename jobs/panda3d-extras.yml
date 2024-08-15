@@ -111,7 +111,7 @@
             bullet_dir: 'C:\\opt\\bullet\\'
             desc: Physics extensions for Panda3D
             generator: NMake Makefiles
-            install: 'C:\\opt\\panda3d-kphys\\lib\site-packages'
+            install: 'C:\\opt\\panda3dnt-kphys\\lib\site-packages'
             interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate'
             interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module'
             interrogate_source: 'C:\\jenkins\\workspace\\interrogatent-winx64'
@@ -119,7 +119,7 @@
             module: kphys
             node: windows
             panda3d_dir: 'C:\\opt\\panda3dnt\\'
-            python_executable: 'C:\\opt\\python\\bin\\python3.12'
+            python_executable: 'C:\\opt\\pythonnt\\bin\\python'
             python_include: 'C:\\opt\\pythonnt\\include'
             python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
@@ -199,7 +199,7 @@
             module: krender
             node: windows
             panda3d_dir: 'C:\\opt\\panda3dnt\\'
-            python_executable: 'C:\\opt\\pythonnt\\bin\\python3.12'
+            python_executable: 'C:\\opt\\pythonnt\\bin\\python'
             python_include: 'C:\\opt\\pythonnt\\include'
             python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
