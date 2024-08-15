@@ -93,7 +93,7 @@
             git_tag: 'v3.13.0rc1'
             install: 'C:\\opt\\python'
             options: '--disable-gil'
-            pyconfig: 'C:\\build\\pythonnt\\pyconfig.h'
+            pyconfig: 'C:\\build\\python\\pyconfig.h'
             python_app_version: '3.13t'
             python_version: '3.13t'
             variant: ''

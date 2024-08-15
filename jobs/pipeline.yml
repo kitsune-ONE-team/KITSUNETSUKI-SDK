@@ -85,7 +85,7 @@
                   steps {{ build job: 'interrogatent-{arch}' }}
               }}
               stage('panda3d') {{
-                  steps {{ build job: 'panda3dnt-{arch}' }}
+                  steps {{ build job: 'panda3d-{arch}' }}
               }}
               stage('panda3dnt') {{
                   steps {{ build job: 'panda3dnt-{arch}' }}
@@ -108,6 +108,9 @@
               }}
               stage('sdk') {{
                   steps {{ build job: 'sdk-{arch}' }}
+              }}
+              stage('sdknt') {{
+                  steps {{ build job: 'sdknt-{arch}' }}
               }}
           }}
       }}
