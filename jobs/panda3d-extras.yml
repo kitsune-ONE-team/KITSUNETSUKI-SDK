@@ -1,6 +1,6 @@
 - job-template:
-    name: 'panda3d-{module}-{arch}'
-    display-name: 'panda3d-{module}-{arch}'
+    name: 'panda3d{variant}-{module}-{arch}'
+    display-name: 'panda3d{variant}-{module}-{arch}'
     project-type: freestyle
     description: '{desc}'
     node: '{node}'
@@ -45,7 +45,7 @@
 - project:
     name: panda3d-extras
     jobs:
-        - 'panda3d-{module}-{arch}':
+        - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-kphys
             bullet_dir: /app/opt/bullet/
@@ -62,9 +62,30 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+            variant: ''
             version: '0.6.15'
             with_tests: ON
-        - 'panda3d-{module}-{arch}':
+        - 'panda3d{variant}-{module}-{arch}':
+            arch: lynx64
+            build: /app/build/panda3dnt-kphys
+            bullet_dir: /app/opt/bullet/
+            desc: Physics extensions for Panda3D
+            generator: Unix Makefiles
+            install: /app/opt/panda3dnt-kphys/lib/python3.12/site-packages
+            interrogate_executable: /app/opt/interrogatent/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogatent/bin/interrogate_module
+            interrogate_source: /app/jenkins/workspace/interrogatent-lynx64
+            make: '-j 16'
+            module: kphys
+            node: linux
+            panda3d_dir: /app/opt/panda3dnt/
+            python_executable: /app/opt/pythonnt/bin/python3.12
+            python_include: /app/opt/pythonnt/include/python3.12
+            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            variant: nt
+            version: '0.6.15'
+            with_tests: ON
+        - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-kphys'
             bullet_dir: 'C:\\opt\\bullet\\'
@@ -81,9 +102,30 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            variant: ''
             version: '0.6.15'
             with_tests: OFF
-        - 'panda3d-{module}-{arch}':
+        - 'panda3d{variant}-{module}-{arch}':
+            arch: winx64
+            build: 'C:\\build\\panda3dnt-kphys'
+            bullet_dir: 'C:\\opt\\bullet\\'
+            desc: Physics extensions for Panda3D
+            generator: NMake Makefiles
+            install: 'C:\\opt\\panda3d-kphys\\lib\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module'
+            interrogate_source: 'C:\\jenkins\\workspace\\interrogatent-winx64'
+            make: ''
+            module: kphys
+            node: windows
+            panda3d_dir: 'C:\\opt\\panda3dnt\\'
+            python_executable: 'C:\\opt\\python\\bin\\python3.12'
+            python_include: 'C:\\opt\\pythonnt\\include'
+            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            variant: nt
+            version: '0.6.15'
+            with_tests: OFF
+        - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
             build: /app/build/panda3d-krender
             bullet_dir: /app/opt/bullet/
@@ -100,9 +142,30 @@
             python_executable: /app/opt/python/bin/python3.13t
             python_include: /app/opt/python/include/python3.13t
             python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+            variant: ''
             version: '0.2.8'
             with_tests: ON
-        - 'panda3d-{module}-{arch}':
+        - 'panda3d{variant}-{module}-{arch}':
+            arch: lynx64
+            build: /app/build/panda3dnt-krender
+            bullet_dir: /app/opt/bullet/
+            desc: Custom Deferred Render Pipeline for Panda3D
+            generator: Unix Makefiles
+            install: /app/opt/panda3dnt-krender/lib/python3.12/site-packages
+            interrogate_executable: /app/opt/interrogatent/bin/interrogate
+            interrogate_module_executable: /app/opt/interrogatent/bin/interrogate_module
+            interrogate_source: /app/jenkins/workspace/interrogatent-lynx64
+            make: '-j 16'
+            module: krender
+            node: linux
+            panda3d_dir: /app/opt/panda3dnt/
+            python_executable: /app/opt/pythonnt/bin/python3.12
+            python_include: /app/opt/pythonnt/include/python3.12
+            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            variant: nt
+            version: '0.2.8'
+            with_tests: ON
+        - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
             build: 'C:\\build\\panda3d-krender'
             bullet_dir: 'C:\\opt\\bullet\\'
@@ -119,5 +182,26 @@
             python_executable: 'C:\\opt\\python\\bin\\python3.13t'
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            variant: ''
+            version: '0.2.8'
+            with_tests: OFF
+        - 'panda3d{variant}-{module}-{arch}':
+            arch: winx64
+            build: 'C:\\build\\panda3dnt-krender'
+            bullet_dir: 'C:\\opt\\bullet\\'
+            desc: Custom Deferred Render Pipeline for Panda3D
+            generator: NMake Makefiles
+            install: 'C:\\opt\\panda3dnt-krender\\lib\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module'
+            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
+            make: ''
+            module: krender
+            node: windows
+            panda3d_dir: 'C:\\opt\\panda3dnt\\'
+            python_executable: 'C:\\opt\\pythonnt\\bin\\python3.12'
+            python_include: 'C:\\opt\\pythonnt\\include'
+            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            variant: nt
             version: '0.2.8'
             with_tests: OFF

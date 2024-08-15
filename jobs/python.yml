@@ -24,13 +24,12 @@
             ${{CWD}}/configure \
                 --prefix={install} \
                 --enable-shared \
-                --enable-optimizations \
-                --disable-gil
+                --enable-optimizations {options}
             make -j 16
             make install -j 16
             patchelf --set-rpath \$ORIGIN/../lib {install}/bin/python{python_version}
-            {install}/bin/python{python_version} -m ensurepip -v
-            {install}/bin/python{python_version} -m pip install git+https://github.com/pypa/setuptools.git@57379cdcfdd90a4e34eb8959462fabca71a723c8
+            {install}/bin/python{python_app_version} -m ensurepip -v
+            {install}/bin/python{python_app_version} -m pip install git+https://github.com/pypa/setuptools.git@57379cdcfdd90a4e34eb8959462fabca71a723c8
 
 - job-template:
     name: 'python{variant}-winx64'
@@ -55,7 +54,7 @@
             set PATH=%PATH%;Z:\Git\bin
             echo /p:PlatformToolset=v143 > PCbuild\msbuild.rsp
             echo /p:OutDir={build}\ >> PCbuild\msbuild.rsp
-            call PCBuild\build.bat --disable-gil
+            call PCBuild\build.bat {options}
 
             mkdir {install}\DLLs
             mkdir {install}\bin
@@ -66,28 +65,44 @@
             copy /V /Y {build}\*.lib      {install}\libs
             xcopy /I /E /Y Include        {install}\include
             xcopy /I /E /Y Lib            {install}\lib
-            copy /V /Y {build}\pyconfig.h {install}\include
-            {install}\bin\python{python_version} -m ensurepip -v
-            {install}\bin\python{python_version} -m pip install git+https://github.com/pypa/setuptools.git@57379cdcfdd90a4e34eb8959462fabca71a723c8
+            copy /V /Y {pyconfig}     {install}\include
+            {install}\bin\python{python_app_version} -m ensurepip -v
+            {install}\bin\python{python_app_version} -m pip install git+https://github.com/pypa/setuptools.git@57379cdcfdd90a4e34eb8959462fabca71a723c8
 
 - project:
     name: python
     jobs:
         - 'python{variant}-lynx64':
-            build: /app/build/pythonnt
-            git_tag: 'v3.12.4'
-            install: /app/opt/pythonnt
-            python_version: '3.12'
-            variant: 'nt'
-        - 'python{variant}-lynx64':
             build: /app/build/python
             git_tag: 'v3.13.0rc1'
             install: /app/opt/python
+            options: '--disable-gil'
+            python_app_version: '3.13t'
             python_version: '3.13t'
             variant: ''
+        - 'python{variant}-lynx64':
+            build: /app/build/pythonnt
+            git_tag: 'v3.12.4'
+            install: /app/opt/pythonnt
+            python_app_version: '3.12'
+            python_version: '3.12'
+            options: ''
+            variant: nt
         - 'python{variant}-winx64':
             build: 'C:\\build\\python'
             git_tag: 'v3.13.0rc1'
             install: 'C:\\opt\\python'
+            options: '--disable-gil'
+            pyconfig: 'C:\\build\\pythonnt\\pyconfig.h'
+            python_app_version: '3.13t'
             python_version: '3.13t'
             variant: ''
+        - 'python{variant}-winx64':
+            build: 'C:\\build\\pythonnt'
+            git_tag: 'v3.12.4'
+            install: 'C:\\opt\\pythonnt'
+            pyconfig: 'PC\\pyconfig.h'
+            python_app_version: ''
+            python_version: '3.12'
+            options: ''
+            variant: nt

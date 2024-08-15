@@ -1,6 +1,6 @@
 - job-template:
-    name: sdk-lynx64
-    display-name: sdk-lynx64
+    name: 'sdk{variant}-lynx64'
+    display-name: 'sdk{variant}-lynx64'
     project-type: freestyle
     description: KITSUNETSUKI SDK
     node: linux
@@ -30,18 +30,18 @@
           mkdir -p {install}/include
           mkdir -p {install}/lib
           mkdir -p {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info
-          cp -Rfv /app/opt/panda3d-kphys/lib                     {install}/
-          cp -Rfv /app/opt/panda3d-krender/lib                   {install}/
-          cp -Rfv /app/opt/panda3d/bin                           {install}/
-          cp -Rfv /app/opt/panda3d/etc                           {install}/
-          cp -Rfv /app/opt/panda3d/include                       {install}/
-          cp -Rfv /app/opt/panda3d/lib                           {install}/
-          cp -Rfv /app/opt/python/bin                            {install}/
-          cp -Rfv /app/opt/python/include/python{python_version} {install}/include/
-          cp -Rfv /app/opt/python/lib                            {install}/
-          cp -Rfv /app/opt/sdl/include                           {install}/
-          cp -Rfv /app/opt/sdl/lib                               {install}/
-          cp -Rfv discord/c/*                                    {install}/include/
+          cp -Rfv {kphys_dir}/lib                             {install}/
+          cp -Rfv {krender_dir}/lib                           {install}/
+          cp -Rfv {panda3d_dir}/bin                           {install}/
+          cp -Rfv {panda3d_dir}/etc                           {install}/
+          cp -Rfv {panda3d_dir}/include                       {install}/
+          cp -Rfv {panda3d_dir}/lib                           {install}/
+          cp -Rfv {python_dir}/bin                            {install}/
+          cp -Rfv {python_dir}/include/python{python_version} {install}/include/
+          cp -Rfv {python_dir}/lib                            {install}/
+          cp -Rfv /app/opt/sdl/include                        {install}/
+          cp -Rfv /app/opt/sdl/lib                            {install}/
+          cp -Rfv discord/c/*                                 {install}/include/
           cp -fv discord/lib/x86_64/discord_game_sdk.so {install}/lib/libdiscord_game_sdk.so
           cp -fv ${{CWD}}/jobs/sdk/METADATA {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info/
 
@@ -73,8 +73,8 @@
               -r ${{CWD}}/jobs/sdk/requirements.txt
 
 - job-template:
-    name: sdk-winx64
-    display-name: sdk-winx64
+    name: 'sdk{variant}-winx64'
+    display-name: 'sdk{variant}-winx64'
     project-type: freestyle
     description: KITSUNETSUKI SDK
     node: windows
@@ -108,21 +108,21 @@
           mkdir {install}
           mkdir {install}\include
           mkdir {install}\lib\site-packages\panda3d-1.11.0.dist-info
-          xcopy /I /E /Y C:\opt\panda3d-kphys\lib   {install}\lib
-          xcopy /I /E /Y C:\opt\panda3d-krender\lib {install}\lib
-          xcopy /I /E /Y C:\opt\panda3d\bin         {install}\bin
-          xcopy /I /E /Y C:\opt\panda3d\etc         {install}\etc
-          xcopy /I /E /Y C:\opt\panda3d\include     {install}\include
-          xcopy /I /E /Y C:\opt\panda3d\lib         {install}\lib
-          xcopy /I /E /Y C:\opt\python\DLLs         {install}\DLLs
-          xcopy /I /E /Y C:\opt\python\bin          {install}\bin
-          xcopy /I /E /Y C:\opt\python\include      {install}\include
-          xcopy /I /E /Y C:\opt\python\lib          {install}\lib
-          xcopy /I /E /Y C:\opt\python\libs         {install}\libs
-          xcopy /I /E /Y C:\opt\sdl\bin             {install}\bin
-          xcopy /I /E /Y C:\opt\sdl\include         {install}\include
-          xcopy /I /E /Y C:\opt\sdl\lib             {install}\lib
-          xcopy /I /E /Y discord\c                  {install}\include
+          xcopy /I /E /Y {kphys_dir}\lib       {install}\lib
+          xcopy /I /E /Y {krender_dir}\lib     {install}\lib
+          xcopy /I /E /Y {panda3d_dir}\bin     {install}\bin
+          xcopy /I /E /Y {panda3d_dir}\etc     {install}\etc
+          xcopy /I /E /Y {panda3d_dir}\include {install}\include
+          xcopy /I /E /Y {panda3d_dir}\lib     {install}\lib
+          xcopy /I /E /Y {python_dir}\DLLs     {install}\DLLs
+          xcopy /I /E /Y {python_dir}\bin      {install}\bin
+          xcopy /I /E /Y {python_dir}\include  {install}\include
+          xcopy /I /E /Y {python_dir}\lib      {install}\lib
+          xcopy /I /E /Y {python_dir}\libs     {install}\libs
+          xcopy /I /E /Y C:\opt\sdl\bin        {install}\bin
+          xcopy /I /E /Y C:\opt\sdl\include    {install}\include
+          xcopy /I /E /Y C:\opt\sdl\lib        {install}\lib
+          xcopy /I /E /Y discord\c             {install}\include
           copy /V /Y discord\lib\x86_64\*.dll {install}\bin
           copy /V /Y %CWD%\jobs\sdk\METADATA {install}\lib\site-packages\panda3d-1.11.0.dist-info
 
@@ -137,17 +137,47 @@
 - project:
     name: sdk-lynx64
     jobs:
-      - 'sdk-lynx64':
+      - 'sdk{variant}-lynx64':
           build: /app/build/sdk
           discord_version: '3.2.1'
           install: /app/opt/sdk
+          kphys_dir: /app/opt/panda3d-kphys
+          krender_dir: /app/opt/panda3d-krender
+          panda3d_dir: /app/opt/panda3d
+          python_dir: /app/opt/python
           python_version: '3.13t'
+          variant: ''
+      - 'sdk{variant}-lynx64':
+          build: /app/build/sdknt
+          discord_version: '3.2.1'
+          install: /app/opt/sdknt
+          kphys_dir: /app/opt/panda3dnt-kphys
+          krender_dir: /app/opt/panda3dnt-krender
+          panda3d_dir: /app/opt/panda3dnt
+          python_dir: /app/opt/pythonnt
+          python_version: '3.12'
+          variant: nt
 
 - project:
     name: sdk-winx64
     jobs:
-      - 'sdk-winx64':
+      - 'sdk{variant}-winx64':
           build: 'C:\\build\\sdk'
           discord_version: '3.2.1'
           install: 'C:\\opt\\sdk'
+          kphys_dir: 'C:\\opt\\panda3d-kphys'
+          krender_dir: 'C:\\opt\\panda3d-krender'
+          panda3d_dir: 'C:\\opt\\panda3d'
+          python_dir: 'C:\\opt\\python'
           python_version: '3.13t'
+          variant: ''
+      - 'sdk{variant}-winx64':
+          build: 'C:\\build\\sdknt'
+          discord_version: '3.2.1'
+          install: 'C:\\opt\\sdknd'
+          kphys_dir: 'C:\\opt\\panda3dnt-kphys'
+          krender_dir: 'C:\\opt\\panda3dnt-krender'
+          panda3d_dir: 'C:\\opt\\panda3dnt'
+          python_dir: 'C:\\opt\\pythonnt'
+          python_version: '3.12'
+          variant: nt

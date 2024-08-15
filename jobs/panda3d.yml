@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/kitsune-ONE-team/panda3d.git
             branches:
-              - f5f15876eec05dafd4accc8316761c04f48ee7e9
+              - '{version}'
             wipe-workspace: false
             timeout: 60
     builders:
@@ -157,6 +157,7 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
+            version: master
             vorbis_include: /app/opt/vorbis/include
             vorbis_library: /app/opt/vorbis/lib/libvorbis.a
             vorbis_root: /app/opt/vorbis
@@ -207,6 +208,7 @@
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
+            version: nt
             vorbis_include: /app/opt/vorbis/include
             vorbis_library: /app/opt/vorbis/lib/libvorbis.a
             vorbis_root: /app/opt/vorbis
@@ -257,6 +259,58 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
+            version: master
+            vorbis_include: 'C:\\opt\\vorbis\\include'
+            vorbis_library: 'C:\\opt\\vorbis\\lib\\vorbis.lib'
+            vorbis_root: 'C:\\opt\\vorbis'
+            vorbisfile_library: 'C:\\opt\\vorbis\\lib\\vorbisfile.lib'
+            zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
+            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
+        - 'panda3d{variant}-{arch}':
+            arch: winx64
+            bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
+            build: 'C:\\build\\panda3dnt'
+            bullet_include: 'C:\\opt\\bullet\\include\\bullet'
+            bullet_library_collision: 'C:\\opt\\bullet\\lib\\BulletCollision.lib'
+            bullet_library_dynamics: 'C:\\opt\\bullet\\lib\\BulletDynamics.lib'
+            bullet_library_math: 'C:\\opt\\bullet\\lib\\LinearMath.lib'
+            bullet_library_softbody: 'C:\\opt\\bullet\\lib\\BulletSoftBody.lib'
+            bullet_root: 'C:\\opt\\bullet'
+            flex_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
+            freetype_cmake: 'C:\\opt\\freetypehb\\lib\\cmake\\freetype'
+            freetype_include: 'C:\\opt\\freetypehb\\include\\freetype2'
+            freetype_library: 'C:\\opt\\freetypehb\\lib\\freetype.lib'
+            freetype_root: 'C:\\opt\\freetypehb'
+            generator: NMake Makefiles
+            harfbuzz_include: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
+            harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
+            have_gl: NO
+            have_gtk: NO
+            have_x11: NO
+            install: 'C:\\opt\\panda3dnt'
+            install_python: 'C:\\opt\\panda3dnt\\lib\\site-packages'
+            interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate.exe'
+            interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module.exe'
+            jpeg_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
+            jpeg_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
+            make: ''
+            node: windows
+            ogg_include: 'C:\\opt\\vorbis\\include'
+            ogg_library: 'C:\\opt\\vorbis\\lib\\ogg.lib'
+            ogg_root: 'C:\\opt\\vorbis'
+            openal_cmake: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\lib\\cmake\\openal'
+            openal_include: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\include'
+            openal_library: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\\win-libs-vc14-x64\\openal\\lib\\OpenAL32.lib'
+            panda3d_thirdparty: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty'
+            png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
+            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
+            python_executable: 'C:\\opt\\pythonnt\\bin\\python'
+            python_include: 'C:\\opt\\pythonnt\\include'
+            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            python_version: '3.12'
+            python_version_int: '3.12'
+            variant: nt
+            version: nt
             vorbis_include: 'C:\\opt\\vorbis\\include'
             vorbis_library: 'C:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'C:\\opt\\vorbis'

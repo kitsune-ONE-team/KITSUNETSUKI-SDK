@@ -82,3 +82,16 @@
             python_include: 'C:\\opt\\python\\include'
             python_library: 'C:\\opt\\python\\libs\\python313t.lib'
             variant: ''
+        - 'interrogate{variant}-{arch}':
+            arch: winx64
+            bison_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
+            build: 'C:\\build\\interrogatent'
+            flex_executable: 'C:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
+            generator: NMake Makefiles
+            install: 'C:\\opt\\interrogatent'
+            make: ''
+            node: windows
+            python_executable: 'C:\\opt\\pythonnt\\bin\\python3.12'
+            python_include: 'C:\\opt\\pythonnt\\include'
+            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            variant: nt
