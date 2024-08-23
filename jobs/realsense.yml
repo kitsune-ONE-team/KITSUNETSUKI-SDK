@@ -32,10 +32,13 @@
                 -DCMAKE_INSTALL_PREFIX={install}
                 -DFORCE_RSUSB_BACKEND=true
                 -DMULTITHREADED_BUILD=16
+                -DPYTHON_INSTALL_DIR={install_python}
                 -DPYTHON_EXECUTABLE={python_executable}
-                -DPYTHON_INCLUDE_DIR={python_include}
-                -DPYTHON_INSTALL_DIR={install}
-                -DPYTHON_LIBRARY={python_library}
+                -DPYTHON_INCLUDE_DIRS={python_include}
+                -DPYTHON_LIBRARIES={python_library}
+                -DPython_EXECUTABLE={python_executable}
+                -DPYTHON_INCLUDE_DIRS={python_include}
+                -DPython_LIBRARIES={python_library}
                 -DUSE_EXTERNAL_USB=OFF
             build-tool-invocations:
                 - use-cmake: false
@@ -49,7 +52,8 @@
         - 'realsense-lynx64':
             build: /app/build/realsense
             generator: Unix Makefiles
-            install: /app/opt/realsense/lib/python3.12/site-packages
+            install: /app/opt/realsense
+            install_python: /app/opt/realsense/lib/python3.12/site-packages
             make: '-j 16'
             python_executable: /app/opt/pythonnt/bin/python3.12
             python_include: /app/opt/pythonnt/include/python3.12
