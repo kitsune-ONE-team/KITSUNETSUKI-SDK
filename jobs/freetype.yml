@@ -83,33 +83,33 @@
             disable_harfbuzz: OFF
         - 'freetype{variant}-{arch}':
             arch: winx64
-            build: 'C:\\build\\freetype'
+            build: 'D:\\build\\freetype'
             generator: NMake Makefiles
             harfbuzz_include: ''
             harfbuzz_library: ''
-            install: 'C:\\opt\\freetype'
+            install: 'D:\\opt\\freetype'
             make: ''
             node: windows
-            png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
-            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
-            zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
-            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
+            png_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
+            png_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
+            zlib_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
+            zlib_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
             variant: ''
             require_harfbuzz: OFF
             disable_harfbuzz: ON
         - 'freetype{variant}-{arch}':
             arch: winx64
-            build: 'C:\\build\\freetypehb'
+            build: 'D:\\build\\freetypehb'
             generator: NMake Makefiles
-            harfbuzz_include: 'C:\\opt\\harfbuzz\\include\\harfbuzz'
-            harfbuzz_library: 'C:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
-            install: 'C:\\opt\\freetypehb'
+            harfbuzz_include: 'D:\\opt\\harfbuzz\\include\\harfbuzz'
+            harfbuzz_library: 'D:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
+            install: 'D:\\opt\\freetypehb'
             make: ''
             node: windows
-            png_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
-            png_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
-            zlib_include: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
-            zlib_library: 'C:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
+            png_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
+            png_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\lib\\libpng.lib'
+            zlib_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
+            zlib_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
             variant: hb
             require_harfbuzz: ON
             disable_harfbuzz: OFF

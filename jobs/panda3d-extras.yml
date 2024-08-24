@@ -87,41 +87,41 @@
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
-            build: 'C:\\build\\panda3d-kphys'
-            bullet_dir: 'C:\\opt\\bullet\\'
+            build: 'D:\\build\\panda3d-kphys'
+            bullet_dir: 'D:\\opt\\bullet\\'
             desc: Physics extensions for Panda3D
             generator: NMake Makefiles
-            install: 'C:\\opt\\panda3d-kphys\\lib\site-packages'
-            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
-            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
-            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
+            install: 'D:\\opt\\panda3d-kphys\\lib\site-packages'
+            interrogate_executable: 'D:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_module_executable: 'D:\\opt\\interrogate\\bin\\interrogate_module'
+            interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
             module: kphys
             node: windows
-            panda3d_dir: 'C:\\opt\\panda3d\\'
-            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
-            python_include: 'C:\\opt\\python\\include'
-            python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            panda3d_dir: 'D:\\opt\\panda3d\\'
+            python_executable: 'D:\\opt\\python\\bin\\python3.13t'
+            python_include: 'D:\\opt\\python\\include'
+            python_library: 'D:\\opt\\python\\libs\\python313t.lib'
             variant: ''
             version: '0.6.16'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
-            build: 'C:\\build\\panda3dnt-kphys'
-            bullet_dir: 'C:\\opt\\bullet\\'
+            build: 'D:\\build\\panda3dnt-kphys'
+            bullet_dir: 'D:\\opt\\bullet\\'
             desc: Physics extensions for Panda3D
             generator: NMake Makefiles
-            install: 'C:\\opt\\panda3dnt-kphys\\lib\site-packages'
-            interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate'
-            interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module'
-            interrogate_source: 'C:\\jenkins\\workspace\\interrogatent-winx64'
+            install: 'D:\\opt\\panda3dnt-kphys\\lib\site-packages'
+            interrogate_executable: 'D:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_module_executable: 'D:\\opt\\interrogatent\\bin\\interrogate_module'
+            interrogate_source: 'D:\\jenkins\\workspace\\interrogatent-winx64'
             make: ''
             module: kphys
             node: windows
-            panda3d_dir: 'C:\\opt\\panda3dnt\\'
-            python_executable: 'C:\\opt\\pythonnt\\bin\\python'
-            python_include: 'C:\\opt\\pythonnt\\include'
-            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            panda3d_dir: 'D:\\opt\\panda3dnt\\'
+            python_executable: 'D:\\opt\\pythonnt\\bin\\python'
+            python_include: 'D:\\opt\\pythonnt\\include'
+            python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
             version: '0.6.16'
             with_tests: OFF
@@ -167,41 +167,41 @@
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
-            build: 'C:\\build\\panda3d-krender'
-            bullet_dir: 'C:\\opt\\bullet\\'
+            build: 'D:\\build\\panda3d-krender'
+            bullet_dir: 'D:\\opt\\bullet\\'
             desc: Custom Deferred Render Pipeline for Panda3D
             generator: NMake Makefiles
-            install: 'C:\\opt\\panda3d-krender\\lib\site-packages'
-            interrogate_executable: 'C:\\opt\\interrogate\\bin\\interrogate'
-            interrogate_module_executable: 'C:\\opt\\interrogate\\bin\\interrogate_module'
-            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
+            install: 'D:\\opt\\panda3d-krender\\lib\site-packages'
+            interrogate_executable: 'D:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_module_executable: 'D:\\opt\\interrogate\\bin\\interrogate_module'
+            interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
             module: krender
             node: windows
-            panda3d_dir: 'C:\\opt\\panda3d\\'
-            python_executable: 'C:\\opt\\python\\bin\\python3.13t'
-            python_include: 'C:\\opt\\python\\include'
-            python_library: 'C:\\opt\\python\\libs\\python313t.lib'
+            panda3d_dir: 'D:\\opt\\panda3d\\'
+            python_executable: 'D:\\opt\\python\\bin\\python3.13t'
+            python_include: 'D:\\opt\\python\\include'
+            python_library: 'D:\\opt\\python\\libs\\python313t.lib'
             variant: ''
             version: '0.2.9'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
-            build: 'C:\\build\\panda3dnt-krender'
-            bullet_dir: 'C:\\opt\\bullet\\'
+            build: 'D:\\build\\panda3dnt-krender'
+            bullet_dir: 'D:\\opt\\bullet\\'
             desc: Custom Deferred Render Pipeline for Panda3D
             generator: NMake Makefiles
-            install: 'C:\\opt\\panda3dnt-krender\\lib\site-packages'
-            interrogate_executable: 'C:\\opt\\interrogatent\\bin\\interrogate'
-            interrogate_module_executable: 'C:\\opt\\interrogatent\\bin\\interrogate_module'
-            interrogate_source: 'C:\\jenkins\\workspace\\interrogate-winx64'
+            install: 'D:\\opt\\panda3dnt-krender\\lib\site-packages'
+            interrogate_executable: 'D:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_module_executable: 'D:\\opt\\interrogatent\\bin\\interrogate_module'
+            interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
             module: krender
             node: windows
-            panda3d_dir: 'C:\\opt\\panda3dnt\\'
-            python_executable: 'C:\\opt\\pythonnt\\bin\\python'
-            python_include: 'C:\\opt\\pythonnt\\include'
-            python_library: 'C:\\opt\\pythonnt\\libs\\python312.lib'
+            panda3d_dir: 'D:\\opt\\panda3dnt\\'
+            python_executable: 'D:\\opt\\pythonnt\\bin\\python'
+            python_include: 'D:\\opt\\pythonnt\\include'
+            python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
             version: '0.2.9'
             with_tests: OFF

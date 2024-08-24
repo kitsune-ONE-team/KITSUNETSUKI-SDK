@@ -60,8 +60,8 @@
             node: linux
         - 'bullet-{arch}':
             arch: winx64
-            build: 'C:\\build\\bullet'
+            build: 'D:\\build\\bullet'
             generator: NMake Makefiles
-            install: 'C:\\opt\\bullet'
+            install: 'D:\\opt\\bullet'
             make: ''
             node: windows

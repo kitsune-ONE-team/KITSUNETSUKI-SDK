@@ -26,7 +26,7 @@
         artifactNumToKeep: -1
     builders:
         - batch: |
-            rd /S /Q C:\{path}
+            rd /S /Q D:\{path}
             rd /S /Q Z:\{path}
 
 - job-template:

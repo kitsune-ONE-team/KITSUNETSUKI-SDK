@@ -119,9 +119,9 @@
           xcopy /I /E /Y {python_dir}\include  {install}\include
           xcopy /I /E /Y {python_dir}\lib      {install}\lib
           xcopy /I /E /Y {python_dir}\libs     {install}\libs
-          xcopy /I /E /Y C:\opt\sdl\bin        {install}\bin
-          xcopy /I /E /Y C:\opt\sdl\include    {install}\include
-          xcopy /I /E /Y C:\opt\sdl\lib        {install}\lib
+          xcopy /I /E /Y D:\opt\sdl\bin        {install}\bin
+          xcopy /I /E /Y D:\opt\sdl\include    {install}\include
+          xcopy /I /E /Y D:\opt\sdl\lib        {install}\lib
           xcopy /I /E /Y discord\c             {install}\include
           copy /V /Y discord\lib\x86_64\*.dll {install}\bin
           copy /V /Y %CWD%\jobs\sdk\METADATA {install}\lib\site-packages\panda3d-1.11.0.dist-info
@@ -162,26 +162,26 @@
     name: sdk-winx64
     jobs:
       - 'sdk{variant}-winx64':
-          build: 'C:\\build\\sdk'
+          build: 'D:\\build\\sdk'
           discord_version: '3.2.1'
-          install: 'C:\\opt\\sdk'
+          install: 'D:\\opt\\sdk'
           install_shared: 'Z:\\opt\\sdk'
-          kphys_dir: 'C:\\opt\\panda3d-kphys'
-          krender_dir: 'C:\\opt\\panda3d-krender'
-          panda3d_dir: 'C:\\opt\\panda3d'
-          python_dir: 'C:\\opt\\python'
+          kphys_dir: 'D:\\opt\\panda3d-kphys'
+          krender_dir: 'D:\\opt\\panda3d-krender'
+          panda3d_dir: 'D:\\opt\\panda3d'
+          python_dir: 'D:\\opt\\python'
           python_app_version: '3.13t'
           python_version: '3.13t'
           variant: ''
       - 'sdk{variant}-winx64':
-          build: 'C:\\build\\sdknt'
+          build: 'D:\\build\\sdknt'
           discord_version: '3.2.1'
-          install: 'C:\\opt\\sdknt'
+          install: 'D:\\opt\\sdknt'
           install_shared: 'Z:\\opt\\sdknt'
-          kphys_dir: 'C:\\opt\\panda3dnt-kphys'
-          krender_dir: 'C:\\opt\\panda3dnt-krender'
-          panda3d_dir: 'C:\\opt\\panda3dnt'
-          python_dir: 'C:\\opt\\pythonnt'
+          kphys_dir: 'D:\\opt\\panda3dnt-kphys'
+          krender_dir: 'D:\\opt\\panda3dnt-krender'
+          panda3d_dir: 'D:\\opt\\panda3dnt'
+          python_dir: 'D:\\opt\\pythonnt'
           python_app_version: ''
           python_version: '3.12'
           variant: nt

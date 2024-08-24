@@ -47,8 +47,8 @@
             node: linux
         - 'sdl-{arch}':
             arch: winx64
-            build: 'C:\build\sdl'
+            build: 'D:\\build\\sdl'
             generator: NMake Makefiles
-            install: 'C:\opt\sdl'
+            install: 'D:\\opt\\sdl'
             make: ''
             node: windows

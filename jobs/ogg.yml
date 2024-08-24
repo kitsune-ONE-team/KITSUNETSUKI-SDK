@@ -44,8 +44,8 @@
             node: linux
         - 'ogg-{arch}':
             arch: winx64
-            build: 'C:\build\ogg'
+            build: 'D:\build\ogg'
             generator: NMake Makefiles
-            install: 'C:\opt\vorbis'
+            install: 'D:\opt\vorbis'
             make: ''
             node: windows

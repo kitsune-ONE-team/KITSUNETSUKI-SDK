@@ -31,7 +31,7 @@ Jenkins Linux Agent configuration
 Jenkins Windows Agent configuration
 -----------------------------------
 
-**Remote root directory:** C:\jenkins
+**Remote root directory:** D:\jenkins
 
 **Labels:** windows
 
@@ -45,7 +45,7 @@ Jenkins Windows Agent configuration
 
 Java could be downloaded from [https://jdk.java.net/java-se-ri/21]
 
-**Prefix Start Agent Command:** "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.22000.0 &&
+**Prefix Start Agent Command:** "D:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 10.0.22000.0 && D: &&
 
 **Environment variables:**
 

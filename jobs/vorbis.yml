@@ -48,10 +48,10 @@
             ogg_library: /app/opt/vorbis/lib/libogg.a
         - 'vorbis-{arch}':
             arch: winx64
-            build: 'C:\build\vorbis'
+            build: 'D:\\build\\vorbis'
             generator: NMake Makefiles
-            install: 'C:\opt\vorbis'
+            install: 'D:\\opt\\vorbis'
             make: ''
             node: windows
-            ogg_include: 'C:\opt\vorbis\include'
-            ogg_library: 'C:\opt\ogg\lib\ogg.lib'
+            ogg_include: 'D:\\opt\\vorbis\\include'
+            ogg_library: 'D:\\opt\\ogg\\lib\\ogg.lib'

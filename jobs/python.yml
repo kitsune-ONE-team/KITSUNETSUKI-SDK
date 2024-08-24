@@ -89,18 +89,18 @@
             options: ''
             variant: nt
         - 'python{variant}-winx64':
-            build: 'C:\\build\\python'
+            build: 'D:\\build\\python'
             git_tag: 'v3.13.0rc1'
-            install: 'C:\\opt\\python'
+            install: 'D:\\opt\\python'
             options: '--disable-gil'
-            pyconfig: 'C:\\build\\python\\pyconfig.h'
+            pyconfig: 'D:\\build\\python\\pyconfig.h'
             python_app_version: '3.13t'
             python_version: '3.13t'
             variant: ''
         - 'python{variant}-winx64':
-            build: 'C:\\build\\pythonnt'
+            build: 'D:\\build\\pythonnt'
             git_tag: 'v3.12.4'
-            install: 'C:\\opt\\pythonnt'
+            install: 'D:\\opt\\pythonnt'
             pyconfig: 'PC\\pyconfig.h'
             python_app_version: ''
             python_version: '3.12'
