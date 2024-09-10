@@ -95,8 +95,8 @@
           mkdir {build}
           cd {build}
 
-          set GIT=Z:\Git\bin\git
-          set ZIP=Z:\7-Zip\7z
+          set GIT=Z:\Git\bin\git.exe
+          set ZIP=Z:\7-Zip\7z.exe
           set PATH=%PATH%;Z:\Git\bin
 
           if not exist discord.zip (
