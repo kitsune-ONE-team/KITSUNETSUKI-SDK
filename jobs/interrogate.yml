@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/panda3d/interrogate.git
             branches:
-              - e297384b30f1eae8ab839ec096fc3bb6bdb3edeb
+              - c343350a6e210029cfe3fd8468e530e1ea6bcead
             wipe-workspace: false
     builders:
         - cmake:
