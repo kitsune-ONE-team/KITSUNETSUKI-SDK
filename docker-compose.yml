@@ -34,6 +34,7 @@ services:
       - ~/Games/Steam/steamapps/common/Blender:/root/Blender:z
       - ~/Public:/root/Public:z
     command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
+    network_mode: "slirp4netns:allow_host_loopback=true"
 
 networks:
   sdk:
