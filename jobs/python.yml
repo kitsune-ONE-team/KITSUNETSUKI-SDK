@@ -54,6 +54,8 @@
             echo /p:PlatformToolset=v143 > PCbuild\msbuild.rsp
             echo /p:OutDir={build}\ >> PCbuild\msbuild.rsp
             call PCBuild\build.bat {options}
+            rem CERTIFICATE_VERIFY_FAILED fix:
+            rem D:\jenkins\workspace\python-winx64\externals\pythonx86\tools\python.exe -m pip install pip-system-certs
 
             mkdir {install}\DLLs
             mkdir {install}\bin
