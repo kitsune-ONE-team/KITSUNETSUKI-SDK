@@ -11,7 +11,7 @@
         artifactNumToKeep: -1
     builders:
       - batch: |
-          set ZIP=Z:\7-Zip\7z
+          set ZIP=Z:\7-Zip\7z.exe
 
           if not exist panda3d-{version}-tools-win64.zip (
               curl -o panda3d-{version}-tools-win64.zip ^
