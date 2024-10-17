@@ -42,8 +42,8 @@
           cp -Rfv /app/opt/sdl/include                        {install}/
           cp -Rfv /app/opt/sdl/lib                            {install}/
           cp -Rfv discord/c/*                                 {install}/include/
-          cp -fv discord/lib/x86_64/discord_game_sdk.so {install}/lib/libdiscord_game_sdk.so
-          cp -fv ${{CWD}}/jobs/sdk/METADATA {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info/
+          cp -fv discord/lib/x86_64/discord_game_sdk.so       {install}/lib/libdiscord_game_sdk.so
+          cp -fv ${{CWD}}/jobs/sdk/METADATA                   {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info/
 
           patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*2egg
           patchelf --set-rpath \$ORIGIN/../lib   {install}/bin/*crypt
@@ -123,8 +123,8 @@
           xcopy /I /E /Y D:\opt\sdl\include    {install}\include
           xcopy /I /E /Y D:\opt\sdl\lib        {install}\lib
           xcopy /I /E /Y discord\c             {install}\include
-          copy /V /Y discord\lib\x86_64\*.dll {install}\bin
-          copy /V /Y %CWD%\jobs\sdk\METADATA {install}\lib\site-packages\panda3d-1.11.0.dist-info
+          copy /V /Y discord\lib\x86_64\*.dll  {install}\bin
+          copy /V /Y %CWD%\jobs\sdk\METADATA   {install}\lib\site-packages\panda3d-1.11.0.dist-info
 
           set PYTHONHOME={install}
           {install}\bin\python{python_app_version} -m ^
