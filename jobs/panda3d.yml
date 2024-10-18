@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/kitsune-ONE-team/panda3d.git
             branches:
-              - '{version}'
+              - master
             wipe-workspace: false
             timeout: 60
     builders:
@@ -157,7 +157,6 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
-            version: master
             vorbis_include: /app/opt/vorbis/include
             vorbis_library: /app/opt/vorbis/lib/libvorbis.a
             vorbis_root: /app/opt/vorbis
@@ -208,7 +207,6 @@
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
-            version: nt
             vorbis_include: /app/opt/vorbis/include
             vorbis_library: /app/opt/vorbis/lib/libvorbis.a
             vorbis_root: /app/opt/vorbis
@@ -259,7 +257,6 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
-            version: master
             vorbis_include: 'D:\\opt\\vorbis\\include'
             vorbis_library: 'D:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'D:\\opt\\vorbis'
@@ -310,7 +307,6 @@
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
-            version: nt
             vorbis_include: 'D:\\opt\\vorbis\\include'
             vorbis_library: 'D:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'D:\\opt\\vorbis'
