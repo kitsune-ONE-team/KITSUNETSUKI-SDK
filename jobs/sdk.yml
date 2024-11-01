@@ -22,8 +22,7 @@
           cd {build}
 
           if [ ! -f discord.zip ]; then
-              curl -o discord.zip \
-                  https://dl-game-sdk.discordapp.net/{discord_version}/discord_game_sdk.zip
+              curl -o discord.zip https://kitsune.one/var/discord_game_sdk.zip
               7z x -odiscord discord.zip
           fi
 
@@ -100,8 +99,7 @@
           set PATH=%PATH%;Z:\Git\bin
 
           if not exist discord.zip (
-              curl -o discord.zip ^
-                  https://dl-game-sdk.discordapp.net/{discord_version}/discord_game_sdk.zip
+              curl -o discord.zip https://kitsune.one/var/discord_game_sdk.zip
               %ZIP% x -odiscord discord.zip
           )
 
