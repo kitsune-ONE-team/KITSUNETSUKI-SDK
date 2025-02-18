@@ -26,12 +26,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.sdk
-    networks:
-      - sdk
     volumes:
       - ../agent:/app:z
       - ~/Dev/Panda3D:/root/Dev/Panda3D:z
-      - ~/Games/Steam/steamapps/common/Blender:/root/Blender:z
+      - ~/Games/steam/steamapps/common/Blender:/root/Blender:z
       - ~/Public:/root/Public:z
     command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
     network_mode: "slirp4netns:allow_host_loopback=true"

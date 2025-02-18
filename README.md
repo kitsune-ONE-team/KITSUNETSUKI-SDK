@@ -50,3 +50,12 @@ Java could be downloaded from [https://jdk.java.net/java-se-ri/21]
 **Environment variables:**
 
 * CL=/MP
+
+**Git configuration:**
+
+```
+git config --global http.version HTTP/1.1
+git config --global http.postBuffer 524288000
+git config --global http.lowSpeedLimit 0
+git config --global http.lowSpeedTime 999999
+```

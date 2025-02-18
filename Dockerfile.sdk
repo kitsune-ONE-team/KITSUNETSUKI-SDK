@@ -1,7 +1,6 @@
 FROM localhost/kitsunetsuki-sdk_agent
 
 RUN apt update -y
-RUN apt install -y \
-    imagemagick
+RUN apt install -y ffmpeg imagemagick python3-pil
 RUN apt clean
 WORKDIR /root
