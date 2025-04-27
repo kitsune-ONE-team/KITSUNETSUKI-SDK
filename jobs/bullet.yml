@@ -53,9 +53,9 @@
     jobs:
         - 'bullet-{arch}':
             arch: lynx64
-            build: /app/build/bullet
+            build: /var/opt/kitsunetsuki-sdk/build/bullet
             generator: Unix Makefiles
-            install: /app/opt/bullet
+            install: /var/opt/kitsunetsuki-sdk/dist/bullet
             make: '-j 16'
             node: linux
         - 'bullet-{arch}':

@@ -38,8 +38,8 @@
           cp -Rfv {python_dir}/bin                            {install}/
           cp -Rfv {python_dir}/include/python{python_version} {install}/include/
           cp -Rfv {python_dir}/lib                            {install}/
-          cp -Rfv /app/opt/sdl/include                        {install}/
-          cp -Rfv /app/opt/sdl/lib                            {install}/
+          cp -Rfv /var/opt/kitsunetsuki-sdk/dist/sdl/include                        {install}/
+          cp -Rfv /var/opt/kitsunetsuki-sdk/dist/sdl/lib                            {install}/
           cp -Rfv discord/c/*                                 {install}/include/
           cp -fv discord/lib/x86_64/discord_game_sdk.so       {install}/lib/libdiscord_game_sdk.so
           cp -fv ${{CWD}}/jobs/sdk/METADATA                   {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info/
@@ -136,23 +136,23 @@
     name: sdk-lynx64
     jobs:
       - 'sdk{variant}-lynx64':
-          build: /app/build/sdk
+          build: /var/opt/kitsunetsuki-sdk/build/sdk
           discord_version: '3.2.1'
-          install: /app/opt/sdk
-          kphys_dir: /app/opt/panda3d-kphys
-          krender_dir: /app/opt/panda3d-krender
-          panda3d_dir: /app/opt/panda3d
-          python_dir: /app/opt/python
+          install: /var/opt/kitsunetsuki-sdk/dist/sdk
+          kphys_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d-kphys
+          krender_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d-krender
+          panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d
+          python_dir: /var/opt/kitsunetsuki-sdk/dist/python
           python_version: '3.13t'
           variant: ''
       - 'sdk{variant}-lynx64':
-          build: /app/build/sdknt
+          build: /var/opt/kitsunetsuki-sdk/build/sdknt
           discord_version: '3.2.1'
-          install: /app/opt/sdknt
-          kphys_dir: /app/opt/panda3dnt-kphys
-          krender_dir: /app/opt/panda3dnt-krender
-          panda3d_dir: /app/opt/panda3dnt
-          python_dir: /app/opt/pythonnt
+          install: /var/opt/kitsunetsuki-sdk/dist/sdknt
+          kphys_dir: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-kphys
+          krender_dir: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-krender
+          panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3dnt
+          python_dir: /var/opt/kitsunetsuki-sdk/dist/pythonnt
           python_version: '3.12'
           variant: nt
 

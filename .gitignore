@@ -1,4 +1,8 @@
-*.pyc
-.venv
-__pycache__
+/build/
+/dist/
+/jenkins/
+/jenkins-host/
 jenkins_jobs.ini
+*.pyc
+__pycache__
+.venv

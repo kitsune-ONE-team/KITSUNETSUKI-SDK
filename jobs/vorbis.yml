@@ -39,13 +39,13 @@
     jobs:
         - 'vorbis-{arch}':
             arch: lynx64
-            build: /app/build/vorbis
+            build: /var/opt/kitsunetsuki-sdk/build/vorbis
             generator: 'Unix Makefiles'
-            install: /app/opt/vorbis
+            install: /var/opt/kitsunetsuki-sdk/dist/vorbis
             make: '-j 16'
             node: linux
-            ogg_include: /app/opt/vorbis/include
-            ogg_library: /app/opt/vorbis/lib/libogg.a
+            ogg_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
+            ogg_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libogg.a
         - 'vorbis-{arch}':
             arch: winx64
             build: 'D:\\build\\vorbis'

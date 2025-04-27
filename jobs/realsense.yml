@@ -50,13 +50,13 @@
     name: realsense-lynx64
     jobs:
         - 'realsense-lynx64':
-            build: /app/build/realsense
+            build: /var/opt/kitsunetsuki-sdk/build/realsense
             generator: Unix Makefiles
-            install: /app/opt/realsense
-            install_python: /app/opt/realsense/lib/python3.12/site-packages
+            install: /var/opt/kitsunetsuki-sdk/dist/realsense
+            install_python: /var/opt/kitsunetsuki-sdk/dist/realsense/lib/python3.12/site-packages
             make: '-j 16'
-            python_executable: /app/opt/pythonnt/bin/python3.12
-            python_include: /app/opt/pythonnt/include/python3.12
-            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
+            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
+            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             python_version: '3.12'
             version: '2.55.1'

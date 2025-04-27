@@ -73,24 +73,24 @@
     name: python
     jobs:
         - 'python{variant}-lynx64':
-            build: /app/build/python
-            git_tag: 'v3.13.0'
-            install: /app/opt/python
+            build: /var/opt/kitsunetsuki-sdk/build/python
+            git_tag: 'v3.13.3'
+            install: /var/opt/kitsunetsuki-sdk/dist/python
             options: '--disable-gil'
             python_app_version: '3.13t'
             python_version: '3.13t'
             variant: ''
         - 'python{variant}-lynx64':
-            build: /app/build/pythonnt
-            git_tag: 'v3.12.4'
-            install: /app/opt/pythonnt
+            build: /var/opt/kitsunetsuki-sdk/build/pythonnt
+            git_tag: 'v3.12.10'
+            install: /var/opt/kitsunetsuki-sdk/dist/pythonnt
             python_app_version: '3.12'
             python_version: '3.12'
             options: ''
             variant: nt
         - 'python{variant}-winx64':
             build: 'D:\\build\\python'
-            git_tag: 'v3.13.0'
+            git_tag: 'v3.13.3'
             install: 'D:\\opt\\python'
             options: '--disable-gil'
             pyconfig: 'D:\\build\\python\\pyconfig.h'
@@ -99,7 +99,7 @@
             variant: ''
         - 'python{variant}-winx64':
             build: 'D:\\build\\pythonnt'
-            git_tag: 'v3.12.4'
+            git_tag: 'v3.12.10'
             install: 'D:\\opt\\pythonnt'
             pyconfig: 'PC\\pyconfig.h'
             python_app_version: ''

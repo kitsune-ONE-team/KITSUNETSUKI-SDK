@@ -51,33 +51,33 @@
     jobs:
         - 'freetype{variant}-{arch}':
             arch: lynx64
-            build: /app/build/freetype
+            build: /var/opt/kitsunetsuki-sdk/build/freetype
             generator: 'Unix Makefiles'
             harfbuzz_include: ''
             harfbuzz_library: ''
-            install: /app/opt/freetype
+            install: /var/opt/kitsunetsuki-sdk/dist/freetype
             make: '-j 16'
             node: linux
-            png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
-            png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
-            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
-            zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
+            png_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/include
+            png_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
+            zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
             variant: ''
             require_harfbuzz: OFF
             disable_harfbuzz: ON
         - 'freetype{variant}-{arch}':
             arch: lynx64
-            build: /app/build/freetypehb
+            build: /var/opt/kitsunetsuki-sdk/build/freetypehb
             generator: 'Unix Makefiles'
-            harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
-            harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
-            install: /app/opt/freetypehb
+            harfbuzz_include: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/include/harfbuzz
+            harfbuzz_library: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/lib/libharfbuzz.a
+            install: /var/opt/kitsunetsuki-sdk/dist/freetypehb
             make: '-j 16'
             node: linux
-            png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
-            png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
-            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
-            zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
+            png_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/include
+            png_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
+            zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
             variant: hb
             require_harfbuzz: ON
             disable_harfbuzz: OFF

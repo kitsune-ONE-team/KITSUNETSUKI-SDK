@@ -40,9 +40,9 @@
     jobs:
         - 'sdl-{arch}':
             arch: lynx64
-            build: /app/build/sdl
+            build: /var/opt/kitsunetsuki-sdk/build/sdl
             generator: 'Unix Makefiles'
-            install: /app/opt/sdl
+            install: /var/opt/kitsunetsuki-sdk/dist/sdl
             make: '-j 16'
             node: linux
         - 'sdl-{arch}':

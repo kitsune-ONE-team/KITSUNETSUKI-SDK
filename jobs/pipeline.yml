@@ -11,7 +11,7 @@
         artifactNumToKeep: -1
     builders:
         - shell: |
-            rm -Rf /app/{path}/*
+            rm -Rf /var/opt/kitsunetsuki-sdk/{path}/*
 
 - job-template:
     name: clean-{path}-winx64
@@ -44,8 +44,8 @@
       pipeline {{
           agent any
           stages {{
-              stage('clean-opt') {{
-                  steps {{ build job: 'clean-opt-{arch}' }}
+              stage('clean-dist') {{
+                  steps {{ build job: 'clean-dist-{arch}' }}
               }}
               stage('freetype') {{
                   steps {{ build job: 'freetype-{arch}' }}
@@ -124,12 +124,12 @@
             path: build
 
 - project:
-    name: clean-opt
+    name: clean-dist
     jobs:
         - 'clean-{path}-lynx64':
-            path: opt
+            path: dist
         - 'clean-{path}-winx64':
-            path: opt
+            path: dist
 
 - project:
     name: pipeline

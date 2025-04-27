@@ -116,103 +116,103 @@
         - 'panda3d{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
-            build: /app/build/panda3d
-            bullet_include: /app/opt/bullet/include/bullet
-            bullet_library_collision: /app/opt/bullet/lib/libBulletCollision.a
-            bullet_library_dynamics: /app/opt/bullet/lib/libBulletDynamics.a
-            bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
-            bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
-            bullet_root: /app/opt/bullet
+            build: /var/opt/kitsunetsuki-sdk/build/panda3d
+            bullet_include: /var/opt/kitsunetsuki-sdk/dist/bullet/include/bullet
+            bullet_library_collision: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletCollision.a
+            bullet_library_dynamics: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletDynamics.a
+            bullet_library_math: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libLinearMath.a
+            bullet_library_softbody: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletSoftBody.a
+            bullet_root: /var/opt/kitsunetsuki-sdk/dist/bullet
             flex_executable: /usr/bin/flex
-            freetype_cmake: /app/opt/freetypehb/lib/cmake/freetype
-            freetype_include: /app/opt/freetypehb/include/freetype2
-            freetype_library: /app/opt/freetypehb/lib/libfreetype.a
-            freetype_root: /app/opt/freetypehb
+            freetype_cmake: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/cmake/freetype
+            freetype_include: /var/opt/kitsunetsuki-sdk/dist/freetypehb/include/freetype2
+            freetype_library: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/libfreetype.a
+            freetype_root: /var/opt/kitsunetsuki-sdk/dist/freetypehb
             generator: Unix Makefiles
-            harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
-            harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
+            harfbuzz_include: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/include/harfbuzz
+            harfbuzz_library: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/lib/libharfbuzz.a
             have_gl: YES
             have_gtk: NO
             have_x11: YES
-            install: /app/opt/panda3d
-            install_python: /app/opt/panda3d/lib/python3.13t/site-packages
-            interrogate_executable: /app/opt/interrogate/bin/interrogate
-            interrogate_module_executable: /app/opt/interrogate/bin/interrogate_module
-            jpeg_include: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
-            jpeg_library: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3d
+            install_python: /var/opt/kitsunetsuki-sdk/dist/panda3d/lib/python3.13t/site-packages
+            interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
+            interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
+            jpeg_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
+            jpeg_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
             make: '-j 16'
             node: linux
-            ogg_include: /app/opt/vorbis/include
-            ogg_library: /app/opt/vorbis/lib/libogg.a
-            ogg_root: /app/opt/vorbis
-            openal_cmake: /app/jenkins/workspace/blender-thirdparty-lynx64/openal
-            openal_include: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/include
-            openal_library: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
+            ogg_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
+            ogg_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libogg.a
+            ogg_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
+            openal_cmake: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal
+            openal_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal/include
+            openal_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
             panda3d_thirdparty: ''
-            png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
-            png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
-            python_executable: /app/opt/python/bin/python3.13t
-            python_include: /app/opt/python/include/python3.13t
-            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+            png_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/include
+            png_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.13t
+            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
+            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
-            vorbis_include: /app/opt/vorbis/include
-            vorbis_library: /app/opt/vorbis/lib/libvorbis.a
-            vorbis_root: /app/opt/vorbis
-            vorbisfile_library: /app/opt/vorbis/lib/libvorbisfile.a
-            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
-            zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
+            vorbis_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
+            vorbis_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbis.a
+            vorbis_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
+            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
+            zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
         - 'panda3d{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
-            build: /app/build/panda3dnt
-            bullet_include: /app/opt/bullet/include/bullet
-            bullet_library_collision: /app/opt/bullet/lib/libBulletCollision.a
-            bullet_library_dynamics: /app/opt/bullet/lib/libBulletDynamics.a
-            bullet_library_math: /app/opt/bullet/lib/libLinearMath.a
-            bullet_library_softbody: /app/opt/bullet/lib/libBulletSoftBody.a
-            bullet_root: /app/opt/bullet
+            build: /var/opt/kitsunetsuki-sdk/build/panda3dnt
+            bullet_include: /var/opt/kitsunetsuki-sdk/dist/bullet/include/bullet
+            bullet_library_collision: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletCollision.a
+            bullet_library_dynamics: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletDynamics.a
+            bullet_library_math: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libLinearMath.a
+            bullet_library_softbody: /var/opt/kitsunetsuki-sdk/dist/bullet/lib/libBulletSoftBody.a
+            bullet_root: /var/opt/kitsunetsuki-sdk/dist/bullet
             flex_executable: /usr/bin/flex
-            freetype_cmake: /app/opt/freetypehb/lib/cmake/freetype
-            freetype_include: /app/opt/freetypehb/include/freetype2
-            freetype_library: /app/opt/freetypehb/lib/libfreetype.a
-            freetype_root: /app/opt/freetypehb
+            freetype_cmake: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/cmake/freetype
+            freetype_include: /var/opt/kitsunetsuki-sdk/dist/freetypehb/include/freetype2
+            freetype_library: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/libfreetype.a
+            freetype_root: /var/opt/kitsunetsuki-sdk/dist/freetypehb
             generator: Unix Makefiles
-            harfbuzz_include: /app/opt/harfbuzz/include/harfbuzz
-            harfbuzz_library: /app/opt/harfbuzz/lib/libharfbuzz.a
+            harfbuzz_include: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/include/harfbuzz
+            harfbuzz_library: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/lib/libharfbuzz.a
             have_gl: YES
             have_gtk: NO
             have_x11: YES
-            install: /app/opt/panda3dnt
-            install_python: /app/opt/panda3dnt/lib/python3.12/site-packages
-            interrogate_executable: /app/opt/interrogatent/bin/interrogate
-            interrogate_module_executable: /app/opt/interrogatent/bin/interrogate_module
-            jpeg_include: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
-            jpeg_library: /app/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt
+            install_python: /var/opt/kitsunetsuki-sdk/dist/panda3dnt/lib/python3.12/site-packages
+            interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
+            interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
+            jpeg_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
+            jpeg_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
             make: '-j 16'
             node: linux
-            ogg_include: /app/opt/vorbis/include
-            ogg_library: /app/opt/vorbis/lib/libogg.a
-            ogg_root: /app/opt/vorbis
-            openal_cmake: /app/jenkins/workspace/blender-thirdparty-lynx64/openal
-            openal_include: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/include
-            openal_library: /app/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
+            ogg_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
+            ogg_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libogg.a
+            ogg_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
+            openal_cmake: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal
+            openal_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal/include
+            openal_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/openal/lib/libopenal.a
             panda3d_thirdparty: ''
-            png_include: /app/jenkins/workspace/blender-thirdparty-lynx64/png/include
-            png_library: /app/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
-            python_executable: /app/opt/pythonnt/bin/python3.12
-            python_include: /app/opt/pythonnt/include/python3.12
-            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            png_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/include
+            png_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/png/lib/libpng.a
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
+            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
+            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
-            vorbis_include: /app/opt/vorbis/include
-            vorbis_library: /app/opt/vorbis/lib/libvorbis.a
-            vorbis_root: /app/opt/vorbis
-            vorbisfile_library: /app/opt/vorbis/lib/libvorbisfile.a
-            zlib_include: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
-            zlib_library: /app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
+            vorbis_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
+            vorbis_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbis.a
+            vorbis_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
+            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
+            zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+            zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
         - 'panda3d{variant}-{arch}':
             arch: winx64
             bison_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'

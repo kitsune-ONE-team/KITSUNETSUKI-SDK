@@ -12,7 +12,7 @@ KITSUNETSUKI project: https://k.kitsune.one/
 Jenkins Linux Agent configuration
 ---------------------------------
 
-**Remote root directory:** /app/jenkins
+**Remote root directory:** /var/opt/kitsunetsuki-sdk/jenkins
 
 **Labels:** linux
 
@@ -25,8 +25,8 @@ Jenkins Linux Agent configuration
 **Environment variables:**
 
 * BZIP2_LIBS=-Wl,-Bstatic -lbz2
-* ZLIB_CFLAGS=-I/app/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
-* ZLIB_LIBS=-L/app/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib -lz
+* ZLIB_CFLAGS=-I/var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
+* ZLIB_LIBS=-L/var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib -lz
 
 Jenkins Windows Agent configuration
 -----------------------------------

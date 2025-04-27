@@ -23,4 +23,4 @@ RUN apt clean && \
     echo UTC > /etc/timezone && \
     echo PermitRootLogin yes >> /etc/ssh/sshd_config
 RUN echo root:jenkins | chpasswd
-WORKDIR /app
+WORKDIR /var/opt/kitsunetsuki-sdk

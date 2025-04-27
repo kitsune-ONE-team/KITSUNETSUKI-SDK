@@ -37,9 +37,9 @@
     jobs:
         - 'ogg-{arch}':
             arch: lynx64
-            build: /app/build/ogg
+            build: /var/opt/kitsunetsuki-sdk/build/ogg
             generator: 'Unix Makefiles'
-            install: /app/opt/vorbis
+            install: /var/opt/kitsunetsuki-sdk/dist/vorbis
             make: '-j 16'
             node: linux
         - 'ogg-{arch}':

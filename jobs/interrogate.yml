@@ -13,7 +13,7 @@
         - git:
             url: https://github.com/panda3d/interrogate.git
             branches:
-              - c343350a6e210029cfe3fd8468e530e1ea6bcead
+              - 6b95bbe2a25141c892db540381ee095c5e6fec28
             wipe-workspace: false
     builders:
         - cmake:
@@ -46,28 +46,28 @@
         - 'interrogate{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
-            build: /app/build/interrogate
+            build: /var/opt/kitsunetsuki-sdk/build/interrogate
             flex_executable: /usr/bin/flex
             generator: Unix Makefiles
-            install: /app/opt/interrogate
+            install: /var/opt/kitsunetsuki-sdk/dist/interrogate
             make: '-j 16'
             node: linux
-            python_executable: /app/opt/python/bin/python3.13t
-            python_include: /app/opt/python/include/python3.13t
-            python_library: /app/opt/python/lib/libpython3.13t.so.1.0
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.13t
+            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
+            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             variant: ''
         - 'interrogate{variant}-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
-            build: /app/build/interrogatent
+            build: /var/opt/kitsunetsuki-sdk/build/interrogatent
             flex_executable: /usr/bin/flex
             generator: Unix Makefiles
-            install: /app/opt/interrogatent
+            install: /var/opt/kitsunetsuki-sdk/dist/interrogatent
             make: '-j 16'
             node: linux
-            python_executable: /app/opt/pythonnt/bin/python3.12
-            python_include: /app/opt/pythonnt/include/python3.12
-            python_library: /app/opt/pythonnt/lib/libpython3.12.so.1.0
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
+            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
+            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             variant: nt
         - 'interrogate{variant}-{arch}':
             arch: winx64

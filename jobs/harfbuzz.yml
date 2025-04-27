@@ -43,11 +43,11 @@
     jobs:
         - 'harfbuzz-{arch}':
             arch: lynx64
-            build: /app/build/harfbuzz
-            freetype_include: /app/opt/freetype/include/freetype2
-            freetype_library: /app/opt/freetype/lib/libfreetype.a
+            build: /var/opt/kitsunetsuki-sdk/build/harfbuzz
+            freetype_include: /var/opt/kitsunetsuki-sdk/dist/freetype/include/freetype2
+            freetype_library: /var/opt/kitsunetsuki-sdk/dist/freetype/lib/libfreetype.a
             generator: 'Unix Makefiles'
-            install: /app/opt/harfbuzz
+            install: /var/opt/kitsunetsuki-sdk/dist/harfbuzz
             make: '-j 16'
             node: linux
         - 'harfbuzz-{arch}':
