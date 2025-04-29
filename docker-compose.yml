@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   jenkins:
-    image: jenkins/jenkins:2.469-jdk21
+    image: jenkins/jenkins:2.492.3-jdk21
     ports:
       - '8080:8080'
     volumes:

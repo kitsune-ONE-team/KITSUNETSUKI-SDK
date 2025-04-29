@@ -31,21 +31,25 @@
                 -DBULLET_MATH_LIBRARY={bullet_library_math}
                 -DBULLET_SOFTBODY_LIBRARY={bullet_library_softbody}
                 -DCMAKE_INSTALL_PREFIX={install}
+                -DCMAKE_MODULE_LINKER_FLAGS_={ldflags}
+                -DCMAKE_SHARED_LINKER_FLAGS_={ldflags}
+                -DCMAKE_STATIC_LINKER_FLAGS_={ldflags}
                 -DFLEX_EXECUTABLE={flex_executable}
+                -DFreetype_DIR={freetype_cmake}
                 -DFREETYPE_INCLUDE_DIR_freetype2={freetype_include}
                 -DFREETYPE_INCLUDE_DIR_ft2build={freetype_include}
                 -DFREETYPE_LIBRARY_RELEASE={freetype_library}
-                -DFreetype_DIR={freetype_cmake}
                 -DFreetype_ROOT={freetype_root}
+                -DGIT_EXECUTABLE={git_executable}
                 -DHARFBUZZ_INCLUDE_DIR={harfbuzz_include}
                 -DHARFBUZZ_LIBRARY={harfbuzz_library}
                 -DHAVE_ARTOOLKIT=NO
                 -DHAVE_ASSIMP=NO
                 -DHAVE_BISON=YES
                 -DHAVE_BULLET=YES
-                -DHAVE_CG=NO
                 -DHAVE_CGD3D9=NO
                 -DHAVE_CGGL=NO
+                -DHAVE_CG=NO
                 -DHAVE_DX9=NO
                 -DHAVE_EGL={have_gl}
                 -DHAVE_EIGEN=NO
@@ -55,9 +59,9 @@
                 -DHAVE_FLEX=YES
                 -DHAVE_FMODEX=NO
                 -DHAVE_FREETYPE=YES
-                -DHAVE_GL=YES
                 -DHAVE_GLES1={have_gl}
                 -DHAVE_GLES2={have_gl}
+                -DHAVE_GL=YES
                 -DHAVE_GTK3={have_gtk}
                 -DHAVE_HARFBUZZ=YES
                 -DHAVE_JPEG=YES
@@ -86,21 +90,21 @@
                 -DMULTITHREADED_BUILD=16
                 -DOGG_INCLUDE_DIR={ogg_include}
                 -DOGG_LIBRARY={ogg_library}
+                -DOpenAL_DIR={openal_cmake}
                 -DOPENAL_INCLUDE_DIR={openal_include}
                 -DOPENAL_LIBRARY={openal_library}
-                -DOpenAL_DIR={openal_cmake}
                 -DPNG_LIBRARY_RELEASE={png_library}
                 -DPNG_PNG_INCLUDE_DIR={png_include}
                 -DPYTHON_ARCH_INSTALL_DIR={install_python}
-                -DPYTHON_LIB_INSTALL_DIR={install_python}
                 -DPython_EXECUTABLE={python_executable}
                 -DPython_INCLUDE_DIR={python_include}
+                -DPYTHON_LIB_INSTALL_DIR={install_python}
                 -DPython_LIBRARY={python_library}
                 -DPython_LIBRARY_RELEASE={python_library}
                 -DTHIRDPARTY_DIRECTORY={panda3d_thirdparty}
                 -DVORBIS_INCLUDE_DIR={vorbis_include}
-                -DVORBIS_vorbis_LIBRARY={vorbis_library}
                 -DVORBIS_vorbisfile_LIBRARY={vorbisfile_library}
+                -DVORBIS_vorbis_LIBRARY={vorbis_library}
                 -DWANT_PYTHON_VERSION={python_version_int}
                 -DZLIB_INCLUDE_DIR={zlib_include}
                 -DZLIB_LIBRARY_RELEASE={zlib_library}
@@ -129,17 +133,19 @@
             freetype_library: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/libfreetype.a
             freetype_root: /var/opt/kitsunetsuki-sdk/dist/freetypehb
             generator: Unix Makefiles
+            git_executable: /usr/bin/git
             harfbuzz_include: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/include/harfbuzz
             harfbuzz_library: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/lib/libharfbuzz.a
             have_gl: YES
             have_gtk: NO
             have_x11: YES
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3d
             install_python: /var/opt/kitsunetsuki-sdk/dist/panda3d/lib/python3.13t/site-packages
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3d
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
             jpeg_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
             jpeg_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
+            ldflags: ''
             make: '-j 16'
             node: linux
             ogg_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
@@ -157,10 +163,10 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
+            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
             vorbis_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
             vorbis_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbis.a
             vorbis_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
-            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
             zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
             zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
         - 'panda3d{variant}-{arch}':
@@ -179,17 +185,19 @@
             freetype_library: /var/opt/kitsunetsuki-sdk/dist/freetypehb/lib/libfreetype.a
             freetype_root: /var/opt/kitsunetsuki-sdk/dist/freetypehb
             generator: Unix Makefiles
+            git_executable: /usr/bin/git
             harfbuzz_include: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/include/harfbuzz
             harfbuzz_library: /var/opt/kitsunetsuki-sdk/dist/harfbuzz/lib/libharfbuzz.a
             have_gl: YES
             have_gtk: NO
             have_x11: YES
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt
             install_python: /var/opt/kitsunetsuki-sdk/dist/panda3dnt/lib/python3.12/site-packages
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
             jpeg_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/include
             jpeg_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/jpeg/lib/libjpeg.a
+            ldflags: ''
             make: '-j 16'
             node: linux
             ogg_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
@@ -207,10 +215,10 @@
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
+            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
             vorbis_include: /var/opt/kitsunetsuki-sdk/dist/vorbis/include
             vorbis_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbis.a
             vorbis_root: /var/opt/kitsunetsuki-sdk/dist/vorbis
-            vorbisfile_library: /var/opt/kitsunetsuki-sdk/dist/vorbis/lib/libvorbisfile.a
             zlib_include: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/include
             zlib_library: /var/opt/kitsunetsuki-sdk/jenkins/workspace/blender-thirdparty-lynx64/zlib/lib/libz.a
         - 'panda3d{variant}-{arch}':
@@ -229,6 +237,7 @@
             freetype_library: 'D:\\opt\\freetypehb\\lib\\freetype.lib'
             freetype_root: 'D:\\opt\\freetypehb'
             generator: NMake Makefiles
+            git_executable: 'Z:\\Git\\bin\\git.exe'
             harfbuzz_include: 'D:\\opt\\harfbuzz\\include\\harfbuzz'
             harfbuzz_library: 'D:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
             have_gl: NO
@@ -240,6 +249,7 @@
             interrogate_module_executable: 'D:\\opt\\interrogate\\bin\\interrogate_module.exe'
             jpeg_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
             jpeg_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
+            ldflags: '/FORCE:MULTIPLE'
             make: ''
             node: windows
             ogg_include: 'D:\\opt\\vorbis\\include'
@@ -257,10 +267,10 @@
             python_version: '3.13t'
             python_version_int: '3.13'
             variant: ''
+            vorbisfile_library: 'D:\\opt\\vorbis\\lib\\vorbisfile.lib'
             vorbis_include: 'D:\\opt\\vorbis\\include'
             vorbis_library: 'D:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'D:\\opt\\vorbis'
-            vorbisfile_library: 'D:\\opt\\vorbis\\lib\\vorbisfile.lib'
             zlib_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
             zlib_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'
         - 'panda3d{variant}-{arch}':
@@ -279,6 +289,7 @@
             freetype_library: 'D:\\opt\\freetypehb\\lib\\freetype.lib'
             freetype_root: 'D:\\opt\\freetypehb'
             generator: NMake Makefiles
+            git_executable: 'Z:\\Git\\bin\\git.exe'
             harfbuzz_include: 'D:\\opt\\harfbuzz\\include\\harfbuzz'
             harfbuzz_library: 'D:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
             have_gl: NO
@@ -290,6 +301,7 @@
             interrogate_module_executable: 'D:\\opt\\interrogatent\\bin\\interrogate_module.exe'
             jpeg_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\include'
             jpeg_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\jpeg\\lib\\libjpeg.lib'
+            ldflags: '/FORCE:MULTIPLE'
             make: ''
             node: windows
             ogg_include: 'D:\\opt\\vorbis\\include'
@@ -307,9 +319,9 @@
             python_version: '3.12'
             python_version_int: '3.12'
             variant: nt
+            vorbisfile_library: 'D:\\opt\\vorbis\\lib\\vorbisfile.lib'
             vorbis_include: 'D:\\opt\\vorbis\\include'
             vorbis_library: 'D:\\opt\\vorbis\\lib\\vorbis.lib'
             vorbis_root: 'D:\\opt\\vorbis'
-            vorbisfile_library: 'D:\\opt\\vorbis\\lib\\vorbisfile.lib'
             zlib_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\include'
             zlib_library: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\zlib\\lib\\libz_st.lib'

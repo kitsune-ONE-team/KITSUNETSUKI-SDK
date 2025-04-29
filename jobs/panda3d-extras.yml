@@ -27,6 +27,7 @@
                 -DCMAKE_INSTALL_PREFIX={install}
                 -DINSTALL_PY=ON
                 -DINTERROGATE_EXECUTABLE={interrogate_executable}
+                -DINTERROGATE_LIBRARY_DIR={interrogate_library}
                 -DINTERROGATE_MODULE_EXECUTABLE={interrogate_module_executable}
                 -DINTERROGATE_SOURCE_DIR={interrogate_source}
                 -DMULTITHREADED_BUILD=16
@@ -53,6 +54,7 @@
             generator: Unix Makefiles
             install: /var/opt/kitsunetsuki-sdk/dist/panda3d-kphys/lib/python3.13t/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
+            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogate/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
             interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogate-lynx64
             make: '-j 16'
@@ -63,7 +65,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
             python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             variant: ''
-            version: '0.7.9'
+            version: '0.7.11'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -73,6 +75,7 @@
             generator: Unix Makefiles
             install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-kphys/lib/python3.12/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
+            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogatent/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
             interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogatent-lynx64
             make: '-j 16'
@@ -83,7 +86,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
             python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             variant: nt
-            version: '0.7.9'
+            version: '0.7.11'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -93,6 +96,7 @@
             generator: NMake Makefiles
             install: 'D:\\opt\\panda3d-kphys\\lib\site-packages'
             interrogate_executable: 'D:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_library: 'D:\\opt\\interrogate\\lib'
             interrogate_module_executable: 'D:\\opt\\interrogate\\bin\\interrogate_module'
             interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
@@ -103,7 +107,7 @@
             python_include: 'D:\\opt\\python\\include'
             python_library: 'D:\\opt\\python\\libs\\python313t.lib'
             variant: ''
-            version: '0.7.9'
+            version: '0.7.11'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -113,6 +117,7 @@
             generator: NMake Makefiles
             install: 'D:\\opt\\panda3dnt-kphys\\lib\site-packages'
             interrogate_executable: 'D:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_library: 'D:\\opt\\interrogatent\\lib'
             interrogate_module_executable: 'D:\\opt\\interrogatent\\bin\\interrogate_module'
             interrogate_source: 'D:\\jenkins\\workspace\\interrogatent-winx64'
             make: ''
@@ -123,7 +128,7 @@
             python_include: 'D:\\opt\\pythonnt\\include'
             python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
-            version: '0.7.9'
+            version: '0.7.11'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -133,6 +138,7 @@
             generator: Unix Makefiles
             install: /var/opt/kitsunetsuki-sdk/dist/panda3d-krender/lib/python3.13t/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
+            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogate/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
             interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogate-lynx64
             make: '-j 16'
@@ -143,7 +149,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
             python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             variant: ''
-            version: '0.2.10'
+            version: '0.2.11'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -153,6 +159,7 @@
             generator: Unix Makefiles
             install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-krender/lib/python3.12/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
+            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogatent/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
             interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogatent-lynx64
             make: '-j 16'
@@ -163,7 +170,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
             python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             variant: nt
-            version: '0.2.10'
+            version: '0.2.11'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -173,6 +180,7 @@
             generator: NMake Makefiles
             install: 'D:\\opt\\panda3d-krender\\lib\site-packages'
             interrogate_executable: 'D:\\opt\\interrogate\\bin\\interrogate'
+            interrogate_library: 'D:\\opt\\interrogate\\lib'
             interrogate_module_executable: 'D:\\opt\\interrogate\\bin\\interrogate_module'
             interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
@@ -183,7 +191,7 @@
             python_include: 'D:\\opt\\python\\include'
             python_library: 'D:\\opt\\python\\libs\\python313t.lib'
             variant: ''
-            version: '0.2.10'
+            version: '0.2.11'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -193,6 +201,7 @@
             generator: NMake Makefiles
             install: 'D:\\opt\\panda3dnt-krender\\lib\site-packages'
             interrogate_executable: 'D:\\opt\\interrogatent\\bin\\interrogate'
+            interrogate_library: 'D:\\opt\\interrogatent\\lib'
             interrogate_module_executable: 'D:\\opt\\interrogatent\\bin\\interrogate_module'
             interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
             make: ''
@@ -203,5 +212,5 @@
             python_include: 'D:\\opt\\pythonnt\\include'
             python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
-            version: '0.2.10'
+            version: '0.2.11'
             with_tests: OFF

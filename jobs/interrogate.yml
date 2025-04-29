@@ -13,7 +13,8 @@
         - git:
             url: https://github.com/panda3d/interrogate.git
             branches:
-              - 6b95bbe2a25141c892db540381ee095c5e6fec28
+              # must match the version in panda3d/dtool/Config.cmake
+              - d2844d994fcc465a4e22b10001d3ac5c4012b814
             wipe-workspace: false
     builders:
         - cmake:
@@ -28,7 +29,7 @@
                 -DFLEX_EXECUTABLE={flex_executable}
                 -DHAVE_BISON=YES
                 -DHAVE_FLEX=YES
-                -DHAVE_PYTHON=NO
+                -DHAVE_PYTHON=YES
                 -DMULTITHREADED_BUILD=16
                 -DPython_EXECUTABLE={python_executable}
                 -DPython_INCLUDE_DIR={python_include}
@@ -91,7 +92,7 @@
             install: 'D:\\opt\\interrogatent'
             make: ''
             node: windows
-            python_executable: 'D:\\opt\\pythonnt\\bin\\python3.12'
+            python_executable: 'D:\\opt\\pythonnt\\bin\\python'
             python_include: 'D:\\opt\\pythonnt\\include'
             python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
             variant: nt
