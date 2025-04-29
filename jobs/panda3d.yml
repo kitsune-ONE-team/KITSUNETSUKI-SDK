@@ -31,9 +31,9 @@
                 -DBULLET_MATH_LIBRARY={bullet_library_math}
                 -DBULLET_SOFTBODY_LIBRARY={bullet_library_softbody}
                 -DCMAKE_INSTALL_PREFIX={install}
-                -DCMAKE_MODULE_LINKER_FLAGS_={ldflags}
-                -DCMAKE_SHARED_LINKER_FLAGS_={ldflags}
-                -DCMAKE_STATIC_LINKER_FLAGS_={ldflags}
+                -DCMAKE_MODULE_LINKER_FLAGS={ldflags}
+                -DCMAKE_SHARED_LINKER_FLAGS={ldflags}
+                -DCMAKE_STATIC_LINKER_FLAGS={ldflags}
                 -DFLEX_EXECUTABLE={flex_executable}
                 -DFreetype_DIR={freetype_cmake}
                 -DFREETYPE_INCLUDE_DIR_freetype2={freetype_include}

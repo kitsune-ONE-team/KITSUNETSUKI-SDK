@@ -65,7 +65,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
             python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             variant: ''
-            version: '0.7.11'
+            version: '0.7.14'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -86,7 +86,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
             python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             variant: nt
-            version: '0.7.11'
+            version: '0.7.14'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -107,7 +107,7 @@
             python_include: 'D:\\dist\\python\\include'
             python_library: 'D:\\dist\\python\\libs\\python313t.lib'
             variant: ''
-            version: '0.7.11'
+            version: '0.7.14'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -128,7 +128,7 @@
             python_include: 'D:\\dist\\pythonnt\\include'
             python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
             variant: nt
-            version: '0.7.11'
+            version: '0.7.14'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -149,7 +149,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
             python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
             variant: ''
-            version: '0.2.11'
+            version: '0.2.14'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: lynx64
@@ -170,7 +170,7 @@
             python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
             python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
             variant: nt
-            version: '0.2.11'
+            version: '0.2.14'
             with_tests: ON
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -191,7 +191,7 @@
             python_include: 'D:\\dist\\python\\include'
             python_library: 'D:\\dist\\python\\libs\\python313t.lib'
             variant: ''
-            version: '0.2.11'
+            version: '0.2.14'
             with_tests: OFF
         - 'panda3d{variant}-{module}-{arch}':
             arch: winx64
@@ -212,5 +212,5 @@
             python_include: 'D:\\dist\\pythonnt\\include'
             python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
             variant: nt
-            version: '0.2.11'
+            version: '0.2.14'
             with_tests: OFF
