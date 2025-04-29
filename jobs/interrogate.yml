@@ -76,12 +76,12 @@
             build: 'D:\\build\\interrogate'
             flex_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
             generator: NMake Makefiles
-            install: 'D:\\opt\\interrogate'
+            install: 'D:\\dist\\interrogate'
             make: ''
             node: windows
-            python_executable: 'D:\\opt\\python\\bin\\python3.13t'
-            python_include: 'D:\\opt\\python\\include'
-            python_library: 'D:\\opt\\python\\libs\\python313t.lib'
+            python_executable: 'D:\\dist\\python\\bin\\python3.13t'
+            python_include: 'D:\\dist\\python\\include'
+            python_library: 'D:\\dist\\python\\libs\\python313t.lib'
             variant: ''
         - 'interrogate{variant}-{arch}':
             arch: winx64
@@ -89,10 +89,10 @@
             build: 'D:\\build\\interrogatent'
             flex_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
             generator: NMake Makefiles
-            install: 'D:\\opt\\interrogatent'
+            install: 'D:\\dist\\interrogatent'
             make: ''
             node: windows
-            python_executable: 'D:\\opt\\pythonnt\\bin\\python'
-            python_include: 'D:\\opt\\pythonnt\\include'
-            python_library: 'D:\\opt\\pythonnt\\libs\\python312.lib'
+            python_executable: 'D:\\dist\\pythonnt\\bin\\python'
+            python_include: 'D:\\dist\\pythonnt\\include'
+            python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
             variant: nt

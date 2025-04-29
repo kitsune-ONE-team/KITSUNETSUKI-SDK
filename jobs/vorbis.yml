@@ -50,8 +50,8 @@
             arch: winx64
             build: 'D:\\build\\vorbis'
             generator: NMake Makefiles
-            install: 'D:\\opt\\vorbis'
+            install: 'D:\\dist\\vorbis'
             make: ''
             node: windows
-            ogg_include: 'D:\\opt\\vorbis\\include'
-            ogg_library: 'D:\\opt\\ogg\\lib\\ogg.lib'
+            ogg_include: 'D:\\dist\\vorbis\\include'
+            ogg_library: 'D:\\dist\\ogg\\lib\\ogg.lib'

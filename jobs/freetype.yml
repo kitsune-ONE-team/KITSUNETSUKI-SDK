@@ -87,7 +87,7 @@
             generator: NMake Makefiles
             harfbuzz_include: ''
             harfbuzz_library: ''
-            install: 'D:\\opt\\freetype'
+            install: 'D:\\dist\\freetype'
             make: ''
             node: windows
             png_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'
@@ -101,9 +101,9 @@
             arch: winx64
             build: 'D:\\build\\freetypehb'
             generator: NMake Makefiles
-            harfbuzz_include: 'D:\\opt\\harfbuzz\\include\\harfbuzz'
-            harfbuzz_library: 'D:\\opt\\harfbuzz\\lib\\harfbuzz.lib'
-            install: 'D:\\opt\\freetypehb'
+            harfbuzz_include: 'D:\\dist\\harfbuzz\\include\\harfbuzz'
+            harfbuzz_library: 'D:\\dist\\harfbuzz\\lib\\harfbuzz.lib'
+            install: 'D:\\dist\\freetypehb'
             make: ''
             node: windows
             png_include: 'D:\\jenkins\\workspace\\blender-thirdparty-winx64\\png\\include'

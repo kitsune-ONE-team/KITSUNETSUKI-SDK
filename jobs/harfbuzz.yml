@@ -53,9 +53,9 @@
         - 'harfbuzz-{arch}':
             arch: winx64
             build: 'D:\\build\\harfbuzz'
-            freetype_include: 'D:\\opt\\freetype\\include\\freetype2'
-            freetype_library: 'D:\\opt\\freetype\\lib\\freetype.lib'
+            freetype_include: 'D:\\dist\\freetype\\include\\freetype2'
+            freetype_library: 'D:\\dist\\freetype\\lib\\freetype.lib'
             generator: NMake Makefiles
-            install: 'D:\\opt\\harfbuzz'
+            install: 'D:\\dist\\harfbuzz'
             make: ''
             node: windows

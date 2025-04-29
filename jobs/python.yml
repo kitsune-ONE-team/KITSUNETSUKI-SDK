@@ -91,7 +91,7 @@
         - 'python{variant}-winx64':
             build: 'D:\\build\\python'
             git_tag: 'v3.13.3'
-            install: 'D:\\opt\\python'
+            install: 'D:\\dist\\python'
             options: '--disable-gil'
             pyconfig: 'D:\\build\\python\\pyconfig.h'
             python_app_version: '3.13t'
@@ -100,7 +100,7 @@
         - 'python{variant}-winx64':
             build: 'D:\\build\\pythonnt'
             git_tag: 'v3.12.10'
-            install: 'D:\\opt\\pythonnt'
+            install: 'D:\\dist\\pythonnt'
             pyconfig: 'PC\\pyconfig.h'
             python_app_version: ''
             python_version: '3.12'

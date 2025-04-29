@@ -49,6 +49,6 @@
             arch: winx64
             build: 'D:\\build\\sdl'
             generator: NMake Makefiles
-            install: 'D:\\opt\\sdl'
+            install: 'D:\\dist\\sdl'
             make: ''
             node: windows

@@ -62,6 +62,6 @@
             arch: winx64
             build: 'D:\\build\\bullet'
             generator: NMake Makefiles
-            install: 'D:\\opt\\bullet'
+            install: 'D:\\dist\\bullet'
             make: ''
             node: windows
