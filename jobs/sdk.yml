@@ -99,7 +99,7 @@
           set PATH=%PATH%;Z:\Git\bin
 
           if not exist discord.zip (
-              curl -o discord.zip https://kitsune.one/var/discord_game_sdk.zip
+              curl -o discord.zip http://kitsune.one/var/discord_game_sdk.zip
               %ZIP% x -odiscord discord.zip
           )
 
