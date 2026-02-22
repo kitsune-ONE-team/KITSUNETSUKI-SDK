@@ -5,19 +5,7 @@
     regex: '.*-lynx64'
 
 - view:
-    name: lynx64 nt
-    description: lynx64 nt
-    view-type: list
-    regex: '.*nt-.*lynx64'
-
-- view:
     name: winx64
     description: winx64
     view-type: list
     regex: '.*-winx64'
-
-- view:
-    name: winx64 nt
-    description: winx64 nt
-    view-type: list
-    regex: '.*nt-.*winx64'

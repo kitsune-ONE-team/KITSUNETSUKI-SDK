@@ -23,4 +23,4 @@
     name: panda3d-thirdparty-winx64
     jobs:
         - 'panda3d-thirdparty-winx64':
-            version: '1.10.14'
+            version: '1.10.16'

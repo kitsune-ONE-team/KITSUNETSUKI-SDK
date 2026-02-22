@@ -1,6 +1,6 @@
 - job-template:
-    name: 'panda3d{variant}-{module}-{arch}'
-    display-name: 'panda3d{variant}-{module}-{arch}'
+    name: 'panda3d-{module}-{arch}'
+    display-name: 'panda3d-{module}-{arch}'
     project-type: freestyle
     description: '{desc}'
     node: '{node}'
@@ -46,13 +46,13 @@
 - project:
     name: panda3d-extras
     jobs:
-        - 'panda3d{variant}-{module}-{arch}':
+        - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /var/opt/kitsunetsuki-sdk/build/panda3d-kphys
             bullet_dir: /var/opt/kitsunetsuki-sdk/dist/bullet/
             desc: Physics extensions for Panda3D
             generator: Unix Makefiles
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3d-kphys/lib/python3.13t/site-packages
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3d-kphys/lib/python3.14t/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
             interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogate/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
@@ -61,34 +61,12 @@
             module: kphys
             node: linux
             panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d/
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.13t
-            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
-            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
-            variant: ''
-            version: '0.7.15'
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.14t
+            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.14t
+            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.14t.so.1.0
+            version: '0.7.16'
             with_tests: ON
-        - 'panda3d{variant}-{module}-{arch}':
-            arch: lynx64
-            build: /var/opt/kitsunetsuki-sdk/build/panda3dnt-kphys
-            bullet_dir: /var/opt/kitsunetsuki-sdk/dist/bullet/
-            desc: Physics extensions for Panda3D
-            generator: Unix Makefiles
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-kphys/lib/python3.12/site-packages
-            interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
-            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogatent/lib
-            interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
-            interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogatent-lynx64
-            make: '-j 16'
-            module: kphys
-            node: linux
-            panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3dnt/
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
-            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
-            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
-            variant: nt
-            version: '0.7.15'
-            with_tests: ON
-        - 'panda3d{variant}-{module}-{arch}':
+        - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'D:\\build\\panda3d-kphys'
             bullet_dir: 'D:\\dist\\bullet\\'
@@ -103,40 +81,18 @@
             module: kphys
             node: windows
             panda3d_dir: 'D:\\dist\\panda3d\\'
-            python_executable: 'D:\\dist\\python\\bin\\python3.13t'
+            python_executable: 'D:\\dist\\python\\bin\\python3.14t'
             python_include: 'D:\\dist\\python\\include'
-            python_library: 'D:\\dist\\python\\libs\\python313t.lib'
-            variant: ''
-            version: '0.7.15'
+            python_library: 'D:\\dist\\python\\libs\\python314t.lib'
+            version: '0.7.16'
             with_tests: OFF
-        - 'panda3d{variant}-{module}-{arch}':
-            arch: winx64
-            build: 'D:\\build\\panda3dnt-kphys'
-            bullet_dir: 'D:\\dist\\bullet\\'
-            desc: Physics extensions for Panda3D
-            generator: NMake Makefiles
-            install: 'D:\\dist\\panda3dnt-kphys\\lib\site-packages'
-            interrogate_executable: 'D:\\dist\\interrogatent\\bin\\interrogate'
-            interrogate_library: 'D:\\dist\\interrogatent\\lib'
-            interrogate_module_executable: 'D:\\dist\\interrogatent\\bin\\interrogate_module'
-            interrogate_source: 'D:\\jenkins\\workspace\\interrogatent-winx64'
-            make: ''
-            module: kphys
-            node: windows
-            panda3d_dir: 'D:\\dist\\panda3dnt\\'
-            python_executable: 'D:\\dist\\pythonnt\\bin\\python'
-            python_include: 'D:\\dist\\pythonnt\\include'
-            python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
-            variant: nt
-            version: '0.7.15'
-            with_tests: OFF
-        - 'panda3d{variant}-{module}-{arch}':
+        - 'panda3d-{module}-{arch}':
             arch: lynx64
             build: /var/opt/kitsunetsuki-sdk/build/panda3d-krender
             bullet_dir: /var/opt/kitsunetsuki-sdk/dist/bullet/
             desc: Custom Deferred Render Pipeline for Panda3D
             generator: Unix Makefiles
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3d-krender/lib/python3.13t/site-packages
+            install: /var/opt/kitsunetsuki-sdk/dist/panda3d-krender/lib/python3.14t/site-packages
             interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate
             interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogate/lib
             interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogate/bin/interrogate_module
@@ -145,34 +101,12 @@
             module: krender
             node: linux
             panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d/
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.13t
-            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
-            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
-            variant: ''
-            version: '0.2.14'
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.14t
+            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.14t
+            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.14t.so.1.0
+            version: '0.2.15'
             with_tests: ON
-        - 'panda3d{variant}-{module}-{arch}':
-            arch: lynx64
-            build: /var/opt/kitsunetsuki-sdk/build/panda3dnt-krender
-            bullet_dir: /var/opt/kitsunetsuki-sdk/dist/bullet/
-            desc: Custom Deferred Render Pipeline for Panda3D
-            generator: Unix Makefiles
-            install: /var/opt/kitsunetsuki-sdk/dist/panda3dnt-krender/lib/python3.12/site-packages
-            interrogate_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate
-            interrogate_library: /var/opt/kitsunetsuki-sdk/dist/interrogatent/lib
-            interrogate_module_executable: /var/opt/kitsunetsuki-sdk/dist/interrogatent/bin/interrogate_module
-            interrogate_source: /var/opt/kitsunetsuki-sdk/jenkins/workspace/interrogatent-lynx64
-            make: '-j 16'
-            module: krender
-            node: linux
-            panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3dnt/
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
-            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
-            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
-            variant: nt
-            version: '0.2.14'
-            with_tests: ON
-        - 'panda3d{variant}-{module}-{arch}':
+        - 'panda3d-{module}-{arch}':
             arch: winx64
             build: 'D:\\build\\panda3d-krender'
             bullet_dir: 'D:\\dist\\bullet\\'
@@ -187,30 +121,8 @@
             module: krender
             node: windows
             panda3d_dir: 'D:\\dist\\panda3d\\'
-            python_executable: 'D:\\dist\\python\\bin\\python3.13t'
+            python_executable: 'D:\\dist\\python\\bin\\python3.14t'
             python_include: 'D:\\dist\\python\\include'
-            python_library: 'D:\\dist\\python\\libs\\python313t.lib'
-            variant: ''
-            version: '0.2.14'
-            with_tests: OFF
-        - 'panda3d{variant}-{module}-{arch}':
-            arch: winx64
-            build: 'D:\\build\\panda3dnt-krender'
-            bullet_dir: 'D:\\dist\\bullet\\'
-            desc: Custom Deferred Render Pipeline for Panda3D
-            generator: NMake Makefiles
-            install: 'D:\\dist\\panda3dnt-krender\\lib\site-packages'
-            interrogate_executable: 'D:\\dist\\interrogatent\\bin\\interrogate'
-            interrogate_library: 'D:\\dist\\interrogatent\\lib'
-            interrogate_module_executable: 'D:\\dist\\interrogatent\\bin\\interrogate_module'
-            interrogate_source: 'D:\\jenkins\\workspace\\interrogate-winx64'
-            make: ''
-            module: krender
-            node: windows
-            panda3d_dir: 'D:\\dist\\panda3dnt\\'
-            python_executable: 'D:\\dist\\pythonnt\\bin\\python'
-            python_include: 'D:\\dist\\pythonnt\\include'
-            python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
-            variant: nt
-            version: '0.2.14'
+            python_library: 'D:\\dist\\python\\libs\\python314t.lib'
+            version: '0.2.15'
             with_tests: OFF

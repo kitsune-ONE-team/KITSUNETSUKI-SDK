@@ -67,9 +67,6 @@
                       stage('python') {{
                           steps {{ build job: 'python-{arch}' }}
                       }}
-                      stage('pythonnt') {{
-                          steps {{ build job: 'pythonnt-{arch}' }}
-                      }}
                       stage('sdl') {{
                           steps {{ build job: 'sdl-{arch}' }}
                       }}
@@ -81,14 +78,8 @@
               stage('interrogate') {{
                   steps {{ build job: 'interrogate-{arch}' }}
               }}
-              stage('interrogatent') {{
-                  steps {{ build job: 'interrogatent-{arch}' }}
-              }}
               stage('panda3d') {{
                   steps {{ build job: 'panda3d-{arch}' }}
-              }}
-              stage('panda3dnt') {{
-                  steps {{ build job: 'panda3dnt-{arch}' }}
               }}
               stage('panda3d-plugins') {{
                   parallel {{
@@ -98,19 +89,10 @@
                       stage('panda3d-krender') {{
                           steps {{ build job: 'panda3d-krender-{arch}' }}
                       }}
-                      stage('panda3dnt-kphys') {{
-                          steps {{ build job: 'panda3dnt-kphys-{arch}' }}
-                      }}
-                      stage('panda3dnt-krender') {{
-                          steps {{ build job: 'panda3dnt-krender-{arch}' }}
-                      }}
                   }}
               }}
               stage('sdk') {{
                   steps {{ build job: 'sdk-{arch}' }}
-              }}
-              stage('sdknt') {{
-                  steps {{ build job: 'sdknt-{arch}' }}
               }}
           }}
       }}

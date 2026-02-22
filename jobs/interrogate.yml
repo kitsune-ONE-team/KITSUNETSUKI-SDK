@@ -1,6 +1,6 @@
 - job-template:
-    name: 'interrogate{variant}-{arch}'
-    display-name: 'interrogate{variant}-{arch}'
+    name: 'interrogate-{arch}'
+    display-name: 'interrogate-{arch}'
     project-type: freestyle
     description:  Python binding generator for Panda3D
     node: '{node}'
@@ -14,7 +14,7 @@
             url: https://github.com/panda3d/interrogate.git
             branches:
               # must match the version in panda3d/dtool/Config.cmake
-              - d2844d994fcc465a4e22b10001d3ac5c4012b814
+              - 7cf2550d2c8d95b8c268aa4bb0b5602e85a086dc
             wipe-workspace: false
     builders:
         - cmake:
@@ -44,7 +44,7 @@
 - project:
     name: interrogate
     jobs:
-        - 'interrogate{variant}-{arch}':
+        - 'interrogate-{arch}':
             arch: lynx64
             bison_executable: /usr/bin/bison
             build: /var/opt/kitsunetsuki-sdk/build/interrogate
@@ -53,46 +53,18 @@
             install: /var/opt/kitsunetsuki-sdk/dist/interrogate
             make: '-j 16'
             node: linux
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.13t
-            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.13t
-            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.13t.so.1.0
-            variant: ''
-        - 'interrogate{variant}-{arch}':
-            arch: lynx64
-            bison_executable: /usr/bin/bison
-            build: /var/opt/kitsunetsuki-sdk/build/interrogatent
-            flex_executable: /usr/bin/flex
-            generator: Unix Makefiles
-            install: /var/opt/kitsunetsuki-sdk/dist/interrogatent
-            make: '-j 16'
-            node: linux
-            python_executable: /var/opt/kitsunetsuki-sdk/dist/pythonnt/bin/python3.12
-            python_include: /var/opt/kitsunetsuki-sdk/dist/pythonnt/include/python3.12
-            python_library: /var/opt/kitsunetsuki-sdk/dist/pythonnt/lib/libpython3.12.so.1.0
-            variant: nt
-        - 'interrogate{variant}-{arch}':
+            python_executable: /var/opt/kitsunetsuki-sdk/dist/python/bin/python3.14t
+            python_include: /var/opt/kitsunetsuki-sdk/dist/python/include/python3.14t
+            python_library: /var/opt/kitsunetsuki-sdk/dist/python/lib/libpython3.14t.so.1.0
+        - 'interrogate-{arch}':
             arch: winx64
-            bison_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
+            bison_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.16\\thirdparty\win-util\\bison'
             build: 'D:\\build\\interrogate'
-            flex_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
+            flex_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.16\\thirdparty\win-util\\flex'
             generator: NMake Makefiles
             install: 'D:\\dist\\interrogate'
             make: ''
             node: windows
-            python_executable: 'D:\\dist\\python\\bin\\python3.13t'
+            python_executable: 'D:\\dist\\python\\bin\\python3.14t'
             python_include: 'D:\\dist\\python\\include'
-            python_library: 'D:\\dist\\python\\libs\\python313t.lib'
-            variant: ''
-        - 'interrogate{variant}-{arch}':
-            arch: winx64
-            bison_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\bison'
-            build: 'D:\\build\\interrogatent'
-            flex_executable: 'D:\\jenkins\\workspace\\panda3d-thirdparty-winx64\\panda3d-1.10.14\\thirdparty\win-util\\flex'
-            generator: NMake Makefiles
-            install: 'D:\\dist\\interrogatent'
-            make: ''
-            node: windows
-            python_executable: 'D:\\dist\\pythonnt\\bin\\python'
-            python_include: 'D:\\dist\\pythonnt\\include'
-            python_library: 'D:\\dist\\pythonnt\\libs\\python312.lib'
-            variant: nt
+            python_library: 'D:\\dist\\python\\libs\\python314t.lib'

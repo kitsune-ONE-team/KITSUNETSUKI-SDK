@@ -1,6 +1,6 @@
 - job-template:
-    name: 'python{variant}-lynx64'
-    display-name: 'python{variant}-lynx64'
+    name: 'python-lynx64'
+    display-name: 'python-lynx64'
     project-type: freestyle
     description: The Python programming language.
     node: linux
@@ -28,11 +28,11 @@
             make -j 16
             make install -j 16
             patchelf --set-rpath \$ORIGIN/../lib {install}/bin/python{python_version}
-            {install}/bin/python{python_app_version} -m ensurepip -v
+            {install}/bin/python{python_version} -m ensurepip -v
 
 - job-template:
-    name: 'python{variant}-winx64'
-    display-name: 'python{variant}-winx64'
+    name: 'python-winx64'
+    display-name: 'python-winx64'
     project-type: freestyle
     description: The Python programming language.
     node: windows
@@ -60,49 +60,28 @@
             mkdir {install}\DLLs
             mkdir {install}\bin
             mkdir {install}\libs
-            copy /V /Y {build}\*.pyd      {install}\DLLs
-            copy /V /Y {build}\*.exe      {install}\bin
-            copy /V /Y {build}\*.dll      {install}\bin
-            copy /V /Y {build}\*.lib      {install}\libs
-            xcopy /I /E /Y Include        {install}\include
-            xcopy /I /E /Y Lib            {install}\lib
-            copy /V /Y {pyconfig}     {install}\include
-            {install}\bin\python{python_app_version} -m ensurepip -v
+            copy /V /Y {build}\*.pyd {install}\DLLs
+            copy /V /Y {build}\*.exe {install}\bin
+            copy /V /Y {build}\*.dll {install}\bin
+            copy /V /Y {build}\*.lib {install}\libs
+            xcopy /I /E /Y Include   {install}\include
+            xcopy /I /E /Y Lib       {install}\lib
+            copy /V /Y {pyconfig}    {install}\include
+            {install}\bin\python{python_version} -m ensurepip -v
 
 - project:
     name: python
     jobs:
-        - 'python{variant}-lynx64':
+        - 'python-lynx64':
             build: /var/opt/kitsunetsuki-sdk/build/python
-            git_tag: 'v3.13.3'
+            git_tag: 'v3.14.2'
             install: /var/opt/kitsunetsuki-sdk/dist/python
             options: '--disable-gil'
-            python_app_version: '3.13t'
-            python_version: '3.13t'
-            variant: ''
-        - 'python{variant}-lynx64':
-            build: /var/opt/kitsunetsuki-sdk/build/pythonnt
-            git_tag: 'v3.12.10'
-            install: /var/opt/kitsunetsuki-sdk/dist/pythonnt
-            python_app_version: '3.12'
-            python_version: '3.12'
-            options: ''
-            variant: nt
-        - 'python{variant}-winx64':
+            python_version: '3.14t'
+        - 'python-winx64':
             build: 'D:\\build\\python'
-            git_tag: 'v3.13.3'
+            git_tag: 'v3.14.2'
             install: 'D:\\dist\\python'
             options: '--disable-gil'
             pyconfig: 'D:\\build\\python\\pyconfig.h'
-            python_app_version: '3.13t'
-            python_version: '3.13t'
-            variant: ''
-        - 'python{variant}-winx64':
-            build: 'D:\\build\\pythonnt'
-            git_tag: 'v3.12.10'
-            install: 'D:\\dist\\pythonnt'
-            pyconfig: 'PC\\pyconfig.h'
-            python_app_version: ''
-            python_version: '3.12'
-            options: ''
-            variant: nt
+            python_version: '3.14t'
