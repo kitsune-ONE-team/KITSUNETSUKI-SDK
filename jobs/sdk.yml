@@ -31,6 +31,7 @@
           mkdir -p {install}/lib/python{python_version}/site-packages/panda3d-1.11.0.dist-info
           cp -Rfv {kphys_dir}/lib                             {install}/
           cp -Rfv {krender_dir}/lib                           {install}/
+          cp -Rfv {tiled_dir}/lib                             {install}/
           cp -Rfv {panda3d_dir}/bin                           {install}/
           cp -Rfv {panda3d_dir}/etc                           {install}/
           cp -Rfv {panda3d_dir}/include                       {install}/
@@ -108,6 +109,7 @@
           mkdir {install}\lib\site-packages\panda3d-1.11.0.dist-info
           xcopy /I /E /Y {kphys_dir}\lib       {install}\lib
           xcopy /I /E /Y {krender_dir}\lib     {install}\lib
+          xcopy /I /E /Y {tiled_dir}\lib       {install}\lib
           xcopy /I /E /Y {panda3d_dir}\bin     {install}\bin
           xcopy /I /E /Y {panda3d_dir}\etc     {install}\etc
           xcopy /I /E /Y {panda3d_dir}\include {install}\include
@@ -141,6 +143,7 @@
           install: /var/opt/kitsunetsuki-sdk/dist/sdk
           kphys_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d-kphys
           krender_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d-krender
+          tiled_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d-tiled
           panda3d_dir: /var/opt/kitsunetsuki-sdk/dist/panda3d
           python_dir: /var/opt/kitsunetsuki-sdk/dist/python
           python_version: '3.14t'
@@ -155,6 +158,7 @@
           install_shared: 'Z:\\dist\\sdk'
           kphys_dir: 'D:\\dist\\panda3d-kphys'
           krender_dir: 'D:\\dist\\panda3d-krender'
+          tiled_dir: 'D:\\dist\\panda3d-tiled'
           panda3d_dir: 'D:\\dist\\panda3d'
           python_dir: 'D:\\dist\\python'
           python_version: '3.14t'

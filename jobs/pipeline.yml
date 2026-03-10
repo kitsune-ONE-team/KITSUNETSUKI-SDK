@@ -89,6 +89,9 @@
                       stage('panda3d-krender') {{
                           steps {{ build job: 'panda3d-krender-{arch}' }}
                       }}
+                      stage('panda3d-tiled') {{
+                          steps {{ build job: 'panda3d-tiled-{arch}' }}
+                      }}
                   }}
               }}
               stage('sdk') {{
