@@ -7,5 +7,6 @@ oauthlib==3.3.1
 pathfinding==1.0.20
 pycryptodome==3.23.0
 PySocks==1.7.1
+pytiled-parser==2.2.9
 py-ubjson==0.16.1
 requests==2.32.5
