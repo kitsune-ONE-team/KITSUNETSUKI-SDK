@@ -11,4 +11,5 @@ pycryptodome==3.23.0
 PySocks==1.7.1
 pytiled-parser==2.2.9
 py-ubjson==0.16.1
+pyyaml==6.0.3
 requests==2.32.5
