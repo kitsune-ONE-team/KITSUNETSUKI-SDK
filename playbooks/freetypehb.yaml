@@ -1,0 +1,37 @@
+- name: freetype
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: freetype
+    build_dir: freetypehb
+
+    git_repo: https://gitlab.freedesktop.org/freetype/freetype.git
+    git_refs: refs/tags/
+    git_version: VER-2-14-3
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ freetypehb_prefix }}
+      -DFT_DISABLE_BZIP2=ON
+      -DFT_DISABLE_BROTLI=ON
+      -DFT_DISABLE_HARFBUZZ=OFF
+      -DFT_REQUIRE_HARFBUZZ=ON
+      -DFT_REQUIRE_PNG=ON
+      -DFT_REQUIRE_ZLIB=ON
+      -DHarfBuzz_INCLUDE_DIR={{ harfbuzz_include }}
+      -DHarfBuzz_LIBRARY={{ harfbuzz_library }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DPNG_LIBRARY_RELEASE={{ png_library }}
+      -DPNG_PNG_INCLUDE_DIR={{ png_include }}
+      -DZLIB_INCLUDE_DIR={{ zlib_include }}
+      -DZLIB_LIBRARY_RELEASE={{ zlib_library }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

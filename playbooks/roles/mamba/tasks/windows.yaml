@@ -1,0 +1,21 @@
+- name: mkdir
+  win_file:
+    path: "{{ install_prefix }}"
+    state: directory
+
+- name: copy env.yaml
+  win_copy:
+    src: roles/mamba/environment-windows.yaml
+    dest: "{{ install_prefix }}environment.yaml"
+
+- name: stat mamba
+  win_stat:
+    path: "{{ install_prefix }}{{ install_dir }}"
+  register: ksdk
+
+- name: mamba env create
+  win_command: >
+    {{ micromamba }} env create --yes
+    --file {{ install_prefix }}environment.yaml
+    --prefix {{ install_prefix }}{{ install_dir }}
+  when: not ksdk.stat.exists

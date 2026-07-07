@@ -1,0 +1,34 @@
+- name: "vars {{ ansible_system }}"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+
+- name: mkdir
+  when: ansible_system != "Linux"
+  win_file:
+    path: "{{ build_prefix }}"
+    state: directory
+
+- name: stat zip
+  when: ansible_system != "Linux"
+  win_stat:
+    path: "{{ build_prefix}}/panda3d-{{ thirdparty_version }}-tools-win64.zip"
+  register: zip
+
+- name: get zip
+  when: ansible_system != "Linux" and not zip.stat.exists
+  win_get_url:
+    url: "https://www.panda3d.org/download/panda3d-{{ thirdparty_version }}/panda3d-{{ thirdparty_version }}-tools-win64.zip"
+    dest: "{{ build_prefix}}panda3d-{{ thirdparty_version }}-tools-win64.zip"
+
+- name: stat thirdpaty
+  when: ansible_system != "Linux"
+  win_stat:
+    path: "{{ thirdparty }}"
+  register: thirdparty_path
+
+- name: unzip
+  when: ansible_system != "Linux" and not thirdparty_path.stat.exists
+  win_command: >
+    "C:\\Program Files\\7-Zip\\7z.exe" x -o{{ build_prefix}}
+    {{ build_prefix}}panda3d-{{ thirdparty_version }}-tools-win64.zip

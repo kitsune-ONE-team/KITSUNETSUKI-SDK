@@ -1,0 +1,25 @@
+- name: ogg
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: ogg
+    build_dir: ogg
+
+    git_repo: https://github.com/xiph/ogg.git
+    git_refs: refs/tags/
+    git_version: v1.3.6
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ ogg_prefix }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

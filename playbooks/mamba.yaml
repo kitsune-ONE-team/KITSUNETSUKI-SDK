@@ -1,0 +1,8 @@
+- name: mamba
+  hosts: all
+  gather_facts: yes
+  vars:
+    install_dir: ksdk
+
+  roles:
+    - mamba

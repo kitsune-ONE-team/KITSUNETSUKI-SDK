@@ -1,0 +1,35 @@
+- name: "vars {{ ansible_system }}"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+
+- name: copy dist-info (linux)
+  when: ansible_system == "Linux"
+  copy:
+    src: "{{ build_prefix }}{{ build_dir }}/panda3d.dist-info"
+    dest: "{{ install_prefix_sp }}"
+    remote_src: yes
+
+- name: copy dist-info (windows)
+  when: ansible_system != "Linux"
+  win_copy:
+    src: "{{ build_prefix }}{{ build_dir }}/panda3d.dist-info"
+    dest: "{{ install_prefix_sp }}"
+    remote_src: yes
+
+- name: patchelf bin
+  when: ansible_system == "Linux"
+  shell: |
+    patchelf --set-rpath \$ORIGIN/../lib bin/multify
+    patchelf --set-rpath \$ORIGIN/../lib bin/pview
+    patchelf --set-rpath \$ORIGIN/../lib bin/*zip
+    patchelf --set-rpath \$ORIGIN/../lib bin/egg*
+  args:
+    chdir: "{{ install_prefix }}{{ install_dir }}"
+
+- name: patchelf sp
+  when: ansible_system == "Linux"
+  shell: |
+    patchelf --set-rpath \$ORIGIN/../../.. panda3d/*.so*
+  args:
+    chdir: "{{ install_prefix_sp }}"

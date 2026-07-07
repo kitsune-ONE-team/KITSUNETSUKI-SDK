@@ -1,0 +1,12 @@
+- name: "vars {{ ansible_system }}"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+
+- name: linux
+  when: ansible_system == "Linux"
+  include_tasks: linux.yaml
+
+- name: windows
+  when: ansible_system != "Linux"
+  include_tasks: windows.yaml

@@ -1,0 +1,118 @@
+# Base paths
+source_prefix: C:/app/source/
+build_prefix: C:/app/build/
+install_prefix: C:/app/dist/
+# install_prefix_sp: "{{ install_prefix }}ksdk/Lib/site-packages/"
+install_prefix_sp: C:/app/dist/ksdk/Lib/site-packages
+sync_prefix: //host.lan/Data/
+
+# Executables and tools
+micromamba: micromamba
+vcvars: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Auxiliary/Build/vcvars64.bat
+
+# CMake settings
+cmake_generator: NMake Makefiles
+cmake_c_flags:
+cmake_cxx_flags:
+cmake_ldflags: /FORCE:MULTIPLE
+build_threads: 16
+
+# Feature flags
+have_glx: NO
+have_x11: NO
+with_tests: YES
+
+# Define common base paths to reuse
+ksdk_base: "{{ install_prefix }}ksdk/Library"
+
+# ZLIB
+zlib_include: "{{ ksdk_base }}/include"
+zlib_library: "{{ ksdk_base }}/lib/z.lib"
+
+# PNG
+png_include: "{{ ksdk_base }}/include"
+png_library: "{{ ksdk_base }}/lib/png16_static.lib"
+
+# JPEG
+jpeg_include: "{{ ksdk_base }}/include"
+jpeg_library: "{{ ksdk_base }}/lib/jpeg.lib"
+
+# SSL
+openssl_dir: "{{ ksdk_base }}/lib/cmake/OpenSSL"
+
+# Freetype
+freetype_prefix: "{{ install_prefix }}freetype"
+freetype_include: "{{ freetype_prefix }}/include"
+freetype_include_freetype2: "{{ freetype_prefix }}/include/freetype2"
+freetype_libdir: "{{ freetype_prefix }}/lib"
+freetype_library: "{{ freetype_prefix }}/lib/freetype.lib"
+
+# Harfbuzz
+harfbuzz_prefix: "{{ ksdk_base }}"
+harfbuzz_include: "{{ ksdk_base }}/include"
+harfbuzz_include_harfbuzz: "{{ ksdk_base }}/include/harfbuzz"
+harfbuzz_libdir: "{{ ksdk_base }}/lib"
+harfbuzz_library: "{{ ksdk_base }}/lib/harfbuzz.lib"
+
+# Freetype with Harfbuzz
+freetypehb_prefix: "{{ ksdk_base }}"
+freetypehb_cmake: "{{ ksdk_base }}/lib/cmake/freetype"
+freetypehb_include_freetype2: "{{ ksdk_base }}/include/freetype2"
+freetypehb_library: "{{ ksdk_base }}/lib/freetype.lib"
+
+# FLTK
+fltk_prefix: "{{ ksdk_base }}"
+
+# Ogg
+ogg_prefix: "{{ ksdk_base }}"
+ogg_include: "{{ ksdk_base }}/include"
+ogg_libdir: "{{ ksdk_base }}/lib"
+ogg_library: "{{ ksdk_base }}/lib/ogg.lib"
+
+# Vorbis
+vorbis_prefix: "{{ ksdk_base }}"
+vorbis_include: "{{ ksdk_base }}/include"
+vorbis_library: "{{ ksdk_base }}/lib/vorbis.lib"
+vorbisfile_library: "{{ ksdk_base }}/lib/vorbisfile.lib"
+
+# OpenAL
+openal_prefix: "{{ ksdk_base }}"
+openal_cmake: "{{ ksdk_base }}"
+openal_include: "{{ ksdk_base }}/include"
+openal_library: "{{ ksdk_base }}/lib/OpenAL32.lib"
+
+# Bullet
+bullet_prefix: "{{ ksdk_base }}"
+bullet_include: "{{ ksdk_base }}/include/bullet"
+bullet_library_collision: "{{ ksdk_base }}/lib/BulletCollision.lib"
+bullet_library_dynamics: "{{ ksdk_base }}/lib/BulletDynamics.lib"
+bullet_library_math: "{{ ksdk_base }}/lib/LinearMath.lib"
+bullet_library_softbody: "{{ ksdk_base }}/lib/BulletSoftBody.lib"
+bullet_libdir: "{{ ksdk_base }}/lib"
+
+# Third-party
+thirdparty_version: 1.10.16
+thirdparty: "{{ build_prefix }}panda3d-{{ thirdparty_version }}/thirdparty"
+bison_executable: "{{ thirdparty }}/win-util/bison.exe"
+flex_executable: "{{ thirdparty }}/win-util/flex.exe"
+git_executable: git.exe
+
+# Interrogate
+interrogate_prefix: "{{ install_prefix }}interrogate"
+interrogate_executable: "{{ interrogate_prefix }}/bin/interrogate.exe"
+interrogate_module_executable: "{{ interrogate_prefix }}/bin/interrogate_module.exe"
+interrogate_libdir: "{{ interrogate_prefix }}/lib"
+interrogate_source: "{{ source_prefix }}interrogate"
+
+# Python
+python_version: '3.14t'
+python_version_int: '3.14'
+pythonversion: '314t'
+python_executable: "{{ install_prefix }}ksdk/python.exe"
+python_include: "{{ install_prefix }}ksdk/include"
+python_library: "{{ install_prefix }}ksdk/libs/python{{ pythonversion }}.lib"
+
+# Panda3D
+panda3d_prefix: "{{ ksdk_base }}"
+panda3d_include: "{{ ksdk_base }}/include"
+panda3d_libdir: "{{ ksdk_base }}/lib"

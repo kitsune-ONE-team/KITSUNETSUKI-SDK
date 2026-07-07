@@ -1,0 +1,15 @@
+all:
+  hosts:
+    agent_linux:
+      ansible_host: localhost
+      ansible_port: 2201
+      ansible_user: root
+      ansible_password: nyanpassu
+    agent_windows:
+      ansible_host: localhost
+      ansible_port: 2200
+      ansible_user: yonnji
+      ansible_password: nyanpassu
+      ansible_shell_type: cmd
+      ansible_scp_if_ssh: True
+      ansible_scp_extra_args: -O

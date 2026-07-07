@@ -1,0 +1,35 @@
+- name: "vars {{ ansible_system }}"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+
+- name: copy requirements.txt (linux)
+  when: ansible_system == "Linux"
+  copy:
+    src: roles/python-extras/requirements.txt
+    dest: "{{ install_prefix }}{{ install_dir }}/requirements.txt"
+
+- name: copy requirements.txt (windows)
+  when: ansible_system != "Linux"
+  win_copy:
+    src: roles/python-extras/requirements.txt
+    dest: "{{ install_prefix }}{{ install_dir }}/requirements.txt"
+
+- name: pip install (linux)
+  when: ansible_system == "Linux"
+  command: bin/python -m pip install -r requirements.txt
+  args:
+    chdir: "{{ install_prefix }}{{ install_dir }}"
+
+- name: pip install (windows)
+  when: ansible_system != "Linux"
+  win_command: .\python3.14t.exe -m pip install -r requirements.txt
+  args:
+    chdir: "{{ install_prefix }}{{ install_dir }}"
+
+- name: copy ksdk (windows)
+  when: ansible_system != "Linux"
+  win_copy:
+    src: "{{ install_prefix }}{{ install_dir }}"
+    dest: "{{ sync_prefix }}"
+    remote_src: yes

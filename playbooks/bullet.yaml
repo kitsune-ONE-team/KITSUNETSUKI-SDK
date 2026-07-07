@@ -1,0 +1,42 @@
+- name: bullet
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: bullet
+    build_dir: bullet
+
+    git_repo: https://github.com/bulletphysics/bullet3.git
+    git_refs: refs/tags/
+    git_version: 3.25
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      -DBUILD_BULLET2_DEMOS=OFF
+      -DBUILD_BULLET3_DEMOS=OFF
+      -DBUILD_BULLET3=ON
+      -DBUILD_CPU_DEMOS=OFF
+      -DBUILD_EGL=OFF
+      -DBUILD_EGL=OFF
+      -DBUILD_ENET=ON
+      -DBUILD_EXTRAS=ON
+      -DBUILD_OPENGL3_DEMOS=OFF
+      -DBUILD_PYBULLET=OFF
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DBUILD_UNIT_TESTS=OFF
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ bullet_prefix }}
+      -DINSTALL_LIBS=ON
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DUSE_DOUBLE_PRECISION=OFF
+      -DUSE_GLUT=OFF
+      -DUSE_GRAPHICAL_BENCHMARK=OFF
+      -DUSE_MSVC_RUNTIME_LIBRARY_DLL=ON
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

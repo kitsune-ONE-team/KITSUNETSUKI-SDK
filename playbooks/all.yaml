@@ -1,0 +1,41 @@
+- name: mamba
+  import_playbook: mamba.yaml
+
+- name: freetype
+  import_playbook: freetype.yaml
+
+- name: harfbuzz
+  import_playbook: harfbuzz.yaml
+
+- name: freetypehb
+  import_playbook: freetypehb.yaml
+
+- name: fltk
+  import_playbook: fltk.yaml
+
+- name: ogg
+  import_playbook: ogg.yaml
+
+- name: vorbis
+  import_playbook: vorbis.yaml
+
+- name: openal
+  import_playbook: openal.yaml
+
+- name: bullet
+  import_playbook: bullet.yaml
+
+- name: interrogate
+  import_playbook: interrogate.yaml
+
+- name: panda3d
+  import_playbook: panda3d.yaml
+
+- name: panda3d-kphys
+  import_playbook: panda3d-kphys.yaml
+
+- name: panda3d-krender
+  import_playbook: panda3d-krender.yaml
+
+- name: python-extras
+  import_playbook: python-extras.yaml

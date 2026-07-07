@@ -1,0 +1,24 @@
+- name: openal
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: openal
+    build_dir: openal
+
+    git_repo: https://github.com/kcat/openal-soft.git
+    git_refs: refs/tags/
+    git_version: 1.24.0
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DLIBTYPE=STATIC
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ openal_prefix }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

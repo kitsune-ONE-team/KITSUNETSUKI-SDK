@@ -1,0 +1,30 @@
+- name: vorbis
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: vorbis
+    build_dir: vorbis
+    install_dir: ksdk
+
+    git_repo: https://github.com/xiph/vorbis.git
+    git_refs: refs/tags/
+    git_version: v1.3.7
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ vorbis_prefix }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DOGG_INCLUDE_DIR={{ ogg_include }}
+      -DOGG_LIBRARY={{ ogg_library }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake
+

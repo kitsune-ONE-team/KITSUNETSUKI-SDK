@@ -1,0 +1,36 @@
+- name: panda3d-kphys
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: panda3d-kphys
+    build_dir: panda3d-kphys
+
+    git_repo: https://github.com/kitsune-ONE-team/panda3d-kphys.git
+    git_refs: refs/tags/
+    git_version: 0.8.3
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBULLET_INCLUDE_DIR={{ bullet_include }}
+      -DBULLET_LIBRARY_DIR={{ bullet_libdir }}
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ install_prefix_sp }}
+      -DINSTALL_PY=ON
+      -DINTERROGATE_EXECUTABLE={{ interrogate_executable }}
+      -DINTERROGATE_LIBRARY_DIR={{ interrogate_libdir }}
+      -DINTERROGATE_MODULE_EXECUTABLE={{ interrogate_module_executable }}
+      -DINTERROGATE_SOURCE_DIR={{ interrogate_source }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DPANDA_INCLUDE_DIR={{ panda3d_include }}
+      -DPANDA_LIBRARY_DIR={{ panda3d_libdir }}
+      -DPYTHON_EXECUTABLE={{ python_executable }}
+      -DPYTHON_INCLUDE_DIR={{ python_include }}
+      -DPYTHON_LIBRARY={{ python_library }}
+      -DWITH_TESTS={{ with_tests }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

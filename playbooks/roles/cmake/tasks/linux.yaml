@@ -1,0 +1,31 @@
+- name: mkdir
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ build_prefix }}{{ build_dir }}"
+    - "{{ install_prefix }}"
+
+- name: git clone
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ source_prefix }}{{ source_dir }}"
+    version: "{{ git_refs }}{{ git_version }}"
+    single_branch: yes
+    force: yes
+
+- name: cmake (linux)
+  when: ansible_system == "Linux"
+  command: "{{ cmake_command }}"
+  args:
+    chdir: "{{ build_prefix }}{{ build_dir }}"
+
+- name: make (linux)
+  when: ansible_system == "Linux"
+  command: "{{ item }}"
+  args:
+    chdir: "{{ build_prefix }}{{ build_dir }}"
+  loop: 
+    - "make -j {{ build_threads }}"
+    - "make install"

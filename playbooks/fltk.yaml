@@ -1,0 +1,25 @@
+- name: fltk
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: fltk
+    build_dir: fltk
+
+    git_repo: https://github.com/fltk/fltk.git
+    git_refs:
+    git_version: a9b1113516ffd15fc7602a6d425a317df30f4720
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ fltk_prefix }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake

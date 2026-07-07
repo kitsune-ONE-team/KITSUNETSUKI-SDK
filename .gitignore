@@ -1,8 +1,5 @@
-/build/
-/dist/
-/jenkins/
-/jenkins-host/
-jenkins_jobs.ini
+/app/
+/ansible.log
 *.pyc
 __pycache__
 .venv

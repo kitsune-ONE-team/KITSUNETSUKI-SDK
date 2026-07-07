@@ -1,0 +1,46 @@
+- name: mkdir
+  win_file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ build_prefix }}{{ build_dir }}"
+    - "{{ install_prefix }}"
+
+- name: stat
+  win_stat:
+    path: "{{ source_prefix }}{{ source_dir }}"
+  register: source
+
+- name: git clone
+  win_command: git clone {{ git_repo }} "{{ source_prefix }}{{ source_dir }}"
+  when: not source.stat.exists
+
+- name: git fetch
+  win_command: git fetch
+  args:
+    chdir: "{{ source_prefix }}{{ source_dir }}"
+
+- name: git checkout
+  win_command: git checkout {{ git_version }}
+  args:
+    chdir: "{{ source_prefix }}{{ source_dir }}"
+
+- name: generate build.bat
+  win_copy:
+    dest: "{{ build_prefix }}{{ build_dir }}/build.bat"
+    content: |
+      call "{{ vcvars | backslash }}"
+      set PATH=%PATH%;{{ ksdk_base | backslash }}\\bin
+
+      {{ cmake_command }}
+      if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
+
+      nmake VERBOSE=1
+      if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
+
+      nmake install
+
+- name: execute build.bat
+  win_command: "{{ build_prefix }}{{ build_dir }}/build.bat"
+  args:
+    chdir: "{{ build_prefix }}{{ build_dir }}"

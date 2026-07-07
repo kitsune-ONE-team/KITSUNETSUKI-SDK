@@ -1,0 +1,8 @@
+- name: vorbis
+  hosts: all
+  gather_facts: yes
+  vars:
+    install_dir: ksdk
+
+  roles:
+    - python-extras

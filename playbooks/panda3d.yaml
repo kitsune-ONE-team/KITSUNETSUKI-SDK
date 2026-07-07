@@ -1,0 +1,111 @@
+- name: panda3d
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: panda3d
+    build_dir: panda3d
+    install_dir: ksdk
+
+    git_repo: https://github.com/panda3d/panda3d.git
+    git_refs:
+    git_version: 300090e457668bdc51fb1e75cfa160d57f736c2e
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBISON_EXECUTABLE={{ bison_executable }}
+      -DBUILD_INTERROGATE=OFF
+      -DBULLET_COLLISION_LIBRARY={{ bullet_library_collision }}
+      -DBULLET_DYNAMICS_LIBRARY={{ bullet_library_dynamics }}
+      -DBULLET_INCLUDE_DIR={{ bullet_include }}
+      -DBULLET_MATH_LIBRARY={{ bullet_library_math }}
+      -DBULLET_SOFTBODY_LIBRARY={{ bullet_library_softbody }}
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ panda3d_prefix }}
+      -DCMAKE_MODULE_LINKER_FLAGS={{ cmake_ldflags }}
+      -DCMAKE_SHARED_LINKER_FLAGS={{ cmake_ldflags }}
+      -DCMAKE_STATIC_LINKER_FLAGS={{ cmake_ldflags }}
+      -DFLEX_EXECUTABLE={{ flex_executable }}
+      -DFreetype_DIR={{ freetypehb_cmake }}
+      -DFREETYPE_INCLUDE_DIR_freetype2={{ freetypehb_include_freetype2 }}
+      -DFREETYPE_INCLUDE_DIR_ft2build={{ freetypehb_include_freetype2 }}
+      -DFREETYPE_LIBRARY_RELEASE={{ freetypehb_library }}
+      -DFreetype_ROOT={{ freetypehb_prefix }}
+      -DGIT_EXECUTABLE={{ git_executable }}
+      -DGit_VERSION="2.52"
+      -DHARFBUZZ_INCLUDE_DIR={{ harfbuzz_include_harfbuzz }}
+      -DHARFBUZZ_LIBRARY={{ harfbuzz_library }}
+      -DHAVE_ARTOOLKIT=NO
+      -DHAVE_ASSIMP=NO
+      -DHAVE_BISON=YES
+      -DHAVE_BULLET=YES
+      -DHAVE_CGD3D9=NO
+      -DHAVE_CGGL=NO
+      -DHAVE_CG=NO
+      -DHAVE_DX9=NO
+      -DHAVE_EGL=NO
+      -DHAVE_EIGEN=NO
+      -DHAVE_FCOLLADA=NO
+      -DHAVE_FFMPEG=NO
+      -DHAVE_FFTW=NO
+      -DHAVE_FLEX=YES
+      -DHAVE_FMODEX=NO
+      -DHAVE_FREETYPE=YES
+      -DHAVE_GLES1=NO
+      -DHAVE_GLES2=
+      -DHAVE_GLX={{ have_glx }}
+      -DHAVE_GL=YES
+      -DHAVE_GTK3=NO
+      -DHAVE_HARFBUZZ=YES
+      -DHAVE_JPEG=YES
+      -DHAVE_ODE=NO
+      -DHAVE_OPENAL=YES
+      -DHAVE_OPENCV=NO
+      -DHAVE_OPENEXR=NO
+      -DHAVE_OPENSSL=YES
+      -DHAVE_OPUS=NO
+      -DHAVE_PNG=YES
+      -DHAVE_PYTHON=YES
+      -DHAVE_SPEEDTREE=NO
+      -DHAVE_SQUISH=NO
+      -DHAVE_SWRESAMPLE=NO
+      -DHAVE_SWSCALE=NO
+      -DHAVE_TIFF=NO
+      -DHAVE_VRPN=NO
+      -DHAVE_X11={{ have_x11 }}
+      -DHAVE_ZLIB=YES
+      -DINTERROGATE_C_INTERFACE=OFF
+      -DINTERROGATE_EXECUTABLE={{ interrogate_executable }}
+      -DINTERROGATE_MODULE_EXECUTABLE={{ interrogate_module_executable }}
+      -DINTERROGATE_PYTHON_INTERFACE=ON
+      -DJPEG_INCLUDE_DIR={{ jpeg_include }}
+      -DJPEG_LIBRARY_RELEASE={{ jpeg_library }}
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DOGG_INCLUDE_DIR={{ ogg_include }}
+      -DOGG_LIBRARY={{ ogg_library }}
+      -DOpenAL_DIR={{ openal_cmake }}
+      -DOPENAL_INCLUDE_DIR={{ openal_include }}
+      -DOPENAL_LIBRARY={{ openal_library }}
+      -DOpenSSL_DIR={{ openssl_dir }}
+      -DPNG_LIBRARY_RELEASE={{ png_library }}
+      -DPNG_PNG_INCLUDE_DIR={{ png_include }}
+      -DPYTHON_ARCH_INSTALL_DIR={{ install_prefix_sp }}
+      -DPython_EXECUTABLE={{ python_executable }}
+      -DPython_INCLUDE_DIR={{ python_include }}
+      -DPYTHON_LIB_INSTALL_DIR={{ install_prefix_sp }}
+      -DPython_LIBRARY={{ python_library }}
+      -DPython_LIBRARY_RELEASE={{ python_library }}
+      -DTHIRDPARTY_DIRECTORY_={{ thirdparty }}
+      -DVORBIS_INCLUDE_DIR={{ vorbis_include }}
+      -DVORBIS_vorbisfile_LIBRARY={{ vorbisfile_library }}
+      -DVORBIS_vorbis_LIBRARY={{ vorbis_library }}
+      -DWANT_PYTHON_VERSION_={{ python_version_int }}
+      -DZLIB_INCLUDE_DIR={{ zlib_include }}
+      -DZLIB_LIBRARY_RELEASE={{ zlib_library }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - cmake
+    - panda3d-dist

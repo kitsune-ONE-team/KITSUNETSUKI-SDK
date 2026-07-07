@@ -1,0 +1,38 @@
+- name: interrogate
+  hosts: all
+  gather_facts: yes
+  vars:
+    source_dir: interrogate
+    build_dir: interrogate
+
+    git_repo: https://github.com/panda3d/interrogate.git
+    # must match the version in Panda3D - dtool/Config.cmake - GIT_TAG
+    git_refs:
+    git_version: 7cf2550d2c8d95b8c268aa4bb0b5602e85a086dc
+
+    cmake_command: >
+      cmake
+      -G "{{ cmake_generator }}"
+      -DBISON_EXECUTABLE={{ bison_executable }}
+      -DBUILD_SHARED_LIBS=OFF
+      -DBUILD_STATIC_LIBS=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_C_FLAGS={{ cmake_c_flags }}
+      -DCMAKE_CXX_FLAGS={{ cmake_cxx_flags }}
+      -DCMAKE_INSTALL_PREFIX={{ interrogate_prefix }}
+      -DFLEX_EXECUTABLE={{ flex_executable }}
+      -DHAVE_BISON=YES
+      -DHAVE_FLEX=YES
+      -DHAVE_PYTHON=YES
+      -DMULTITHREADED_BUILD={{ build_threads }}
+      -DPYTHON_ARCH_INSTALL_DIR={{ install_prefix_sp }}
+      -DPython_EXECUTABLE={{ python_executable }}
+      -DPython_INCLUDE_DIR={{ python_include }}
+      -DPYTHON_LIB_INSTALL_DIR={{ install_prefix_sp }}
+      -DPython_LIBRARY={{ python_library }}
+      -DPython_LIBRARY_RELEASE={{ python_library }}
+      {{ source_prefix }}{{ source_dir }}
+
+  roles:
+    - panda3d-thirdparty
+    - cmake
