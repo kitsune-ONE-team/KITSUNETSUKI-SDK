@@ -1,5 +1,0 @@
-[jenkins]
-user=username
-password=apitoken
-url=http://localhost:8080
-timeout=30
