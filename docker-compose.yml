@@ -1,44 +1,20 @@
 version: '3.4'
 
 services:
-  jenkins:
-    image: jenkins/jenkins:2.492.3-jdk21
-    ports:
-      - '8080:8080'
-    volumes:
-      - ../jenkins-host:/var/jenkins_home:z
-    hostname: jenkins
-    networks:
-      - sdk
-
-  agent:
-    build:
-      context: .
-      dockerfile: Dockerfile.agent
-    ports:
-      - '8022:22'
-    hostname: agent
-    networks:
-      - sdk
-    volumes:
-      - .:/var/opt/kitsunetsuki-sdk:z
-    command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
-
   sdk:
     build:
       context: .
-      dockerfile: Dockerfile.sdk
-    volumes:
-      - .:/var/opt/kitsunetsuki-sdk:z
-      - ${HOME}/Dev/Panda3D:${HOME}/Dev/Panda3D:z
-      - ${HOME}/Public:${HOME}/Public:z
-      - /var/mnt/games/steamapps/common/Blender:${HOME}/Blender:z
+    ports:
+      - '2201:22'
+    hostname: sdk
     environment:
       - HOME=${HOME}
+      - MAMBA_EXE=/root/.local/bin/micromamba
+      - MAMBA_ROOT_PREFIX=/root/.local/share/mamba
+    volumes:
+      - ./app:/app:z
+      - ${HOME}/Dev/Panda3D:${HOME}/Dev/Panda3D:z
+      - /var/mnt/games/Windows/shared:/shared:z
+      - /var/mnt/games/steamapps/common/Blender:/Blender:z
     command: bash -c "mkdir /run/sshd && /usr/sbin/sshd -D"
-    hostname: sdk
-    network_mode: "slirp4netns:allow_host_loopback=true"
-
-networks:
-  sdk:
-    driver: bridge
+    network: 'slirp4netns:allow_host_loopback=true'
