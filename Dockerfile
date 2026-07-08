@@ -13,11 +13,14 @@ RUN apt update -y && \
         mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev g++-mingw-w64 libz-mingw-w64-dev && \
     apt clean
 
+COPY ./micromamba-install.sh /var/opt/micromamba-install.sh
+
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone && \
     echo PermitRootLogin yes >> /etc/ssh/sshd_config && \
-    echo root:nyanpassu | chpasswd && \
-    curl -L micro.mamba.pm | bash
+    echo root:nyanpassu | chpasswd && cd /var/opt && \
+    bash micromamba-install.sh && rm -f micromamba-install.sh && \
+    ln -sf /root/.local/bin/micromamba /usr/local/bin/micromamba
 
 RUN curl -o /var/opt/lzma.7z -L https://www.7-zip.org/a/lzma2602.7z && \
     7z x -o/var/opt/lzma /var/opt/lzma.7z && \
