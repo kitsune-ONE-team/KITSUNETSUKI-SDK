@@ -13,13 +13,11 @@ RUN apt update -y && \
         mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev g++-mingw-w64 libz-mingw-w64-dev && \
     apt clean
 
-COPY ./micromamba-install.sh /var/opt/micromamba-install.sh
-
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
     echo UTC > /etc/timezone && \
     echo PermitRootLogin yes >> /etc/ssh/sshd_config && \
     echo root:nyanpassu | chpasswd && cd /var/opt && \
-    bash micromamba-install.sh && rm -f micromamba-install.sh && \
+    curl -L micro.mamba.pm | bash && \
     ln -sf /root/.local/bin/micromamba /usr/local/bin/micromamba
 
 RUN curl -o /var/opt/lzma.7z -L https://www.7-zip.org/a/lzma2602.7z && \
@@ -28,6 +26,8 @@ RUN curl -o /var/opt/lzma.7z -L https://www.7-zip.org/a/lzma2602.7z && \
 
 RUN cd /var/opt && curl -o appimagetool.AppImage -L \
     https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage && \
+    curl -o appimage-runtime -L \
+    https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64 && \
     chmod +x appimagetool.AppImage && \
     mkdir appimagetool && cd appimagetool && \
     ../appimagetool.AppImage --appimage-extract && cd .. && rm -f appimagetool.AppImage

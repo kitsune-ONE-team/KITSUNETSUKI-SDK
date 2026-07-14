@@ -13,3 +13,4 @@ pytiled-parser==2.2.9
 py-ubjson==0.16.1
 pyyaml==6.0.3
 requests==2.32.5
+git+https://github.com/kitsune-ONE-team/panda3d-tiled.git@0.0.3#egg=panda3d-tiled
