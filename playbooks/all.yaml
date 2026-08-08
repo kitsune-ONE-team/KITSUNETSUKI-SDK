@@ -1,3 +1,6 @@
+- name: clean-dist
+  import_playbook: clean-dist.yaml
+
 - name: mamba
   import_playbook: mamba.yaml
 

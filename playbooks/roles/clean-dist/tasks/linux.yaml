@@ -1,0 +1,4 @@
+- name: rmdir dist
+  file:
+    path: "{{ install_prefix }}"
+    state: absent

@@ -1,0 +1,7 @@
+- name: clean-dist
+  hosts: all
+  gather_facts: yes
+
+  roles:
+    - clean-dist
+

@@ -1,0 +1,9 @@
+- name: rmdir dist
+  win_file:
+    path: "{{ install_prefix }}"
+    state: absent
+
+# - name: rmdir sync
+#   win_file:
+#     path: "{{ sync_prefix }}"
+#     state: absent
